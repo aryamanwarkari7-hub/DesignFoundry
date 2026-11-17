@@ -1,0 +1,141 @@
+<!-- HERO COMPONENT (21st.dev Designali Inspired) -->
+<div class="hero hero-designali">
+    <!-- Radial grid mask background -->
+    <div class="hero-grid-bg" aria-hidden="true"></div>
+
+    @* <!-- LEFT FLANK: ORTHOGRAPHIC BLUEPRINT DIMENSIONS -->
+    <aside class="hero-cad-flank flank-left mono" aria-hidden="true">
+        <div class="flank-header">
+            <span class="flank-crosshair">&target;</span>
+            <span class="flank-badge">DATUM [A]</span>
+            <span class="flank-coord">X: +142.50</span>
+        </div>
+        <div class="flank-dimension">
+            <span class="dim-tick">&vdash;</span>
+            <span class="dim-line"></span>
+            <span class="dim-val">650.00 mm &plusmn;0.02</span>
+            <span class="dim-line"></span>
+            <span class="dim-tick">&dashv;</span>
+        </div>
+        <div class="flank-data-block">
+            <div class="data-row"><span>GD&T:</span> &target; &empty;0.03 | A | B</div>
+            <div class="data-row"><span>SURFACE:</span> Ra 0.8 &mu;m</div>
+            <div class="data-row"><span>TOL:</span> ISO 2768-mK</div>
+        </div>
+    </aside>
+    <!-- RIGHT FLANK: PARAMETRIC CAD FEATURE TREE -->
+    <aside class="hero-cad-flank flank-right mono" aria-hidden="true">
+        <div class="flank-header">
+            <span class="flank-badge-green">&check; KERNEL ACTIVE</span>
+            <span class="flank-crosshair">&target;</span>
+        </div>
+        <div class="flank-tree-block">
+            <div class="tree-title"><i class="bi bi-diagram-3"></i> Actuator_Assy.sldasm</div>
+            <div class="tree-branch">&boxur; Mates: 112/112 Solved</div>
+            <div class="tree-branch">&boxur; FEA: &delta; = 0.041 mm</div>
+            <div class="tree-branch">&boxur; Sizing: NEMA 34 (7.2 Nm)</div>
+        </div>
+        <div class="flank-data-block">
+            <div class="data-row status-ok"><span>SYNC:</span> ERP-BOM LINKED</div>
+            <div class="data-row"><span>MAT:</span> AL 6061-T6</div>
+        </div>
+    </aside> *@
+
+    <div class="wrap hero-center-container">
+        <!-- Top Announcement Pill -->
+        <div class="hero-badge-wrap">
+            <a href="#how" class="hero-announcement-pill">
+                <span class="badge-dot"></span>
+                <span class="badge-text">Parametric Engineering Copilot</span>
+                <span class="badge-arrow">Explore architecture <i class="bi bi-arrow-right"></i></span>
+            </a>
+        </div>
+
+        <!-- Main Title -->
+        <h1 class="hero-title">
+            CAD that remembers <br>
+            <span class="hero-gradient-text">how it was engineered.</span>
+        </h1>
+
+        <!-- Typewriter Sub-Hook -->
+        <div class="hero-typewriter-row mono">
+            <span class="type-prefix">RECALCULATING:</span>
+            <span id="heroTypewriter" class="type-dynamic">SolidWorks Mating Constraints</span>
+            <span class="type-cursor">|</span>
+        </div>
+
+        <!-- Lead Copy -->
+        <p class="hero-lead">
+            Ask for changes in plain language. The copilot updates mating parts, 2D production drawings,
+            and BOMs automatically inside your existing CAD platform.
+        </p>
+
+        <!-- CTA Buttons -->
+        <div class="hero-cta-row">
+            <a href="#contact" class="btn btn-primary">
+                Discuss your Copilot <i class="bi bi-arrow-right-short"></i>
+            </a>
+            <a href="#how" class="btn btn-ghost">
+                <i class="bi bi-play-circle"></i> See how it works
+            </a>
+        </div>
+
+        <!-- ShineBorder Enterprise Showcase Console -->
+        <!-- 3-CARD HERO ENTERPRISE GRID (Matches Global Glass System) -->
+        <div class="hero-cards-grid">
+            <!-- CARD 01 -->
+            <div class="glass-card hero-feature-card">
+                <div class="h-card-head">
+                    <span class="h-card-tag mono"><i class="bi bi-cpu"></i> INTEGRATION</span>
+                    <span class="h-card-pill mono">01</span>
+                </div>
+                <div class="h-card-body">
+                    <h3 class="h-card-title">Zero Switching Barrier</h3>
+                    <p class="h-card-desc">Operates natively inside your existing CAD platform. No new software for your
+                        engineering team to learn.</p>
+                    </div>
+                    <div class="h-card-pills mono">
+                        <span class="glass-pill">SOLIDWORKS</span>
+                        <span class="glass-pill">CREO</span>
+                        <span class="glass-pill">INVENTOR</span>
+                    </div>
+                </div>
+
+                <!-- CARD 02 -->
+                <div class="glass-card hero-feature-card">
+                    <div class="h-card-head">
+                        <span class="h-card-tag mono"><i class="bi bi-layers"></i> CAD ARCHITECTURE</span>
+                        <span class="h-card-pill mono">02</span>
+                    </div>
+                    <div class="h-card-body">
+                        <h3 class="h-card-title">Native B-Rep Solids</h3>
+                        <p class="h-card-desc">Generates true parametric assemblies with intact feature trees, mating
+                            constraints, and editable sketches.</p>
+                        </div>
+                        <div class="h-card-pills mono">
+                            <span class="glass-pill">FEATURE TREE</span>
+                            <span class="glass-pill">MATES</span>
+                            <span class="glass-pill">STEP AP242</span>
+                        </div>
+                    </div>
+
+                    <!-- CARD 03 -->
+                    <div class="glass-card hero-feature-card">
+                        <div class="h-card-head">
+                            <span class="h-card-tag mono"><i class="bi bi-shield-check"></i> SECURITY</span>
+                            <span class="h-card-pill mono">03</span>
+                        </div>
+                        <div class="h-card-body">
+                            <h3 class="h-card-title">100% On-Premise IP</h3>
+                            <p class="h-card-desc">Air-gapped deployment in your private cloud or intranet. Proprietary CAD
+                                models never leave your facility.</p>
+                            </div>
+                            <div class="h-card-pills mono">
+                                <span class="glass-pill">AIR-GAPPED</span>
+                                <span class="glass-pill">PRIVATE VPC</span>
+                                <span class="glass-pill">ZERO LEAK</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>

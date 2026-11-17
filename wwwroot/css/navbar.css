@@ -1,0 +1,385 @@
+/* ==========================================================
+   21st.dev FLOATING ROUNDED GLASS NAVBAR (CAPSULE)
+========================================================== */
+
+header.header-floating {
+  position: sticky;
+  top: var(--space-md); /* 12px floating margin from viewport top */
+  z-index: 1000;
+  width: 100%;
+  pointer-events: none; /* Clicks glide through empty margins */
+  padding-inline: var(--space-md);
+  display: flex;
+  justify-content: center;
+  transition: transform var(--transition-fast);
+}
+
+.nav-capsule {
+  pointer-events: auto; /* Re-enable clicks inside the pill */
+  width: min(var(--max-width), 100%);
+  height: 62px;
+  padding: var(--space-2xs) var(--space-md) var(--space-2xs) var(--space-lg);
+  border-radius: var(--radius-pill); /* Strictly uses var(--radius-pill) */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+
+  /* 21st.dev Deep Frosted Glass Surface */
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.08) 0%,
+      rgba(255, 255, 255, 0.02) 100%
+    ),
+    rgba(6, 15, 38, 0.72);
+
+  backdrop-filter: blur(24px) saturate(190%);
+  -webkit-backdrop-filter: blur(24px) saturate(190%);
+
+  border: 1px solid rgba(255, 255, 255, 0.14);
+
+  /* Specular Edge Bevel & Weightless Floating Shadow */
+  box-shadow:
+    inset 0 1px 1.5px 0 rgba(255, 255, 255, 0.35),
+    inset 0 -1px 1px 0 rgba(255, 255, 255, 0.05),
+    0 20px 48px -12px rgba(0, 0, 0, 0.65);
+}
+
+/* ==========================================
+   LOGO & BRANDING
+========================================== */
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.logo-img {
+  width: 32px;
+  height: 32px;
+  transition:
+    transform var(--transition-fast),
+    filter var(--transition-fast);
+}
+
+.logo:hover .logo-img {
+  transform: scale(1.06);
+  filter: drop-shadow(0 0 10px rgba(242, 106, 10, 0.5));
+}
+
+.logo-text b {
+  display: block;
+  font-family: var(--font-family);
+  font-size: var(--font-base);
+  font-weight: var(--fw-bold);
+  color: var(--text-head);
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+}
+
+.logo-sub {
+  display: block;
+  font-family: var(--font-family-mono);
+  font-size: var(--font-sm);
+  color: var(--text-muted);
+  margin-top: var(--space-sm);
+  line-height: 1.2;
+}
+
+/* ==========================================
+   NAV LINKS (GLASS PILL + GLOWING UNDERLINE)
+========================================== */
+
+.nav-links ul {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2xs);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links a {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  padding: 6px var(--space-md);
+  border-radius: var(--radius-pill); /* Strictly uses var(--radius-pill) */
+  font-family: var(--font-family);
+  font-size: var(--font-md);
+  font-weight: var(--fw-medium);
+  color: var(--text-secondary);
+  text-decoration: none;
+  white-space: nowrap;
+  border: 1px solid transparent;
+  transition:
+    color var(--transition-fast),
+    background var(--transition-fast),
+    border-color var(--transition-fast);
+}
+
+/* Animated Glowing Underline (starts at 0 width in center) */
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  bottom: 2px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background-color: var(--primary-accent);
+  border-radius: var(--radius-pill);
+  box-shadow: 0 0 10px rgba(242, 106, 10, 0.85);
+  transition:
+    width var(--transition-fast),
+    left var(--transition-fast);
+}
+
+/* On Hover & Active (Scroll-Spy): Glass Pill Background + Glowing Underline Expands */
+.nav-links a:hover,
+.nav-links a.active {
+  color: var(--text-light);
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.16);
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+  width: calc(100% - 20px);
+  left: 10px;
+}
+
+/* ==========================================
+   ACTION BUTTON CONTAINER & CAD TOGGLE PILL
+========================================== */
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  flex-shrink: 0;
+}
+
+/* CAD Crosshair Toggle Button */
+.btn-cad-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: var(--radius-pill);
+  padding: 6px 12px;
+  color: var(--text-light);
+  font-size: 11px;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12);
+}
+
+.btn-cad-toggle:hover {
+  background: rgba(255, 255, 255, 0.10);
+  border-color: rgba(255, 255, 255, 0.28);
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+.btn-cad-toggle i {
+  font-size: 13px;
+  color: var(--primary-accent);
+  transition: color var(--transition-fast);
+}
+
+.btn-cad-toggle .toggle-text {
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  color: var(--text-light);
+}
+
+.btn-cad-toggle .toggle-status {
+  font-size: 9px;
+  letter-spacing: 0.05em;
+  padding: 1.5px 6px;
+  border-radius: var(--radius-pill);
+  background: rgba(16, 185, 129, 0.2);
+  color: #10b981;
+  font-weight: var(--fw-bold);
+  border: 1px solid rgba(16, 185, 129, 0.4);
+  transition: all var(--transition-fast);
+}
+
+/* When Toggled OFF */
+.btn-cad-toggle.is-off {
+  background: rgba(255, 255, 255, 0.02);
+  border-color: rgba(255, 255, 255, 0.08);
+  color: var(--text-muted);
+}
+
+.btn-cad-toggle.is-off i {
+  color: var(--text-muted);
+}
+
+.btn-cad-toggle.is-off .toggle-status {
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--text-muted);
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+/* ==========================================================
+   21st.dev @dhxwhy SUN-MOON THEME TOGGLE
+========================================================== */
+
+.theme-toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-pill);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  color: var(--text-light);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all var(--transition-fast);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 4px 12px rgba(0, 0, 0, 0.25);
+  flex-shrink: 0;
+}
+
+.theme-toggle-btn:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.32);
+  transform: translateY(-1px) scale(1.05);
+}
+
+.theme-toggle-icon {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.theme-toggle-icon svg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -9px;
+  margin-left: -9px;
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s ease;
+  will-change: transform, opacity;
+}
+
+/* In Dark Mode: Show Moon, Hide Sun */
+:root:not([data-theme="light"]) .sun-icon,
+:root[data-theme="dark"] .sun-icon {
+  transform: rotate(-90deg) scale(0);
+  opacity: 0;
+  pointer-events: none;
+}
+
+:root:not([data-theme="light"]) .moon-icon,
+:root[data-theme="dark"] .moon-icon {
+  transform: rotate(0deg) scale(1);
+  opacity: 1;
+  color: #60a5fa;
+  filter: drop-shadow(0 0 6px rgba(96, 165, 250, 0.75));
+}
+
+/* In Light Mode: Show Sun, Hide Moon */
+:root[data-theme="light"] .sun-icon {
+  transform: rotate(0deg) scale(1);
+  opacity: 1;
+  color: #f59e0b;
+  filter: drop-shadow(0 0 6px rgba(245, 158, 11, 0.85));
+}
+
+:root[data-theme="light"] .moon-icon {
+  transform: rotate(90deg) scale(0);
+  opacity: 0;
+  pointer-events: none;
+}
+
+:root[data-theme="light"] .theme-toggle-btn {
+  background: rgba(11, 31, 77, 0.05);
+  border-color: rgba(11, 31, 77, 0.16);
+  color: var(--text-primary);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9), 0 2px 8px rgba(11, 31, 77, 0.08);
+}
+
+:root[data-theme="light"] .theme-toggle-btn:hover {
+  background: rgba(11, 31, 77, 0.09);
+  border-color: rgba(11, 31, 77, 0.28);
+}
+
+:root[data-theme="light"] .btn-cad-toggle {
+  background: rgba(11, 31, 77, 0.05);
+  border-color: rgba(11, 31, 77, 0.16);
+  color: #0b1f4d;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9), 0 2px 8px rgba(11, 31, 77, 0.06);
+}
+
+:root[data-theme="light"] .btn-cad-toggle:hover {
+  background: rgba(11, 31, 77, 0.09);
+  border-color: rgba(11, 31, 77, 0.28);
+  color: #0b1f4d;
+}
+
+:root[data-theme="light"] .btn-cad-toggle i {
+  color: var(--primary-accent);
+}
+
+:root[data-theme="light"] .btn-cad-toggle .toggle-text {
+  color: #0b1f4d;
+}
+
+:root[data-theme="light"] .btn-cad-toggle.is-off {
+  background: rgba(11, 31, 77, 0.03);
+  border-color: rgba(11, 31, 77, 0.12);
+  color: #64748b;
+}
+
+:root[data-theme="light"] .btn-cad-toggle.is-off i {
+  color: #64748b;
+}
+
+:root[data-theme="light"] .btn-cad-toggle.is-off .toggle-status {
+  background: rgba(11, 31, 77, 0.06);
+  color: #64748b;
+  border-color: rgba(11, 31, 77, 0.14);
+}
+
+@media (max-width: 1024px) {
+  .btn-cad-toggle .toggle-text {
+    display: none; /* Icon + ON/OFF pill on medium screens */
+  }
+}
+
+@media (max-width: 680px) {
+  .btn-cad-toggle {
+    display: none; /* Hide on mobile screens where mouse cursor doesn't exist */
+  }
+}
+
+/* .nav-actions .btn {
+  padding: var(--space-xs) var(--space-lg);
+  font-size: var(--font-sm);
+} */
+
+/* ==========================================
+   RESPONSIVENESS
+========================================== */
+
+@media (max-width: 860px) {
+  .nav-links {
+    display: none; /* Compact floating pill on mobile */
+  }
+}

@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>@ViewData["Title"] - Designsfoundry</title>
+    <meta name="description"
+          content="Designsfoundry by Aryaman Technologies. Turn your legacy CAD data into reusable engineering intelligence: find, understand and adapt existing designs using natural language and automation.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+    href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Poppins:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <script>
+            (function () {
+                var savedTheme = localStorage.getItem('designsfoundry_theme');
+                if (savedTheme) {
+                    document.documentElement.setAttribute('data-theme', savedTheme);
+                }
+            })();
+    </script>
+</head>
+
+<body>
+    <!-- Interactive CAD Cloth Grid Canvas (Physical Fabric Physics) -->
+    <canvas id="clothGridCanvas" aria-hidden="true"></canvas>
+
+    <!-- Top Ambient Scroll Progress Bar -->
+    <div class="scroll-progress-bar" id="scrollProgressBar" aria-hidden="true"></div>
+
+    <!-- CAD RGBY 4-POINTER CROSSHAIR RETICLE (Cursor Follower) -->
+    <div class="cad-cursor-hud" id="cadCursorHud" aria-hidden="true">
+        <div class="cad-crosshair-center">
+            <!-- 4-Way RGBY Gimbal Needles that Expand & Spin on Scroll -->
+            <div class="cad-gimbal-spin" id="cadGimbalSpin">
+                <!-- UP: Green (+Y Elevation) -->
+                <div class="cad-pointer cad-pointer-up" title="+Y Axis">
+                    <span class="pointer-axis mono">Y</span>
+                    <span class="pointer-arrow green"></span>
+                    <span class="pointer-line green"></span>
+                </div>
+                <!-- RIGHT: Red (+X Lateral) -->
+                <div class="cad-pointer cad-pointer-right" title="+X Axis">
+                    <span class="pointer-line red"></span>
+                    <span class="pointer-arrow red"></span>
+                    <span class="pointer-axis mono">X</span>
+                </div>
+                <!-- DOWN: Blue (+Z Feed/Depth) -->
+                <div class="cad-pointer cad-pointer-down" title="+Z Axis">
+                    <span class="pointer-line blue"></span>
+                    <span class="pointer-arrow blue"></span>
+                    <span class="pointer-axis mono">Z</span>
+                </div>
+                <!-- LEFT: Yellow (W Origin Datum) -->
+                <div class="cad-pointer cad-pointer-left" title="Origin Datum">
+                    <span class="pointer-axis mono">W</span>
+                    <span class="pointer-arrow yellow"></span>
+                    <span class="pointer-line yellow"></span>
+                </div>
+            </div>
+            <!-- Center Precision Aperture Target Box -->
+            <div class="cad-aperture">
+                <span class="aperture-core"></span>
+            </div>
+        </div>
+        <!-- CAD Live Coordinates Telemetry Badge -->
+        <div class="cad-cursor-telemetry mono" id="cadCursorTelemetry">
+            <span class="cad-tele-xy" id="cadTeleXY">X:000 Y:000</span>
+            <span class="cad-tele-cad">CAD</span>
+        </div>
+    </div>
+
+    <!-- STICKY HEADER -->
+    <!-- 21st.dev FLOATING GLASS NAVBAR -->
+    <header class="header-floating">
+        <div class="nav-capsule">
+            <!-- Brand & 3D Logo -->
+            <a href="#top" class="logo" aria-label="Designsfoundry, a part of Aryaman Technologies">
+                <img src="~/images/designsfoundry_logo.svg" alt="Designsfoundry Logo" class="logo-img" width="32"
+                     height="32" />
+                <div class="logo-text">
+                    <b>Designsfoundry</b>
+                    <span class="logo-sub ">A PART OF ARYAMAN TECHNOLOGIES</span>
+                </div>
+            </a>
+
+            <!-- Navigation Links (Center Capsule) -->
+            <nav class="nav-links" aria-label="Primary Navigation">
+                <ul>
+                    <li><a href="#answers">Clear answers</a></li>
+                    <li><a href="#why">Why it matters</a></li>
+                    <li><a href="#copilot">How it works</a></li>
+                    <li><a href="#foundation">Built on Aryaman</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                    <li><a href="#contact">Contact Us</a></li>
+                </ul>
+            </nav>
+
+            <!-- CTA Action (Glass Float Button, CAD Cursor Toggle & Sun-Moon Theme Toggle) -->
+            <div class="nav-actions">
+                <button type="button" class="btn-cad-toggle is-active" id="btnToggleCadCursor"
+                        title="Toggle CAD Crosshair Cursor Reticle" aria-label="Toggle CAD Crosshair Cursor Reticle"
+                        aria-pressed="true">
+                    <i class="bi bi-crosshair2"></i>
+                    <span class="toggle-text mono">CAD RETICLE</span>
+                    <span class="toggle-status mono">ON</span>
+                </button>
+
+                <!-- 21st.dev dhxwhy Sun-Moon Animated Theme Toggle -->
+                <button type="button" class="theme-toggle-btn" id="themeToggleBtn" aria-label="Toggle dark/light theme"
+                        title="Toggle dark/light theme">
+                    <span class="theme-toggle-icon">
+                        <!-- Sun Icon -->
+                        <svg class="sun-icon" viewBox="0 0 24 24" width="18" height="18" fill="none"
+                             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="4.5" fill="currentColor"></circle>
+                            <line x1="12" y1="1.5" x2="12" y2="3.5"></line>
+                            <line x1="12" y1="20.5" x2="12" y2="22.5"></line>
+                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                            <line x1="1.5" y1="12" x2="3.5" y2="12"></line>
+                            <line x1="20.5" y1="12" x2="22.5" y2="12"></line>
+                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                        </svg>
+                        <!-- Moon Icon -->
+                        <svg class="moon-icon" viewBox="0 0 24 24" width="18" height="18" fill="none"
+                             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" fill="currentColor"></path>
+                        </svg>
+                    </span>
+                </button>
+
+                <a href="#contact" class="btn btn-primary">Book Technical Demo</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN BODY CONTENT -->
+    <main id="top">
+        @RenderBody()
+    </main>
+
+    <!-- PRODUCT DETAIL MODAL DIALOG -->
+    <dialog id="pd" aria-labelledby="pdTitle">
+        <div class="pd-head">
+            <div>
+                <span class="mono" id="pdCat"></span>
+                <h3 id="pdTitle"></h3>
+            </div>
+            <button type="button" class="pd-x" id="pdClose" aria-label="Close">&times;</button>
+        </div>
+        <div class="pd-body">
+            <p class="pd-intro" id="pdIntro"></p>
+            <div class="pd-cols">
+                <div>
+                    <h4 class="mono">Key capabilities</h4>
+                    <ul id="pdCaps"></ul>
+                </div>
+                <div>
+                    <h4 class="mono">Typical applications</h4>
+                    <p id="pdApps"></p>
+                    <h4 class="mono" style="margin-top: 22px;">Engineering value</h4>
+                    <p id="pdVal"></p>
+                </div>
+            </div>
+        </div>
+        <div class="pd-foot">
+            <a class="btn btn-primary" id="pdPdf" href="#" target="_blank" rel="noopener">Download leaflet (PDF)</a>
+            <a class="btn btn-ghost" href="#contact" id="pdTalk">Discuss this with us</a>
+        </div>
+    </dialog>
+
+    <!-- FOOTER WITH TITLE BLOCK STAMP -->
+    <!-- SIMPLISTIC BLUEPRINT FOOTER (Contained Section Capsule) -->
+    <footer class="site-footer">
+        <div class="foot">
+            <div class="foot-brand">
+                <div class="foot-logo mono">
+                    <span class="foot-dot"></span> DESIGNSFOUNDRY &middot; <span class="foot-sub">PARAMETRIC CAD
+                    COPILOT</span>
+                </div>
+                <p class="foot-legal">
+                    &copy; 2026 Aryaman Technologies Private Limited &middot; Karvenagar, Pune &ndash; 411052, India<br>
+                    <span class="mono">CIN: U74999PN2018PTC175883</span>
+                </p>
+            </div>
+
+            <!-- Sleek Glass CAD Title Block -->
+            <div class="foot-titleblock mono" aria-label="Engineering Drawing Title Block">
+                <div class="tb-cell"><span class="tb-lbl">DRAWN BY</span> <strong class="tb-val">ARYAMAN</strong></div>
+                <div class="tb-cell"><span class="tb-lbl">STANDARDS</span> <strong class="tb-val">ISO / ASME</strong>
+                </div>
+                <div class="tb-cell"><span class="tb-lbl">LOCATION</span> <strong class="tb-val">PUNE, IN</strong></div>
+                <div class="tb-cell"><span class="tb-lbl">DOMAIN</span> <strong
+                    class="tb-val">DESIGNSFOUNDRY.COM</strong></div>
+                </div>
+            </div>
+        </footer>
+        <!-- GLOBAL SCRIPTS -->
+        <!-- Lenis Smooth Scrolling Engine (3.5KB) -->
+        <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
+        <script>
+                (function () {
+                    try {
+                        window.lenis = new Lenis({
+                            duration: 1.1,
+                            easing: function (t) { return Math.min(1, 1.001 - Math.pow(2, -10 * t)); },
+                            smoothWheel: true,
+                            wheelMultiplier: 0.95,
+                            touchMultiplier: 1.5,
+                        });
+
+                        function raf(time) {
+                            window.lenis.raf(time);
+                            requestAnimationFrame(raf);
+                        }
+                        requestAnimationFrame(raf);
+                    } catch (e) {
+                        console.warn("Lenis init skipped", e);
+                    }
+                })();
+        </script>
+        <script src="~/js/site.js" asp-append-version="true"></script>
+        <script src="~/js/cad-viewer.js" asp-append-version="true"></script>
+        @await RenderSectionAsync("Scripts", required: false)
+    </body>
+
+</html>

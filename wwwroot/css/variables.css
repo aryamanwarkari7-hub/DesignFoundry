@@ -1,0 +1,290 @@
+:root {
+  /* ==========================================
+       BRAND & CAD BLUEPRINT PALETTE
+    ========================================== */
+  --primary-color: #0b1f4d; /* Aryaman CAD Navy */
+  --primary-hover: #1b3a6e;
+  --primary-accent: #f26a0a; /* Industrial Engineering Orange */
+  --primary-accent-hover: #d65a04;
+  --primary-accent-soft: #fff1e6;
+  --on-accent: #ffffff;
+
+  --secondary-color: #566077;
+  --secondary-tint: rgba(11, 31, 77, 0.08);
+
+  /* STATUS & VERIFICATION */
+  --success-color: #1d7a3b;
+  --success-soft: #e8f6ec;
+  --success-soft-text: #1d7a3b;
+  --danger-color: #ef4444;
+  --warning-color: #f59e0b;
+  --info-color: #3b82f6;
+
+  /* BACKGROUNDS & SURFACES */
+  --page-bg: #ffffff;
+  --page-bg-alt: #f2f5fb;
+  --card-bg: #ffffff;
+  --surface-bg: #ffffff;
+  --grid-color: rgba(11, 31, 77, 0.055);
+
+  /* DARK COPILOT BAND */
+  --band-bg-1: #050f2b;
+  --band-bg-2: #0b2257;
+  --band-fg: #ffffff;
+  --band-muted: #cdd7ee;
+  --band-card-bg: #ffffff;
+  --band-card-fg: #1d2433;
+  --band-card-muted: #566077;
+  --band-card-head: #0b1f4d;
+  --band-line: rgba(255, 255, 255, 0.16);
+  --band-tint: rgba(255, 255, 255, 0.07);
+
+  /* SVG CAD VISUALIZER */
+  --svg-navy: #0b1f4d;
+  --svg-post: #1b3a6e;
+  --svg-line: #d6dbe8;
+  --svg-dim: #8a93a6;
+
+  /* TEXT */
+  --text-primary: #1d2433;
+  --text-secondary: #566077;
+  --text-muted: #8c9bc2;
+  --text-head: #0b1f4d;
+  --text-light: #ffffff;
+
+  /* BORDER / DIVIDER */
+  --border-color: #dbe1ee;
+  --border-muted: #e2e8f0;
+  --border-dark: #223259;
+
+  /* ==========================================
+       SPACING SCALE
+    ========================================== */
+  --space-2xs: 2px;
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 12px;
+  --space-lg: 16px;
+  --space-xl: 24px;
+  --space-2xl: 32px;
+  --space-3xl: 48px;
+  --space-4xl: 64px;
+
+  /* ==========================================
+       BORDER RADIUS
+    ========================================== */
+  --radius-xs: 2px;
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-xl: 14px;
+  --radius-2xl: 20px;
+  --radius-3xl: 28px;
+  --radius-pill: 9999px;
+
+  /* ==========================================
+       21st.dev GLASSMORPHISM TOKENS
+    ========================================== */
+  --glass-bg: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.05) 0%,
+    rgba(255, 255, 255, 0.015) 100%
+  );
+  --glass-bg-hover: rgba(255, 255, 255, 0.08);
+  --glass-border: 1px solid rgba(255, 255, 255, 0.12);
+  --glass-border-hover: 1px solid rgba(242, 106, 10, 0.45);
+  --glass-blur: blur(24px) saturate(190%);
+  --glass-bevel: inset 0 1px 1.5px 0 rgba(255, 255, 255, 0.35);
+
+  --shadow-glass: var(--glass-bevel), 0 16px 40px -10px rgba(0, 0, 0, 0.45);
+  --shadow-glass-hover:
+    inset 0 1px 2px 0 rgba(255, 255, 255, 0.5),
+    0 24px 50px -12px rgba(0, 0, 0, 0.6), 0 0 20px 0 rgba(242, 106, 10, 0.16);
+
+  /* ==========================================
+       SHADOWS
+    ========================================== */
+  --shadow-sm: 0 1px 3px rgba(11, 31, 77, 0.08);
+  --shadow-md: 0 4px 12px rgba(11, 31, 77, 0.1);
+  --shadow-lg: 0 18px 40px -22px rgba(11, 31, 77, 0.35);
+  --shadow-dialog: 0 30px 80px -20px rgba(5, 15, 43, 0.6);
+  --shadow-focus: 0 0 0 3px rgba(242, 106, 10, 0.25);
+
+  /* ==========================================
+       TYPOGRAPHY
+    ========================================== */
+  --font-family:
+    system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+  --font-family-mono:
+    ui-monospace, "Cascadia Code", "SF Mono", "IBM Plex Mono", Menlo, Consolas,
+    monospace;
+
+  --font-2xs: 0.38rem;
+  --font-xs: 0.64rem;
+  --font-sm: 0.76rem;
+  --font-md: 0.88rem;
+  --font-base: 1rem;
+  --font-lg: 1.08rem;
+  --font-xl: 1.25rem;
+  --font-2xl: 1.5rem;
+  --font-3xl: 2rem;
+  --font-4xl: 2.8rem;
+
+  --fw-light: 300;
+  --fw-normal: 400;
+  --fw-medium: 500;
+  --fw-semibold: 600;
+  --fw-bold: 700;
+
+  /* ==========================================
+       LAYOUT & TRANSITIONS
+    ========================================== */
+  --navbar-height: 64px;
+  --max-width: 1400px;
+  --gutter: max(16px, env(safe-area-inset-left, 0px));
+  --gutter-r: max(16px, env(safe-area-inset-right, 0px));
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s ease;
+}
+
+/* ==========================================
+   DARK THEME SYSTEM / EXPLICIT OVERRIDES
+========================================== */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --page-bg: #060f26;
+    --page-bg-alt: #0a1733;
+    --card-bg: #0f2046;
+    --surface-bg: #0f2046;
+    --text-primary: #e4e9f5;
+    --text-secondary: #a3afc8;
+    --text-muted: #7f8db0;
+    --text-head: #ffffff;
+    --border-color: #223259;
+    --primary-accent: #ff7a1f;
+    --primary-accent-hover: #ff9145;
+    --primary-accent-soft: #2a1a10;
+    --grid-color: rgba(255, 255, 255, 0.05);
+    --success-soft: #12301f;
+    --success-soft-text: #6fd49a;
+    --svg-navy: #8fb0ff;
+    --svg-post: #5d86d6;
+    --svg-line: #2c3d6b;
+    --svg-dim: #7f8db0;
+    --band-bg-1: #030a1d;
+    --band-bg-2: #081a40;
+    --band-card-bg: #0f2046;
+    --band-card-fg: #e4e9f5;
+    --band-card-muted: #a3afc8;
+    --band-card-head: #ffffff;
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme="dark"] {
+  --page-bg: #060f26;
+  --page-bg-alt: #0a1733;
+  --card-bg: #0f2046;
+  --surface-bg: #0f2046;
+  --text-primary: #e4e9f5;
+  --text-secondary: #a3afc8;
+  --text-muted: #7f8db0;
+  --text-head: #ffffff;
+  --border-color: #223259;
+  --primary-accent: #ff7a1f;
+  --primary-accent-hover: #ff9145;
+  --primary-accent-soft: #2a1a10;
+  --grid-color: rgba(255, 255, 255, 0.05);
+  --success-soft: #12301f;
+  --success-soft-text: #6fd49a;
+  --svg-navy: #8fb0ff;
+  --svg-post: #5d86d6;
+  --svg-line: #2c3d6b;
+  --svg-dim: #7f8db0;
+  --band-bg-1: #030a1d;
+  --band-bg-2: #081a40;
+  --band-card-bg: #0f2046;
+  --band-card-fg: #e4e9f5;
+  --band-card-muted: #a3afc8;
+  --band-card-head: #ffffff;
+  color-scheme: dark;
+
+  /* ==========================================
+       GOOD ROUNDED CORNERS (Standardized)
+    ========================================== */
+  --radius-xs: 4px;
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 14px;
+  --radius-2xl: 20px; /* Standard nested glass cards */
+  --radius-3xl: 28px; /* Master floating islands & panels */
+  --radius-pill: 9999px; /* Buttons, chips, badges, status pills */
+
+  /* ==========================================
+       21st.dev GLASSMORPHISM TOKENS
+    ========================================== */
+  --glass-bg: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.05) 0%,
+    rgba(255, 255, 255, 0.015) 100%
+  );
+  --glass-bg-hover: rgba(255, 255, 255, 0.08);
+  --glass-border: 1px solid rgba(255, 255, 255, 0.12);
+  --glass-border-hover: 1px solid rgba(242, 106, 10, 0.45);
+  --glass-blur: blur(24px) saturate(190%);
+  --glass-bevel: inset 0 1px 1.5px 0 rgba(255, 255, 255, 0.35); /* Image 1 specular edge */
+
+  --shadow-glass: var(--glass-bevel), 0 16px 40px -10px rgba(0, 0, 0, 0.45);
+
+  --shadow-glass-hover:
+    inset 0 1px 2px 0 rgba(255, 255, 255, 0.5),
+    0 24px 50px -12px rgba(0, 0, 0, 0.6), 0 0 20px 0 rgba(242, 106, 10, 0.16);
+}
+
+:root[data-theme="light"] {
+  --page-bg: #f8fafd;
+  --page-bg-alt: #eef3fb;
+  --card-bg: #ffffff;
+  --surface-bg: #ffffff;
+  --text-primary: #1d2433;
+  --text-secondary: #4a5568;
+  --text-muted: #718096;
+  --text-head: #0b1f4d;
+  --border-color: #dbe1ee;
+  --primary-accent: #f26a0a;
+  --primary-accent-hover: #d65a04;
+  --primary-accent-soft: #fff1e6;
+  --grid-color: rgba(11, 31, 77, 0.06);
+  --success-soft: #e8f6ec;
+  --success-soft-text: #1d7a3b;
+  --svg-navy: #0b1f4d;
+  --svg-post: #1b3a6e;
+  --svg-line: #d6dbe8;
+  --svg-dim: #8a93a6;
+  --band-bg-1: #ffffff;
+  --band-bg-2: #f2f5fb;
+  --band-card-bg: #ffffff;
+  --band-card-fg: #1d2433;
+  --band-card-muted: #566077;
+  --band-card-head: #0b1f4d;
+  color-scheme: light;
+
+  /* Glassmorphism Tokens for Light Mode */
+  --glass-bg: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.82) 0%,
+    rgba(240, 245, 255, 0.72) 100%
+  );
+  --glass-bg-hover: rgba(255, 255, 255, 0.95);
+  --glass-border: 1px solid rgba(11, 31, 77, 0.12);
+  --glass-border-hover: 1px solid rgba(242, 106, 10, 0.55);
+  --glass-blur: blur(20px) saturate(160%);
+  --glass-bevel: inset 0 1px 1.5px 0 rgba(255, 255, 255, 0.9);
+  --shadow-glass: var(--glass-bevel), 0 16px 40px -10px rgba(11, 31, 77, 0.12);
+  --shadow-glass-hover:
+    inset 0 1px 2px 0 rgba(255, 255, 255, 1),
+    0 24px 50px -12px rgba(11, 31, 77, 0.18),
+    0 0 20px 0 rgba(242, 106, 10, 0.12);
+}

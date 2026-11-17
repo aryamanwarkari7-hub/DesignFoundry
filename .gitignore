@@ -1,0 +1,39 @@
+## Visual Studio & Rider
+.vs/
+.idea/
+.vscode/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+## Build outputs
+bin/
+obj/
+[Bb]in/
+[Oo]bj/
+out/
+
+## Publishing outputs
+publish/
+*.publishproj
+
+## Logs & Temp files
+*.log
+*.tmp
+*.temp
+
+## Package & Archive artifacts
+*.zip
+*.tar.gz
+*.nupkg
+
+## Loose screenshots & scratch test files in root
+*image.png
+*image.jpg
+index (*).html
+
+## OS Generated Files
+.DS_Store
+Thumbs.db
+desktop.ini

@@ -1,0 +1,160 @@
+/* ==========================================================
+   21st.dev GLASS FLOAT BUTTON SYSTEM
+========================================================== */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  padding: var(--space-md) var(--space-xl);
+  border-radius: var(--radius-pill); /* Strictly uses var(--radius-pill) */
+  font-family: var(--font-family);
+  font-size: var(--font-md);
+  font-weight: var(--fw-semibold);
+  line-height: 1.2;
+  cursor: pointer;
+  text-decoration: none;
+  white-space: nowrap;
+  position: relative;
+  overflow: hidden;
+
+  /* Smooth Physics Transition */
+  transition:
+    transform var(--transition-fast),
+    box-shadow var(--transition-fast),
+    background var(--transition-fast),
+    border-color var(--transition-fast),
+    color var(--transition-fast);
+}
+
+/* Tactile Click Physics */
+.btn:active {
+  transform: translateY(0px) scale(0.98);
+}
+
+/* ==========================================
+   1. PRIMARY ACTION (Industrial Orange Glass Float)
+========================================== */
+
+.btn-primary {
+  background: linear-gradient(180deg, #ff8229 0%, var(--primary-accent) 100%);
+  color: var(--on-accent);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+
+  /* Specular Top-Edge Glass Bevel */
+  box-shadow:
+    inset 0 1px 1.5px 0 rgba(255, 255, 255, 0.5),
+    inset 0 -1px 1px 0 rgba(0, 0, 0, 0.15),
+    0 4px 14px 0 rgba(242, 106, 10, 0.35);
+}
+
+.btn-primary:hover {
+  /* Float Up 2px + Radiant Ambient Glow */
+  transform: translateY(-2px);
+  background: linear-gradient(
+    180deg,
+    #ff9145 0%,
+    var(--primary-accent-hover) 100%
+  );
+  box-shadow:
+    inset 0 1px 2px 0 rgba(255, 255, 255, 0.7),
+    0 10px 24px -2px rgba(242, 106, 10, 0.55),
+    0 0 20px 0 rgba(242, 106, 10, 0.25);
+  color: var(--on-accent);
+}
+
+/* ==========================================
+   2. FROSTED GLASS SECONDARY (Ghost / Translucent)
+========================================== */
+
+.btn-ghost {
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  color: var(--text-light);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+
+  /* Subtle Glass Bevel */
+  box-shadow:
+    inset 0 1px 1px 0 rgba(255, 255, 255, 0.25),
+    0 4px 12px 0 rgba(0, 0, 0, 0.2);
+}
+
+.btn-ghost:hover {
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.09);
+  border-color: rgba(255, 255, 255, 0.35);
+  color: var(--text-light);
+  box-shadow:
+    inset 0 1px 1.5px 0 rgba(255, 255, 255, 0.45),
+    0 10px 24px 0 rgba(0, 0, 0, 0.35),
+    0 0 16px 0 rgba(255, 255, 255, 0.08);
+}
+
+.copy {
+  font-family: var(--font-family-mono);
+  font-size: var(--font-2xs);
+  font-weight: var(--fw-medium);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--text-secondary);
+  border-radius: var(--radius-pill); /* Strictly uses var(--radius-pill) */
+  padding: 4px 10px;
+  cursor: pointer;
+  flex: none;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  transition:
+    border-color var(--transition-fast),
+    background var(--transition-fast),
+    color var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+.copy:hover {
+  border-color: var(--primary-accent);
+  background: rgba(242, 106, 10, 0.15);
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+/* ==========================================================
+   LIGHT THEME BUTTON OVERRIDES
+========================================================== */
+:root[data-theme="light"] .btn-ghost {
+  background: #ffffff;
+  border: 1px solid rgba(11, 31, 77, 0.18);
+  color: #0b1f4d;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 1),
+    0 4px 14px 0 rgba(11, 31, 77, 0.08);
+}
+
+:root[data-theme="light"] .btn-ghost:hover {
+  background: #ffffff;
+  border-color: var(--primary-accent);
+  color: var(--primary-accent);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 1),
+    0 8px 22px 0 rgba(11, 31, 77, 0.12),
+    0 0 16px 0 rgba(242, 106, 10, 0.15);
+}
+
+:root[data-theme="light"] .btn-ghost i {
+  color: var(--primary-accent);
+}
+
+:root[data-theme="light"] .copy {
+  border: 1px solid rgba(11, 31, 77, 0.18);
+  background: #ffffff;
+  color: #0b1f4d;
+  box-shadow: 0 1px 2px rgba(11, 31, 77, 0.05);
+}
+
+:root[data-theme="light"] .copy:hover {
+  border-color: var(--primary-accent);
+  background: rgba(242, 106, 10, 0.12);
+  color: var(--primary-accent);
+}

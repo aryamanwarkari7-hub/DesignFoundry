@@ -1,0 +1,1326 @@
+/* ==========================================
+   MASTER STYLESHEET (Modular Imports)
+========================================== */
+
+/* 1. Global Variables & Tokens */
+@import url("./variables.css");
+
+/* 2. Global Components */
+@import url("./components/buttons.css");
+@import url("./components/cards.css");
+@import url("./components/dialog.css");
+@import url("./components/cad-viewer.css");
+
+/* 3. Section Modules */
+@import url("./navbar.css");
+@import url("./hero.css");
+@import url("./why.css");
+@import url("./copilot.css");
+@import url("./foundation.css");
+@import url("./faq.css");
+@import url("./contact.css");
+@import url("./footer.css");
+
+/* ==========================================
+   GLOBAL RESET & BASE STYLES
+========================================== */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-padding-top: 60px;
+}
+
+/* ==========================================================
+   GLOBAL CONTINUOUS CAD BLUEPRINT GRID ON BODY (With Interactive Cloth Physics)
+========================================================== */
+body {
+  background-color: var(--page-bg);
+  overflow-x: hidden;
+}
+
+/* Interactive Hardware-Accelerated Cloth Grid Canvas */
+#clothGridCanvas {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  pointer-events: none;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+  background-image: 
+    /* Ambient Lighting for Glass Refraction */
+    radial-gradient(
+      circle at 85% 15%,
+      rgba(30, 90, 220, 0.2) 0%,
+      transparent 45%
+    ),
+    radial-gradient(
+      circle at 15% 35%,
+      rgba(40, 80, 200, 0.16) 0%,
+      transparent 40%
+    ),
+    radial-gradient(
+      circle at 80% 55%,
+      rgba(242, 106, 10, 0.09) 0%,
+      transparent 40%
+    );
+  background-size: 100% 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-family);
+  color: var(--text-head);
+  margin: 0;
+  text-wrap: balance;
+}
+
+p {
+  margin: 0;
+}
+
+.wrap {
+  width: min(var(--max-width), 100%);
+  margin-inline: auto;
+  padding-left: var(--gutter);
+  padding-right: var(--gutter-r);
+}
+
+.mono {
+  font-family: var(--font-family-mono);
+  font-size: var(--font-sm);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+:focus-visible {
+  outline: 2px solid var(--primary-accent);
+  outline-offset: 3px;
+  border-radius: var(--radius-xs);
+}
+
+section {
+  padding-block: 84px;
+}
+
+/* ==========================================
+   GLOBAL SECTION HEADERS (Matches "Why It Matters" Style)
+========================================== */
+
+.sec-head {
+  max-width: 48rem;
+  margin-bottom: var(--space-xl);
+}
+
+.sec-head.center {
+  margin-inline: auto;
+  text-align: center;
+}
+
+.sec-head .eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: var(--font-xs);
+  letter-spacing: 0.08em;
+  color: var(--primary-accent);
+  margin-bottom: 12px;
+}
+
+.sec-head .eyebrow i {
+  color: var(--primary-accent);
+  font-size: var(--font-xs);
+}
+
+/* Crisp White Title + Vibrant Orange <em> */
+.sec-head h2 {
+  font-size: clamp(2rem, 3.6vw, 2.9rem);
+  line-height: 1.15;
+  font-weight: var(--fw-bold);
+  color: var(--text-head);
+  letter-spacing: -0.015em;
+  margin-bottom: 12px;
+}
+
+.sec-head h2 em {
+  font-style: normal;
+  color: var(--primary-accent); /* Exact vibrant orange (#f26a0a) */
+  width: 100%;
+}
+
+.sec-head p {
+  font-size: var(--font-base);
+  color: var(--text-secondary);
+  line-height: 1.5;
+  max-width: 38em;
+  margin-inline: auto;
+}
+
+.sec-head .eyebrow {
+  margin-bottom: 14px;
+}
+
+/* Delete hard border cuts between sections */
+.hero,
+.answers-section,
+.why,
+.faq {
+  background: transparent !important;
+  border-bottom: none !important;
+}
+
+/* ==========================================================
+   GLOBAL 100VH SECTION ARCHITECTURE
+   Fits each section to 100vh while preserving max-width centering
+========================================================== */
+.hero-designali,
+.answers-section,
+.why,
+.copilot,
+.foundation-section,
+.faq,
+.contact {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  padding-block: clamp(24px, 4vh, 48px);
+  position: relative;
+  scroll-snap-align: start;
+  scroll-margin-top: 20px;
+  width: 100%;
+  overflow-x: hidden;
+}
+/* ==========================================
+   RESPONSIVE BREAKPOINTS
+========================================== */
+
+@media (max-width: 1040px) {
+  .cp-steps {
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 30px;
+  }
+  .cp-step:last-child {
+    grid-column: 1 / -1;
+  }
+  .prod-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .answers-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+}
+
+@media (max-width: 900px) {
+  .nav ul {
+    display: none;
+  }
+  .hero {
+    padding-block: 48px 56px;
+  }
+  .hero-grid,
+  .why-grid,
+  .cp-demo {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+  section {
+    padding-block: 60px;
+  }
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+  .found-top {
+    grid-template-columns: 1fr;
+  }
+  .fact + .fact {
+    border-left: 0;
+    border-top: 1px solid var(--border-color);
+  }
+  .prod-more {
+    grid-column: span 1;
+  }
+}
+
+@media (max-width: 700px) {
+  .pd-cols {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+  .pd-head,
+  .pd-body,
+  .pd-foot {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+}
+
+@media (max-width: 620px) {
+  .cp-notes,
+  .cp-steps {
+    grid-template-columns: 1fr;
+  }
+  .cp-step:last-child {
+    grid-column: auto;
+  }
+  .cut {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+  .answers-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .prod-grid {
+    grid-template-columns: 1fr;
+  }
+  .foot {
+    grid-template-columns: 1fr;
+  }
+  .logo small {
+    display: none;
+  }
+  .nav .btn {
+    padding: 8px 12px;
+    font-size: var(--font-sm);
+  }
+}
+
+/* ==========================================================
+   MODERN 21st.dev SCROLL EXPERIENCE (Laser Progress & Smooth Spring Reveals)
+========================================================== */
+
+/* 1. Top Laser Scroll Progress Bar */
+.scroll-progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 3.5px;
+  background: linear-gradient(90deg, #f26a0a 0%, #3b82f6 50%, #60a5fa 100%);
+  box-shadow:
+    0 0 16px rgba(242, 106, 10, 0.95),
+    0 0 6px rgba(59, 130, 246, 0.9);
+  z-index: 99999;
+  pointer-events: none;
+  transition: width 0.04s linear;
+}
+
+/* 2. Kinetic Spring Fade & Glide Reveal on Scroll */
+.js-reveal .scroll-reveal {
+  opacity: 0;
+  transform: translateY(32px) scale(0.985);
+  transition:
+    opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.js-reveal .scroll-reveal.is-revealed {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* Hero elements should be immediately visible */
+.hero-section .scroll-reveal,
+.hero-enterprise-grid.is-revealed {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* ==========================================================
+   CAD RGBY 4-POINTER CROSSHAIR RETICLE (CURSOR FOLLOWER)
+========================================================== */
+
+:root {
+  /* ==========================================================
+     MANUAL NEEDLE & APERTURE SIZE CONTROLS (TUNE HERE)
+     ========================================================== */
+  --cad-needle-len: 11px; /* Length of needle line (reduce to 8px or 9px to shorten) */
+  --cad-needle-thick: 1.5px; /* Thickness of needle line (reduce to 1px to thin) */
+  --cad-needle-gap: 8px; /* Distance of needle from center box */
+  --cad-arrow-base: 3px; /* Arrowhead half-width */
+  --cad-arrow-len: 5px; /* Arrowhead length */
+  --cad-aperture-size: 11px; /* Center square target box size */
+}
+
+.cad-cursor-hud {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 100000;
+  transform: translate3d(-100px, -100px, 0);
+  will-change: transform;
+  opacity: 0;
+  transition: opacity 0.25s ease-out;
+}
+
+.cad-cursor-hud.is-active {
+  opacity: 0.42; /* More transparent resting state */
+  transition: opacity 0.35s ease;
+}
+
+.cad-cursor-hud.is-disabled {
+  display: none !important;
+}
+
+.cad-cursor-hud.is-scrolling {
+  opacity: 0.85; /* Brightens up dynamically while scrolling */
+}
+
+.cad-crosshair-center {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+}
+
+/* 1. Center CAD Precision Aperture Target Box (Dead Center (0,0)) */
+.cad-aperture {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: var(--cad-aperture-size);
+  height: var(--cad-aperture-size);
+  transform: translate(-50%, -50%);
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  background: rgba(6, 15, 38, 0.7);
+  box-shadow:
+    0 0 8px rgba(0, 0, 0, 0.8),
+    inset 0 0 3px rgba(255, 255, 255, 0.3);
+  z-index: 5;
+  box-sizing: border-box;
+  pointer-events: none;
+  transition:
+    border-color 0.15s ease,
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.cad-cursor-hud.is-scrolling .cad-aperture {
+  border-color: var(--primary-accent);
+  transform: translate(-50%, -50%) scale(1.25);
+  box-shadow: 0 0 12px rgba(242, 106, 10, 0.85);
+}
+
+.aperture-core {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 2px;
+  height: 2px;
+  transform: translate(-50%, -50%);
+  border-radius: var(--radius-pill);
+  background: #ffffff;
+  box-shadow: 0 0 4px #ffffff;
+}
+
+/* 2. Gimbal Spin Ring for the 4 Needles */
+.cad-gimbal-spin {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  transform-origin: 0 0;
+  transform: translate(0, 0) scale(1) rotate(0deg);
+  will-change: transform;
+  pointer-events: none;
+}
+
+/* 3. The 4 Directional Needles (RGBY) */
+.cad-pointer {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+/* UP: Green (+Y Elevation) */
+.cad-pointer-up {
+  bottom: var(--cad-needle-gap);
+  left: 0;
+  transform: translateX(-50%);
+  flex-direction: column;
+  gap: 2px;
+}
+.pointer-line.green {
+  width: var(--cad-needle-thick);
+  height: var(--cad-needle-len);
+  background: #10b981;
+  box-shadow: 0 0 8px rgba(16, 185, 129, 0.9);
+}
+.pointer-arrow.green {
+  width: 0;
+  height: 0;
+  border-left: var(--cad-arrow-base) solid transparent;
+  border-right: var(--cad-arrow-base) solid transparent;
+  border-bottom: var(--cad-arrow-len) solid #10b981;
+}
+.cad-pointer-up .pointer-axis {
+  color: #10b981;
+  font-size: 7.5px;
+  font-weight: var(--fw-bold);
+}
+
+/* RIGHT: Red (+X Lateral) */
+.cad-pointer-right {
+  left: var(--cad-needle-gap);
+  top: 0;
+  transform: translateY(-50%);
+  flex-direction: row;
+  gap: 2px;
+}
+.pointer-line.red {
+  height: var(--cad-needle-thick);
+  width: var(--cad-needle-len);
+  background: #ef4444;
+  box-shadow: 0 0 8px rgba(239, 68, 68, 0.9);
+}
+.pointer-arrow.red {
+  width: 0;
+  height: 0;
+  border-top: var(--cad-arrow-base) solid transparent;
+  border-bottom: var(--cad-arrow-base) solid transparent;
+  border-left: var(--cad-arrow-len) solid #ef4444;
+}
+.cad-pointer-right .pointer-axis {
+  color: #ef4444;
+  font-size: 7.5px;
+  font-weight: var(--fw-bold);
+}
+
+/* DOWN: Blue (+Z Depth/Feed) */
+.cad-pointer-down {
+  top: var(--cad-needle-gap);
+  left: 0;
+  transform: translateX(-50%);
+  flex-direction: column;
+  gap: 2px;
+}
+.pointer-line.blue {
+  width: var(--cad-needle-thick);
+  height: var(--cad-needle-len);
+  background: #3b82f6;
+  box-shadow: 0 0 8px rgba(59, 130, 246, 0.9);
+}
+.pointer-arrow.blue {
+  width: 0;
+  height: 0;
+  border-left: var(--cad-arrow-base) solid transparent;
+  border-right: var(--cad-arrow-base) solid transparent;
+  border-top: var(--cad-arrow-len) solid #3b82f6;
+}
+.cad-pointer-down .pointer-axis {
+  color: #3b82f6;
+  font-size: 7.5px;
+  font-weight: var(--fw-bold);
+}
+
+/* LEFT: Yellow (Origin Datum W) */
+.cad-pointer-left {
+  right: var(--cad-needle-gap);
+  top: 0;
+  transform: translateY(-50%);
+  flex-direction: row;
+  gap: 2px;
+}
+.pointer-line.yellow {
+  height: var(--cad-needle-thick);
+  width: var(--cad-needle-len);
+  background: #facc15;
+  box-shadow: 0 0 8px rgba(250, 204, 21, 0.9);
+}
+.pointer-arrow.yellow {
+  width: 0;
+  height: 0;
+  border-top: var(--cad-arrow-base) solid transparent;
+  border-bottom: var(--cad-arrow-base) solid transparent;
+  border-right: var(--cad-arrow-len) solid #facc15;
+}
+.cad-pointer-left .pointer-axis {
+  color: #facc15;
+  font-size: 7.5px;
+  font-weight: var(--fw-bold);
+}
+
+/* 4. Micro Telemetry Badge Floating by Cursor */
+.cad-cursor-telemetry {
+  position: absolute;
+  top: 18px;
+  left: 18px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 2.5px 8px;
+  border-radius: var(--radius-pill);
+  background: rgba(6, 15, 38, 0.88);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  font-size: 8.5px;
+  color: rgba(255, 255, 255, 0.75);
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+.cad-tele-cad {
+  color: var(--primary-accent);
+  font-weight: var(--fw-bold);
+  font-size: 8px;
+}
+
+/* Hide cursor hud on touch screens */
+@media (hover: none) and (pointer: coarse) {
+  .cad-cursor-hud {
+    display: none !important;
+  }
+}
+
+/* ==========================================================
+   LIGHT THEME COMPLETE COMPONENT & TYPOGRAPHY SYSTEM
+   (Activated when [data-theme="light"] is toggled)
+========================================================== */
+
+:root[data-theme="light"] body {
+  background-color: var(--page-bg);
+  color: var(--text-primary);
+}
+
+/* 1. Global Headings & Typography */
+:root[data-theme="light"] h1,
+:root[data-theme="light"] h2,
+:root[data-theme="light"] h3,
+:root[data-theme="light"] h4,
+:root[data-theme="light"] .sec-head h2,
+:root[data-theme="light"] .ans-copy h2,
+:root[data-theme="light"] .why-copy h2 {
+  color: var(--text-head);
+}
+
+:root[data-theme="light"] p,
+:root[data-theme="light"] .sec-head p,
+:root[data-theme="light"] .ans-copy p {
+  color: var(--text-secondary);
+}
+
+/* 2. Master Glass Panels & Islands */
+:root[data-theme="light"] .glass-panel,
+:root[data-theme="light"] .answers-island,
+:root[data-theme="light"] .cp-studio-console,
+:root[data-theme="light"] .contact-console {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.94) 0%,
+    rgba(242, 246, 255, 0.88) 100%
+  );
+  border: 1px solid rgba(11, 31, 77, 0.14);
+  box-shadow:
+    inset 0 1px 1px 0 rgba(255, 255, 255, 1),
+    0 24px 60px -20px rgba(11, 31, 77, 0.12);
+}
+
+/* 3. Universal Cards (Answers, Why, Hero, Copilot, Foundation, Contact) */
+:root[data-theme="light"] .glass-card,
+:root[data-theme="light"] .ans,
+:root[data-theme="light"] .cmp-card,
+:root[data-theme="light"] .hero-card,
+:root[data-theme="light"] .cp-phase-card,
+:root[data-theme="light"] .cp-simulator-chamber,
+:root[data-theme="light"] .cp-app-card,
+:root[data-theme="light"] .conv-card,
+:root[data-theme="light"] .faq-card,
+:root[data-theme="light"] .contact-card,
+:root[data-theme="light"] .globe-chamber {
+  background: linear-gradient(135deg, #ffffff 0%, #f7f9fd 100%);
+  border: 1px solid rgba(11, 31, 77, 0.12);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 1),
+    0 10px 28px -6px rgba(11, 31, 77, 0.08);
+}
+
+:root[data-theme="light"] .glass-card:hover,
+:root[data-theme="light"] .ans:hover,
+:root[data-theme="light"] .cmp-card:hover,
+:root[data-theme="light"] .hero-card:hover,
+:root[data-theme="light"] .cp-app-card:hover,
+:root[data-theme="light"] .conv-card:hover,
+:root[data-theme="light"] .faq-card:hover,
+:root[data-theme="light"] .contact-card:hover {
+  background: #ffffff;
+  border-color: rgba(242, 106, 10, 0.65);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 1),
+    0 20px 48px -10px rgba(11, 31, 77, 0.14),
+    0 0 20px rgba(242, 106, 10, 0.15);
+}
+
+/* 4. Card Titles, Numbers & Body Text */
+:root[data-theme="light"] .ans h3,
+:root[data-theme="light"] .cmp-card h3,
+:root[data-theme="light"] .hero-card h3,
+:root[data-theme="light"] .cp-app-card h3,
+:root[data-theme="light"] .conv-card h3,
+:root[data-theme="light"] .contact-card h3,
+:root[data-theme="light"] .faq-q {
+  color: #0b1f4d;
+}
+
+:root[data-theme="light"] .ans p,
+:root[data-theme="light"] .cmp-card p,
+:root[data-theme="light"] .hero-card p,
+:root[data-theme="light"] .cp-app-card p,
+:root[data-theme="light"] .conv-card p,
+:root[data-theme="light"] .contact-card p,
+:root[data-theme="light"] .faq-a {
+  color: #4a5568;
+}
+
+:root[data-theme="light"] .ans-num,
+:root[data-theme="light"] .cmp-num {
+  color: rgba(11, 31, 77, 0.35);
+}
+
+/* 5. Pills, Badges & Callout Insets */
+:root[data-theme="light"] .glass-pill,
+:root[data-theme="light"] .ans-chip,
+:root[data-theme="light"] .ans-pill,
+:root[data-theme="light"] .cmp-chip,
+:root[data-theme="light"] .tag,
+:root[data-theme="light"] .cad-pill,
+:root[data-theme="light"] .flank-badge {
+  background: rgba(11, 31, 77, 0.05);
+  border: 1px solid rgba(11, 31, 77, 0.14);
+  color: #0b1f4d;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+:root[data-theme="light"] .ans-callout,
+:root[data-theme="light"] .why-callout,
+:root[data-theme="light"] .glass-callout {
+  background: rgba(245, 248, 255, 0.90);
+  border: 1px solid rgba(11, 31, 77, 0.12);
+  border-left: 3px solid var(--primary-accent);
+}
+
+:root[data-theme="light"] .ans-metric-chip {
+  background: rgba(240, 245, 255, 0.9);
+  border-color: rgba(11, 31, 77, 0.15);
+}
+:root[data-theme="light"] .metric-label {
+  color: #64748b;
+}
+
+/* 6. Floating Glass Navbar */
+:root[data-theme="light"] .header-floating .nav-capsule {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.95) 0%,
+    rgba(245, 248, 255, 0.88) 100%
+  );
+  border: 1px solid rgba(11, 31, 77, 0.14);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 1),
+    0 16px 40px -12px rgba(11, 31, 77, 0.12);
+}
+
+:root[data-theme="light"] .logo-text b {
+  color: #0b1f4d;
+}
+
+:root[data-theme="light"] .logo-sub {
+  color: #64748b;
+}
+
+:root[data-theme="light"] .nav-links a {
+  color: #4a5568;
+}
+
+:root[data-theme="light"] .nav-links a:hover,
+:root[data-theme="light"] .nav-links a.active {
+  color: #0b1f4d;
+  background: rgba(11, 31, 77, 0.06);
+  border-color: rgba(11, 31, 77, 0.12);
+}
+
+/* 7. Contained Blueprint Footer */
+:root[data-theme="light"] .site-footer {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.96) 0%,
+    rgba(240, 246, 255, 0.98) 100%
+  );
+  border: 1px solid rgba(11, 31, 77, 0.14);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 1),
+    0 20px 48px -12px rgba(11, 31, 77, 0.12);
+}
+
+:root[data-theme="light"] .foot-logo {
+  color: #0b1f4d;
+}
+
+:root[data-theme="light"] .foot-legal {
+  color: #64748b;
+}
+
+:root[data-theme="light"] .foot-legal span {
+  color: #94a3b8;
+}
+
+:root[data-theme="light"] .foot-titleblock {
+  background: rgba(240, 246, 255, 0.92);
+  border-color: rgba(11, 31, 77, 0.15);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 1), 0 6px 18px rgba(11, 31, 77, 0.08);
+}
+
+:root[data-theme="light"] .tb-cell {
+  border-color: rgba(11, 31, 77, 0.08);
+}
+
+:root[data-theme="light"] .tb-lbl {
+  color: #64748b;
+}
+
+:root[data-theme="light"] .tb-val {
+  color: #0b1f4d;
+}
+
+/* 8. Copilot Stage & Machine HUD */
+:root[data-theme="light"] .sim-workflow-hud {
+  background: rgba(240, 246, 255, 0.90);
+  border-color: rgba(11, 31, 77, 0.15);
+}
+
+:root[data-theme="light"] .hud-desc {
+  color: #1e293b;
+}
+
+:root[data-theme="light"] .cp-pipe-step {
+  background: rgba(11, 31, 77, 0.04);
+  border-color: rgba(11, 31, 77, 0.12);
+  color: #4a5568;
+}
+
+:root[data-theme="light"] .cp-pipe-step:hover {
+  background: rgba(11, 31, 77, 0.08);
+  color: #0b1f4d;
+}
+
+:root[data-theme="light"] .cp-pipe-step.active {
+  background: rgba(242, 106, 10, 0.10);
+  border-color: var(--primary-accent);
+  color: var(--primary-accent);
+}
+
+:root[data-theme="light"] .preset-btn {
+  background: rgba(11, 31, 77, 0.05);
+  border-color: rgba(11, 31, 77, 0.15);
+  color: #4a5568;
+}
+
+:root[data-theme="light"] .preset-btn.active {
+  background: var(--primary-accent);
+  color: #ffffff;
+}
+
+:root[data-theme="light"] .sim-telemetry-pill {
+  background: rgba(11, 31, 77, 0.04);
+  border-color: rgba(11, 31, 77, 0.12);
+  color: #0b1f4d;
+}
+
+:root[data-theme="light"] .telem-val {
+  color: #0b1f4d;
+}
+
+/* 9. Foundation Conveyor Assembly Line */
+:root[data-theme="light"] .conv-card.prod-more {
+  background: linear-gradient(135deg, rgba(242, 106, 10, 0.08) 0%, rgba(255, 255, 255, 0.95) 100%);
+  border-color: rgba(242, 106, 10, 0.35);
+}
+
+:root[data-theme="light"] .conv-card .more {
+  background: rgba(11, 31, 77, 0.05);
+  border-color: rgba(11, 31, 77, 0.15);
+  color: #0b1f4d;
+}
+
+:root[data-theme="light"] .conveyor-rail-bar {
+  color: #0b1f4d;
+}
+
+:root[data-theme="light"] .conveyor-hint {
+  color: #64748b;
+}
+
+:root[data-theme="light"] .conv-btn {
+  background: rgba(11, 31, 77, 0.05);
+  border-color: rgba(11, 31, 77, 0.15);
+  color: #0b1f4d;
+}
+
+/* 10. Hero Subheading & Flank Blueprints */
+:root[data-theme="light"] .hero-subheading {
+  color: #4a5568;
+}
+
+:root[data-theme="light"] .hero-cad-flank {
+  color: rgba(11, 31, 77, 0.7);
+}
+
+:root[data-theme="light"] .hero-cad-flank .dim-line {
+  background-color: rgba(11, 31, 77, 0.25);
+}
+
+:root[data-theme="light"] .hero-cad-flank .dim-val,
+:root[data-theme="light"] .hero-cad-flank .flank-coord {
+  color: #0b1f4d;
+}
+
+/* 11. Buttons & Action Links */
+:root[data-theme="light"] .btn-ghost {
+  background: #ffffff !important;
+  border: 1px solid rgba(11, 31, 77, 0.18) !important;
+  color: #0b1f4d !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 1),
+    0 4px 14px 0 rgba(11, 31, 77, 0.08) !important;
+}
+
+:root[data-theme="light"] .btn-ghost:hover {
+  background: #ffffff !important;
+  border-color: var(--primary-accent) !important;
+  color: var(--primary-accent) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 1),
+    0 8px 22px 0 rgba(11, 31, 77, 0.12),
+    0 0 16px 0 rgba(242, 106, 10, 0.15) !important;
+}
+
+:root[data-theme="light"] .btn-ghost i {
+  color: var(--primary-accent) !important;
+}
+
+:root[data-theme="light"] .card-action .copy,
+:root[data-theme="light"] .copy {
+  border: 1px solid rgba(11, 31, 77, 0.18) !important;
+  background: #ffffff !important;
+  color: #0b1f4d !important;
+  box-shadow: 0 1px 2px rgba(11, 31, 77, 0.05) !important;
+}
+
+:root[data-theme="light"] .card-action .copy:hover,
+:root[data-theme="light"] .copy:hover {
+  border-color: var(--primary-accent) !important;
+  background: rgba(242, 106, 10, 0.12) !important;
+  color: var(--primary-accent) !important;
+}
+
+/* 12. Contact Console Harmonization (Photo 1) */
+:root[data-theme="light"] .chamber-title {
+  color: #0b1f4d !important;
+}
+
+:root[data-theme="light"] .contact-subcard {
+  background: #ffffff !important;
+  border: 1px solid rgba(11, 31, 77, 0.14) !important;
+  box-shadow:
+    inset 0 1px 0 #ffffff,
+    0 6px 16px -2px rgba(11, 31, 77, 0.06) !important;
+}
+
+:root[data-theme="light"] .contact-subcard:hover {
+  background: #ffffff !important;
+  border-color: rgba(242, 106, 10, 0.55) !important;
+  box-shadow:
+    inset 0 1px 0 #ffffff,
+    0 12px 28px -4px rgba(11, 31, 77, 0.12),
+    0 0 16px rgba(242, 106, 10, 0.12) !important;
+}
+
+:root[data-theme="light"] .card-meta {
+  color: var(--primary-accent) !important;
+}
+
+:root[data-theme="light"] .card-val {
+  color: #0b1f4d !important;
+}
+
+:root[data-theme="light"] .card-val.address {
+  color: #4a5568 !important;
+}
+
+:root[data-theme="light"] .globe-badge {
+  background: rgba(242, 106, 10, 0.1) !important;
+  border-color: rgba(242, 106, 10, 0.35) !important;
+  color: var(--primary-accent) !important;
+}
+
+:root[data-theme="light"] .globe-coords,
+:root[data-theme="light"] .globe-hint {
+  color: #64748b !important;
+}
+
+:root[data-theme="light"] .globe-btn {
+  background: rgba(11, 31, 77, 0.05) !important;
+  border-color: rgba(11, 31, 77, 0.15) !important;
+  color: #0b1f4d !important;
+}
+
+:root[data-theme="light"] .globe-btn:hover {
+  background: rgba(242, 106, 10, 0.12) !important;
+  border-color: var(--primary-accent) !important;
+  color: var(--primary-accent) !important;
+}
+
+/* 13. Hero Announcement Pill & Gradient Headline (Photo 3) */
+:root[data-theme="light"] .hero-announcement-pill {
+  background: rgba(11, 31, 77, 0.05) !important;
+  border: 1px solid rgba(11, 31, 77, 0.15) !important;
+  color: #0b1f4d !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9), 0 4px 14px rgba(11, 31, 77, 0.05) !important;
+}
+
+:root[data-theme="light"] .hero-announcement-pill:hover {
+  background: rgba(11, 31, 77, 0.09) !important;
+  border-color: var(--primary-accent) !important;
+  color: var(--primary-accent) !important;
+}
+
+:root[data-theme="light"] .hero-announcement-pill .badge-arrow i {
+  color: var(--primary-accent) !important;
+}
+
+:root[data-theme="light"] .hero-gradient-text {
+  background: linear-gradient(135deg, #0b1f4d 20%, var(--primary-accent) 85%) !important;
+  background-clip: text !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+}
+
+:root[data-theme="light"] .btn-cad-toggle {
+  background: rgba(11, 31, 77, 0.05) !important;
+  border-color: rgba(11, 31, 77, 0.16) !important;
+  color: #0b1f4d !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9), 0 2px 8px rgba(11, 31, 77, 0.06) !important;
+}
+
+:root[data-theme="light"] .btn-cad-toggle:hover {
+  background: rgba(11, 31, 77, 0.09) !important;
+  border-color: rgba(11, 31, 77, 0.28) !important;
+  color: #0b1f4d !important;
+}
+
+:root[data-theme="light"] .btn-cad-toggle i {
+  color: var(--primary-accent) !important;
+}
+
+:root[data-theme="light"] .btn-cad-toggle .toggle-text {
+  color: #0b1f4d !important;
+}
+
+:root[data-theme="light"] .btn-cad-toggle.is-off {
+  background: rgba(11, 31, 77, 0.03) !important;
+  border-color: rgba(11, 31, 77, 0.12) !important;
+  color: #64748b !important;
+}
+
+:root[data-theme="light"] .btn-cad-toggle.is-off i {
+  color: #64748b !important;
+}
+
+:root[data-theme="light"] .btn-cad-toggle.is-off .toggle-status {
+  background: rgba(11, 31, 77, 0.06) !important;
+  color: #64748b !important;
+  border-color: rgba(11, 31, 77, 0.14) !important;
+}
+
+/* 14. FAQ White Glass Console - Matching All Other Consoles */
+:root[data-theme="light"] .faq-reel-console {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.96) 0%,
+    rgba(242, 246, 255, 0.90) 100%
+  ) !important;
+  border: 1px solid rgba(11, 31, 77, 0.14) !important;
+  box-shadow:
+    inset 0 1px 1px 0 rgba(255, 255, 255, 1),
+    0 24px 60px -20px rgba(11, 31, 77, 0.12) !important;
+}
+
+:root[data-theme="light"] .faq-reel-console .aside-question {
+  color: #0b1f4d !important;
+}
+
+:root[data-theme="light"] .faq-reel-console .aside-answer {
+  color: #4a5568 !important;
+}
+
+:root[data-theme="light"] .faq-reel-console .aside-category {
+  color: var(--primary-accent) !important;
+}
+
+:root[data-theme="light"] .faq-reel-console .aside-counter {
+  color: #64748b !important;
+}
+
+:root[data-theme="light"] .faq-reel-console .aside-chips span {
+  background: rgba(11, 31, 77, 0.05) !important;
+  border: 1px solid rgba(11, 31, 77, 0.14) !important;
+  color: #0b1f4d !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9) !important;
+}
+
+:root[data-theme="light"] .faq-reel-console .reel-nav-btn {
+  background: rgba(11, 31, 77, 0.05) !important;
+  border: 1px solid rgba(11, 31, 77, 0.16) !important;
+  color: #0b1f4d !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9) !important;
+}
+
+:root[data-theme="light"] .faq-reel-console .reel-nav-btn:hover {
+  background: rgba(242, 106, 10, 0.15) !important;
+  border-color: var(--primary-accent) !important;
+  color: var(--primary-accent) !important;
+}
+
+:root[data-theme="light"] .faq-reel-console .reel-item {
+  background: rgba(11, 31, 77, 0.035) !important;
+  border: 1px solid rgba(11, 31, 77, 0.10) !important;
+  box-shadow: inset 0 1px 0 #ffffff !important;
+  opacity: 0.82 !important;
+}
+
+:root[data-theme="light"] .faq-reel-console .reel-item:hover {
+  background: rgba(11, 31, 77, 0.07) !important;
+  border-color: rgba(11, 31, 77, 0.22) !important;
+  opacity: 1 !important;
+}
+
+:root[data-theme="light"] .faq-reel-console .reel-item i {
+  color: #64748b !important;
+}
+
+:root[data-theme="light"] .faq-reel-console .reel-item .tile-num {
+  color: #64748b !important;
+}
+
+:root[data-theme="light"] .faq-reel-console .reel-item .tile-label {
+  color: #1e293b !important;
+}
+
+:root[data-theme="light"] .faq-reel-console .reel-item.active {
+  background: linear-gradient(
+    135deg,
+    rgba(242, 106, 10, 0.10) 0%,
+    #ffffff 100%
+  ) !important;
+  border: 1.5px solid var(--primary-accent) !important;
+  box-shadow:
+    inset 0 1px 2px rgba(255, 255, 255, 1),
+    0 8px 24px -4px rgba(242, 106, 10, 0.25),
+    0 0 18px rgba(242, 106, 10, 0.18) !important;
+  opacity: 1 !important;
+}
+
+:root[data-theme="light"] .faq-reel-console .reel-item.active i,
+:root[data-theme="light"] .faq-reel-console .reel-item.active .tile-num {
+  color: var(--primary-accent) !important;
+}
+
+:root[data-theme="light"] .faq-reel-console .reel-item.active .tile-label {
+  color: #0b1f4d !important;
+  font-weight: var(--fw-bold) !important;
+}
+
+/* 15. Copilot Process Pipeline Rail Strip (Matching Light Theme - Photo 3 Strip) */
+:root[data-theme="light"] .cp-pipeline-rail {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.95) 0%,
+    rgba(240, 246, 255, 0.90) 100%
+  ) !important;
+  border: 1px solid rgba(11, 31, 77, 0.14) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 1),
+    0 8px 24px -6px rgba(11, 31, 77, 0.08) !important;
+}
+
+:root[data-theme="light"] .cp-pipe-step {
+  color: #4a5568 !important;
+}
+
+:root[data-theme="light"] .cp-pipe-step:hover {
+  color: #0b1f4d !important;
+  background: rgba(11, 31, 77, 0.06) !important;
+}
+
+:root[data-theme="light"] .cp-pipe-step.active {
+  color: #0b1f4d !important;
+  background: rgba(242, 106, 10, 0.12) !important;
+  border-color: rgba(242, 106, 10, 0.55) !important;
+}
+
+:root[data-theme="light"] .cp-pipe-step .step-num {
+  background: rgba(11, 31, 77, 0.06) !important;
+  border-color: rgba(11, 31, 77, 0.16) !important;
+  color: #4a5568 !important;
+}
+
+:root[data-theme="light"] .cp-pipe-step.active .step-num {
+  background: var(--primary-accent) !important;
+  border-color: var(--primary-accent) !important;
+  color: #ffffff !important;
+  box-shadow: 0 0 10px rgba(242, 106, 10, 0.45) !important;
+}
+
+:root[data-theme="light"] .pipe-arrow {
+  color: rgba(11, 31, 77, 0.3) !important;
+}
+
+/* 16. Why & Answers Section 2-Column Height Alignment & 8-Card Metrics Grid */
+.ans-2col-grid,
+.why-grid {
+  display: grid !important;
+  grid-template-columns: 1fr 1.35fr !important;
+  gap: var(--space-3xl) !important;
+  align-items: stretch !important;
+  width: 100% !important;
+}
+
+.ans-copy,
+.why-copy {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+  height: 100% !important;
+}
+
+.ans-matrix {
+  display: grid !important;
+  grid-template-columns: repeat(2, 1fr) !important;
+  gap: var(--space-md) !important;
+  height: 100% !important;
+}
+
+.ans-card {
+  height: 100% !important;
+}
+
+.ans-metrics-8 {
+  display: grid !important;
+  grid-template-columns: repeat(4, 1fr) !important;
+  gap: 10px !important;
+  margin-top: auto !important;
+  width: 100% !important;
+}
+
+.ans-metrics-8 .ans-metric-chip {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  align-items: flex-start !important;
+  padding: 12px 14px !important;
+  border-radius: var(--radius-xl) !important;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.05) 0%,
+    rgba(255, 255, 255, 0.015) 100%
+  );
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow:
+    inset 0 1px 1px 0 rgba(255, 255, 255, 0.25),
+    0 4px 16px -2px rgba(0, 0, 0, 0.35);
+  transition: all var(--transition-fast) !important;
+  min-height: 72px !important;
+}
+
+.ans-metrics-8 .ans-metric-chip:hover {
+  transform: translateY(-2px) !important;
+  border-color: rgba(242, 106, 10, 0.55) !important;
+  background: rgba(255, 255, 255, 0.07) !important;
+  box-shadow:
+    inset 0 1px 1.5px rgba(255, 255, 255, 0.35),
+    0 8px 20px -4px rgba(0, 0, 0, 0.5),
+    0 0 14px rgba(242, 106, 10, 0.15) !important;
+}
+
+.ans-metrics-8 .m-val {
+  font-family: var(--font-family-mono) !important;
+  font-size: 1.05rem !important;
+  font-weight: var(--fw-bold) !important;
+  color: var(--primary-accent) !important;
+  line-height: 1.2 !important;
+  margin-bottom: 4px !important;
+  white-space: nowrap !important;
+}
+
+.ans-metrics-8 .m-lbl {
+  font-family: var(--font-family-mono) !important;
+  font-size: 9.5px !important;
+  font-weight: var(--fw-medium) !important;
+  color: var(--text-secondary) !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.06em !important;
+  line-height: 1.35 !important;
+}
+
+:root[data-theme="light"] .ans-metrics-8 .ans-metric-chip {
+  background: linear-gradient(135deg, #ffffff 0%, #f7f9fd 100%) !important;
+  border: 1px solid rgba(11, 31, 77, 0.14) !important;
+  box-shadow:
+    inset 0 1px 0 #ffffff,
+    0 4px 14px -2px rgba(11, 31, 77, 0.06) !important;
+}
+
+:root[data-theme="light"] .ans-metrics-8 .ans-metric-chip:hover {
+  background: #ffffff !important;
+  border-color: rgba(242, 106, 10, 0.6) !important;
+  box-shadow:
+    inset 0 1px 0 #ffffff,
+    0 8px 22px -4px rgba(11, 31, 77, 0.12),
+    0 0 16px rgba(242, 106, 10, 0.15) !important;
+}
+
+:root[data-theme="light"] .ans-metrics-8 .m-val {
+  color: var(--primary-accent) !important;
+}
+
+:root[data-theme="light"] .ans-metrics-8 .m-lbl {
+  color: #4a5568 !important;
+}
+
+@media (max-width: 600px) {
+  .ans-metrics-8 {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}

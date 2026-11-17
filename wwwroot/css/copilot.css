@@ -1,0 +1,342 @@
+/* ==========================================================
+   ENGINEERING COPILOT - 100VH INTERACTIVE STUDIO CONSOLE
+========================================================== */
+.copilot {
+  position: relative;
+  background: transparent;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.cp-console-wrap {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+/* 1. Process Pipeline Rail */
+.cp-pipeline-rail {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 8px 18px;
+  margin-bottom: var(--space-lg);
+  border-radius: var(--radius-pill);
+  background: rgba(10, 22, 50, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(8px);
+}
+.cp-pipe-step {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  color: var(--text-muted);
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: var(--radius-pill);
+  padding: 3px 8px;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all var(--transition-fast);
+}
+.cp-pipe-step:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.06);
+}
+.cp-pipe-step.active {
+  color: #ffffff;
+  background: rgba(242, 106, 10, 0.12);
+  border-color: rgba(242, 106, 10, 0.35);
+}
+.cp-pipe-step .step-num {
+  display: inline-grid;
+  place-items: center;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  font-size: 9.5px;
+  color: var(--text-muted);
+}
+.cp-pipe-step.active .step-num {
+  background: var(--primary-accent);
+  border-color: var(--primary-accent);
+  color: #ffffff;
+  box-shadow: 0 0 8px rgba(242, 106, 10, 0.5);
+}
+.pipe-arrow {
+  color: rgba(255, 255, 255, 0.2);
+  font-size: 12px;
+}
+/* Live Workflow Stepper HUD (Full text display with multi-line wrapping) */
+.sim-workflow-hud {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 6px 14px;
+  margin: 6px 0 4px;
+  border-radius: var(--radius-lg);
+  background: rgba(14, 30, 68, 0.65);
+  border: 1px solid rgba(140, 180, 240, 0.22);
+  font-size: 10.5px;
+  min-height: 32px;
+  transition: all var(--transition-fast);
+}
+.hud-step-tag {
+  display: inline-block;
+  padding: 2px 7px;
+  border-radius: var(--radius-pill);
+  background: var(--primary-accent);
+  color: #ffffff;
+  font-weight: var(--fw-bold);
+  font-size: 9px;
+  letter-spacing: 0.05em;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+.hud-desc {
+  color: #e2edff;
+  line-height: 1.45;
+  white-space: normal;
+  overflow: visible;
+  text-overflow: clip;
+}
+/* 2. Main Studio Stage (2 Columns) */
+.cp-studio-stage {
+  display: grid;
+  grid-template-columns: 1.35fr 1fr;
+  gap: var(--space-lg);
+  align-items: stretch;
+}
+/* Left: Simulator Chamber */
+.cp-simulator-chamber {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 18px 20px;
+  border-radius: var(--radius-2xl);
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.07) 0%,
+      rgba(255, 255, 255, 0.02) 100%
+    ),
+    rgba(8, 18, 42, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+}
+.sim-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+.sim-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  color: var(--primary-accent);
+  letter-spacing: 0.06em;
+}
+.sim-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.sim-slider-label {
+  font-size: 11px;
+  color: var(--text-secondary);
+}
+.sim-slider-label strong {
+  color: var(--primary-accent);
+}
+/* Range input styling */
+.sim-range {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 90px;
+  height: 4px;
+  border-radius: var(--radius-pill);
+  background: rgba(255, 255, 255, 0.2);
+  outline: none;
+  cursor: pointer;
+}
+.sim-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--primary-accent);
+  cursor: pointer;
+  box-shadow: 0 0 6px var(--primary-accent);
+}
+.sim-presets {
+  display: flex;
+  gap: 4px;
+}
+.preset-btn {
+  padding: 2px 7px;
+  font-size: 10px;
+  border-radius: var(--radius-pill);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  color: var(--text-secondary);
+  cursor: pointer;
+  font-family: inherit;
+  transition: all var(--transition-fast);
+}
+.preset-btn.active,
+.preset-btn:hover {
+  background: var(--primary-accent);
+  border-color: var(--primary-accent);
+  color: #ffffff;
+}
+/* Canvas Viewport */
+.sim-canvas-viewport {
+  width: 100%;
+  padding: 10px 0;
+  display: flex;
+  justify-content: center;
+}
+.sim-canvas-viewport svg {
+  width: 100%;
+  height: auto;
+  max-height: 220px;
+}
+/* Telemetry Strip */
+.sim-telemetry {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 10px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 10.5px;
+}
+.telem-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+.telem-item i.ok {
+  color: #38ef7d;
+}
+.telem-item span {
+  color: var(--text-muted);
+}
+.telem-item strong {
+  color: #ffffff;
+}
+/* Right: Domain Cards */
+.cp-apps-column {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  gap: var(--space-md);
+}
+.cp-domain-card {
+  padding: 18px 20px;
+  border-radius: var(--radius-xl);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.07) 0%,
+      rgba(255, 255, 255, 0.02) 100%
+    ),
+    rgba(11, 28, 64, 0.72);
+}
+.domain-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+.domain-tag {
+  font-size: 11px;
+  color: var(--primary-accent);
+  font-weight: var(--fw-semibold);
+  letter-spacing: 0.05em;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+.domain-title {
+  font-size: var(--font-base);
+  font-weight: var(--fw-bold);
+  color: var(--text-head);
+  margin-bottom: 4px;
+}
+.domain-desc {
+  font-size: var(--font-sm);
+  color: var(--text-secondary);
+  line-height: 1.45;
+  margin-bottom: 12px;
+}
+.domain-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+.domain-pills .glass-pill {
+  font-size: 9px;
+  padding: 2px 8px;
+}
+@media (max-width: 960px) {
+  .cp-studio-stage {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ==========================================================
+   COPILOT LIGHT THEME HARMONIZATION (Pipeline Rail Strip - Photo 3 Strip)
+========================================================== */
+:root[data-theme="light"] .cp-pipeline-rail {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.95) 0%,
+    rgba(240, 246, 255, 0.90) 100%
+  ) !important;
+  border: 1px solid rgba(11, 31, 77, 0.14) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 1),
+    0 8px 24px -6px rgba(11, 31, 77, 0.08) !important;
+}
+
+:root[data-theme="light"] .cp-pipe-step {
+  color: #4a5568 !important;
+}
+
+:root[data-theme="light"] .cp-pipe-step:hover {
+  color: #0b1f4d !important;
+  background: rgba(11, 31, 77, 0.06) !important;
+}
+
+:root[data-theme="light"] .cp-pipe-step.active {
+  color: #0b1f4d !important;
+  background: rgba(242, 106, 10, 0.12) !important;
+  border-color: rgba(242, 106, 10, 0.55) !important;
+}
+
+:root[data-theme="light"] .cp-pipe-step .step-num {
+  background: rgba(11, 31, 77, 0.06) !important;
+  border-color: rgba(11, 31, 77, 0.16) !important;
+  color: #4a5568 !important;
+}
+
+:root[data-theme="light"] .cp-pipe-step.active .step-num {
+  background: var(--primary-accent) !important;
+  border-color: var(--primary-accent) !important;
+  color: #ffffff !important;
+  box-shadow: 0 0 10px rgba(242, 106, 10, 0.45) !important;
+}
+
+:root[data-theme="light"] .pipe-arrow {
+  color: rgba(11, 31, 77, 0.3) !important;
+}

@@ -1,0 +1,192 @@
+/* ==========================================================
+   21st.dev FLOATING GLASS PRODUCT DETAIL DIALOG
+========================================================== */
+
+/* 1. Backdrop: Cinematic Deep Blur */
+dialog#pd::backdrop {
+  background: rgba(3, 8, 22, 0.78);
+  backdrop-filter: blur(14px) saturate(160%);
+  -webkit-backdrop-filter: blur(14px) saturate(160%);
+}
+
+/* 2. Dialog Container: Spacious Master Glass Console */
+dialog#pd {
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: var(--radius-3xl);
+  padding: 0;
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.08) 0%,
+      rgba(255, 255, 255, 0.02) 100%
+    ),
+    rgba(6, 15, 38, 0.88);
+  backdrop-filter: blur(24px) saturate(190%);
+  -webkit-backdrop-filter: blur(24px) saturate(190%);
+  color: var(--text-primary);
+  width: min(1080px, calc(100% - 32px)); /* Expanded area */
+  max-height: calc(100% - 40px);
+  box-shadow:
+    inset 0 1px 1.5px 0 rgba(255, 255, 255, 0.45),
+    inset 0 -1px 1px 0 rgba(0, 0, 0, 0.2),
+    0 32px 80px -16px rgba(0, 0, 0, 0.8);
+  overflow: hidden;
+  margin: auto;
+}
+
+dialog#pd[open] {
+  display: flex;
+  flex-direction: column;
+}
+
+/* 3. Header: Expanded & Prominent */
+.pd-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-xl);
+  padding: 28px 36px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.pd-head .mono {
+  font-family: var(--font-family-mono);
+  font-size: var(--font-sm);
+  font-weight: var(--fw-bold);
+  letter-spacing: 0.08em;
+  color: var(--primary-accent);
+  text-transform: uppercase;
+  margin-bottom: var(--space-2xs);
+  display: inline-block;
+}
+
+.pd-head h3 {
+  font-family: var(--font-family);
+  font-size: var(--font-3xl); /* Scaled up title */
+  font-weight: var(--fw-bold);
+  color: var(--text-light);
+  line-height: 1.2;
+}
+
+/* Close Pill Button */
+.pd-x {
+  font-size: 1.6rem;
+  line-height: 1;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: var(--radius-pill); /* Strictly uses var(--radius-pill) */
+  width: 44px;
+  height: 44px;
+  color: var(--text-secondary);
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  flex: none;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  transition:
+    transform var(--transition-fast),
+    border-color var(--transition-fast),
+    background var(--transition-fast),
+    color var(--transition-fast);
+}
+
+.pd-x:hover {
+  transform: scale(1.06);
+  border-color: var(--primary-accent);
+  background: rgba(242, 106, 10, 0.2);
+  color: #ffffff;
+}
+
+/* 4. Body Content: Generous Sizing & Breathing Room */
+.pd-body {
+  padding: 32px 36px;
+  overflow-y: auto;
+}
+
+.pd-intro {
+  font-size: var(--font-lg); /* Larger intro text */
+  color: var(--text-light);
+  font-weight: var(--fw-medium);
+  line-height: 1.6;
+  margin-bottom: var(--space-2xl);
+}
+
+.pd-cols {
+  display: grid;
+  grid-template-columns: 1.25fr 1fr;
+  gap: 40px;
+}
+
+.pd-cols > * {
+  min-width: 0;
+}
+
+.pd-cols h4 {
+  font-family: var(--font-family-mono);
+  font-size: var(--font-sm); /* Scaled up subtitle */
+  font-weight: var(--fw-semibold);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--primary-accent);
+  margin-bottom: var(--space-md);
+}
+
+.pd-cols ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: var(--space-md);
+}
+
+.pd-cols li {
+  position: relative;
+  padding-left: 24px;
+  font-size: var(--font-base); /* Scaled up bullet items */
+  color: var(--text-secondary);
+  line-height: 1.55;
+}
+
+/* Glowing Technical Bullet */
+.pd-cols li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 7px;
+  height: 7px;
+  border-radius: var(--radius-pill);
+  background-color: var(--primary-accent);
+  box-shadow: 0 0 6px rgba(242, 106, 10, 0.7);
+}
+
+.pd-cols p {
+  font-size: var(--font-base); /* Scaled up descriptions */
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* 5. Footer with Actions */
+.pd-foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-md);
+  padding: 24px 36px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+@media (max-width: 768px) {
+  .pd-head,
+  .pd-body,
+  .pd-foot {
+    padding: var(--space-lg) var(--space-xl);
+  }
+
+  .pd-cols {
+    grid-template-columns: 1fr;
+    gap: var(--space-xl);
+  }
+}
