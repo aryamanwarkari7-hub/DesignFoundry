@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-    <title>@ViewData["Title"] - Designsfoundry</title>
+    <title>@ViewData["Title"] - DesignFoundry</title>
     <meta name="description"
-          content="Designsfoundry by Aryaman Technologies. Turn your legacy CAD data into reusable engineering intelligence: find, understand and adapt existing designs using natural language and automation.">
+          content="DesignFoundry by Aryaman Technologies. Turn your legacy CAD data into reusable engineering intelligence: find, understand and adapt existing designs using natural language and automation.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <script>
             (function () {
-                var savedTheme = localStorage.getItem('designsfoundry_theme');
+                var savedTheme = localStorage.getItem('DesignFoundry_theme');
                 if (savedTheme) {
                     document.documentElement.setAttribute('data-theme', savedTheme);
                 }
@@ -74,16 +74,20 @@
         </div>
     </div>
 
+
+
     <!-- STICKY HEADER -->
     <!-- 21st.dev FLOATING GLASS NAVBAR -->
     <header class="header-floating">
         <div class="nav-capsule">
             <!-- Brand & 3D Logo -->
-            <a href="#top" class="logo" aria-label="Designsfoundry, a part of Aryaman Technologies">
-                <img src="~/images/designsfoundry_logo.svg" alt="Designsfoundry Logo" class="logo-img" width="32"
-                     height="32" />
+            <a href="#top" class="logo" aria-label="DesignFoundry, a part of Aryaman Technologies">
+                <img src="~/images/designfoundry_logo_light.svg" alt="DesignFoundry" class="app-logo light-logo"
+                     width="36" height="36" />
+                <img src="~/images/designfoundry_logo_dark.svg" alt="DesignFoundry" class="app-logo dark-logo"
+                     width="36" height="36" />
                 <div class="logo-text">
-                    <b>Designsfoundry</b>
+                    <b>Design<strong>foundry</strong></b>
                     <span class="logo-sub ">A PART OF ARYAMAN TECHNOLOGIES</span>
                 </div>
             </a>
@@ -91,12 +95,12 @@
             <!-- Navigation Links (Center Capsule) -->
             <nav class="nav-links" aria-label="Primary Navigation">
                 <ul>
-                    <li><a href="#answers">Overview</a></li>
-                    <li><a href="#why">Why Us</a></li>
-                    <li><a href="#copilot">Workflow</a></li>
-                    <li><a href="#foundation">Built on Aryaman</a></li>
-                    <li><a href="#faq">FAQ</a></li>
-                    <li><a href="#contact">Contact Us</a></li>
+                    <li><a href="/#answers">Overview</a></li>
+                    <li><a href="/#why">Why Us</a></li>
+                    <li><a href="/#copilot">Workflow</a></li>
+                    <li><a href="/About">Built on Aryaman</a></li>
+                    <li><a href="/Faq">FAQ</a></li>
+                    <li><a href="/#contact">Contact Us</a></li>
                 </ul>
             </nav>
 
@@ -135,7 +139,7 @@
                     </span>
                 </button>
 
-                <a href="#contact" class="btn btn-primary">Book Technical Demo</a>
+                @* <a href="#contact" class="btn btn-primary">Book Technical Demo</a> *@
             </div>
         </div>
     </header>
@@ -145,92 +149,189 @@
         @RenderBody()
     </main>
 
-    <!-- PRODUCT DETAIL MODAL DIALOG -->
+    <!-- PRODUCT DETAIL MODAL: REFINED ENGINEERING INTELLIGENCE DOSSIER -->
+    <!-- PILL-DRIVEN SCANNABLE PRODUCT MODAL -->
     <dialog id="pd" aria-labelledby="pdTitle">
+        <!-- Header -->
         <div class="pd-head">
-            <div>
-                <span class="mono" id="pdCat"></span>
+            <div class="pd-head-left">
+                <span class="mono pd-cat-badge" id="pdCat"></span>
                 <h3 id="pdTitle"></h3>
             </div>
-            <button type="button" class="pd-x" id="pdClose" aria-label="Close">&times;</button>
-        </div>
-        <div class="pd-body">
-            <p class="pd-intro" id="pdIntro"></p>
-            <div class="pd-cols">
-                <div>
-                    <h4 class="mono">Key capabilities</h4>
-                    <ul id="pdCaps"></ul>
-                </div>
-                <div>
-                    <h4 class="mono">Typical applications</h4>
-                    <p id="pdApps"></p>
-                    <h4 class="mono" style="margin-top: 22px;">Engineering value</h4>
-                    <p id="pdVal"></p>
+            <div class="pd-head-right">
+                <span class="pd-platform-pill mono"><i class="bi bi-cpu"></i> SOLIDWORKS &bull; INVENTOR &bull;
+                    CREO</span>
+                    <button type="button" class="pd-x" id="pdClose" aria-label="Close dialog">&times;</button>
                 </div>
             </div>
-        </div>
-        <div class="pd-foot">
-            <a class="btn btn-primary" id="pdPdf" href="#" target="_blank" rel="noopener">Download leaflet (PDF)</a>
-            <a class="btn btn-ghost" href="#contact" id="pdTalk">Discuss this with us</a>
-        </div>
-    </dialog>
 
-    <!-- FOOTER WITH TITLE BLOCK STAMP -->
-    <!-- SIMPLISTIC BLUEPRINT FOOTER (Contained Section Capsule) -->
-    <footer class="site-footer">
-        <div class="foot">
-            <div class="foot-brand">
-                <div class="foot-logo mono">
-                    <span class="foot-dot"></span> DESIGNSFOUNDRY &middot; <span class="foot-sub">PARAMETRIC CAD
-                    COPILOT</span>
+            <!-- Body -->
+            <div class="pd-body">
+                <!-- 1. Top Impact Stat Strip -->
+                <div class="pd-stat-strip mono">
+                    <div class="pd-stat-pill">
+                        <span class="val accent">&minus;85%</span>
+                        <span class="lbl">Drafting Time</span>
+                    </div>
+                    <div class="pd-stat-pill">
+                        <span class="val green">&lt; 2 MIN</span>
+                        <span class="lbl">Full CAD Model</span>
+                    </div>
+                    <div class="pd-stat-pill">
+                        <span class="val">100%</span>
+                        <span class="lbl">Parametric Mates</span>
+                    </div>
+                    <div class="pd-stat-pill">
+                        <span class="val accent">REAL-TIME</span>
+                        <span class="lbl">ERP BOM Sync</span>
+                    </div>
                 </div>
-                <p class="foot-legal">
-                    &copy; 2026 <a href="https://www.aryamantechnologies.com" target="_blank" rel="noopener noreferrer"
-                                   class="foot-link">Aryaman Technologies Private Limited</a> &middot; Karvenagar, Pune &ndash;
-                    411052, India<br>
-                    <span class="mono">CIN: U74999PN2018PTC175883</span>
-                </p>
-            </div>
 
-            <!-- Sleek Glass CAD Title Block -->
-            <div class="foot-titleblock mono" aria-label="Engineering Drawing Title Block">
-                <div class="tb-cell"><span class="tb-lbl">DRAWN BY</span> <strong class="tb-val">ARYAMAN</strong></a>
-                </div>
-                <div class="tb-cell"><span class="tb-lbl">STANDARDS</span> <strong class="tb-val">ISO / ASME</strong>
-                </div>
-                <div class="tb-cell"><span class="tb-lbl">LOCATION</span> <strong class="tb-val">PUNE, IN</strong></div>
-                <div class="tb-cell"><span class="tb-lbl">DOMAIN</span> <strong
-                    class="tb-val">DESIGNSFOUNDRY.COM</strong></div>
-                </div>
-            </div>
-        </footer>
-        <!-- GLOBAL SCRIPTS -->
-        <!-- Lenis Smooth Scrolling Engine (3.5KB) -->
-        <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
-        <script>
-                (function () {
-                    try {
-                        window.lenis = new Lenis({
-                            duration: 1.1,
-                            easing: function (t) { return Math.min(1, 1.001 - Math.pow(2, -10 * t)); },
-                            smoothWheel: true,
-                            wheelMultiplier: 0.95,
-                            touchMultiplier: 1.5,
-                        });
+                <!-- 2. Bento 2-Col Grid (Pill-Heavy & Scannable) -->
+                <div class="pd-grid-2col">
+                    <!-- Left: The Equipment Identity -->
+                    <div class="pd-col-left">
+                        <div class="pd-card-block">
+                            <span class="pd-section-label mono"><i class="bi bi-info-circle"></i> 01 : WHAT IT IS</span>
+                            <p class="pd-brief-lead" id="pdBrief"></p>
+                        </div>
 
-                        function raf(time) {
-                            window.lenis.raf(time);
-                            requestAnimationFrame(raf);
-                        }
-                        requestAnimationFrame(raf);
-                    } catch (e) {
-                        console.warn("Lenis init skipped", e);
-                    }
-                })();
-        </script>
-        <script src="~/js/site.js" asp-append-version="true"></script>
-        <script src="~/js/cad-viewer.js" asp-append-version="true"></script>
-        @await RenderSectionAsync("Scripts", required: false)
-    </body>
+                        <div class="pd-card-block">
+                            <span class="pd-section-label mono"><i class="bi bi-grid-3x3-gap"></i> 02 : TYPICAL
+                                APPLICATIONS</span>
+                                <div class="pd-pill-cloud" id="pdAppsPills">
+                                    <!-- Injected by JS as .pd-chip pills -->
+                                </div>
+                            </div>
 
-</html>
+                            <div class="pd-card-block">
+                                <span class="pd-section-label mono"><i class="bi bi-shield-check"></i> 03 : GOVERNING
+                                    CODES</span>
+                                    <div class="pd-pill-cloud" id="pdStandardsPills">
+                                        <!-- Injected by JS as .pd-chip pills -->
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Right: Copilot Automation (Pills & Checkmark Cards) -->
+                            <div class="pd-col-right">
+                                <div class="pd-solution-card">
+                                    <span class="pd-solution-tag mono">
+                                        <i class="bi bi-lightning-charge-fill"></i> HOW DESIGNFOUNDRY AUTOMATES THIS
+                                    </span>
+
+                                    <!-- 3 Scannable Action Pills -->
+                                    <div class="pd-automation-pills">
+                                        <div class="pd-auto-item">
+                                            <i class="bi bi-check-circle-fill ok"></i>
+                                            <div>
+                                                <strong>Zero Manual Spreadsheets</strong>
+                                                <span>Solves aerodynamics, heat duties, and cut-off curves in seconds.</span>
+                                            </div>
+                                        </div>
+                                        <div class="pd-auto-item">
+                                            <i class="bi bi-check-circle-fill ok"></i>
+                                            <div>
+                                                <strong>Dynamic 3D CAD Assembly</strong>
+                                                <span>Generates full component assembly with native kinematic mates.</span>
+                                            </div>
+                                        </div>
+                                        <div class="pd-auto-item">
+                                            <i class="bi bi-check-circle-fill ok"></i>
+                                            <div>
+                                                <strong>Manufacturing Deliverables</strong>
+                                                <span>Auto-generates 2D DWG fabrication drawings, flat unrolls, and BOM.</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Speed Comparison Badges -->
+                                    <div class="pd-speed-row mono">
+                                        <div class="pd-speed-pill legacy">
+                                            <span class="badge">&times; LEGACY</span>
+                                            <span>3&ndash;5 Days Manual CAD</span>
+                                        </div>
+                                        <div class="pd-speed-pill ai">
+                                            <span class="badge">&check; COPILOT</span>
+                                            <span>&lt; 2 Mins Automated</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Footer -->
+                    <div class="pd-foot">
+                        <div class="pd-foot-left">
+                            <a class="btn btn-primary" href="#contact" id="pdTalk">
+                                <i class="bi bi-envelope-arrow-up"></i> Discuss this Copilot
+                            </a>
+                            <a class="pd-pdf-link mono" id="pdPdf" href="#" target="_blank" rel="noopener">
+                                <i class="bi bi-file-earmark-pdf"></i> Technical Leaflet (PDF)
+                            </a>
+                        </div>
+                        <div class="pd-foot-right mono">
+                            <span class="pulse-dot"></span> PROVEN ARYAMAN ENGINE &bull; 19+ YRS
+                        </div>
+                    </div>
+                </dialog>
+
+                <!-- SIMPLISTIC BLUEPRINT FOOTER (Contained Section Capsule) -->
+                <footer class="site-footer">
+                    <div class="foot">
+                        <div class="foot-brand">
+                            <div class="foot-logo mono">
+                                <span class="foot-dot"></span> DesignFoundry &middot; <span class="foot-sub">PARAMETRIC CAD
+                                COPILOT</span>
+                            </div>
+                            <p class="foot-legal">
+                                &copy; 2026 <a href="https://www.aryamantechnologies.com" target="_blank" rel="noopener noreferrer"
+                                               class="foot-link">Aryaman Technologies Private Limited</a> &middot; Karvenagar, Pune &ndash;
+                                411052, India<br>
+                                <span class="mono">CIN: U74999PN2018PTC175883</span>
+                            </p>
+                        </div>
+
+                        <!-- Sleek Glass CAD Title Block -->
+                        <div class="foot-titleblock mono" aria-label="Engineering Drawing Title Block">
+                            <div class="tb-cell"><span class="tb-lbl">DRAWN BY</span> <strong class="tb-val">ARYAMAN</strong></a>
+                            </div>
+                            <div class="tb-cell"><span class="tb-lbl">STANDARDS</span> <strong class="tb-val">ISO / ASME</strong>
+                            </div>
+                            <div class="tb-cell"><span class="tb-lbl">LOCATION</span> <strong class="tb-val">PUNE, IN</strong></div>
+                            <div class="tb-cell"><span class="tb-lbl">DOMAIN</span> <strong
+                                class="tb-val">DesignFoundry.COM</strong></div>
+                            </div>
+                        </div>
+                    </footer>
+                    <!-- GLOBAL SCRIPTS -->
+                    <!-- Lenis Smooth Scrolling Engine (3.5KB) -->
+                    <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
+                    <script>
+                            (function () {
+                                try {
+                                    window.lenis = new Lenis({
+                                        duration: 1.1,
+                                        easing: function (t) { return Math.min(1, 1.001 - Math.pow(2, -10 * t)); },
+                                        smoothWheel: true,
+                                        wheelMultiplier: 0.95,
+                                        touchMultiplier: 1.5,
+                                    });
+
+                                    function raf(time) {
+                                        window.lenis.raf(time);
+                                        requestAnimationFrame(raf);
+                                    }
+                                    requestAnimationFrame(raf);
+                                } catch (e) {
+                                    console.warn("Lenis init skipped", e);
+                                }
+                            })();
+                    </script>
+                    <script src="~/js/site.js" asp-append-version="true"></script>
+                    <script src="~/js/cad-viewer.js" asp-append-version="true"></script>
+                    @await RenderSectionAsync("Scripts", required: false)
+                </body>
+
+            </html>

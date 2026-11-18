@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">Designfoundry symbol — light background</title>
+  <desc id="desc">Transparent geometric DF monogram in CAD navy and engineering orange, for white or light backgrounds.</desc>
+  <defs>
+    <linearGradient id="navy" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#16366B"/>
+      <stop offset="1" stop-color="#0B1F4D"/>
+    </linearGradient>
+    <linearGradient id="orange" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#FF9A35"/>
+      <stop offset="1" stop-color="#F26A0A"/>
+    </linearGradient>
+  </defs>
+  <path d="M92 76 H246 C345 76 408 143 408 256 C408 369 345 436 246 436 H92 Z"
+        fill="none" stroke="url(#navy)" stroke-width="38" stroke-linecap="square" stroke-linejoin="miter"/>
+  <path d="M164 151 V361 M164 151 H333 M164 255 H306"
+        fill="none" stroke="#0B1F4D" stroke-width="25" stroke-linecap="square" stroke-linejoin="miter"/>
+  <path d="M164 361 C222 340 260 303 282 258 C303 214 309 180 333 151"
+        fill="none" stroke="url(#orange)" stroke-width="22" stroke-linecap="round" stroke-linejoin="round"/>
+  <g fill="url(#orange)" stroke="#FFFFFF" stroke-width="7">
+    <circle cx="164" cy="361" r="17"/>
+    <circle cx="282" cy="258" r="14"/>
+    <circle cx="333" cy="151" r="17"/>
+  </g>
+  <g stroke="#0B1F4D" stroke-width="7" stroke-linecap="square">
+    <path d="M92 48 V76 M64 76 H92 M408 256 H436 M92 436 V464 M64 436 H92"/>
+  </g>
+  <g fill="#0B1F4D">
+    <rect x="82" y="66" width="20" height="20" rx="3"/>
+    <rect x="398" y="246" width="20" height="20" rx="3"/>
+    <rect x="82" y="426" width="20" height="20" rx="3"/>
+  </g>
+</svg>

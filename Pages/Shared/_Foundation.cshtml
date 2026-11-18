@@ -1,15 +1,29 @@
-<!-- SECTION 5: BUILT ON ARYAMAN (100VH ASSEMBLY LINE) -->
+<!-- SECTION: BUILT ON ARYAMAN (CONVEYOR LINE + ALL CARDS GRID VIEW) -->
 <section class="foundation-section" id="foundation" aria-label="Built on Aryaman Foundation">
     <div class="wrap">
-        <!-- Section Header Matching Global Style -->
+        <!-- Section Header -->
         <div class="sec-head center">
             <p class="eyebrow mono"><i class="bi bi-lightning-charge-fill"></i> PROVEN INDUSTRIAL FOUNDATION</p>
             <h2>Built on Aryaman. <br> <em>13 active design automation engines.</em></h2>
-            <p>Every copilot is powered by 19+ years of proven algorithmic design logic across custom machinery, bulk
-                material handling, and process equipment.</p>
+            <p>Every copilot is powered by 19+ years of proven algorithmic design logic across custom machinery, bulk material handling, and thermal process equipment.</p>
         </div>
 
-        <!-- REAL LINEAR CAD ASSEMBLY LINE (Contained inside .wrap) -->
+        <!-- VIEW SWITCHER TOOLBAR -->
+        <div class="foundation-toolbar">
+            <div class="foundation-view-switch mono">
+                <button type="button" class="switch-btn active" id="btnViewConveyor">
+                    <i class="bi bi-arrow-left-right"></i> Conveyor Line
+                </button>
+                <button type="button" class="switch-btn" id="btnViewGrid">
+                    <i class="bi bi-grid-3x3-gap"></i> All 13 Engines
+                </button>
+            </div>
+            <div class="foundation-stats mono">
+                <span class="pulse-dot"></span> 13 PRODUCTION ENGINES &bull; 19+ YRS LOGIC
+            </div>
+        </div>
+
+        <!-- VIEW 1: REAL LINEAR CAD ASSEMBLY LINE (CONVEYOR) -->
         <div class="linear-conveyor-wrap" id="prodConveyor">
             <!-- Telemetry Rail Bar with Nudge Controls -->
             <div class="conveyor-rail-bar">
@@ -108,14 +122,14 @@
                         <p>Efficient nesting of sheet-metal parts for cutting and fabrication.</p>
                         <span class="more">View details &rarr;</span>
                     </button>
-                    <a class="prod conv-card prod-more" href="#contact">
+                    <a class="prod conv-card prod-more" href="/#contact">
                         <span class="mono">Custom Copilot</span>
                         <h3>Need another tool?</h3>
                         <p>Aryaman has built 19+ design products. Let us build your copilot.</p>
                         <span class="more">Discuss with us &rarr;</span>
                     </a>
 
-                    <!-- SET 2 (Seamless Infinite Duplicate) -->
+                    <!-- SET 2 (Infinite Duplicate for Smooth Loop) -->
                     <button class="prod conv-card" type="button" data-i="0" aria-haspopup="dialog" aria-hidden="true">
                         <span class="mono ai">AI-Assisted Design</span>
                         <h3>Axial Fan</h3>
@@ -194,25 +208,16 @@
                         <p>Efficient nesting of sheet-metal parts for cutting and fabrication.</p>
                         <span class="more">View details &rarr;</span>
                     </button>
-                    <a class="prod conv-card prod-more" href="#contact" aria-hidden="true">
-                        <span class="mono">Custom Copilot</span>
-                        <h3>Need another tool?</h3>
-                        <p>Aryaman has built 19+ design products. Let us build your copilot.</p>
-                        <span class="more">Discuss with us &rarr;</span>
-                    </a>
                 </div>
             </div>
 
-            <!-- PHYSICAL INDUSTRIAL CONVEYOR BELT (Positioned directly UNDER the cards) -->
+            <!-- PHYSICAL INDUSTRIAL CONVEYOR BELT -->
             <div class="physical-belt-rig">
-                <!-- Top Machined Steel Guide Rail -->
                 <div class="belt-steel-rail"></div>
-                <!-- Moving Textured Black Rubber Belt with Slat Treads -->
                 <div class="belt-black-rubber">
                     <div class="belt-moving-slats" id="beltMovingSlats"></div>
                     <div class="belt-center-groove"></div>
                 </div>
-                <!-- Lower Heavy Metal Chassis with Bolts & End Drums -->
                 <div class="belt-metal-chassis">
                     <div class="chassis-roller left"></div>
                     <div class="chassis-bolts">
@@ -220,6 +225,207 @@
                     </div>
                     <div class="chassis-roller right"></div>
                 </div>
+            </div>
+        </div>
+
+        <!-- VIEW 2: FULL ALL-13 ENGINES BENTO GRID -->
+        <div class="foundation-grid-view" id="foundationGridView" style="display: none;">
+            <div class="foundation-catalog-grid">
+                <!-- 01: Axial Fan -->
+                <button class="prod grid-card" type="button" data-i="0" aria-haspopup="dialog">
+                    <div class="grid-card-head">
+                        <span class="mono ai">AI-ASSISTED</span>
+                        <span class="card-idx mono">01</span>
+                    </div>
+                    <h3>Axial Fan</h3>
+                    <p>Sizing, aerodynamic velocity triangles and complete 3D impeller modeling.</p>
+                    <div class="grid-card-foot mono">
+                        <span class="codes">AMCA 210</span>
+                        <span class="more">Inspect &rarr;</span>
+                    </div>
+                </button>
+
+                <!-- 02: Cyclone -->
+                <button class="prod grid-card" type="button" data-i="1" aria-haspopup="dialog">
+                    <div class="grid-card-head">
+                        <span class="mono ai">AI-ASSISTED</span>
+                        <span class="card-idx mono">02</span>
+                    </div>
+                    <h3>Cyclone Separator</h3>
+                    <p>Gas-solid particulate separation efficiency and sheet-metal unrolls.</p>
+                    <div class="grid-card-foot mono">
+                        <span class="codes">STAIRMAND</span>
+                        <span class="more">Inspect &rarr;</span>
+                    </div>
+                </button>
+
+                <!-- 03: Storage Tank -->
+                <button class="prod grid-card" type="button" data-i="2" aria-haspopup="dialog">
+                    <div class="grid-card-head">
+                        <span class="mono">DESIGN AUTOMATION</span>
+                        <span class="card-idx mono">03</span>
+                    </div>
+                    <h3>Storage Tank</h3>
+                    <p>API 650 shell course sizing, roof truss geometry, and nozzle cutouts.</p>
+                    <div class="grid-card-foot mono">
+                        <span class="codes">API 650 / IS 803</span>
+                        <span class="more">Inspect &rarr;</span>
+                    </div>
+                </button>
+
+                <!-- 04: Belt Conveyor -->
+                <button class="prod grid-card" type="button" data-i="3" aria-haspopup="dialog">
+                    <div class="grid-card-head">
+                        <span class="mono">DESIGN AUTOMATION</span>
+                        <span class="card-idx mono">04</span>
+                    </div>
+                    <h3>Belt Conveyor</h3>
+                    <p>CEMA power calculations, belt tension, pulley sizing and truss frames.</p>
+                    <div class="grid-card-foot mono">
+                        <span class="codes">CEMA 576</span>
+                        <span class="more">Inspect &rarr;</span>
+                    </div>
+                </button>
+
+                <!-- 05: Bucket Elevator -->
+                <button class="prod grid-card" type="button" data-i="4" aria-haspopup="dialog">
+                    <div class="grid-card-head">
+                        <span class="mono">DESIGN AUTOMATION</span>
+                        <span class="card-idx mono">05</span>
+                    </div>
+                    <h3>Bucket Elevator</h3>
+                    <p>Vertical lift configuration, chain pull, head &amp; boot take-up geometry.</p>
+                    <div class="grid-card-foot mono">
+                        <span class="codes">DIN 15201</span>
+                        <span class="more">Inspect &rarr;</span>
+                    </div>
+                </button>
+
+                <!-- 06: Wet Scrubber -->
+                <button class="prod grid-card" type="button" data-i="5" aria-haspopup="dialog">
+                    <div class="grid-card-head">
+                        <span class="mono ai">AI-ASSISTED</span>
+                        <span class="card-idx mono">06</span>
+                    </div>
+                    <h3>Wet Scrubber</h3>
+                    <p>Flue gas cleaning, pollutant loading, throat velocity &amp; mist demisters.</p>
+                    <div class="grid-card-foot mono">
+                        <span class="codes">EPA METHOD 5</span>
+                        <span class="more">Inspect &rarr;</span>
+                    </div>
+                </button>
+
+                <!-- 07: Screw Conveyor -->
+                <button class="prod grid-card" type="button" data-i="6" aria-haspopup="dialog">
+                    <div class="grid-card-head">
+                        <span class="mono">DESIGN AUTOMATION</span>
+                        <span class="card-idx mono">07</span>
+                    </div>
+                    <h3>Screw Conveyor</h3>
+                    <p>Volumetric loading, shaft deflection, helical flight cut-lists &amp; troughs.</p>
+                    <div class="grid-card-foot mono">
+                        <span class="codes">CEMA 350</span>
+                        <span class="more">Inspect &rarr;</span>
+                    </div>
+                </button>
+
+                <!-- 08: Fin Tube Exchanger -->
+                <button class="prod grid-card" type="button" data-i="7" aria-haspopup="dialog">
+                    <div class="grid-card-head">
+                        <span class="mono">THERMAL DESIGN</span>
+                        <span class="card-idx mono">08</span>
+                    </div>
+                    <h3>Fin Tube Exchanger</h3>
+                    <p>Thermal rating, air-cooler fin density, tube pitch, and header passes.</p>
+                    <div class="grid-card-foot mono">
+                        <span class="codes">ASME / API 661</span>
+                        <span class="more">Inspect &rarr;</span>
+                    </div>
+                </button>
+
+                <!-- 09: Shell & Tube Exchanger -->
+                <button class="prod grid-card" type="button" data-i="8" aria-haspopup="dialog">
+                    <div class="grid-card-head">
+                        <span class="mono">THERMAL DESIGN</span>
+                        <span class="card-idx mono">09</span>
+                    </div>
+                    <h3>Shell &amp; Tube Exchanger</h3>
+                    <p>TEMA tube layout drafting, baffle cut spacing, and bundle assembly.</p>
+                    <div class="grid-card-foot mono">
+                        <span class="codes">TEMA CLASS R / B</span>
+                        <span class="more">Inspect &rarr;</span>
+                    </div>
+                </button>
+
+                <!-- 10: Web Dryer -->
+                <button class="prod grid-card" type="button" data-i="9" aria-haspopup="dialog">
+                    <div class="grid-card-head">
+                        <span class="mono">THERMAL &amp; PROCESS</span>
+                        <span class="card-idx mono">10</span>
+                    </div>
+                    <h3>Web Dryer</h3>
+                    <p>Continuous sheet &amp; film drying chamber balance and nozzle sizing.</p>
+                    <div class="grid-card-foot mono">
+                        <span class="codes">ISO 13732</span>
+                        <span class="more">Inspect &rarr;</span>
+                    </div>
+                </button>
+
+                <!-- 11: Damper -->
+                <button class="prod grid-card" type="button" data-i="10" aria-haspopup="dialog">
+                    <div class="grid-card-head">
+                        <span class="mono">DESIGN AUTOMATION</span>
+                        <span class="card-idx mono">11</span>
+                    </div>
+                    <h3>Industrial Damper</h3>
+                    <p>Multi-louver blade linkage kinematics, torque sizing &amp; leakage control.</p>
+                    <div class="grid-card-foot mono">
+                        <span class="codes">AMCA 500-D</span>
+                        <span class="more">Inspect &rarr;</span>
+                    </div>
+                </button>
+
+                <!-- 12: Ducting -->
+                <button class="prod grid-card" type="button" data-i="11" aria-haspopup="dialog">
+                    <div class="grid-card-head">
+                        <span class="mono">DESIGN AUTOMATION</span>
+                        <span class="card-idx mono">12</span>
+                    </div>
+                    <h3>Ducting Systems</h3>
+                    <p>Rectangular-to-round transitions, expansion joints &amp; CNC unrolls.</p>
+                    <div class="grid-card-foot mono">
+                        <span class="codes">SMACNA / EN 1507</span>
+                        <span class="more">Inspect &rarr;</span>
+                    </div>
+                </button>
+
+                <!-- 13: Sheet Metal Nesting -->
+                <button class="prod grid-card" type="button" data-i="12" aria-haspopup="dialog">
+                    <div class="grid-card-head">
+                        <span class="mono">MANUFACTURING</span>
+                        <span class="card-idx mono">13</span>
+                    </div>
+                    <h3>Sheet Metal Nesting</h3>
+                    <p>Multi-part plate layout optimization minimizing raw cutting scrap.</p>
+                    <div class="grid-card-foot mono">
+                        <span class="codes">CNC / G-CODE</span>
+                        <span class="more">Inspect &rarr;</span>
+                    </div>
+                </button>
+
+                <!-- Custom Copilot Card -->
+                <a class="prod grid-card custom-copilot" href="/#contact">
+                    <div class="grid-card-head">
+                        <span class="mono" style="color: var(--primary-accent);"><i class="bi bi-gear-wide-connected"></i> CUSTOM ENGINE</span>
+                        <span class="card-idx mono">&bull;</span>
+                    </div>
+                    <h3>Custom CAD Copilot</h3>
+                    <p>Aryaman has built 19+ custom software products. Let us automate your specific equipment.</p>
+                    <div class="grid-card-foot mono">
+                        <span class="codes">YOUR CAD FORMAT</span>
+                        <span class="more">Discuss &rarr;</span>
+                    </div>
+                </a>
             </div>
         </div>
     </div>

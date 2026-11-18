@@ -198,7 +198,7 @@ Key capabilities Typical applications Engineering value [Download leaflet (PDF)]
 
 #### Generative CAD
 
-designsfoundry.com · A part of [Aryaman Technologies Private Limited](https://www.aryamantechnologies.com)\
+DesignFoundry.com · A part of [Aryaman Technologies Private Limited](https://www.aryamantechnologies.com)\
 © 2026 · CIN: U74999PN2018PTC175883 · Karvenagar, Pune – 411052, India
 
 Drawn by
@@ -207,4 +207,4 @@ Aryaman
 
 Domain
 
-designsfoundry.com
+DesignFoundry.com

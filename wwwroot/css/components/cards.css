@@ -157,7 +157,6 @@
   grid-template-columns: 1fr 1.35fr;
   gap: var(--space-3xl);
   align-items: stretch;
-  width: 100%;
 }
 
 /* Left Column Styling */
@@ -271,9 +270,9 @@
   margin-bottom: 6px;
 }
 .ans-card .ans-tag {
-  font-size: 11px;
+  font-size: var(--font-sm);
   color: var(--primary-accent);
-  font-weight: var(--fw-semibold);
+  font-weight: var(--fw-bold);
   letter-spacing: 0.05em;
   display: inline-flex;
   align-items: center;

@@ -1,5 +1,5 @@
 /**
- * Designsfoundry Generative CAD - Global Application Script
+ * DesignFoundry Generative CAD - Global Application Script
  * Defines global variables and event handlers used across the application.
  */
 
@@ -13,222 +13,92 @@
         {
             title: "Axial Fan Design Software",
             cat: "AI-ASSISTED ENGINEERING DESIGN",
-            intro: "A comprehensive engineering design platform for sizing, performance evaluation and engineering documentation of axial-flow fans.",
-            caps: [
-                "Design-point based fan sizing and aerodynamic calculations",
-                "Airflow, pressure, speed, power and efficiency evaluation",
-                "Blade and impeller geometry parameterization",
-                "Performance prediction and operating-point evaluation",
-                "Systematic engineering calculations with configurable design inputs",
-                "Automated engineering reports, BOM and design documentation",
-                "Engineering-driven AI capabilities for data-assisted performance prediction and design refinement"
-            ],
-            apps: "Industrial ventilation, process air handling, cooling systems, exhaust systems, HVAC and engineered air-moving equipment.",
-            value: "Reduces repetitive engineering work, improves design consistency and provides a structured path from design inputs to engineering output.",
+            brief: "Industrial axial-flow fan used for moving high volumes of air at low-to-medium static pressures across ventilation, cooling towers, and exhaust ducting.",
+            ease: "Eliminates days of manual blade camber calculation and drafting from scratch. Enter airflow (CFM) and static pressure—DesignFoundry computes aerodynamic velocity triangles, generates the mated 3D CAD assembly, and outputs fabrication drawings in under 2 minutes.",
             pdf: "/leaflets/aryaman-axial-fan-leaflet.pdf"
         },
         {
             title: "Cyclone Design Software",
             cat: "AI-ASSISTED ENGINEERING DESIGN",
-            intro: "Engineering software for the design and evaluation of cyclone separators used for particulate separation from process gas streams.",
-            caps: [
-                "Process input based cyclone sizing",
-                "Gas flow, particle and operating-condition calculations",
-                "Pressure-drop and separation-performance evaluation",
-                "Geometric parameterization of cyclone components",
-                "Design alternatives and comparative evaluation",
-                "Automated calculation sheets and engineering documentation",
-                "AI-based modelling support for engineering-driven prediction and design optimization"
-            ],
-            apps: "Dust collection, process plants, material handling, combustion systems, cement, minerals, chemicals and industrial pollution-control systems.",
-            value: "Combines established engineering relationships with data-driven computational methods to accelerate evaluation of cyclone designs.",
+            brief: "Centrifugal particulate separator used in industrial flue and process gas cleaning to extract dust and granules without filter media.",
+            ease: "Stops engineers from manually solving Stairmand cut-point formulas. Solves collection efficiency curves, sizes cylinder/cone proportions, and exports flat sheet-metal unrolls and 3D models with one click.",
             pdf: "/leaflets/aryaman-cyclone-leaflet.pdf"
         },
         {
             title: "Storage Tank Design Software",
             cat: "ENGINEERING DESIGN AUTOMATION",
-            intro: "A design automation solution for engineering and documentation of industrial storage tanks based on capacity, process and construction requirements.",
-            caps: [
-                "Capacity and dimensional calculations",
-                "Tank diameter, height and geometry selection",
-                "Shell, roof, bottom and support-related design inputs",
-                "Nozzle and connection configuration",
-                "Design checks and engineering calculations",
-                "BOM and material estimation support",
-                "Automated design reports and documentation"
-            ],
-            apps: "Water, chemicals, process liquids, utilities, industrial storage and manufacturing plants.",
-            value: "Standardizes tank design workflows and helps engineering teams move efficiently from specification to manufacturing-ready documentation.",
+            brief: "Cylindrical storage vessels designed to API 650 / IS 803 standards for bulk liquids, industrial chemicals, and process water handling.",
+            ease: "Replaces hours of spreadsheet shell thickness checks and nozzle placement. Automatically calculates wind girders, roof truss geometry, and nozzle cutouts, generating manufacturing BOMs and unrolled plate profiles.",
             pdf: "/leaflets/aryaman-storage-tank-leaflet.pdf"
         },
         {
             title: "Belt Conveyor Design Software",
             cat: "ENGINEERING DESIGN AUTOMATION",
-            intro: "A structured engineering platform for sizing and configuring belt conveyor systems for bulk material handling.",
-            caps: [
-                "Capacity and material-flow based design",
-                "Conveyor length, speed and belt-width calculations",
-                "Drive power and operating-condition evaluation",
-                "Inclination and conveying arrangement calculations",
-                "Pulley, idler and conveyor component selection support",
-                "BOM and engineering documentation",
-                "Design alternatives for different operating requirements"
-            ],
-            apps: "Bulk solids, minerals, aggregates, cement, food, chemicals, power plants and general material handling.",
-            value: "Creates a repeatable conveyor engineering workflow while reducing manual calculation and documentation effort.",
+            brief: "Continuous bulk material transport system handling coal, cement, aggregates, and minerals over long horizontal spans and inclines.",
+            ease: "Automates CEMA calculation standards: computes motor kW, belt tension, pulley diameters, and idler spacing, then outputs dynamic 3D truss assemblies directly into SolidWorks or Inventor.",
             pdf: "/leaflets/aryaman-belt-conveyor-leaflet.pdf"
         },
         {
             title: "Bucket Elevator Design Software",
             cat: "ENGINEERING DESIGN AUTOMATION",
-            intro: "Engineering software for the design and configuration of bucket elevators used for vertical bulk-material transportation.",
-            caps: [
-                "Capacity and material characteristics based design",
-                "Elevator height and bucket arrangement calculations",
-                "Belt/chain speed and drive-power evaluation",
-                "Bucket selection and spacing support",
-                "Head, boot and casing configuration",
-                "Component and BOM generation support",
-                "Engineering reports and design documentation"
-            ],
-            apps: "Cement, grains, fertilizers, minerals, chemicals, food processing and bulk-material handling plants.",
-            value: "Streamlines the complete preliminary design process and provides consistent engineering outputs for project execution.",
+            brief: "Vertical conveyor equipment designed for elevating powders, grains, and ores in compact, dust-tight vertical footprints.",
+            ease: "Sizes head and boot pulleys, chain/belt pull, and motor torque automatically. Generates casing fabrication cut-lists and fully mated bucket assemblies with zero manual redrawing.",
             pdf: "/leaflets/aryaman-bucket-elevator-leaflet.pdf"
         },
         {
             title: "Wet Scrubber Design Software",
             cat: "AI-ASSISTED ENGINEERING DESIGN",
-            intro: "A process and engineering design platform for wet scrubbers used for gas cleaning, particulate removal and selected gas-treatment applications.",
-            caps: [
-                "Gas-flow and contaminant-load based design inputs",
-                "Scrubber geometry and equipment sizing",
-                "Gas-side pressure-drop evaluation",
-                "Liquid circulation and operating-parameter calculations",
-                "Spray/contacting configuration support",
-                "Performance evaluation and design comparison",
-                "AI-based modelling capabilities for engineering-driven prediction and optimization"
-            ],
-            apps: "Industrial air pollution control, chemical processing, metal processing, combustion exhaust, mineral processing and process gas treatment.",
-            value: "Helps engineers evaluate scrubber configurations faster while combining process engineering calculations with data-driven computational intelligence.",
+            brief: "Gas cleaning and air pollution control equipment utilizing liquid contact to capture acid fumes, toxic vapors, and fine dust.",
+            ease: "Translates gas flow and pollutant concentration into optimal throat velocity, nozzle spray coverage, and demister sizing, generating verified vessel assemblies and piping layouts automatically.",
             pdf: "/leaflets/aryaman-wet-scrubber-leaflet.pdf"
         },
         {
             title: "Screw Conveyor Design Software",
             cat: "ENGINEERING DESIGN AUTOMATION",
-            intro: "Engineering software for the sizing and configuration of screw conveyors for controlled transport of bulk solids.",
-            caps: [
-                "Capacity and material-property based design",
-                "Screw diameter, pitch and rotational-speed calculations",
-                "Conveyor length and inclination evaluation",
-                "Drive power and torque calculations",
-                "Trough, shaft and flight configuration support",
-                "Component and BOM generation support",
-                "Engineering calculation reports"
-            ],
-            apps: "Powders, granules, ash, chemicals, food products, cement, minerals and process materials.",
-            value: "Provides a standardized approach to screw conveyor sizing and reduces engineering effort for repeated equipment designs.",
+            brief: "Enclosed helical screw transport system moving powders, granules, and sludges through troughs in process plants.",
+            ease: "Computes screw RPM, volumetric loading, and shaft deflection in real time. Generates helical flight cutting templates and fully mated trough assemblies ready for fabrication.",
             pdf: "/leaflets/aryaman-screw-conveyor-leaflet.pdf"
         },
         {
-            title: "Heat Exchanger \u2013 Fin Tube Type",
+            title: "Heat Exchanger – Fin Tube Type",
             cat: "THERMAL DESIGN AUTOMATION",
-            intro: "Thermal design software for fin-tube heat exchangers, supporting engineering evaluation from process requirements to equipment configuration.",
-            caps: [
-                "Hot- and cold-side process input definition",
-                "Heat-duty and temperature-program calculations",
-                "Tube, fin and geometry selection support",
-                "Heat-transfer and pressure-drop evaluation",
-                "Surface-area and performance calculations",
-                "Design iteration and comparison",
-                "Engineering calculation reports and documentation"
-            ],
-            apps: "Air coolers, gas heating/cooling, process equipment, HVAC, industrial dryers and thermal process systems.",
-            value: "Accelerates thermal sizing and helps engineers compare exchanger configurations using a consistent calculation workflow.",
+            brief: "Extended-surface heat exchanger designed for radiators, air coolers, and gas heating/cooling applications.",
+            ease: "Solves heat duty, fin density, and pressure-drop curves. Auto-selects fin geometry and header passes, exporting complete 3D tube bundles and tube-sheet cut-lists in minutes.",
             pdf: "/leaflets/aryaman-heat-exchanger-fin-tube-type-leaflet.pdf"
         },
         {
-            title: "Heat Exchanger \u2013 Shell & Tube Type",
+            title: "Heat Exchanger – Shell & Tube Type",
             cat: "THERMAL DESIGN AUTOMATION",
-            intro: "Engineering design software for shell-and-tube heat exchangers, supporting thermal sizing and configuration studies.",
-            caps: [
-                "Process-stream and heat-duty definition",
-                "Temperature-program and thermal-balance calculations",
-                "Tube-side and shell-side configuration",
-                "Heat-transfer area estimation",
-                "Pressure-drop evaluation",
-                "Tube, shell and baffle configuration support",
-                "Design iteration, comparison and engineering reports"
-            ],
-            apps: "Chemical, pharmaceutical, food, oil & gas, power, utilities and general process industries.",
-            value: "Brings thermal calculations and equipment configuration into a repeatable digital engineering workflow.",
+            brief: "TEMA and ASME Section VIII code-compliant thermal exchanger for process plants, refineries, and power stations.",
+            ease: "Eliminates manual tube layout drafting and baffle pitch calculations. Sizes the tube bundle, places mates dynamically, and outputs inspection-ready fabrication drawings with BOM.",
             pdf: "/leaflets/aryaman-heat-exchanger-shell-tube-type-leaflet.pdf"
         },
         {
             title: "Web Dryer Design Software",
-            cat: "THERMAL & PROCESS DESIGN AUTOMATION",
-            intro: "Engineering software for the preliminary design and process evaluation of web and continuous dryers for sheet, film and web-type products.",
-            caps: [
-                "Product and process-condition definition",
-                "Moisture-removal and drying-duty calculations",
-                "Airflow and thermal requirement evaluation",
-                "Drying-zone and equipment configuration support",
-                "Heat-transfer and energy-balance calculations",
-                "Fan/heater requirement estimation",
-                "Engineering documentation and design comparison"
-            ],
-            apps: "Paper, textile, film, coated sheets, continuous webs and industrial drying processes.",
-            value: "Helps engineers translate production and drying requirements into a structured equipment design with repeatable calculations.",
+            cat: "THERMAL & PROCESS AUTOMATION",
+            brief: "Continuous drying chamber for sheet, film, paper, and textile web materials moving over heated rollers and air knives.",
+            ease: "Solves complex moisture-removal and energy-balance equations. Converts line speed and moisture targets into drying zone chamber lengths and nozzle duct geometry in CAD.",
             pdf: "/leaflets/aryaman-web-dryer-leaflet.pdf"
         },
         {
             title: "Damper Design Software",
             cat: "ENGINEERING DESIGN AUTOMATION",
-            intro: "Design automation software for industrial air and gas dampers used to regulate, isolate or control flow in ducting systems.",
-            caps: [
-                "Flow and duct-size based damper sizing",
-                "Damper geometry and blade configuration",
-                "Pressure-drop evaluation",
-                "Material and construction selection support",
-                "Actuator and operating arrangement inputs",
-                "BOM and component documentation",
-                "Standardized design reports"
-            ],
-            apps: "Industrial ventilation, exhaust systems, air pollution control, HVAC, process plants and combustion-air systems.",
-            value: "Improves consistency in damper sizing and documentation while reducing repetitive engineering calculations.",
+            brief: "Industrial multi-louver and butterfly dampers regulating or isolating air and flue gas flow in high-temperature ducting.",
+            ease: "Sizes blade linkage, shaft diameters, and actuator torque from differential pressure specs. Generates complete multi-blade assemblies with kinematic linkage motion in CAD.",
             pdf: "/leaflets/aryaman-damper-leaflet.pdf"
         },
         {
-            title: "Ducting Design Software",
+            title: "Ducting Design Automation",
             cat: "ENGINEERING DESIGN AUTOMATION",
-            intro: "Engineering design software for industrial ducting systems, from airflow requirements and routing to pressure-drop evaluation and documentation.",
-            caps: [
-                "Airflow and duct-size calculations",
-                "Velocity and pressure-drop evaluation",
-                "Fittings, elbows, transitions and branches",
-                "System resistance and fan-duty evaluation",
-                "Duct geometry and routing configuration",
-                "Material take-off and BOM support",
-                "Engineering drawings and calculation documentation"
-            ],
-            apps: "Industrial ventilation, dust collection, exhaust, process air, HVAC and pollution-control systems.",
-            value: "Provides a systematic workflow for duct-system engineering and helps maintain consistency across complex installations.",
+            brief: "Heavy-duty ventilation and flue gas ducting networks with complex transitions, bends, and stiffening rings.",
+            ease: "Automates transition geometry, expansion joints, and SMACNA stiffener spacing. Generates flat sheet-metal unrolls and bend tables directly for CNC cutting.",
             pdf: "/leaflets/aryaman-ducting-leaflet.pdf"
         },
         {
             title: "Sheet Metal Nesting Software",
-            cat: "MANUFACTURING & NESTING AUTOMATION",
-            intro: "Nesting and manufacturing automation software for arranging sheet-metal parts efficiently on standard or custom sheets for cutting and fabrication.",
-            caps: [
-                "Automatic part nesting and layout generation",
-                "Material-utilization and scrap reduction analysis",
-                "Part quantity and sheet-size optimization",
-                "Kerf, spacing and manufacturing constraints support",
-                "Multiple part and batch nesting",
-                "NC/CNC preparation workflow support",
-                "Nesting reports and material-consumption documentation"
-            ],
-            apps: "Laser cutting, plasma cutting, oxy-fuel cutting, sheet-metal fabrication, HVAC, equipment manufacturing and industrial enclosures.",
-            value: "Improves material utilization, reduces manual nesting effort and creates a more efficient path from design data to cutting.",
+            cat: "MANUFACTURING AUTOMATION",
+            brief: "Plate layout optimization engine arranging multiple 2D CAD parts onto raw metal sheets to minimize cutting scrap.",
+            ease: "Ingests batches of DXF parts and runs algorithmic multi-part nesting in seconds, maximizing plate utilization (88%+) and generating ready-to-cut CNC laser/plasma paths.",
             pdf: "/leaflets/aryaman-sheet-metal-nesting-leaflet.pdf"
         }
     ];
@@ -239,10 +109,12 @@
     // ==========================================
     // 2. GLOBAL APP OBJECT (Namespace)
     // ==========================================
-    var DesignsfoundryApp = {
+    var DesignFoundryApp = {
         products: PRODUCTS,
 
-        // Modal methods
+        // Lightweight Product Modal with Visual Schematics
+        // Clean Engineering Intelligence Dossier Modal
+        // Pill-Driven Scannable Product Modal
         openProductModal: function (index) {
             var dlg = document.getElementById("pd");
             if (!dlg || !PRODUCTS[index]) return;
@@ -250,28 +122,79 @@
             var p = PRODUCTS[index];
             document.getElementById("pdCat").textContent = p.cat;
             document.getElementById("pdTitle").textContent = p.title;
-            document.getElementById("pdIntro").textContent = p.intro;
-            document.getElementById("pdApps").textContent = p.apps;
-            document.getElementById("pdVal").textContent = p.value;
 
-            var ul = document.getElementById("pdCaps");
-            ul.innerHTML = "";
-            p.caps.forEach(function (c) {
-                var li = document.createElement("li");
-                li.textContent = c;
-                ul.appendChild(li);
-            });
+            // 1-Line Brief
+            var elBrief = document.getElementById("pdBrief");
+            if (elBrief) elBrief.textContent = p.brief || p.intro;
 
-            document.getElementById("pdPdf").setAttribute("href", p.pdf);
+            // Render Application Pills Cloud
+            var elApps = document.getElementById("pdAppsPills");
+            if (elApps) {
+                elApps.innerHTML = "";
+                var appsList = p.apps ? p.apps.split(/[,•]/).map(function (s) { return s.trim(); }).filter(Boolean) : [];
+                appsList.forEach(function (app) {
+                    var chip = document.createElement("span");
+                    chip.className = "pd-chip";
+                    chip.textContent = app;
+                    elApps.appendChild(chip);
+                });
+            }
+
+            // Render Governing Codes Pills Cloud
+            var elStandards = document.getElementById("pdStandardsPills");
+            if (elStandards) {
+                elStandards.innerHTML = "";
+                var stdList = (p.standards || "ASME • ISO • INDUSTRIAL CODES").split(/[,•]/).map(function (s) { return s.trim(); }).filter(Boolean);
+                stdList.forEach(function (std) {
+                    var chip = document.createElement("span");
+                    chip.className = "pd-chip";
+                    chip.textContent = std;
+                    elStandards.appendChild(chip);
+                });
+            }
+
+            // Technical Leaflet PDF link
+            var elPdf = document.getElementById("pdPdf");
+            if (elPdf) elPdf.setAttribute("href", p.pdf);
 
             if (dlg.showModal) {
                 dlg.showModal();
             } else {
                 dlg.setAttribute("open", "");
             }
+        },
 
-            var body = dlg.querySelector(".pd-body");
-            if (body) body.scrollTop = 0;
+        // Lightweight CAD Blueprint Line-Art Generator
+        getSchematicSvg: function (index) {
+            var schematics = [
+                // 0: Axial Fan (Impeller & Casing)
+                '<svg viewBox="0 0 200 150" fill="none" stroke="#8cb4f0" stroke-width="1.5"><circle cx="100" cy="75" r="55" stroke-dasharray="3 3"/><circle cx="100" cy="75" r="50" stroke="#f26a0a" stroke-width="2"/><circle cx="100" cy="75" r="18" fill="#142a58" stroke="#ffffff"/><path d="M100 57 L100 25 M100 93 L100 125 M82 75 L50 75 M118 75 L150 75 M87 62 L64 39 M113 88 L136 111 M87 88 L64 111 M113 62 L136 39" stroke="#f26a0a" stroke-width="2.5"/><text x="100" y="145" font-size="9" fill="#8cb4f0" font-family="monospace" text-anchor="middle">DIA: Ø1200 MM &bull; 8 BLADES</text></svg>',
+                // 1: Cyclone (Cylinder & Cone)
+                '<svg viewBox="0 0 200 150" fill="none" stroke="#8cb4f0" stroke-width="1.5"><rect x="70" y="20" width="60" height="40" fill="#142a58" stroke="#f26a0a" stroke-width="2"/><polygon points="70,60 130,60 110,115 90,115" fill="#142a58" stroke="#f26a0a" stroke-width="2"/><rect x="88" y="115" width="24" height="15" stroke="#ffffff"/><line x1="45" y1="30" x2="70" y2="30" stroke="#f26a0a" stroke-width="2"/><rect x="90" y="10" width="20" height="25" stroke="#ffffff"/><text x="100" y="145" font-size="9" fill="#8cb4f0" font-family="monospace" text-anchor="middle">VORTEX: Ø800 &bull; DUST CONE</text></svg>',
+                // 2: Storage Tank
+                '<svg viewBox="0 0 200 150" fill="none" stroke="#8cb4f0" stroke-width="1.5"><path d="M60 40 Q100 25 140 40 L140 120 L60 120 Z" fill="#142a58" stroke="#f26a0a" stroke-width="2"/><line x1="60" y1="65" x2="140" y2="65" stroke-dasharray="3 3"/><line x1="60" y1="92" x2="140" y2="92" stroke-dasharray="3 3"/><circle cx="100" cy="80" r="4" fill="#f26a0a"/><text x="100" y="145" font-size="9" fill="#8cb4f0" font-family="monospace" text-anchor="middle">API 650 &bull; 50 KL VESSEL</text></svg>',
+                // 3: Belt Conveyor
+                '<svg viewBox="0 0 200 150" fill="none" stroke="#8cb4f0" stroke-width="1.5"><circle cx="45" cy="75" r="18" fill="#142a58" stroke="#f26a0a" stroke-width="2"/><circle cx="155" cy="75" r="18" fill="#142a58" stroke="#f26a0a" stroke-width="2"/><line x1="45" y1="57" x2="155" y2="57" stroke="#ffffff" stroke-width="2"/><line x1="45" y1="93" x2="155" y2="93" stroke="#ffffff" stroke-width="2"/><circle cx="85" cy="62" r="6" stroke="#8cb4f0"/><circle cx="115" cy="62" r="6" stroke="#8cb4f0"/><text x="100" y="145" font-size="9" fill="#8cb4f0" font-family="monospace" text-anchor="middle">SPAN: 24 M &bull; 650 MM BELT</text></svg>',
+                // 4: Bucket Elevator
+                '<svg viewBox="0 0 200 150" fill="none" stroke="#8cb4f0" stroke-width="1.5"><rect x="75" y="20" width="50" height="105" fill="#142a58" stroke="#8cb4f0"/><circle cx="100" cy="35" r="10" stroke="#f26a0a"/><circle cx="100" cy="110" r="10" stroke="#f26a0a"/><rect x="80" y="52" width="10" height="8" fill="#f26a0a"/><rect x="80" y="75" width="10" height="8" fill="#f26a0a"/><rect x="110" y="60" width="10" height="8" fill="#f26a0a"/><text x="100" y="145" font-size="9" fill="#8cb4f0" font-family="monospace" text-anchor="middle">LIFT: 18 M &bull; 45 TPH</text></svg>',
+                // 5: Wet Scrubber
+                '<svg viewBox="0 0 200 150" fill="none" stroke="#8cb4f0" stroke-width="1.5"><rect x="70" y="20" width="60" height="100" rx="4" fill="#142a58" stroke="#f26a0a" stroke-width="2"/><line x1="50" y1="95" x2="70" y2="95" stroke="#ffffff" stroke-width="2"/><line x1="100" y1="20" x2="100" y2="5" stroke="#ffffff" stroke-width="2"/><line x1="80" y1="50" x2="120" y2="50" stroke="#f26a0a" stroke-dasharray="2 2"/><text x="100" y="145" font-size="9" fill="#8cb4f0" font-family="monospace" text-anchor="middle">GAS FLOW: 15,000 M³/HR</text></svg>',
+                // 6: Screw Conveyor
+                '<svg viewBox="0 0 200 150" fill="none" stroke="#8cb4f0" stroke-width="1.5"><rect x="30" y="60" width="140" height="30" fill="#142a58" stroke="#8cb4f0"/><line x1="20" y1="75" x2="180" y2="75" stroke="#ffffff" stroke-width="2"/><path d="M40 63 Q50 75 40 87 M65 63 Q75 75 65 87 M90 63 Q100 75 90 87 M115 63 Q125 75 115 87 M140 63 Q150 75 140 87" stroke="#f26a0a" stroke-width="2.5"/><text x="100" y="145" font-size="9" fill="#8cb4f0" font-family="monospace" text-anchor="middle">PITCH: 250 MM &bull; SHAFT Ø60</text></svg>',
+                // 7: Fin Tube Exchanger
+                '<svg viewBox="0 0 200 150" fill="none" stroke="#8cb4f0" stroke-width="1.5"><rect x="40" y="40" width="120" height="65" fill="#142a58" stroke="#f26a0a" stroke-width="2"/><line x1="55" y1="40" x2="55" y2="105" stroke="#ffffff"/><line x1="85" y1="40" x2="85" y2="105" stroke="#ffffff"/><line x1="115" y1="40" x2="115" y2="105" stroke="#ffffff"/><line x1="145" y1="40" x2="145" y2="105" stroke="#ffffff"/><path d="M40 55 H160 M40 72 H160 M40 90 H160" stroke="#f26a0a" stroke-dasharray="2 3"/><text x="100" y="145" font-size="9" fill="#8cb4f0" font-family="monospace" text-anchor="middle">FIN DENSITY: 11 FPI</text></svg>',
+                // 8: Shell & Tube Exchanger
+                '<svg viewBox="0 0 200 150" fill="none" stroke="#8cb4f0" stroke-width="1.5"><rect x="40" y="45" width="120" height="55" rx="10" fill="#142a58" stroke="#f26a0a" stroke-width="2"/><line x1="60" y1="45" x2="60" y2="100" stroke="#ffffff" stroke-width="2"/><line x1="140" y1="45" x2="140" y2="100" stroke="#ffffff" stroke-width="2"/><line x1="65" y1="62" x2="135" y2="62" stroke="#8cb4f0" stroke-dasharray="4 2"/><line x1="65" y1="82" x2="135" y2="82" stroke="#8cb4f0" stroke-dasharray="4 2"/><text x="100" y="145" font-size="9" fill="#8cb4f0" font-family="monospace" text-anchor="middle">TEMA CLASS R &bull; 2-PASS</text></svg>',
+                // 9: Web Dryer
+                '<svg viewBox="0 0 200 150" fill="none" stroke="#8cb4f0" stroke-width="1.5"><rect x="35" y="45" width="130" height="55" fill="#142a58" stroke="#8cb4f0"/><path d="M30 72 H170" stroke="#f26a0a" stroke-width="2.5"/><circle cx="65" cy="62" r="5" stroke="#ffffff"/><circle cx="100" cy="62" r="5" stroke="#ffffff"/><circle cx="135" cy="62" r="5" stroke="#ffffff"/><text x="100" y="145" font-size="9" fill="#8cb4f0" font-family="monospace" text-anchor="middle">3 THERMAL ZONES &bull; 120 M/MIN</text></svg>',
+                // 10: Damper
+                '<svg viewBox="0 0 200 150" fill="none" stroke="#8cb4f0" stroke-width="1.5"><rect x="50" y="30" width="100" height="85" fill="#142a58" stroke="#8cb4f0" stroke-width="2"/><line x1="55" y1="50" x2="145" y2="50" stroke="#f26a0a" stroke-width="3"/><line x1="55" y1="72" x2="145" y2="72" stroke="#f26a0a" stroke-width="3"/><line x1="55" y1="94" x2="145" y2="94" stroke="#f26a0a" stroke-width="3"/><circle cx="145" cy="50" r="3" fill="#ffffff"/><circle cx="145" cy="72" r="3" fill="#ffffff"/><circle cx="145" cy="94" r="3" fill="#ffffff"/><line x1="145" y1="45" x2="145" y2="98" stroke="#ffffff"/><text x="100" y="145" font-size="9" fill="#8cb4f0" font-family="monospace" text-anchor="middle">OPPOSED BLADE &bull; LEAK CLASS IV</text></svg>',
+                // 11: Ducting
+                '<svg viewBox="0 0 200 150" fill="none" stroke="#8cb4f0" stroke-width="1.5"><path d="M40 45 L90 45 L130 65 L160 65 L160 95 L130 95 L90 115 L40 115 Z" fill="#142a58" stroke="#f26a0a" stroke-width="2"/><line x1="40" y1="40" x2="40" y2="120" stroke="#ffffff" stroke-width="2"/><line x1="160" y1="60" x2="160" y2="100" stroke="#ffffff" stroke-width="2"/><text x="100" y="145" font-size="9" fill="#8cb4f0" font-family="monospace" text-anchor="middle">RECT-TO-ROUND TRANSITION</text></svg>',
+                // 12: Sheet Metal Nesting
+                '<svg viewBox="0 0 200 150" fill="none" stroke="#8cb4f0" stroke-width="1.5"><rect x="35" y="30" width="130" height="85" fill="#142a58" stroke="#ffffff" stroke-width="1.5"/><rect x="42" y="38" width="35" height="25" fill="rgba(242,106,10,0.3)" stroke="#f26a0a"/><circle cx="105" cy="50" r="12" fill="rgba(242,106,10,0.3)" stroke="#f26a0a"/><polygon points="45,72 70,72 60,105 45,105" fill="rgba(242,106,10,0.3)" stroke="#f26a0a"/><rect x="85" y="72" width="40" height="35" fill="rgba(242,106,10,0.3)" stroke="#f26a0a"/><polygon points="135,38 158,38 158,95 135,70" fill="rgba(242,106,10,0.3)" stroke="#f26a0a"/><text x="100" y="145" font-size="9" fill="#8cb4f0" font-family="monospace" text-anchor="middle">UTILIZATION: 88.4% &bull; SCRAP &minus;42%</text></svg>'
+            ];
+            return schematics[index] || schematics[0];
         },
 
         closeProductModal: function () {
@@ -310,31 +233,55 @@
     };
 
     // Expose application object globally
-    window.DesignsfoundryApp = DesignsfoundryApp;
+    window.DesignFoundryApp = DesignFoundryApp;
 
     // ==========================================
     // 3. EVENT LISTENERS INITIALIZATION
     // ==========================================
     document.addEventListener("DOMContentLoaded", function () {
-        DesignsfoundryApp.initReducedMotion();
+        DesignFoundryApp.initReducedMotion();
 
         // Product modal triggers
         document.querySelectorAll("button.prod").forEach(function (b) {
             b.addEventListener("click", function () {
                 var idx = parseInt(b.getAttribute("data-i"), 10);
-                DesignsfoundryApp.openProductModal(idx);
+                DesignFoundryApp.openProductModal(idx);
             });
         });
+
+        // Foundation View Switcher (Conveyor vs All 13 Engines Grid)
+        (function initFoundationViewSwitch() {
+            var btnConveyor = document.getElementById("btnViewConveyor");
+            var btnGrid = document.getElementById("btnViewGrid");
+            var conveyorWrap = document.getElementById("prodConveyor");
+            var gridWrap = document.getElementById("foundationGridView");
+
+            if (!btnConveyor || !btnGrid || !conveyorWrap || !gridWrap) return;
+
+            btnConveyor.addEventListener("click", function () {
+                btnConveyor.classList.add("active");
+                btnGrid.classList.remove("active");
+                conveyorWrap.style.display = "block";
+                gridWrap.style.display = "none";
+            });
+
+            btnGrid.addEventListener("click", function () {
+                btnGrid.classList.add("active");
+                btnConveyor.classList.remove("active");
+                conveyorWrap.style.display = "none";
+                gridWrap.style.display = "block";
+            });
+        })();
 
         // Product modal close buttons
         var closeBtn = document.getElementById("pdClose");
         if (closeBtn) {
-            closeBtn.addEventListener("click", DesignsfoundryApp.closeProductModal);
+            closeBtn.addEventListener("click", DesignFoundryApp.closeProductModal);
         }
 
         var talkBtn = document.getElementById("pdTalk");
         if (talkBtn) {
-            talkBtn.addEventListener("click", DesignsfoundryApp.closeProductModal);
+            talkBtn.addEventListener("click", DesignFoundryApp.closeProductModal);
         }
 
         // Close on backdrop click
@@ -342,7 +289,7 @@
         if (dlg) {
             dlg.addEventListener("click", function (e) {
                 if (e.target === dlg) {
-                    DesignsfoundryApp.closeProductModal();
+                    DesignFoundryApp.closeProductModal();
                 }
             });
         }
@@ -1048,7 +995,7 @@
         }
 
         // ==========================================
-        // DYNAMIC PICK & PLACE ADJUSTMENT ENGINE
+        // DYNAMIC PICK & PLACE ADJUSTMENT ENGINE + AMBIENT AUTO-DEMO
         // ==========================================
         var pnpSlider = document.getElementById("pnpSlider");
         var pnpStrokeVal = document.getElementById("pnpStrokeVal");
@@ -1059,9 +1006,15 @@
         var svgDimTickR = document.getElementById("svgDimTickR");
         var svgDimText = document.getElementById("svgDimText");
         var svgTargetZone = document.getElementById("svgTargetZone");
+        var svgCarriageGroup = document.getElementById("svgCarriageGroup");
         var telemDeflect = document.getElementById("telemDeflect");
         var telemTorque = document.getElementById("telemTorque");
+        var simDemoBadge = document.getElementById("simDemoBadge");
         var presetBtns = document.querySelectorAll(".preset-btn");
+
+        var userHasInteracted = false;
+        var demoRaf = null;
+        var autoDemoTimer = null;
 
         function updatePnpMachine(stroke) {
             stroke = parseInt(stroke, 10);
@@ -1089,6 +1042,12 @@
             }
             if (svgTargetZone) svgTargetZone.setAttribute("x", postX - 32);
 
+            // Dynamic Carriage Travel along the rail
+            if (svgCarriageGroup) {
+                var carriageX = 84 + progress * (postX - 140);
+                svgCarriageGroup.setAttribute("transform", "translate(" + (carriageX - 84) + ", 0)");
+            }
+
             // Dynamic Engineering Telemetry calculation
             if (telemDeflect) {
                 var def = (0.024 + progress * 0.038).toFixed(3);
@@ -1100,8 +1059,78 @@
             }
         }
 
+        // Stop auto-demo and give permanent manual control
+        function stopAmbientDemo() {
+            if (userHasInteracted) return;
+            userHasInteracted = true;
+            if (demoRaf) cancelAnimationFrame(demoRaf);
+            if (autoDemoTimer) clearTimeout(autoDemoTimer);
+            if (simDemoBadge) {
+                simDemoBadge.textContent = "MANUAL CONTROL";
+                simDemoBadge.classList.remove("is-demo");
+                simDemoBadge.classList.add("is-manual");
+            }
+        }
+
+        // Ambient Demonstration: Smooth sinusoidal sweep between 350mm & 600mm
+        function runAmbientDemo() {
+            if (userHasInteracted) return;
+            var startTime = null;
+            var duration = 4000; // 4s cycle
+
+            if (simDemoBadge) {
+                simDemoBadge.textContent = "DRAG TO CONTROL";
+                simDemoBadge.classList.add("is-demo");
+            }
+
+            function demoStep(timestamp) {
+                if (userHasInteracted) return;
+                if (!startTime) startTime = timestamp;
+                var elapsed = timestamp - startTime;
+                var t = (elapsed % duration) / duration;
+
+                // Smooth sinusoidal sweep: 450 -> 600 -> 350 -> 450
+                var currentStroke = Math.round(475 + 125 * Math.sin(t * Math.PI * 2));
+                updatePnpMachine(currentStroke);
+
+                // Update preset buttons visually during demo
+                presetBtns.forEach(function (btn) {
+                    var val = parseInt(btn.getAttribute("data-stroke"), 10);
+                    if (Math.abs(val - currentStroke) < 25) {
+                        btn.classList.add("active");
+                    } else {
+                        btn.classList.remove("active");
+                    }
+                });
+
+                demoRaf = requestAnimationFrame(demoStep);
+            }
+
+            demoRaf = requestAnimationFrame(demoStep);
+        }
+
+        // Trigger auto-demo when Copilot section scrolls into view
+        var copilotSection = document.getElementById("copilot");
+        if (copilotSection && "IntersectionObserver" in window) {
+            var copilotObserver = new IntersectionObserver(function (entries) {
+                entries.forEach(function (entry) {
+                    if (entry.isIntersecting && !userHasInteracted) {
+                        autoDemoTimer = setTimeout(runAmbientDemo, 2000);
+                    } else if (!entry.isIntersecting && !userHasInteracted) {
+                        if (demoRaf) cancelAnimationFrame(demoRaf);
+                        if (autoDemoTimer) clearTimeout(autoDemoTimer);
+                    }
+                });
+            }, { threshold: 0.35 });
+            copilotObserver.observe(copilotSection);
+        }
+
+        // User Controls & Overrides
         if (pnpSlider) {
+            pnpSlider.addEventListener("mousedown", stopAmbientDemo);
+            pnpSlider.addEventListener("touchstart", stopAmbientDemo, { passive: true });
             pnpSlider.addEventListener("input", function (e) {
+                stopAmbientDemo();
                 updatePnpMachine(e.target.value);
                 presetBtns.forEach(function (b) { b.classList.remove("active"); });
             });
@@ -1109,6 +1138,7 @@
 
         presetBtns.forEach(function (b) {
             b.addEventListener("click", function () {
+                stopAmbientDemo();
                 var s = b.getAttribute("data-stroke");
                 updatePnpMachine(s);
                 presetBtns.forEach(function (btn) { btn.classList.remove("active"); });
@@ -1178,7 +1208,7 @@
         document.querySelectorAll(".copy").forEach(function (b) {
             b.addEventListener("click", function () {
                 var targetText = b.getAttribute("data-copy");
-                DesignsfoundryApp.copyToClipboard(targetText, b);
+                DesignFoundryApp.copyToClipboard(targetText, b);
             });
         });
 
@@ -1239,32 +1269,66 @@
                     el.classList.add("scroll-reveal");
                     revealObserver.observe(el);
                 });
-
-                // 3. ScrollSpy for Floating Navbar
+                // 3. Robust ScrollSpy for Floating Navbar
                 var sections = document.querySelectorAll("section[id]");
-                var navLinks = document.querySelectorAll(".nav-links a[href^='#']");
+                var navLinks = document.querySelectorAll(".nav-links a");
+                var currentPath = window.location.pathname.toLowerCase().replace(/\/$/, "");
 
+                // A. Auto-highlight standalone page links (e.g. /About, /Faq)
+                navLinks.forEach(function (link) {
+                    var href = link.getAttribute("href") || "";
+                    if (!href.includes("#")) {
+                        var linkPath = href.toLowerCase().replace(/\/$/, "");
+                        if (currentPath === linkPath && linkPath !== "") {
+                            link.classList.add("active");
+                        }
+                    }
+                });
+
+                // B. Section ScrollSpy for Home Page (#answers, #why, #copilot, #contact)
                 if (sections.length && navLinks.length) {
                     var spyObserver = new IntersectionObserver(function (entries) {
                         entries.forEach(function (entry) {
                             if (entry.isIntersecting) {
                                 var id = entry.target.getAttribute("id");
                                 navLinks.forEach(function (link) {
-                                    if (link.getAttribute("href") === "#" + id) {
+                                    var href = link.getAttribute("href") || "";
+                                    var hash = href.includes("#") ? href.split("#")[1] : "";
+                                    if (hash === id) {
                                         link.classList.add("active");
-                                    } else {
+                                    } else if (hash) {
                                         link.classList.remove("active");
                                     }
                                 });
                             }
                         });
                     }, {
-                        threshold: 0.2,
-                        rootMargin: "-60px 0px -40% 0px"
+                        threshold: 0.25,
+                        rootMargin: "-80px 0px -35% 0px"
                     });
 
                     sections.forEach(function (sec) {
                         spyObserver.observe(sec);
+                    });
+
+                    // C. In-page smooth scroll on clicking navbar links on the home page
+                    navLinks.forEach(function (link) {
+                        var href = link.getAttribute("href") || "";
+                        if (href.includes("#")) {
+                            link.addEventListener("click", function (e) {
+                                var hash = href.split("#")[1];
+                                var targetEl = document.getElementById(hash);
+                                if (targetEl && (currentPath === "" || currentPath === "/")) {
+                                    e.preventDefault();
+                                    if (window.lenis) {
+                                        window.lenis.scrollTo(targetEl, { offset: -30 });
+                                    } else {
+                                        targetEl.scrollIntoView({ behavior: "smooth" });
+                                    }
+                                    history.pushState(null, null, "#" + hash);
+                                }
+                            });
+                        }
                     });
                 }
             }
@@ -1279,13 +1343,13 @@
 
             function applyTheme(theme) {
                 html.setAttribute("data-theme", theme);
-                localStorage.setItem("designsfoundry_theme", theme);
+                localStorage.setItem("DesignFoundry_theme", theme);
                 if (themeBtn) {
                     themeBtn.setAttribute("aria-label", "Switch to " + (theme === "dark" ? "light" : "dark") + " mode");
                 }
             }
 
-            var currentTheme = html.getAttribute("data-theme") || localStorage.getItem("designsfoundry_theme") || "dark";
+            var currentTheme = html.getAttribute("data-theme") || localStorage.getItem("DesignFoundry_theme") || "dark";
             applyTheme(currentTheme);
 
             if (themeBtn) {
@@ -1614,3 +1678,5 @@
     });
 
 })(window, document);
+
+

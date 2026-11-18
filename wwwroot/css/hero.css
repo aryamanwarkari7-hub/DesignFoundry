@@ -1,52 +1,58 @@
 /* ==========================================================
    HERO SECTION - 21st.dev DESIGNALI INSPIRED
-   Strict 100vh Single Viewport Architecture with Global Tokens
+   Strict 100vh Optical Centering & Balanced Micro-Hierarchy
 ========================================================== */
 
-/* 1. Master Single-Viewport Hero Container */
+/* 1. Master 100vh Single-Viewport Hero Container */
 .hero-designali {
-  position: relative;
-  min-height: calc(100vh - 72px); /* Fits exact viewport below navbar */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding-block: var(--space-md) var(--space-lg);
+  height: 100vh !important;
+  min-height: 100vh !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  align-items: center !important;
+  box-sizing: border-box !important;
+  padding-top: 45px !important; /* Offsets floating navbar for dead-center optical balance */
+  padding-bottom: 34px !important;
+  position: relative !important;
+  overflow: hidden !important; /* Guarantees DATUM 01 & next section stay 100% below fold */
   text-align: center;
-  overflow: hidden;
 }
 
-/* Radial Architectural Grid Background (Disabled to eliminate double grid conflict) */
+/* Background Grid (Canvas handles main grid) */
 .hero-grid-bg {
   display: none;
 }
 
+/* 2. Center Content Stage */
 .hero-center-container {
   position: relative;
   z-index: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
-  max-width: 980px;
+  max-width: 860px;
   width: 100%;
   margin: 0 auto;
+  text-align: center;
 }
 
-/* 2. Announcement Pill */
+/* 3. Announcement Pill */
 .hero-announcement-pill {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 5px 16px;
+  padding: 6px 18px;
   border-radius: var(--radius-pill);
   background: rgba(18, 42, 92, 0.75);
   border: 1px solid rgba(255, 255, 255, 0.2);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  font-size: var(--font-xs);
+  font-size: 12px;
   color: #d1dcfa;
   text-decoration: none;
   transition: all var(--transition-fast);
-  margin-bottom: var(--space-sm);
+  margin-bottom: 22px;
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.3),
     0 4px 16px rgba(0, 0, 0, 0.25);
@@ -95,14 +101,14 @@
   transform: translateX(3px);
 }
 
-/* 3. Hero Typography */
+/* 4. Flagship Hero Headline */
 .hero-title {
-  font-size: clamp(2rem, 3.4vw, 2.9rem);
-  line-height: 1.12;
-  font-weight: var(--fw-bold);
-  letter-spacing: -0.02em;
+  font-size: clamp(2.5rem, 4.8vw, 3.85rem) !important;
+  line-height: 1.14 !important;
+  font-weight: var(--fw-bold) !important;
+  letter-spacing: -0.025em !important;
   color: var(--text-head);
-  margin-bottom: 12px;
+  margin-bottom: 18px !important;
 }
 
 .hero-gradient-text {
@@ -112,15 +118,15 @@
   -webkit-text-fill-color: transparent;
 }
 
-/* Typewriter line */
+/* 5. Precision Typewriter Row */
 .hero-typewriter-row {
   display: inline-flex;
   align-items: center;
-  font-size: var(--font-xs);
+  font-size: 12.5px;
   color: var(--text-muted);
-  margin-bottom: 8px;
-  letter-spacing: 0.05em;
-  min-height: 22px;
+  letter-spacing: 0.08em;
+  margin-bottom: 18px;
+  min-height: 24px;
 }
 
 .hero-typewriter-row .type-prefix {
@@ -151,32 +157,35 @@
   }
 }
 
-/* Lead Copy */
+/* 6. Lead Subtitle Copy */
 .hero-lead {
-  font-size: var(--font-base);
+  font-size: clamp(1.05rem, 1.25vw, 1.22rem) !important;
   color: var(--text-secondary);
-  max-width: 36em;
-  line-height: 1.45;
-  margin: 0 auto 16px;
+  max-width: 38em;
+  line-height: 1.6 !important;
+  margin: 0 auto 34px !important;
 }
 
-/* CTA Buttons */
+/* 7. Action CTA Row */
 .hero-cta-row {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-  gap: var(--space-md);
-  margin: var(--space-lg);
+  gap: 16px;
+  margin: 0 !important;
 }
 
-/* 4. Streamlined 3-Card Enterprise Grid (Fits in Viewport) */
+/* ==========================================================
+   OPTIONAL 3-CARD GRID (Preserved if Re-enabled in HTML)
+========================================================== */
+
 .hero-cards-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: var(--space-md);
   width: 100%;
-  margin-top: 6px;
+  margin-top: 28px;
   text-align: left;
 }
 
@@ -184,38 +193,62 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 14px 16px;
-  min-height: auto; /* Removes the 220px vertical push */
-  background:
-    linear-gradient(
-      135deg,
-      rgba(255, 255, 255, 0.07) 0%,
-      rgba(255, 255, 255, 0.02) 100%
-    ),
-    rgba(11, 28, 64, 0.72);
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  border-radius: var(--radius-xl);
-  backdrop-filter: blur(10px) saturate(180%);
-  -webkit-backdrop-filter: blur(10px) saturate(180%);
-  box-shadow:
-    inset 0 1px 1.5px 0 rgba(255, 255, 255, 0.35),
-    0 12px 28px -8px rgba(0, 0, 0, 0.45);
+  padding: 16px 18px;
+  min-height: auto;
+  background: var(--glass-bg, rgba(11, 28, 64, 0.72));
+  border: 1px solid var(--glass-border, rgba(255, 255, 255, 0.14));
+  border-radius: var(--radius-xl, 16px);
+  backdrop-filter: blur(12px) saturate(180%);
+  -webkit-backdrop-filter: blur(12px) saturate(180%);
+  box-shadow: var(--glass-shadow, 0 12px 28px -8px rgba(0, 0, 0, 0.45));
   transition:
     transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
     border-color 0.25s cubic-bezier(0.16, 1, 0.3, 1),
     box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-feature-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--primary-accent),
+    transparent
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
 .hero-feature-card:hover {
   transform: translateY(-3px);
-  border-color: rgba(242, 106, 10, 0.65);
+  border-color: rgba(242, 106, 10, 0.5);
   box-shadow:
-    inset 0 1px 2px 0 rgba(255, 255, 255, 0.75),
-    0 16px 36px -8px rgba(0, 0, 0, 0.55),
-    0 0 20px 0 rgba(242, 106, 10, 0.25);
+    0 16px 36px -8px rgba(0, 0, 0, 0.5),
+    0 0 24px 0 rgba(242, 106, 10, 0.15);
 }
 
-/* Card Header */
+.hero-feature-card:hover::before {
+  opacity: 1;
+}
+
+.h-card-body {
+  margin-block: 6px 12px;
+}
+
+.h-card-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-top: auto;
+}
+
 .h-card-head {
   display: flex;
   justify-content: space-between;
@@ -242,7 +275,6 @@
   color: var(--text-muted);
 }
 
-/* Card Body */
 .h-card-title {
   font-size: var(--font-base);
   font-weight: var(--fw-bold);
@@ -258,14 +290,6 @@
   margin-bottom: 10px;
 }
 
-/* Card Pill Footer */
-.h-card-pills {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 4px;
-  margin-top: auto;
-}
-
 .h-card-pills .glass-pill {
   font-size: 9px;
   padding: 2px 8px;
@@ -275,11 +299,16 @@
   color: var(--text-secondary);
 }
 
-/* Responsive adjustment for tablets & mobile */
+/* ==========================================================
+   RESPONSIVE (Tablets & Mobile)
+========================================================== */
+
 @media (max-width: 900px) {
   .hero-designali {
-    min-height: auto;
-    padding-block: var(--space-2xl);
+    height: auto !important;
+    min-height: 100vh !important;
+    padding-block: clamp(80px, 12vh, 100px) 48px !important;
+    overflow: visible !important;
   }
   .hero-cards-grid {
     grid-template-columns: 1fr;
@@ -288,190 +317,25 @@
 }
 
 /* ==========================================================
-   AMBIENT CAD FLANK SCHEMATICS (Eliminates Side Voids)
+   LIGHT THEME HARMONIZATION
 ========================================================== */
 
-.hero-cad-flank {
-  position: absolute;
-  top: 26%;
-  transform: translateY(-50%);
-  width: 210px;
-  padding: 14px 16px;
-  border-radius: var(--radius-xl);
-  background: rgba(10, 24, 55, 0.45);
-  border: 1px solid rgba(140, 180, 240, 0.15);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  font-size: 11px;
-  color: rgba(180, 205, 255, 0.65);
-  pointer-events: none;
-  user-select: none;
-  z-index: 1;
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.1),
-    0 16px 36px rgba(0, 0, 0, 0.35);
-  transition: opacity var(--transition-normal);
-  animation: flankPulse 4s ease-in-out infinite alternate;
-}
-
-@keyframes flankPulse {
-  0% {
-    opacity: 0.85;
-  }
-  100% {
-    opacity: 0.85;
-  }
-}
-
-.flank-left {
-  left: clamp(80px, 18vw, 200px);
-  text-align: center;
-}
-
-.flank-right {
-  right: clamp(80px, 18vw, 200px);
-  text-align: left;
-}
-
-/* Flank Header */
-.flank-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 10px;
-  border-bottom: 1px dashed rgba(140, 180, 240, 0.2);
-  padding-bottom: 6px;
-}
-
-.flank-crosshair {
-  color: var(--primary-accent);
-  font-size: 14px;
-}
-
-.flank-badge {
-  padding: 1px 6px;
-  border-radius: var(--radius-pill);
-  background: rgba(242, 106, 10, 0.15);
-  border: 1px solid rgba(242, 106, 10, 0.35);
-  color: var(--primary-accent);
-  font-size: 9px;
-  font-weight: var(--fw-semibold);
-}
-
-.flank-badge-green {
-  padding: 1px 6px;
-  border-radius: var(--radius-pill);
-  background: rgba(40, 200, 120, 0.15);
-  border: 1px solid rgba(40, 200, 120, 0.35);
-  color: #38ef7d;
-  font-size: 9px;
-  font-weight: var(--fw-semibold);
-}
-
-.flank-coord {
-  font-size: 10px;
-  color: var(--text-muted);
-}
-
-/* Orthographic Dimension Line */
-.flank-dimension {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 4px;
-  margin: 10px 0;
-  color: #ffffff;
-  font-weight: var(--fw-semibold);
-  font-size: 10.5px;
-}
-
-.dim-line {
-  flex: 1;
-  height: 1px;
-  background: rgba(140, 180, 240, 0.35);
-}
-
-.dim-val {
-  color: var(--primary-accent);
-  white-space: nowrap;
-}
-
-.dim-tick {
-  color: rgba(140, 180, 240, 0.5);
-  font-size: 12px;
-}
-
-/* Feature Tree */
-.flank-tree-block {
-  margin: 8px 0;
-  line-height: 1.5;
-}
-
-.tree-title {
-  color: #ffffff;
-  font-weight: var(--fw-semibold);
-  margin-bottom: 4px;
-  display: flex;
-  align-items: center;
-  gap: 5px;
-}
-
-.tree-title i {
-  color: var(--primary-accent);
-}
-
-.tree-branch {
-  color: rgba(180, 205, 255, 0.7);
-  font-size: 10px;
-  padding-left: 6px;
-}
-
-/* Data Rows */
-.flank-data-block {
-  display: flex;
-  flex-direction: column;
-  gap: 3px;
-  margin-top: 8px;
-  border-top: 1px dashed rgba(140, 180, 240, 0.2);
-  padding-top: 6px;
-}
-
-.data-row {
-  display: flex;
-  justify-content: space-between;
-  font-size: 9.5px;
-}
-
-.data-row span {
-  color: var(--text-muted);
-}
-
-.status-ok {
-  color: #38ef7d;
-}
-
-/* Hide on screens narrower than 1280px to avoid crowding the center */
-@media (max-width: 1280px) {
-  .hero-cad-flank {
-    display: none;
-  }
-}
-
-/* ==========================================================
-   HERO LIGHT THEME HARMONIZATION (Strip & Text Matching)
-========================================================== */
 :root[data-theme="light"] .hero-announcement-pill {
   background: rgba(11, 31, 77, 0.05);
   border: 1px solid rgba(11, 31, 77, 0.15);
   color: #0b1f4d;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9), 0 4px 14px rgba(11, 31, 77, 0.05);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.9),
+    0 4px 14px rgba(11, 31, 77, 0.05);
 }
 
 :root[data-theme="light"] .hero-announcement-pill:hover {
   background: rgba(11, 31, 77, 0.09);
   border-color: var(--primary-accent);
   color: var(--primary-accent);
-  box-shadow: 0 6px 18px rgba(11, 31, 77, 0.08), 0 0 14px rgba(242, 106, 10, 0.18);
+  box-shadow:
+    0 6px 18px rgba(11, 31, 77, 0.08),
+    0 0 14px rgba(242, 106, 10, 0.18);
 }
 
 :root[data-theme="light"] .hero-announcement-pill .badge-arrow i {
@@ -486,13 +350,5 @@
 }
 
 :root[data-theme="light"] .hero-typewriter-row .type-prefix {
-  color: #64748b;
-}
-
-:root[data-theme="light"] .flank-data-block {
-  border-top-color: rgba(11, 31, 77, 0.12);
-}
-
-:root[data-theme="light"] .data-row span {
   color: #64748b;
 }

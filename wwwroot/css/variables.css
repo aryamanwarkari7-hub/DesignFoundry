@@ -141,7 +141,7 @@
        LAYOUT & TRANSITIONS
     ========================================== */
   --navbar-height: 64px;
-  --max-width: 1400px;
+  --max-width: 1200px;
   --gutter: max(16px, env(safe-area-inset-left, 0px));
   --gutter-r: max(16px, env(safe-area-inset-right, 0px));
   --transition-fast: 0.2s ease;

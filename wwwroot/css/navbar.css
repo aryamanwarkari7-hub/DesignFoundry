@@ -49,6 +49,46 @@ header.header-floating {
 /* ==========================================
    LOGO & BRANDING
 ========================================== */
+.app-logo,
+.logo-img {
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+  flex-shrink: 0;
+  display: block;
+  transition:
+    transform var(--transition-fast),
+    filter var(--transition-fast);
+}
+
+.logo:hover .app-logo,
+.logo:hover .logo-img {
+  transform: scale(1.06);
+  filter: drop-shadow(0 0 10px rgba(242, 106, 10, 0.5));
+}
+
+/* Theme Switching for Dual Logos */
+:root .light-logo,
+:root[data-theme="dark"] .light-logo,
+[data-bs-theme="dark"] .light-logo {
+  display: none !important;
+}
+
+:root .dark-logo,
+:root[data-theme="dark"] .dark-logo,
+[data-bs-theme="dark"] .dark-logo {
+  display: block !important;
+}
+
+:root[data-theme="light"] .light-logo,
+[data-bs-theme="light"] .light-logo {
+  display: block !important;
+}
+
+:root[data-theme="light"] .dark-logo,
+[data-bs-theme="light"] .dark-logo {
+  display: none !important;
+}
 
 .logo {
   display: flex;
@@ -56,19 +96,6 @@ header.header-floating {
   gap: var(--space-sm);
   text-decoration: none;
   flex-shrink: 0;
-}
-
-.logo-img {
-  width: 32px;
-  height: 32px;
-  transition:
-    transform var(--transition-fast),
-    filter var(--transition-fast);
-}
-
-.logo:hover .logo-img {
-  transform: scale(1.06);
-  filter: drop-shadow(0 0 10px rgba(242, 106, 10, 0.5));
 }
 
 .logo-text b {
@@ -79,6 +106,10 @@ header.header-floating {
   color: var(--text-head);
   line-height: 1.1;
   letter-spacing: -0.01em;
+}
+
+.logo-text strong {
+  color: var(--primary-accent);
 }
 
 .logo-sub {
@@ -182,7 +213,7 @@ header.header-floating {
 }
 
 .btn-cad-toggle:hover {
-  background: rgba(255, 255, 255, 0.10);
+  background: rgba(255, 255, 255, 0.1);
   border-color: rgba(255, 255, 255, 0.28);
   color: #ffffff;
   transform: translateY(-1px);
@@ -249,7 +280,9 @@ header.header-floating {
   transition: all var(--transition-fast);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 4px 12px rgba(0, 0, 0, 0.25);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.15),
+    0 4px 12px rgba(0, 0, 0, 0.25);
   flex-shrink: 0;
 }
 
@@ -274,7 +307,9 @@ header.header-floating {
   left: 50%;
   margin-top: -9px;
   margin-left: -9px;
-  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s ease;
+  transition:
+    transform 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 0.35s ease;
   will-change: transform, opacity;
 }
 
@@ -312,7 +347,9 @@ header.header-floating {
   background: rgba(11, 31, 77, 0.05);
   border-color: rgba(11, 31, 77, 0.16);
   color: var(--text-primary);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9), 0 2px 8px rgba(11, 31, 77, 0.08);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.9),
+    0 2px 8px rgba(11, 31, 77, 0.08);
 }
 
 :root[data-theme="light"] .theme-toggle-btn:hover {
@@ -324,7 +361,9 @@ header.header-floating {
   background: rgba(11, 31, 77, 0.05);
   border-color: rgba(11, 31, 77, 0.16);
   color: #0b1f4d;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9), 0 2px 8px rgba(11, 31, 77, 0.06);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.9),
+    0 2px 8px rgba(11, 31, 77, 0.06);
 }
 
 :root[data-theme="light"] .btn-cad-toggle:hover {

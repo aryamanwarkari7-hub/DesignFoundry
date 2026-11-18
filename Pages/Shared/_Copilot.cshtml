@@ -1,155 +1,128 @@
-<!-- ENGINEERING COPILOT (100VH INTERACTIVE WORKFLOW STUDIO) -->
+<!-- ENGINEERING COPILOT (2-COLUMN 100VH WORKFLOW STUDIO) -->
 <section class="copilot" id="copilot" aria-label="How the Copilot Works">
-    <div class="wrap cp-console-wrap">
-        <!-- Section Header Matching Global Style -->
-        <div class="sec-head center">
-            <p class="eyebrow mono"><i class="bi bi-lightning-charge-fill"></i> HOW IT WORKS</p>
-            <h2>From engineering intent to production CAD. <em>In 5 automated steps.</em></h2>
-            <p>The copilot operates directly inside your native CAD platform, reading assembly rules, verifying
-                parametric constraints, and regenerating production files.</p>
+    <div class="wrap cp-grid-2col">
+        <!-- LEFT COLUMN: ONLY HEADLINE & INTENT -->
+        <div class="cp-left-copy">
+            <div class="cp-title-group">
+                <p class="eyebrow mono"><i class="bi bi-lightning-charge-fill"></i> HOW IT WORKS</p>
+                <h2>From engineering intent to production CAD.<br><em>In 5 steps.</em></h2>
+                <p class="cp-lead">
+                    Operates natively inside your existing CAD platform, verifying constraints and regenerating models
+                    in real time.
+                </p>
             </div>
+        </div>
 
-            <!-- 5-Step Interactive Workflow Pipeline -->
-            <div class="cp-pipeline-rail mono" id="cpWorkflowRail">
+        <!-- RIGHT COLUMN: FULL ASSEMBLY SIMULATOR CONSOLE -->
+        <div class="glass-card cp-simulator-chamber">
+            <!-- Top Horizontal 5-Step Pipeline Rail -->
+            <div class="cp-horizontal-pipeline mono" id="cpWorkflowRail">
                 <button type="button" class="cp-pipe-step active" data-step="1">
                     <span class="step-num">01</span>
-                    <span class="step-lbl">Reads CAD Data</span>
+                    <span class="step-lbl">Scan Mates</span>
                 </button>
-                <span class="pipe-arrow">&rarr;</span>
                 <button type="button" class="cp-pipe-step" data-step="2">
                     <span class="step-num">02</span>
-                    <span class="step-lbl">Captures Logic</span>
+                    <span class="step-lbl">Parametric Logic</span>
                 </button>
-                <span class="pipe-arrow">&rarr;</span>
                 <button type="button" class="cp-pipe-step" data-step="3">
                     <span class="step-num">03</span>
-                    <span class="step-lbl">Plain Language</span>
+                    <span class="step-lbl">Plain Specs</span>
                 </button>
-                <span class="pipe-arrow">&rarr;</span>
                 <button type="button" class="cp-pipe-step" data-step="4">
                     <span class="step-num">04</span>
-                    <span class="step-lbl">Auto-Verifies</span>
+                    <span class="step-lbl">Verify FEA</span>
                 </button>
-                <span class="pipe-arrow">&rarr;</span>
                 <button type="button" class="cp-pipe-step" data-step="5">
                     <span class="step-num">05</span>
-                    <span class="step-lbl">Syncs Assembly</span>
+                    <span class="step-lbl">Regenerate CAD</span>
                 </button>
             </div>
 
-            <!-- 2-Column Main Console -->
-            <div class="cp-studio-stage">
-                <!-- Left: Interactive Dynamic Pick & Place Simulator -->
-                <div class="glass-card cp-simulator-chamber">
-                    <div class="sim-header">
-                        <div class="sim-title mono">
-                            <span class="pulse-dot"></span> INTERACTIVE ASSEMBLY SIMULATOR
-                        </div>
-                        <!-- Live Dynamic Controls -->
-                        <div class="sim-controls">
-                            <label for="pnpSlider" class="sim-slider-label mono">
-                                STROKE: <strong id="pnpStrokeVal" class="accent">450 MM</strong>
-                            </label>
-                            <input type="range" id="pnpSlider" min="300" max="680" value="450" step="10" class="sim-range">
-                            <div class="sim-presets mono">
-                                <button type="button" class="preset-btn" data-stroke="350">350</button>
-                                <button type="button" class="preset-btn active" data-stroke="450">450</button>
-                                <button type="button" class="preset-btn" data-stroke="600">600</button>
-                            </div>
-                        </div>
+            <!-- Console Header with Live Controls / Picker -->
+            <div class="sim-header">
+                <div class="sim-title mono">
+                    <span class="pulse-dot"></span> LIVE ASSEMBLY SIMULATOR
+                    <span class="sim-demo-badge mono" id="simDemoBadge">DRAG TO CONTROL</span>
+                </div>
+                <div class="sim-controls">
+                    <label for="pnpSlider" class="sim-slider-label mono">
+                        STROKE: <strong id="pnpStrokeVal" class="accent">450 MM</strong>
+                    </label>
+                    <input type="range" id="pnpSlider" min="300" max="680" value="450" step="10" class="sim-range">
+                    <div class="sim-presets mono">
+                        <button type="button" class="preset-btn" data-stroke="350">350</button>
+                        <button type="button" class="preset-btn active" data-stroke="450">450</button>
+                        <button type="button" class="preset-btn" data-stroke="600">600</button>
                     </div>
+                </div>
+            </div>
 
-                    <!-- Live Workflow Stepper HUD -->
-                    <div class="sim-workflow-hud mono" id="simWorkflowHud">
-                        <span class="hud-step-tag" id="hudStepTag">STEP 01</span>
-                        <span class="hud-desc" id="hudStepDesc">Scanning SolidWorks assembly tree (84 parts, 112 mates mapped)</span>
+            <!-- Workflow Stepper HUD Feedback -->
+            <div class="sim-workflow-hud mono" id="simWorkflowHud">
+                <span class="hud-step-tag" id="hudStepTag">STEP 01</span>
+                <span class="hud-desc" id="hudStepDesc">Scanning SolidWorks assembly tree (84 parts, 112 mates
+                    mapped)</span>
+                </div>
+
+                <!-- Dynamic Pick & Place SVG Canvas -->
+                <div class="sim-canvas-viewport">
+                    <svg id="cpSvgInteractive" viewBox="0 0 540 180" role="img"
+                         aria-label="Interactive pick and place CAD machine">
+                        <!-- Machine Base Bed -->
+                        <rect id="svgBaseBed" class="svg-bed" x="40" y="160" width="370" height="10" rx="3" fill="#0d1f42"
+                              stroke="rgba(140,180,240,0.3)" stroke-width="1.5" />
+                        <!-- Left Fixed Post -->
+                        <rect class="svg-post" x="60" y="65" width="14" height="95" rx="2" fill="#142a58"
+                              stroke="rgba(140,180,240,0.4)" stroke-width="1" />
+                        <!-- Right Mobile Post -->
+                        <rect id="svgRightPost" class="svg-post" x="330" y="65" width="14" height="95" rx="2" fill="#142a58"
+                              stroke="rgba(140,180,240,0.4)" stroke-width="1" />
+                        <!-- Linear Guide Rail -->
+                        <rect id="svgGuideRail" x="67" y="75" width="270" height="7" rx="2" fill="#f26a0a" />
+
+                        <!-- Dimension Line & Text -->
+                        <line id="svgDimLine" x1="74" y1="55" x2="337" y2="55" stroke="#f26a0a" stroke-width="1.5"
+                              stroke-dasharray="4 3" />
+                        <line x1="74" y1="49" x2="74" y2="61" stroke="#f26a0a" stroke-width="1.5" />
+                        <line id="svgDimTickR" x1="337" y1="49" x2="337" y2="61" stroke="#f26a0a" stroke-width="1.5" />
+                        <text id="svgDimText" x="205" y="47" font-size="11" font-family="monospace" fill="#ffffff"
+                              text-anchor="middle" font-weight="bold">STROKE: 450 MM</text>
+
+                        <!-- Workpiece & Target Zone -->
+                        <rect x="90" y="138" width="20" height="22" rx="2" fill="#f26a0a" opacity="0.85" />
+                        <rect id="svgTargetZone" x="298" y="138" width="20" height="22" rx="2" fill="none" stroke="#f26a0a"
+                              stroke-width="1.5" stroke-dasharray="3 3" />
+
+                        <!-- Traveling Carriage & Pneumatic Z-Slide -->
+                        <g id="svgCarriageGroup">
+                            <rect id="svgCarriageBody" class="svg-bed" x="84" y="67" width="36" height="22" rx="3"
+                                  fill="#1e3b75" stroke="rgba(255,255,255,0.4)" stroke-width="1" />
+                            <rect id="svgZSlide" x="99" y="89" width="6" height="26" fill="rgba(255,255,255,0.8)" />
+                            <rect id="svgGripper" x="92" y="115" width="20" height="7" rx="2" fill="#f26a0a" />
+                        </g>
+                    </svg>
+                </div>
+
+                <!-- Real-time Verification Telemetry Strip -->
+                <div class="sim-telemetry mono">
+                    <div class="telem-item">
+                        <i class="bi bi-check-circle-fill ok"></i>
+                        <span>MATES:</span> <strong>18/18 INTACT</strong>
                     </div>
-
-                    <!-- Dynamic Pick & Place SVG Canvas -->
-                    <div class="sim-canvas-viewport">
-                        <svg id="cpSvgInteractive" viewBox="0 0 540 220" role="img"
-                             aria-label="Interactive pick and place CAD machine">
-                            <!-- Machine Base Bed (Dynamic width) -->
-                            <rect id="svgBaseBed" class="svg-bed" x="40" y="195" width="370" height="10" rx="3"
-                                  fill="#0d1f42" stroke="rgba(140,180,240,0.3)" stroke-width="1.5" />
-                            <!-- Left Fixed Post -->
-                            <rect class="svg-post" x="60" y="85" width="14" height="110" rx="2" fill="#142a58"
-                                  stroke="rgba(140,180,240,0.4)" stroke-width="1" />
-                            <!-- Right Mobile Post (Dynamic X) -->
-                            <rect id="svgRightPost" class="svg-post" x="330" y="85" width="14" height="110" rx="2"
-                                  fill="#142a58" stroke="rgba(140,180,240,0.4)" stroke-width="1" />
-                            <!-- Linear Guide Rail (Dynamic width) -->
-                            <rect id="svgGuideRail" x="67" y="95" width="270" height="8" rx="2" fill="#f26a0a" />
-                        
-                            <!-- Dimension Line & Text (Dynamic) -->
-                            <line id="svgDimLine" x1="74" y1="75" x2="337" y2="75" stroke="#f26a0a" stroke-width="1.5"
-                                  stroke-dasharray="4 3" />
-                            <line x1="74" y1="69" x2="74" y2="81" stroke="#f26a0a" stroke-width="1.5" />
-                            <line id="svgDimTickR" x1="337" y1="69" x2="337" y2="81" stroke="#f26a0a" stroke-width="1.5" />
-                            <text id="svgDimText" x="205" y="66" font-size="11" font-family="monospace" fill="#ffffff"
-                                  text-anchor="middle" font-weight="bold">STROKE: 450 MM</text>
-
-                            <!-- Workpiece & Target Zone -->
-                            <rect x="90" y="172" width="22" height="23" rx="2" fill="#f26a0a" opacity="0.85" />
-                            <rect id="svgTargetZone" x="298" y="172" width="22" height="23" rx="2" fill="none"
-                                  stroke="#f26a0a" stroke-width="1.5" stroke-dasharray="3 3" />
-
-                            <!-- Traveling Carriage & Pneumatic Z-Slide -->
-                            <g id="svgCarriageGroup">
-                                <rect id="svgCarriageBody" class="svg-bed" x="84" y="87" width="36" height="24" rx="3"
-                                      fill="#1e3b75" stroke="rgba(255,255,255,0.4)" stroke-width="1" />
-                                <rect id="svgZSlide" x="99" y="111" width="6" height="28" fill="rgba(255,255,255,0.8)" />
-                                <rect id="svgGripper" x="92" y="139" width="20" height="8" rx="2" fill="#f26a0a" />
-                            </g>
-                        </svg>
+                    <div class="telem-item">
+                        <i class="bi bi-shield-check ok"></i>
+                        <span>FEA:</span> <strong id="telemDeflect">0.038 MM</strong>
                     </div>
-
-                    <!-- Real-time Verification Telemetry Strip -->
-                    <div class="sim-telemetry mono">
-                        <div class="telem-item"><i class="bi bi-check-circle-fill ok"></i> <span>MATES:</span> <strong>18/18
-                            INTACT</strong></div>
-                            <div class="telem-item"><i class="bi bi-shield-check ok"></i> <span>FEA DEFLECTION:</span> <strong
-                                id="telemDeflect">0.038 MM</strong></div>
-                                <div class="telem-item"><i class="bi bi-cpu ok"></i> <span>MOTOR TORQUE:</span> <strong
-                                    id="telemTorque">4.8 NM</strong></div>
-                                </div>
-                            </div>
-
-                            <!-- Right: Application Domains & Integration -->
-                            <div class="cp-apps-column">
-                                <!-- Card 1: Machine Design -->
-                                <div class="glass-card cp-domain-card">
-                                    <div class="domain-head">
-                                        <span class="domain-tag mono"><i class="bi bi-gear-wide-connected"></i> 01 : MACHINE
-                                            DESIGN</span>
-                                            <span class="glass-pill mono">MECHANISMS</span>
-                                        </div>
-                                        <h3 class="domain-title">Multi-Axis Linear Systems</h3>
-                                        <p class="domain-desc">XY slides, pick-and-place arms, and indexing tables with verified motor
-                                            sizing and rail deflection calculations.</p>
-                                            <div class="domain-pills mono">
-                                                <span class="glass-pill">XY SLIDES</span>
-                                                <span class="glass-pill">PICK &amp; PLACE</span>
-                                                <span class="glass-pill">SERVO SIZING</span>
-                                            </div>
-                                        </div>
-
-                                        <!-- Card 2: Motion Automation -->
-                                        <div class="glass-card cp-domain-card">
-                                            <div class="domain-head">
-                                                <span class="domain-tag mono"><i class="bi bi-boxes"></i> 02 : AUTOMATION</span>
-                                                <span class="glass-pill mono">COMPLETE SYSTEMS</span>
-                                            </div>
-                                            <h3 class="domain-title">Complete Motion Assemblies</h3>
-                                            <p class="domain-desc">Laser cutting systems, automated spray paint booths, and packaging equipment
-                                                with synchronized BOMs and drawings.</p>
-                                                <div class="domain-pills mono">
-                                                    <span class="glass-pill">CUTTING UNITS</span>
-                                                    <span class="glass-pill">PAINT BOOTHS</span>
-                                                    <span class="glass-pill">PRINTING UNITS</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </section>
+                    <div class="telem-item">
+                        <i class="bi bi-cpu ok"></i>
+                        <span>TORQUE:</span> <strong id="telemTorque">4.8 NM</strong>
+                    </div>
+                    <div class="telem-item">
+                        <i class="bi bi-arrow-repeat ok"></i>
+                        <span>BOM:</span> <strong>REAL-TIME</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>

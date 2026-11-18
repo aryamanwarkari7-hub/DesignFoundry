@@ -1,18 +1,18 @@
 /* ==========================================================
-   21st.dev FLOATING GLASS PRODUCT DETAIL DIALOG
+   PILL-DRIVEN SCANNABLE PRODUCT DETAIL MODAL DIALOG
 ========================================================== */
 
-/* 1. Backdrop: Cinematic Deep Blur */
+/* 1. Backdrop */
 dialog#pd::backdrop {
-  background: rgba(3, 8, 22, 0.78);
+  background: rgba(3, 8, 22, 0.85);
   backdrop-filter: blur(14px) saturate(160%);
   -webkit-backdrop-filter: blur(14px) saturate(160%);
 }
 
-/* 2. Dialog Container: Spacious Master Glass Console */
+/* 2. Dialog Container */
 dialog#pd {
   border: 1px solid rgba(255, 255, 255, 0.16);
-  border-radius: var(--radius-3xl);
+  border-radius: var(--radius-2xl);
   padding: 0;
   background:
     linear-gradient(
@@ -20,16 +20,15 @@ dialog#pd {
       rgba(255, 255, 255, 0.08) 0%,
       rgba(255, 255, 255, 0.02) 100%
     ),
-    rgba(6, 15, 38, 0.88);
+    rgba(8, 18, 44, 0.96);
   backdrop-filter: blur(24px) saturate(190%);
   -webkit-backdrop-filter: blur(24px) saturate(190%);
   color: var(--text-primary);
-  width: min(1080px, calc(100% - 32px)); /* Expanded area */
-  max-height: calc(100% - 40px);
+  width: min(880px, calc(100% - 32px));
+  max-height: calc(100% - 48px);
   box-shadow:
-    inset 0 1px 1.5px 0 rgba(255, 255, 255, 0.45),
-    inset 0 -1px 1px 0 rgba(0, 0, 0, 0.2),
-    0 32px 80px -16px rgba(0, 0, 0, 0.8);
+    inset 0 1px 1.5px 0 rgba(255, 255, 255, 0.4),
+    0 24px 64px -12px rgba(0, 0, 0, 0.85);
   overflow: hidden;
   margin: auto;
 }
@@ -39,154 +38,351 @@ dialog#pd[open] {
   flex-direction: column;
 }
 
-/* 3. Header: Expanded & Prominent */
+/* 3. Header */
 .pd-head {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: var(--space-xl);
-  padding: 28px 36px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 16px 24px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.09);
   background: rgba(255, 255, 255, 0.02);
 }
 
-.pd-head .mono {
-  font-family: var(--font-family-mono);
-  font-size: var(--font-sm);
+.pd-head-left .pd-cat-badge {
+  font-size: 10px;
   font-weight: var(--fw-bold);
   letter-spacing: 0.08em;
   color: var(--primary-accent);
-  text-transform: uppercase;
-  margin-bottom: var(--space-2xs);
-  display: inline-block;
+  display: block;
+  margin-bottom: 2px;
 }
 
-.pd-head h3 {
+.pd-head-left h3 {
   font-family: var(--font-family);
-  font-size: var(--font-3xl); /* Scaled up title */
+  font-size: 1.35rem;
   font-weight: var(--fw-bold);
   color: var(--text-light);
   line-height: 1.2;
 }
 
-/* Close Pill Button */
+.pd-head-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.pd-platform-pill {
+  font-size: 9.5px;
+  color: var(--text-muted);
+  letter-spacing: 0.04em;
+  padding: 5px 10px;
+  border-radius: var(--radius-pill);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
 .pd-x {
-  font-size: 1.6rem;
+  font-size: 1.3rem;
   line-height: 1;
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.14);
-  border-radius: var(--radius-pill); /* Strictly uses var(--radius-pill) */
-  width: 44px;
-  height: 44px;
+  border-radius: var(--radius-pill);
+  width: 34px;
+  height: 34px;
   color: var(--text-secondary);
   cursor: pointer;
   display: grid;
   place-items: center;
   flex: none;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12);
-  transition:
-    transform var(--transition-fast),
-    border-color var(--transition-fast),
-    background var(--transition-fast),
-    color var(--transition-fast);
+  transition: all var(--transition-fast);
 }
 
 .pd-x:hover {
-  transform: scale(1.06);
+  transform: scale(1.08);
   border-color: var(--primary-accent);
   background: rgba(242, 106, 10, 0.2);
   color: #ffffff;
 }
 
-/* 4. Body Content: Generous Sizing & Breathing Room */
+/* 4. Body Content */
 .pd-body {
-  padding: 32px 36px;
+  padding: 18px 24px;
   overflow-y: auto;
 }
 
-.pd-intro {
-  font-size: var(--font-lg); /* Larger intro text */
-  color: var(--text-light);
-  font-weight: var(--fw-medium);
-  line-height: 1.6;
-  margin-bottom: var(--space-2xl);
-}
-
-.pd-cols {
+/* Top Stat Strip */
+.pd-stat-strip {
   display: grid;
-  grid-template-columns: 1.25fr 1fr;
-  gap: 40px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  padding: 10px 14px;
+  border-radius: var(--radius-lg);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  margin-bottom: 16px;
 }
 
-.pd-cols > * {
-  min-width: 0;
+.pd-stat-pill {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
 }
 
-.pd-cols h4 {
-  font-family: var(--font-family-mono);
-  font-size: var(--font-sm); /* Scaled up subtitle */
-  font-weight: var(--fw-semibold);
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
+.pd-stat-pill .val {
+  font-size: 13.5px;
+  font-weight: var(--fw-bold);
+  color: var(--text-head);
+}
+
+.pd-stat-pill .val.accent {
   color: var(--primary-accent);
-  margin-bottom: var(--space-md);
 }
 
-.pd-cols ul {
-  margin: 0;
-  padding: 0;
-  list-style: none;
+.pd-stat-pill .val.green {
+  color: #38ef7d;
+}
+
+.pd-stat-pill .lbl {
+  font-size: 9px;
+  color: var(--text-muted);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* 2-Column Bento */
+.pd-grid-2col {
   display: grid;
-  gap: var(--space-md);
+  grid-template-columns: 1fr 1.15fr;
+  gap: 18px;
+  align-items: stretch;
 }
 
-.pd-cols li {
-  position: relative;
-  padding-left: 24px;
-  font-size: var(--font-base); /* Scaled up bullet items */
-  color: var(--text-secondary);
-  line-height: 1.55;
+/* Left Column */
+.pd-col-left {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
-/* Glowing Technical Bullet */
-.pd-cols li::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0.55em;
-  width: 7px;
-  height: 7px;
-  border-radius: var(--radius-pill);
-  background-color: var(--primary-accent);
-  box-shadow: 0 0 6px rgba(242, 106, 10, 0.7);
+.pd-card-block {
+  padding: 12px 14px;
+  border-radius: var(--radius-lg);
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-.pd-cols p {
-  font-size: var(--font-base); /* Scaled up descriptions */
-  color: var(--text-secondary);
-  line-height: 1.6;
+.pd-section-label {
+  font-size: 9.5px;
+  font-weight: var(--fw-bold);
+  letter-spacing: 0.07em;
+  color: var(--primary-accent);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-bottom: 6px;
 }
 
-/* 5. Footer with Actions */
-.pd-foot {
+.pd-brief-lead {
+  font-size: 12px;
+  color: #e2e8f5;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Pill Clouds */
+.pd-pill-cloud {
   display: flex;
   flex-wrap: wrap;
+  gap: 6px;
+}
+
+.pd-chip {
+  padding: 4px 10px;
+  font-size: 10.5px;
+  font-family: var(--font-family-mono);
+  border-radius: var(--radius-pill);
+  background: rgba(255, 255, 255, 0.045);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #c6d6f5;
+  display: inline-flex;
   align-items: center;
-  gap: var(--space-md);
-  padding: 24px 36px;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  gap: 4px;
+  transition: all var(--transition-fast);
+}
+
+.pd-chip:hover {
+  background: rgba(242, 106, 10, 0.14);
+  border-color: rgba(242, 106, 10, 0.45);
+  color: #ffffff;
+}
+
+/* Right Column */
+.pd-col-right {
+  display: flex;
+  flex-direction: column;
+}
+
+.pd-solution-card {
+  padding: 14px 16px;
+  border-radius: var(--radius-lg);
+  background: rgba(242, 106, 10, 0.07);
+  border: 1px solid rgba(242, 106, 10, 0.35);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  gap: 12px;
+}
+
+.pd-solution-tag {
+  font-size: 9.5px;
+  font-weight: var(--fw-bold);
+  letter-spacing: 0.06em;
+  color: var(--primary-accent);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+/* Action Items (Checkmark Pills) */
+.pd-automation-pills {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.pd-auto-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 7px 10px;
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.pd-auto-item i.ok {
+  color: #38ef7d;
+  font-size: 11px;
+  margin-top: 1px;
+  flex-shrink: 0;
+}
+
+.pd-auto-item strong {
+  display: block;
+  font-size: 11.5px;
+  color: #ffffff;
+  line-height: 1.25;
+}
+
+.pd-auto-item span {
+  font-size: 10px;
+  color: var(--text-secondary);
+  line-height: 1.35;
+}
+
+/* Speed Comparison Row */
+.pd-speed-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-top: 2px;
+}
+
+.pd-speed-pill {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  border-radius: var(--radius-md);
+  font-size: 10.5px;
+}
+
+.pd-speed-pill.legacy {
+  background: rgba(255, 77, 77, 0.07);
+  border: 1px solid rgba(255, 77, 77, 0.22);
+  color: #ffd0d0;
+}
+
+.pd-speed-pill.legacy .badge {
+  color: #ff6b6b;
+  font-weight: var(--fw-bold);
+  font-size: 9px;
+}
+
+.pd-speed-pill.ai {
+  background: rgba(56, 239, 125, 0.07);
+  border: 1px solid rgba(56, 239, 125, 0.28);
+  color: #d2fbe0;
+}
+
+.pd-speed-pill.ai .badge {
+  color: #38ef7d;
+  font-weight: var(--fw-bold);
+  font-size: 9px;
+}
+
+/* 5. Footer */
+.pd-foot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.09);
   background: rgba(255, 255, 255, 0.02);
 }
 
-@media (max-width: 768px) {
-  .pd-head,
-  .pd-body,
-  .pd-foot {
-    padding: var(--space-lg) var(--space-xl);
-  }
+.pd-foot-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
 
-  .pd-cols {
+.pd-foot .btn {
+  font-size: 11px;
+  padding: 7px 16px;
+}
+
+.pd-pdf-link {
+  font-size: 10.5px;
+  color: var(--text-muted);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  transition: color var(--transition-fast);
+}
+
+.pd-pdf-link:hover {
+  color: var(--primary-accent);
+}
+
+.pd-foot-right {
+  font-size: 9.5px;
+  color: var(--text-muted);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.pd-foot-right .pulse-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #38ef7d;
+  box-shadow: 0 0 8px #38ef7d;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .pd-stat-strip {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .pd-grid-2col {
     grid-template-columns: 1fr;
-    gap: var(--space-xl);
+    gap: 12px;
   }
 }

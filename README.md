@@ -1,4 +1,4 @@
-# Designsfoundry — Generative CAD Copilot
+# DesignFoundry — Generative CAD Copilot
 
 <div align="center">
 
@@ -18,11 +18,11 @@
 
 ## 🌟 Overview
 
-**Designsfoundry** is an intelligent generative engineering CAD copilot developed by **Aryaman Technologies** (Pune, India). 
+**DesignFoundry** is an intelligent generative engineering CAD copilot developed by **Aryaman Technologies** (Pune, India). 
 
 Engineering enterprises accumulate decades of 3D CAD data, yet engineers still spend **up to 80% of their time** redesigning variants from blank files or digging through cryptic folder structures. 
 
-Designsfoundry indexes proprietary CAD archives, preserves parametric feature trees and mating constraints, and allows engineers to query and modify complex assemblies in plain language — producing native CAD solids without proprietary lock-in.
+DesignFoundry indexes proprietary CAD archives, preserves parametric feature trees and mating constraints, and allows engineers to query and modify complex assemblies in plain language — producing native CAD solids without proprietary lock-in.
 
 ---
 
