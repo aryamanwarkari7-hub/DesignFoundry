@@ -241,6 +241,39 @@
   --shadow-glass-hover:
     inset 0 1px 2px 0 rgba(255, 255, 255, 0.5),
     0 24px 50px -12px rgba(0, 0, 0, 0.6), 0 0 20px 0 rgba(242, 106, 10, 0.16);
+
+  --nav-bg:
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.08) 0%,
+      rgba(255, 255, 255, 0.02) 100%
+    ),
+    rgba(6, 15, 38, 0.75);
+  --nav-border: 1px solid rgba(255, 255, 255, 0.14);
+  --nav-shadow:
+    inset 0 1px 1.5px 0 rgba(255, 255, 255, 0.35),
+    inset 0 -1px 1px 0 rgba(255, 255, 255, 0.05),
+    0 20px 48px -12px rgba(0, 0, 0, 0.65);
+  --nav-link-color: var(--text-secondary);
+  --nav-link-hover-color: #ffffff;
+  --nav-link-hover-bg: rgba(255, 255, 255, 0.08);
+  --nav-link-hover-border: rgba(255, 255, 255, 0.16);
+  /* Footer & CAD Titleblock */
+  --footer-bg: linear-gradient(
+    180deg,
+    rgba(9, 22, 52, 0.96) 0%,
+    rgba(4, 11, 28, 0.99) 100%
+  );
+  --footer-border: 1px solid rgba(255, 255, 255, 0.16);
+  --footer-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.3), 0 24px 60px -12px rgba(0, 0, 0, 0.7);
+  --tb-bg: rgba(14, 30, 68, 0.85);
+  --tb-border: 1px solid rgba(255, 255, 255, 0.16);
+  --tb-cell-border: 1px solid rgba(255, 255, 255, 0.08);
+  --tb-lbl-color: var(--text-muted);
+  --tb-val-color: #ffffff;
+  --tb-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 8px 24px rgba(0, 0, 0, 0.4);
 }
 
 :root[data-theme="light"] {
@@ -287,4 +320,37 @@
     inset 0 1px 2px 0 rgba(255, 255, 255, 1),
     0 24px 50px -12px rgba(11, 31, 77, 0.18),
     0 0 20px 0 rgba(242, 106, 10, 0.12);
+
+  /* Floating Navbar */
+  --nav-bg:
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.95) 0%,
+      rgba(240, 245, 255, 0.88) 100%
+    ),
+    rgba(255, 255, 255, 0.92);
+  --nav-border: 1px solid rgba(11, 31, 77, 0.14);
+  --nav-shadow:
+    inset 0 1px 1.5px 0 rgba(255, 255, 255, 0.9),
+    0 16px 36px -8px rgba(11, 31, 77, 0.12);
+  --nav-link-color: #4a5568;
+  --nav-link-hover-color: #0b1f4d;
+  --nav-link-hover-bg: rgba(11, 31, 77, 0.06);
+  --nav-link-hover-border: rgba(11, 31, 77, 0.14);
+  /* Footer & CAD Titleblock */
+  --footer-bg: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.95) 0%,
+    rgba(242, 246, 255, 0.9) 100%
+  );
+  --footer-border: 1px solid rgba(11, 31, 77, 0.14);
+  --footer-shadow:
+    inset 0 1px 1px 0 #ffffff, 0 20px 48px -12px rgba(11, 31, 77, 0.1);
+  --tb-bg: rgba(11, 31, 77, 0.05);
+  --tb-border: 1px solid rgba(11, 31, 77, 0.14);
+  --tb-cell-border: 1px solid rgba(11, 31, 77, 0.08);
+  --tb-lbl-color: #718096;
+  --tb-val-color: #0b1f4d;
+  --tb-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.9), 0 4px 12px rgba(11, 31, 77, 0.06);
 }
