@@ -15,6 +15,7 @@
 /* 3. Section Modules */
 @import url("./navbar.css");
 @import url("./hero.css");
+@import url("./problem.css");
 @import url("./answers.css");
 @import url("./why.css");
 @import url("./copilot.css");
@@ -36,7 +37,7 @@
 }
 
 html {
-  scroll-padding-top: 60px;
+  scroll-padding-top: 96px;
 }
 
 body {
@@ -353,7 +354,7 @@ p {
   top: 0;
   left: 0;
   width: 0%;
-  height: 3.5px;
+  height: 5px;
   background: linear-gradient(
     90deg,
     var(--primary-accent) 0%,
@@ -380,247 +381,6 @@ p {
 .js-reveal .scroll-reveal.is-revealed {
   opacity: 1;
   transform: translateY(0) scale(1);
-}
-
-/* ==========================================================
-   CAD RGBY 4-POINTER CROSSHAIR RETICLE (HUD)
-========================================================== */
-
-:root {
-  --cad-needle-len: 11px;
-  --cad-needle-thick: 1.5px;
-  --cad-needle-gap: 8px;
-  --cad-arrow-base: 3px;
-  --cad-arrow-len: 5px;
-  --cad-aperture-size: 11px;
-}
-
-.cad-cursor-hud {
-  position: fixed;
-  top: 0;
-  left: 0;
-  pointer-events: none;
-  z-index: 100000;
-  transform: translate3d(-100px, -100px, 0);
-  will-change: transform;
-  opacity: 0;
-  transition: opacity 0.25s ease-out;
-}
-
-.cad-cursor-hud.is-active {
-  opacity: 0.42;
-  transition: opacity 0.35s ease;
-}
-
-.cad-cursor-hud.is-disabled {
-  display: none !important;
-}
-
-.cad-cursor-hud.is-scrolling {
-  opacity: 0.85;
-}
-
-.cad-crosshair-center {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 0;
-  height: 0;
-}
-
-.cad-aperture {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: var(--cad-aperture-size);
-  height: var(--cad-aperture-size);
-  transform: translate(-50%, -50%);
-  border: 1px solid rgba(255, 255, 255, 0.85);
-  background: rgba(6, 15, 38, 0.7);
-  box-shadow:
-    0 0 8px rgba(0, 0, 0, 0.8),
-    inset 0 0 3px rgba(255, 255, 255, 0.3);
-  z-index: 5;
-  pointer-events: none;
-  transition:
-    border-color 0.15s ease,
-    transform 0.15s ease,
-    box-shadow 0.15s ease;
-}
-
-.cad-cursor-hud.is-scrolling .cad-aperture {
-  border-color: var(--primary-accent);
-  transform: translate(-50%, -50%) scale(1.25);
-  box-shadow: 0 0 12px rgba(242, 106, 10, 0.85);
-}
-
-.aperture-core {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 2px;
-  height: 2px;
-  transform: translate(-50%, -50%);
-  border-radius: var(--radius-pill);
-  background: #ffffff;
-  box-shadow: 0 0 4px #ffffff;
-}
-
-.cad-gimbal-spin {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 0;
-  height: 0;
-  transform-origin: 0 0;
-  pointer-events: none;
-}
-
-.cad-pointer {
-  position: absolute;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  pointer-events: none;
-}
-
-/* UP (+Y Green) */
-.cad-pointer-up {
-  bottom: var(--cad-needle-gap);
-  left: 0;
-  transform: translateX(-50%);
-  flex-direction: column;
-  gap: 2px;
-}
-.pointer-line.green {
-  width: var(--cad-needle-thick);
-  height: var(--cad-needle-len);
-  background: #10b981;
-  box-shadow: 0 0 8px rgba(16, 185, 129, 0.9);
-}
-.pointer-arrow.green {
-  width: 0;
-  height: 0;
-  border-left: var(--cad-arrow-base) solid transparent;
-  border-right: var(--cad-arrow-base) solid transparent;
-  border-bottom: var(--cad-arrow-len) solid #10b981;
-}
-.cad-pointer-up .pointer-axis {
-  color: #10b981;
-  font-size: 7.5px;
-  font-weight: var(--fw-bold);
-}
-
-/* RIGHT (+X Red) */
-.cad-pointer-right {
-  left: var(--cad-needle-gap);
-  top: 0;
-  transform: translateY(-50%);
-  flex-direction: row;
-  gap: 2px;
-}
-.pointer-line.red {
-  height: var(--cad-needle-thick);
-  width: var(--cad-needle-len);
-  background: #ef4444;
-  box-shadow: 0 0 8px rgba(239, 68, 68, 0.9);
-}
-.pointer-arrow.red {
-  width: 0;
-  height: 0;
-  border-top: var(--cad-arrow-base) solid transparent;
-  border-bottom: var(--cad-arrow-base) solid transparent;
-  border-left: var(--cad-arrow-len) solid #ef4444;
-}
-.cad-pointer-right .pointer-axis {
-  color: #ef4444;
-  font-size: 7.5px;
-  font-weight: var(--fw-bold);
-}
-
-/* DOWN (+Z Blue) */
-.cad-pointer-down {
-  top: var(--cad-needle-gap);
-  left: 0;
-  transform: translateX(-50%);
-  flex-direction: column;
-  gap: 2px;
-}
-.pointer-line.blue {
-  width: var(--cad-needle-thick);
-  height: var(--cad-needle-len);
-  background: #3b82f6;
-  box-shadow: 0 0 8px rgba(59, 130, 246, 0.9);
-}
-.pointer-arrow.blue {
-  width: 0;
-  height: 0;
-  border-left: var(--cad-arrow-base) solid transparent;
-  border-right: var(--cad-arrow-base) solid transparent;
-  border-top: var(--cad-arrow-len) solid #3b82f6;
-}
-.cad-pointer-down .pointer-axis {
-  color: #3b82f6;
-  font-size: 7.5px;
-  font-weight: var(--fw-bold);
-}
-
-/* LEFT (Origin Yellow) */
-.cad-pointer-left {
-  right: var(--cad-needle-gap);
-  top: 0;
-  transform: translateY(-50%);
-  flex-direction: row;
-  gap: 2px;
-}
-.pointer-line.yellow {
-  height: var(--cad-needle-thick);
-  width: var(--cad-needle-len);
-  background: #facc15;
-  box-shadow: 0 0 8px rgba(250, 204, 21, 0.9);
-}
-.pointer-arrow.yellow {
-  width: 0;
-  height: 0;
-  border-top: var(--cad-arrow-base) solid transparent;
-  border-bottom: var(--cad-arrow-base) solid transparent;
-  border-right: var(--cad-arrow-len) solid #facc15;
-}
-.cad-pointer-left .pointer-axis {
-  color: #facc15;
-  font-size: 7.5px;
-  font-weight: var(--fw-bold);
-}
-
-.cad-cursor-telemetry {
-  position: absolute;
-  top: 18px;
-  left: 18px;
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  padding: 2.5px 8px;
-  border-radius: var(--radius-pill);
-  background: rgba(6, 15, 38, 0.88);
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  backdrop-filter: blur(8px);
-  font-size: 8.5px;
-  color: rgba(255, 255, 255, 0.75);
-  letter-spacing: 0.05em;
-  white-space: nowrap;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
-}
-
-.cad-tele-cad {
-  color: var(--primary-accent);
-  font-weight: var(--fw-bold);
-  font-size: 8px;
-}
-
-@media (hover: none) and (pointer: coarse) {
-  .cad-cursor-hud {
-    display: none !important;
-  }
 }
 
 /* ==========================================================

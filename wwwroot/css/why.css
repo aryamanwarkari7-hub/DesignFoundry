@@ -347,3 +347,253 @@
     0 0 16px rgba(242, 106, 10, 0.8),
     0 4px 12px rgba(242, 106, 10, 0.3);
 }
+
+/* ==========================================================
+   PHOTO 1: DATAFLOW PIPELINE CARD (ENGINEERING TO PRODUCTION)
+========================================================== */
+
+.engine-pipeline-card {
+  width: 100%;
+  padding: 24px 28px;
+  border-radius: var(--radius-2xl);
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.065) 0%,
+      rgba(255, 255, 255, 0.018) 100%
+    ),
+    rgba(8, 18, 42, 0.92);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  box-shadow:
+    inset 0 1px 1.5px rgba(255, 255, 255, 0.35),
+    0 20px 48px -12px rgba(0, 0, 0, 0.6);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* Card Header */
+.pipe-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding-bottom: 4px;
+}
+
+.pipe-eyebrow {
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  display: block;
+  margin-bottom: 4px;
+}
+
+.pipe-card-title h3 {
+  font-size: 1.25rem;
+  font-weight: var(--fw-bold);
+  color: var(--text-head);
+  margin: 0;
+}
+
+/* Status Badges */
+.pipe-status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 9.5px;
+  padding: 3px 9px;
+  border-radius: var(--radius-pill);
+}
+
+.pipe-status-badge.automated {
+  background: rgba(56, 239, 125, 0.12);
+  border: 1px solid rgba(56, 239, 125, 0.35);
+  color: #38ef7d;
+}
+
+.pipe-status-badge.processing {
+  background: rgba(242, 106, 10, 0.15);
+  border: 1px solid rgba(242, 106, 10, 0.5);
+  color: #ff9d54;
+}
+
+/* Stage Blocks (01 & 03) */
+.pipe-stage-label {
+  font-size: 10px;
+  font-weight: var(--fw-bold);
+  letter-spacing: 0.06em;
+  color: var(--primary-accent);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+
+.pipe-stage-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.pipe-sub-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 10px;
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--text-primary);
+  font-size: 11px;
+  font-weight: var(--fw-medium);
+  transition: all var(--transition-fast);
+}
+
+.pipe-sub-item i {
+  font-size: 18px;
+  color: var(--text-secondary);
+}
+
+.pipe-sub-item:hover {
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(242, 106, 10, 0.45);
+  transform: translateY(-2px);
+}
+
+/* Connecting Arrows */
+.pipe-flow-connector {
+  display: grid;
+  place-items: center;
+  padding: 2px 0;
+}
+
+.pipe-flow-arrow {
+  color: var(--primary-accent);
+  font-size: 16px;
+  font-weight: bold;
+  animation: pipeArrowPulse 2s ease-in-out infinite;
+}
+
+@keyframes pipeArrowPulse {
+  0%,
+  100% {
+    opacity: 0.5;
+    transform: translateY(0);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(2px);
+  }
+}
+
+/* Stage 02: DesignFoundry Engine (Hero Stage) */
+.pipe-stage-core {
+  padding: 16px 18px;
+  border-radius: var(--radius-lg);
+  background: rgba(242, 106, 10, 0.08);
+  border: 1.5px solid rgba(242, 106, 10, 0.55);
+  box-shadow: 0 0 20px rgba(242, 106, 10, 0.18);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.pipe-core-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.pipe-core-tag {
+  font-size: 10px;
+  font-weight: var(--fw-bold);
+  letter-spacing: 0.06em;
+  color: var(--primary-accent);
+}
+
+.pipe-core-body {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.pipe-core-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: var(--radius-md);
+  background: rgba(242, 106, 10, 0.18);
+  border: 1px solid rgba(242, 106, 10, 0.5);
+  display: grid;
+  place-items: center;
+  font-size: 20px;
+  color: var(--primary-accent);
+  flex-shrink: 0;
+}
+
+.pipe-core-info h4 {
+  font-size: 0.95rem;
+  font-weight: var(--fw-bold);
+  color: var(--text-head);
+  margin: 0 0 3px 0;
+}
+
+.pipe-core-info p {
+  font-size: 10.5px;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+/* ==========================================================
+   LIGHT MODE HARMONY (Dataflow Pipeline)
+========================================================== */
+
+:root[data-theme="light"] .engine-pipeline-card {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.98) 0%,
+    rgba(244, 248, 255, 0.94) 100%
+  ) !important;
+  border: 1px solid rgba(11, 31, 77, 0.14) !important;
+  box-shadow:
+    inset 0 1px 1px 0 #ffffff,
+    0 20px 48px -12px rgba(11, 31, 77, 0.1) !important;
+}
+
+:root[data-theme="light"] .pipe-sub-item {
+  background: rgba(11, 31, 77, 0.04);
+  border: 1px solid rgba(11, 31, 77, 0.12);
+  color: var(--text-head);
+}
+
+:root[data-theme="light"] .pipe-sub-item:hover {
+  background: #ffffff;
+  border-color: rgba(242, 106, 10, 0.5);
+}
+
+:root[data-theme="light"] .pipe-sub-item i {
+  color: var(--text-head);
+}
+
+:root[data-theme="light"] .pipe-stage-core {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 250, 245, 0.95) 0%,
+    rgba(255, 242, 232, 0.9) 100%
+  );
+  border: 1.5px solid rgba(242, 106, 10, 0.7);
+  box-shadow: 0 4px 16px rgba(242, 106, 10, 0.15);
+}
+
+:root[data-theme="light"] .pipe-status-badge.automated {
+  background: rgba(29, 122, 59, 0.1);
+  border-color: rgba(29, 122, 59, 0.3);
+  color: #1d7a3b;
+}
+
+:root[data-theme="light"] .pipe-status-badge.processing {
+  background: rgba(242, 106, 10, 0.12);
+  border-color: rgba(242, 106, 10, 0.5);
+  color: #c24e00;
+}

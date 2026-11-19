@@ -35,48 +35,6 @@
     <!-- Top Ambient Scroll Progress Bar -->
     <div class="scroll-progress-bar" id="scrollProgressBar" aria-hidden="true"></div>
 
-    <!-- CAD RGBY 4-POINTER CROSSHAIR RETICLE (Cursor Follower) -->
-    <div class="cad-cursor-hud" id="cadCursorHud" aria-hidden="true">
-        <div class="cad-crosshair-center">
-            <!-- 4-Way RGBY Gimbal Needles that Expand & Spin on Scroll -->
-            <div class="cad-gimbal-spin" id="cadGimbalSpin">
-                <!-- UP: Green (+Y Elevation) -->
-                <div class="cad-pointer cad-pointer-up" title="+Y Axis">
-                    <span class="pointer-axis mono">Y</span>
-                    <span class="pointer-arrow green"></span>
-                    <span class="pointer-line green"></span>
-                </div>
-                <!-- RIGHT: Red (+X Lateral) -->
-                <div class="cad-pointer cad-pointer-right" title="+X Axis">
-                    <span class="pointer-line red"></span>
-                    <span class="pointer-arrow red"></span>
-                    <span class="pointer-axis mono">X</span>
-                </div>
-                <!-- DOWN: Blue (+Z Feed/Depth) -->
-                <div class="cad-pointer cad-pointer-down" title="+Z Axis">
-                    <span class="pointer-line blue"></span>
-                    <span class="pointer-arrow blue"></span>
-                    <span class="pointer-axis mono">Z</span>
-                </div>
-                <!-- LEFT: Yellow (W Origin Datum) -->
-                <div class="cad-pointer cad-pointer-left" title="Origin Datum">
-                    <span class="pointer-axis mono">W</span>
-                    <span class="pointer-arrow yellow"></span>
-                    <span class="pointer-line yellow"></span>
-                </div>
-            </div>
-            <!-- Center Precision Aperture Target Box -->
-            <div class="cad-aperture">
-                <span class="aperture-core"></span>
-            </div>
-        </div>
-        <!-- CAD Live Coordinates Telemetry Badge -->
-        <div class="cad-cursor-telemetry mono" id="cadCursorTelemetry">
-            <span class="cad-tele-xy" id="cadTeleXY">X:000 Y:000</span>
-            <span class="cad-tele-cad">CAD</span>
-        </div>
-    </div>
-
 
 
     <!-- STICKY HEADER -->
@@ -99,7 +57,8 @@
             <nav class="nav-links" aria-label="Primary Navigation">
                 <ul>
                     <li><a href="/#top">Home</a></li>
-                    <li><a href="/#answers">Why Us</a></li>
+                    <li><a href="/#problem">Problem</a></li>
+                    <li><a href="/#answers">Solution</a></li>
                     <li><a href="/#why">Impact</a></li>
                     <li><a href="/#copilot">Workflow</a></li>
                     <li><a href="/#foundation">Built on Aryaman</a></li>
@@ -108,16 +67,8 @@
                 </ul>
             </nav>
 
-            <!-- CTA Action (Glass Float Button, CAD Cursor Toggle & Sun-Moon Theme Toggle) -->
+            <!-- CTA Action (Sun-Moon Theme Toggle) -->
             <div class="nav-actions">
-                <button type="button" class="btn-cad-toggle is-active" id="btnToggleCadCursor"
-                        title="Toggle CAD Crosshair Cursor Reticle" aria-label="Toggle CAD Crosshair Cursor Reticle"
-                        aria-pressed="true">
-                    <i class="bi bi-crosshair2"></i>
-                    <span class="toggle-text mono">CAD RETICLE</span>
-                    <span class="toggle-status mono">ON</span>
-                </button>
-
                 <!-- 21st.dev dhxwhy Sun-Moon Animated Theme Toggle -->
                 <button type="button" class="theme-toggle-btn" id="themeToggleBtn" aria-label="Toggle dark/light theme"
                         title="Toggle dark/light theme">

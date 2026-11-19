@@ -992,7 +992,8 @@
         // DYNAMIC PICK & PLACE ADJUSTMENT ENGINE + AMBIENT AUTO-DEMO
         // ==========================================
         var pnpSlider = document.getElementById("pnpSlider");
-        var pnpStrokeVal = document.getElementById("pnpStrokeVal");
+        if (pnpSlider) {
+            var pnpStrokeVal = document.getElementById("pnpStrokeVal");
         var svgBaseBed = document.getElementById("svgBaseBed");
         var svgRightPost = document.getElementById("svgRightPost");
         var svgGuideRail = document.getElementById("svgGuideRail");
@@ -1244,6 +1245,7 @@
 
         // Initialize at Step 1
         activateWorkflowStep(1);
+        } // End if (pnpSlider)
 
         // ==========================================
         // UPGRADED CONTACT & INQUIRY CONTROLLER
@@ -1483,10 +1485,12 @@
                                 var targetEl = document.getElementById(hash);
                                 if (targetEl && (currentPath === "" || currentPath === "/")) {
                                     e.preventDefault();
+                                    var navOffset = -95; // Perfectly clears the floating capsule navbar
                                     if (window.lenis) {
-                                        window.lenis.scrollTo(targetEl, { offset: -30 });
+                                        window.lenis.scrollTo(targetEl, { offset: navOffset });
                                     } else {
-                                        targetEl.scrollIntoView({ behavior: "smooth" });
+                                        var targetPos = targetEl.getBoundingClientRect().top + window.pageYOffset + navOffset;
+                                        window.scrollTo({ top: targetPos, behavior: "smooth" });
                                     }
                                     history.pushState(null, null, "#" + hash);
                                 }
@@ -1573,143 +1577,7 @@
             }
         })();
 
-        // ==========================================
-        // CAD CROSSHAIR HUD & BACKGROUND GRID PARALLAX
-        // ==========================================
-        (function initCadReticleAndGrid() {
-            var hud = document.getElementById("cadCursorHud");
-            var gimbal = document.getElementById("cadGimbalSpin");
-            var teleXY = document.getElementById("cadTeleXY");
-            var toggleBtn = document.getElementById("btnToggleCadCursor");
 
-            if (!hud || !gimbal) return;
-
-            // State: Enabled by default, remembers user preference in localStorage
-            var isCadEnabled = localStorage.getItem("df_cad_reticle") !== "false";
-
-            function updateCadToggleUI(enabled) {
-                if (enabled) {
-                    hud.classList.remove("is-disabled");
-                    if (toggleBtn) {
-                        toggleBtn.classList.remove("is-off");
-                        toggleBtn.setAttribute("aria-pressed", "true");
-                        var statusEl = toggleBtn.querySelector(".toggle-status");
-                        if (statusEl) statusEl.textContent = "ON";
-                    }
-                } else {
-                    hud.classList.add("is-disabled");
-                    hud.classList.remove("is-active");
-                    if (toggleBtn) {
-                        toggleBtn.classList.add("is-off");
-                        toggleBtn.setAttribute("aria-pressed", "false");
-                        var statusEl = toggleBtn.querySelector(".toggle-status");
-                        if (statusEl) statusEl.textContent = "OFF";
-                    }
-                }
-            }
-
-            updateCadToggleUI(isCadEnabled);
-
-            if (toggleBtn) {
-                toggleBtn.addEventListener("click", function () {
-                    isCadEnabled = !isCadEnabled;
-                    localStorage.setItem("df_cad_reticle", isCadEnabled ? "true" : "false");
-                    updateCadToggleUI(isCadEnabled);
-                });
-            }
-
-            var mouseX = -100, mouseY = -100;
-            var curX = -100, curY = -100;
-            var targetScale = 1;
-            var currentScale = 1;
-            var targetAngle = 0;
-            var currentAngle = 0;
-            var isScrollingTimeout = null;
-
-            // Track mouse cursor coordinates
-            window.addEventListener("mousemove", function (e) {
-                if (!isCadEnabled) return;
-                mouseX = e.clientX;
-                mouseY = e.clientY;
-                hud.classList.add("is-active");
-            }, { passive: true });
-
-            document.addEventListener("mouseleave", function () {
-                hud.classList.remove("is-active");
-            });
-
-            // Expand & spin needles on mouse wheel scroll
-            window.addEventListener("wheel", function (e) {
-                hud.classList.add("is-scrolling");
-
-                // Needles expand outward
-                targetScale = 1.6;
-                // Spin in direction of wheel scroll
-                targetAngle += (e.deltaY > 0 ? 32 : -32);
-
-                clearTimeout(isScrollingTimeout);
-                isScrollingTimeout = setTimeout(function () {
-                    targetScale = 1; // Snap back to center box
-                    // Snap to nearest 90-degree quadrant
-                    targetAngle = Math.round(targetAngle / 90) * 90;
-                    hud.classList.remove("is-scrolling");
-                }, 180);
-            }, { passive: true });
-
-            // Moving CAD Blueprint Background Grid Parallax on Scroll
-            var lastScrollTop = window.pageYOffset || document.documentElement.scrollTop || 0;
-            function onScrollUpdate() {
-                var scrollTop = window.pageYOffset || document.documentElement.scrollTop || 0;
-                var delta = scrollTop - lastScrollTop;
-                lastScrollTop = scrollTop;
-
-                // Shift 32px grid lines smoothly along with scroll
-                var gridShiftY = -(scrollTop * 0.45 % 32);
-                document.documentElement.style.setProperty("--grid-offset-y", gridShiftY.toFixed(1) + "px");
-
-                if (Math.abs(delta) > 1) {
-                    hud.classList.add("is-scrolling");
-                    targetScale = 1.65;
-                    targetAngle += delta * 0.28;
-
-                    clearTimeout(isScrollingTimeout);
-                    isScrollingTimeout = setTimeout(function () {
-                        targetScale = 1;
-                        targetAngle = Math.round(targetAngle / 90) * 90;
-                        hud.classList.remove("is-scrolling");
-                    }, 180);
-                }
-            }
-
-            if (window.lenis) {
-                window.lenis.on("scroll", onScrollUpdate);
-            }
-            window.addEventListener("scroll", onScrollUpdate, { passive: true });
-
-            // 60/120 FPS Physics Animation Loop
-            function render() {
-                // Smooth trailing chase ("cat behind mouse" offset + soft spring lag)
-                var destX = mouseX + 60; // Stays 32px away to the right
-                var destY = mouseY + 78; // Stays 28px away below the cursor
-                curX += (destX - curX) * 0.09; // Soft trailing chase factor (0.09)
-                curY += (destY - curY) * 0.09;
-
-                // Smooth spring physics for expansion & spin
-                currentScale += (targetScale - currentScale) * 0.16;
-                currentAngle += (targetAngle - currentAngle) * 0.16;
-
-                hud.style.transform = "translate3d(" + curX.toFixed(1) + "px, " + curY.toFixed(1) + "px, 0)";
-                gimbal.style.transform = "scale(" + currentScale.toFixed(3) + ") rotate(" + currentAngle.toFixed(2) + "deg)";
-
-                if (teleXY && mouseX > 0) {
-                    teleXY.textContent = "X:" + Math.round(curX) + " Y:" + Math.round(curY);
-                }
-
-                requestAnimationFrame(render);
-            }
-
-            requestAnimationFrame(render);
-        })();
 
         // ==========================================
         // INTERACTIVE CAD CLOTH MESH CANVAS (Elastic Fabric Physics)
@@ -1738,11 +1606,18 @@
             // ==========================================
             // CLOTH INTERACTION INTENSITY (TUNE HERE)
             // ==========================================
-            var RADIUS = 90;         // Area of effect around cursor (lower = smaller circle, e.g. 80-120)
-            var PUSH_STRENGTH = 8;    // Push depression strength (lower = gentler warp, e.g. 4-10)
-            var DRAG_STRENGTH = 0.18; // Pull along with mouse movement (lower = less pull, e.g. 0.10-0.25)
-            var TENSION = 0.11;       // Elastic return stiffness (higher = stiffer cloth, e.g. 0.10-0.15)
-            var DAMPING = 0.84;       // Friction damping (lower = stops waving faster, e.g. 0.80-0.85)
+            var RADIUS = 60;          // Area of elastic mesh warp around cursor
+            var PUSH_STRENGTH = 8;    // Push depression strength (gentle warp)
+            var DRAG_STRENGTH = 0.18; // Pull along with mouse movement
+            var TENSION = 0.11;       // Elastic return stiffness
+            var DAMPING = 0.80;       // Friction damping
+
+            // ==========================================
+            // PRIMARY ACCENT COLOR FLOW (TUNE HERE)
+            // ==========================================
+            var FLOW_RADIUS = 100;     // Fluid color reach around mouse (px)
+            var FLOW_BASE_ALPHA = 0.08;// Subtle aura when hovering / at rest
+            var FLOW_MAX_ALPHA = 0.22; // Dynamic peak aura during active movement / scroll
 
             function resize() {
                 width = canvas.width = window.innerWidth;
@@ -1791,9 +1666,17 @@
             });
 
             var scrollOffset = 0;
+            var lastScrollY = window.pageYOffset || document.documentElement.scrollTop || 0;
             function onScroll() {
                 var s = window.pageYOffset || document.documentElement.scrollTop || 0;
+                var delta = s - lastScrollY;
+                lastScrollY = s;
                 scrollOffset = -(s * 0.45) % CELL;
+
+                // When user scrolls, impart velocity to the active cursor so cloth & color flow with scroll
+                if (mouse.active) {
+                    mouse.vy -= Math.max(-16, Math.min(16, delta * 0.4));
+                }
             }
             if (window.lenis) window.lenis.on("scroll", onScroll);
             window.addEventListener("scroll", onScroll, { passive: true });
@@ -1834,7 +1717,6 @@
 
                 var isDark = document.documentElement.getAttribute("data-theme") !== "light";
                 var gridColor = isDark ? "rgba(100, 160, 240, 0.085)" : "rgba(11, 31, 77, 0.075)";
-                var dotPrefix = isDark ? "rgba(59, 130, 246, " : "rgba(242, 106, 10, ";
 
                 // 2. Draw Horizontal Cloth Grid Lines
                 ctx.lineWidth = 1;
@@ -1859,19 +1741,67 @@
                     ctx.stroke();
                 }
 
-                // 4. Subtle Glowing Nodes Near Mouse Interaction
+                // 4. Primary Accent Fluid Flow Aura & Illuminated Cloth Mesh
                 if (mouse.active) {
+                    var speed = Math.sqrt(mouse.vx * mouse.vx + mouse.vy * mouse.vy);
+                    var flowAlpha = Math.min(FLOW_BASE_ALPHA + speed * 0.012, FLOW_MAX_ALPHA);
+
+                    // 4A. Soft Fluid Wake Aura (drags slightly behind cursor motion)
+                    var wakeX = mouse.x - mouse.vx * 1.6;
+                    var wakeY = mouse.y - mouse.vy * 1.6;
+                    var auraGrad = ctx.createRadialGradient(
+                        mouse.x, mouse.y, 2,
+                        wakeX, wakeY, FLOW_RADIUS
+                    );
+                    auraGrad.addColorStop(0, "rgba(242, 106, 10, " + flowAlpha + ")");
+                    auraGrad.addColorStop(0.45, "rgba(242, 106, 10, " + (flowAlpha * 0.45) + ")");
+                    auraGrad.addColorStop(1, "rgba(242, 106, 10, 0)");
+
+                    ctx.fillStyle = auraGrad;
+                    ctx.beginPath();
+                    ctx.arc(mouse.x, mouse.y, FLOW_RADIUS, 0, Math.PI * 2);
+                    ctx.fill();
+
+                    // 4B. Subtle Accent Highlight on Distorted Cloth Mesh Lines & Nodes
                     for (var r = 0; r <= rows; r++) {
                         for (var c = 0; c <= cols; c++) {
                             var p = points[r][c];
                             var dx = p.x - mouse.x;
                             var dy = p.y - mouse.y;
                             var dist = Math.sqrt(dx * dx + dy * dy);
-                            if (dist < RADIUS) {
-                                var alpha = (1 - dist / RADIUS) * 0.35;
-                                ctx.fillStyle = dotPrefix + alpha + ")";
+
+                            if (dist < FLOW_RADIUS) {
+                                var factor = 1 - dist / FLOW_RADIUS;
+
+                                // Orange highlight on horizontal segment
+                                if (c < cols) {
+                                    var pRight = points[r][c + 1];
+                                    var segAlpha = factor * (0.16 + Math.min(speed * 0.01, 0.20));
+                                    ctx.strokeStyle = "rgba(242, 106, 10, " + segAlpha + ")";
+                                    ctx.lineWidth = 1.1;
+                                    ctx.beginPath();
+                                    ctx.moveTo(p.x, p.y);
+                                    ctx.lineTo(pRight.x, pRight.y);
+                                    ctx.stroke();
+                                }
+
+                                // Orange highlight on vertical segment
+                                if (r < rows) {
+                                    var pDown = points[r + 1][c];
+                                    var segAlpha = factor * (0.16 + Math.min(speed * 0.01, 0.20));
+                                    ctx.strokeStyle = "rgba(242, 106, 10, " + segAlpha + ")";
+                                    ctx.lineWidth = 1.1;
+                                    ctx.beginPath();
+                                    ctx.moveTo(p.x, p.y);
+                                    ctx.lineTo(pDown.x, pDown.y);
+                                    ctx.stroke();
+                                }
+
+                                // Illuminated mesh node
+                                var nodeAlpha = factor * (0.35 + Math.min(speed * 0.015, 0.35));
+                                ctx.fillStyle = "rgba(242, 106, 10, " + nodeAlpha + ")";
                                 ctx.beginPath();
-                                ctx.arc(p.x, p.y, 1.4, 0, Math.PI * 2);
+                                ctx.arc(p.x, p.y, 1.5, 0, Math.PI * 2);
                                 ctx.fill();
                             }
                         }

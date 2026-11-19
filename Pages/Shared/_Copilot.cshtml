@@ -12,6 +12,9 @@
             </div>
         </div>
 
+        @* ==========================================================
+           ORIGINAL INTERACTIVE JS ASSEMBLY SIMULATOR (COMMENTED OUT ONLY - PRESERVED FOR RESTORE)
+           ==========================================================
         <!-- RIGHT COLUMN: FULL ASSEMBLY SIMULATOR CONSOLE -->
         <div class="glass-card cp-simulator-chamber">
             <!-- Top Horizontal 5-Step Pipeline Rail -->
@@ -126,5 +129,60 @@
                     </div>
                 </div>
             </div>
+        ========================================================== *@
+
+        <!-- RIGHT COLUMN: WORKFLOW VIDEO CONTAINER -->
+        <div class="glass-card cp-video-chamber">
+            <div class="cp-video-topbar">
+                <div class="sim-title mono">
+                    <span class="pulse-dot"></span> LIVE CAD WORKFLOW DEMO
+                    <span class="sim-demo-badge mono">HD VIDEO</span>
+                </div>
+                <div class="video-meta-badge mono">
+                    <i class="bi bi-play-circle-fill"></i> SEE IT IN ACTION
+                </div>
+            </div>
+
+            <!-- Video Player Frame -->
+            <div class="cp-video-frame">
+                <!-- Cloud Video Embed (YouTube Embed for buNO0FkOcCc) -->
+                <iframe class="cp-video-iframe" 
+                        src="https://www.youtube-nocookie.com/embed/buNO0FkOcCc?rel=0&modestbranding=1" 
+                        title="DesignFoundry CAD Automation Workflow" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                        referrerpolicy="strict-origin-when-cross-origin" 
+                        loading="lazy"
+                        allowfullscreen>
+                </iframe>
+
+                @* Alternative: Native HTML5 Video File (Un-comment if you place an mp4 in wwwroot/videos/)
+                <video id="cpWorkflowVideo" class="cp-video-player" controls preload="metadata" playsinline poster="/images/why_cad_assembly.png">
+                    <source src="/videos/designfoundry_workflow.mp4" type="video/mp4" />
+                    Your browser does not support the video tag.
+                </video>
+                *@
+            </div>
+
+            <!-- Real-time Verification Telemetry Strip (Preserves CAD Console Status) -->
+            <div class="sim-telemetry mono">
+                <div class="telem-item">
+                    <i class="bi bi-check-circle-fill ok"></i>
+                    <span>INPUT:</span> <strong>PLAIN SPECS</strong>
+                </div>
+                <div class="telem-item">
+                    <i class="bi bi-shield-check ok"></i>
+                    <span>ENGINE:</span> <strong>AUTOMATED SOLVER</strong>
+                </div>
+                <div class="telem-item">
+                    <i class="bi bi-cpu ok"></i>
+                    <span>CAD:</span> <strong>3D &bull; 2D &bull; BOM</strong>
+                </div>
+                <div class="telem-item">
+                    <i class="bi bi-box-seam ok"></i>
+                    <span>OUTPUT:</span> <strong>MANUFACTURING-READY</strong>
+                </div>
+            </div>
+        </div>
         </div>
     </section>
