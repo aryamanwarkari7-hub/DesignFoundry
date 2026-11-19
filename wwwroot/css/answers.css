@@ -1,0 +1,204 @@
+/* ==========================================================
+   SECTION 2: EXECUTIVE ANSWERS MATRIX (AT A GLANCE)
+   Clean 2-Column Responsive Layout & 2x2 Glass Q&A Grid
+========================================================== */
+
+/* 1. Section Spacing */
+.answers-section {
+  position: relative;
+  width: 100%;
+  padding-block: var(--space-3xl);
+  scroll-margin-top: 80px;
+}
+
+/* 2. 2-Column Master Grid */
+.ans-2col-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.35fr;
+  gap: var(--space-3xl);
+  align-items: stretch;
+}
+
+/* 3. Left Column Copy */
+.ans-copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+}
+
+.ans-copy .eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: var(--font-xs);
+  letter-spacing: 0.08em;
+  color: var(--primary-accent);
+  margin-bottom: 14px;
+}
+
+.ans-copy h2 {
+  font-size: clamp(2rem, 3.6vw, 2.85rem);
+  line-height: 1.15;
+  color: var(--text-head);
+  font-weight: var(--fw-bold);
+  letter-spacing: -0.02em;
+  margin-bottom: 16px;
+}
+
+.ans-copy h2 em {
+  font-style: normal;
+  color: var(--primary-accent);
+}
+
+.ans-intro-text {
+  font-size: var(--font-base);
+  color: var(--text-secondary);
+  line-height: 1.6;
+  max-width: 32em;
+}
+
+/* 4. Right Column: 2x2 Clean Question & Answer Cards */
+.ans-matrix {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-md);
+  height: 100%;
+}
+
+/* 5. Clean Minimalist Q&A Card */
+.ans-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 24px 22px;
+  min-height: 155px;
+  border-radius: var(--radius-xl);
+
+  /* Deep Crystalline Glass Base (Dark Theme) */
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.07) 0%,
+      rgba(255, 255, 255, 0.02) 100%
+    ),
+    rgba(11, 28, 64, 0.72);
+
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(12px) saturate(180%);
+  -webkit-backdrop-filter: blur(12px) saturate(180%);
+
+  box-shadow:
+    inset 0 1px 1.5px 0 rgba(255, 255, 255, 0.35),
+    0 12px 28px -8px rgba(0, 0, 0, 0.45);
+
+  transition:
+    transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+    background 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.ans-card:hover {
+  transform: translateY(-4px);
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.11) 0%,
+      rgba(255, 255, 255, 0.03) 100%
+    ),
+    rgba(14, 34, 76, 0.88);
+  border-color: rgba(242, 106, 10, 0.65);
+  box-shadow:
+    inset 0 1px 2px 0 rgba(255, 255, 255, 0.6),
+    0 20px 48px -10px rgba(0, 0, 0, 0.65),
+    0 0 24px 0 rgba(242, 106, 10, 0.3);
+}
+
+/* Card Header Tag (Question Pill) */
+.ans-tag {
+  font-family: var(--font-family-mono);
+  font-size: 11px;
+  font-weight: var(--fw-semibold);
+  letter-spacing: 0.06em;
+  color: var(--primary-accent);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+
+/* Card Bold Title */
+.ans-title {
+  font-family: var(--font-family);
+  font-size: 1.15rem;
+  font-weight: var(--fw-bold);
+  color: var(--text-head);
+  line-height: 1.25;
+  margin: 0 0 8px 0;
+}
+
+/* Card Supporting Description */
+.ans-desc {
+  font-size: var(--font-sm);
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* ==========================================================
+   LIGHT THEME: ANSWERS SECTION
+========================================================== */
+
+:root[data-theme="light"] .ans-copy h2 {
+  color: var(--text-head);
+}
+
+:root[data-theme="light"] .ans-intro-text {
+  color: var(--text-secondary);
+}
+
+:root[data-theme="light"] .ans-card {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.96) 0%,
+    rgba(242, 246, 255, 0.92) 100%
+  );
+  border: 1px solid rgba(11, 31, 77, 0.14);
+  box-shadow:
+    inset 0 1px 1.5px rgba(255, 255, 255, 0.9),
+    0 10px 24px -6px rgba(11, 31, 77, 0.08);
+}
+
+:root[data-theme="light"] .ans-card:hover {
+  background: #ffffff;
+  border-color: rgba(242, 106, 10, 0.65);
+  box-shadow:
+    inset 0 1px 2px #ffffff,
+    0 16px 36px -8px rgba(11, 31, 77, 0.12),
+    0 0 16px rgba(242, 106, 10, 0.18);
+}
+
+:root[data-theme="light"] .ans-title {
+  color: var(--text-head);
+}
+
+:root[data-theme="light"] .ans-desc {
+  color: var(--text-secondary);
+}
+
+/* ==========================================================
+   RESPONSIVENESS
+========================================================== */
+@media (max-width: 960px) {
+  .ans-2col-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-xl);
+  }
+}
+
+@media (max-width: 600px) {
+  .ans-matrix {
+    grid-template-columns: 1fr;
+  }
+}

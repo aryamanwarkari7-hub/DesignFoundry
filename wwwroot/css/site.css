@@ -15,6 +15,7 @@
 /* 3. Section Modules */
 @import url("./navbar.css");
 @import url("./hero.css");
+@import url("./answers.css");
 @import url("./why.css");
 @import url("./copilot.css");
 @import url("./foundation.css");
@@ -110,6 +111,7 @@ p {
 .mono {
   font-family: var(--font-family-mono);
   font-size: var(--font-sm);
+  font-weight: var(--fw-bold);
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
@@ -160,6 +162,7 @@ p {
 .sec-head h2 em {
   font-style: normal;
   color: var(--primary-accent);
+  max-width: none;
 }
 
 .sec-head p {
@@ -270,114 +273,6 @@ p {
   border-color: rgba(242, 106, 10, 0.4);
   color: var(--primary-accent);
   box-shadow: 0 2px 10px rgba(11, 31, 77, 0.06);
-}
-
-/* ==========================================================
-   STREAMLINED ANSWERS SECTION
-========================================================== */
-
-.ans-2col-grid,
-.why-grid {
-  display: grid !important;
-  grid-template-columns: 1fr 1.35fr !important;
-  gap: var(--space-3xl) !important;
-  align-items: stretch !important;
-}
-
-.ans-copy,
-.why-copy {
-  display: flex !important;
-  flex-direction: column !important;
-  justify-content: space-between !important;
-  height: 100% !important;
-}
-
-.ans-intro-text {
-  font-size: var(--font-base);
-  color: var(--text-secondary);
-  line-height: 1.6;
-  max-width: 32em;
-  margin-top: 14px;
-}
-
-/* 4-Stat Single Clean Bar */
-.ans-metrics-4 {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 12px;
-  margin-top: auto;
-  padding-top: 24px;
-}
-
-.ans-stat-item {
-  display: flex;
-  flex-direction: column;
-  padding: 12px 14px;
-  border-radius: var(--radius-lg);
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(8px);
-}
-
-.ans-stat-item .m-val {
-  font-size: 1.15rem;
-  font-weight: var(--fw-bold);
-  color: var(--primary-accent);
-  line-height: 1.2;
-}
-
-.ans-stat-item .m-lbl {
-  font-size: 9.5px;
-  color: var(--text-secondary);
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  margin-top: 4px;
-}
-
-/* 2x2 Clean Question & Answer Cards */
-.ans-matrix {
-  display: grid !important;
-  grid-template-columns: repeat(2, 1fr) !important;
-  gap: var(--space-md) !important;
-  height: 100% !important;
-}
-
-/* Clean Minimalist Q&A Cards */
-.ans-card {
-  display: flex !important;
-  flex-direction: column !important;
-  justify-content: center !important;
-  padding: 32px 28px !important;
-  gap: 12px !important;
-  min-height: 120px !important;
-  transition:
-    transform 0.25s ease,
-    border-color 0.25s ease,
-    box-shadow 0.25s ease !important;
-}
-
-.ans-tag {
-  font-size: var(--font-lg);
-  color: var(--primary-accent);
-  font-weight: var(--fw-bold);
-  letter-spacing: 0.08em;
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-}
-
-.ans-title {
-  font-size: clamp(1.15rem, 1.4vw, 1.35rem) !important;
-  font-weight: var(--fw-bold) !important;
-  color: var(--text-head) !important;
-  line-height: 1.25 !important;
-  margin: 0 !important;
-}
-
-.ans-desc {
-  font-size: var(--font-xs);
-  color: var(--text-secondary);
-  line-height: 1.5;
 }
 
 /* Center left column content & eliminate the big empty void */

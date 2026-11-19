@@ -1,33 +1,7 @@
 @page
 @{
-    ViewData["Title"] = "Technical FAQ - DesignFoundry CAD Copilot";
+    ViewData["Title"] = "FAQ - DesignFoundry";
 }
-
-<div class="standalone-page-wrap">
-    <!-- 1. The Technical FAQ Section -->
-    <partial name="_Faq" />
-
-    <!-- 2. Action Closer Card (Eliminates dead-end) -->
-    <section class="page-closer-section" aria-label="Next steps">
-        <div class="wrap">
-            <div class="page-closer-card glass-card">
-                <div class="closer-header">
-                    <p class="eyebrow mono"><i class="bi bi-shield-check"></i> NEXT STEP &bull; ZERO RISK PILOT</p>
-                    <h2>Have questions specific to your CAD platform?</h2>
-                    <p>We connect directly with your existing CAD assemblies and drawing archives without modifying your proprietary formats or IT infrastructure.</p>
-                </div>
-                <div class="closer-actions">
-                    <a class="btn btn-primary" href="/#contact">
-                        <i class="bi bi-envelope-arrow-up"></i> Talk to Engineering Team &rarr;
-                    </a>
-                    <a class="btn btn-ghost" href="/About">
-                        <i class="bi bi-grid-3x3-gap"></i> Explore the 13 Engines
-                    </a>
-                </div>
-                <div class="closer-meta mono">
-                    <span><span class="pulse-dot"></span> PUNE, INDIA &bull; DIRECT LEADERSHIP ACCESS</span>
-                </div>
-            </div>
-        </div>
-    </section>
-</div>
+@functions {
+    public IActionResult OnGet() => Redirect("/#faq");
+}

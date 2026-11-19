@@ -1525,6 +1525,55 @@
         })();
 
         // ==========================================
+        // CONTACT TELEMETRY LIVE COUNTER
+        // ==========================================
+        (function initContactTrustCounter() {
+            var strip = document.getElementById("contactTrustStrip");
+            if (!strip) return;
+
+            var numbers = strip.querySelectorAll(".trust-num");
+            var hasAnimated = false;
+
+            function animateCount(el) {
+                var target = parseInt(el.getAttribute("data-target"), 10) || 0;
+                var duration = 1400; // 1.4s smooth roll
+                var startTime = null;
+
+                function step(timestamp) {
+                    if (!startTime) startTime = timestamp;
+                    var progress = Math.min((timestamp - startTime) / duration, 1);
+                    // Smooth ease-out cubic curve
+                    var eased = 1 - Math.pow(1 - progress, 3);
+                    el.textContent = Math.floor(eased * target);
+
+                    if (progress < 1) {
+                        requestAnimationFrame(step);
+                    } else {
+                        el.textContent = target;
+                    }
+                }
+                requestAnimationFrame(step);
+            }
+
+            if ("IntersectionObserver" in window) {
+                var observer = new IntersectionObserver(function (entries) {
+                    entries.forEach(function (entry) {
+                        if (entry.isIntersecting && !hasAnimated) {
+                            hasAnimated = true;
+                            numbers.forEach(animateCount);
+                            observer.unobserve(strip);
+                        }
+                    });
+                }, { threshold: 0.3 });
+                observer.observe(strip);
+            } else {
+                numbers.forEach(function (el) {
+                    el.textContent = el.getAttribute("data-target");
+                });
+            }
+        })();
+
+        // ==========================================
         // CAD CROSSHAIR HUD & BACKGROUND GRID PARALLAX
         // ==========================================
         (function initCadReticleAndGrid() {

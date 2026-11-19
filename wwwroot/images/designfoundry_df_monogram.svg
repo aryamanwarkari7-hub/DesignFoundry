@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg"
+     width="1312" height="1199" viewBox="0 0 1312 1199"
+     role="img" aria-labelledby="title desc">
+  <title id="title">DF monogram</title>
+  <desc id="desc">A bold orange D-shaped mark with a geometric F-shaped negative-space cutout.</desc>
+  <path fill="#FA7704" fill-rule="evenodd" d="
+    M64 0
+    H738
+    C1007 0 1218 253 1218 575
+    C1218 899 1002 1145 700 1145
+    H64
+    Z
+
+    M260 213
+    H890
+    V378
+    H450
+    V501
+    H798
+    V678
+    H450
+    V969
+    H260
+    Z"/>
+</svg>
