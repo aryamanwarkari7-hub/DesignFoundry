@@ -1,4 +1,4 @@
-<!-- FAQS (21st.dev REEL + TEXT ASIDE WITH SEARCH & VIEW SWITCHER) -->
+<!-- FAQS: BENTO CARDS MATRIX WITH LIVE SEARCH & CATEGORY FILTERING -->
 <section class="faq" id="faq">
     <div class="wrap">
         <div class="sec-head center">
@@ -7,74 +7,41 @@
             <p>Direct answers on CAD platform compatibility, data integrity, and engineering logic.</p>
         </div>
 
-        <!-- TOP BAR: LIVE SEARCH & VIEW MODE SWITCHER -->
+        <!-- TOP BAR: CENTERED SEARCH INPUT -->
         <div class="faq-toolbar">
             <div class="faq-search-wrap">
                 <i class="bi bi-search"></i>
                 <input type="text" id="faqSearchInput" class="faq-search-input"
-                       placeholder="Search questions (e.g. CAD, NLP, FEA, SolidWorks)..." autocomplete="off" />
-            </div>
-            <div class="faq-view-switch">
-                <button type="button" class="switch-btn active" id="btnViewReel">
-                    <i class="bi bi-view-stacked"></i> Reel View
-                </button>
-                <button type="button" class="switch-btn" id="btnViewGrid">
-                    <i class="bi bi-grid"></i> All Cards
-                </button>
+                       placeholder="Search questions (e.g. SolidWorks, NX, FEA, NLP, PDM)..." autocomplete="off" />
             </div>
         </div>
 
-        <!-- MODE 1: 21st.dev REEL + TEXT ASIDE (Matching Screenshot) -->
-        <div class="faq-reel-console" id="faqReelView">
-            <!-- Left: Kinetic Reel Column -->
-            <div class="reel-column-wrap">
-                <div class="reel-fade top"></div>
-                <div class="reel-items-stack" id="reelItemsStack">
-                    <!-- Populated dynamically via JS to keep active item in center -->
-                </div>
-                <div class="reel-fade bottom"></div>
-            </div>
-
-            <!-- Right: Text Aside (Active Question & Answer) -->
-            <div class="reel-text-aside">
-                <div class="aside-top">
-                    <div class="aside-quote-mark">
-                        <i class="bi bi-quote"></i>
-                    </div>
-                    <span class="aside-category mono" id="asideCategory">CAD COMPATIBILITY</span>
-                    <span class="aside-counter mono" id="asideCounter">01 / 06</span>
-                </div>
-
-                <h3 class="aside-question" id="asideQuestion">Which CAD software does it work with?</h3>
-                <p class="aside-answer" id="asideAnswer">
-                    It runs on your own CAD platform, from any CAD software. There is no change of software, no
-                    proprietary file formats, and no new CAD system to learn.
-                </p>
-
-                <!-- Technical Specification Chips -->
-                <div class="aside-chips" id="asideChips">
-                    <span>SolidWorks</span>
-                    <span>Autodesk Inventor</span>
-                    <span>PTC Creo</span>
-                    <span>Siemens NX</span>
-                </div>
-
-                <!-- Arrow Navigation Controls -->
-                <div class="aside-controls">
-                    <button type="button" class="reel-nav-btn" id="reelPrev" aria-label="Previous question">
-                        <i class="bi bi-chevron-left"></i>
-                    </button>
-                    <button type="button" class="reel-nav-btn" id="reelNext" aria-label="Next question">
-                        <i class="bi bi-chevron-right"></i>
-                    </button>
-                </div>
-            </div>
+        <!-- TECHNICAL CATEGORY FILTER PILLS -->
+        <div class="faq-filter-bar" id="faqFilterBar">
+            <button type="button" class="faq-filter-pill active" data-cat="all">
+                <span class="pill-dot"></span> All Questions <span class="pill-count">6</span>
+            </button>
+            <button type="button" class="faq-filter-pill" data-cat="Compatibility">
+                CAD Platforms
+            </button>
+            <button type="button" class="faq-filter-pill" data-cat="Extraction">
+                Data & Extraction
+            </button>
+            <button type="button" class="faq-filter-pill" data-cat="NLP Logic">
+                NLP & Automation
+            </button>
+            <button type="button" class="faq-filter-pill" data-cat="Model Safety">
+                Model Safety
+            </button>
+            <button type="button" class="faq-filter-pill" data-cat="Simulation">
+                FEA / CFD
+            </button>
         </div>
 
-        <!-- MODE 2: NORMAL ALL CARDS GRID (Available on Switch or Search) -->
-        <div class="faq-grid-view" id="faqGridView" style="display: none;">
+        <!-- PERMANENT BENTO CARDS MATRIX -->
+        <div class="faq-bento-container">
             <div class="faq-cards-matrix" id="faqCardsMatrix">
-                <!-- 6 Standard Glass Cards rendered here -->
+                <!-- Dynamically populated via site.js -->
             </div>
         </div>
 

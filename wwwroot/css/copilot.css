@@ -185,41 +185,42 @@
 
 /* Live / Auto-Demo Status Pill */
 .sim-demo-badge {
-    font-size: 8px;
-    letter-spacing: 0.05em;
-    padding: 2px 7px;
-    border-radius: var(--radius-pill);
-    background: rgba(255, 255, 255, 0.04);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    color: var(--text-muted);
-    transition: all var(--transition-fast);
-    white-space: nowrap; /* Prevents text from breaking into 2 lines */
-    flex-shrink: 0; /* Prevents badge from getting squished */
+  font-size: 8px;
+  letter-spacing: 0.05em;
+  padding: 2px 7px;
+  border-radius: var(--radius-pill);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--text-muted);
+  transition: all var(--transition-fast);
+  white-space: nowrap; /* Prevents text from breaking into 2 lines */
+  flex-shrink: 0; /* Prevents badge from getting squished */
 }
 
-    .sim-demo-badge.is-demo {
-        background: rgba(242, 106, 10, 0.15);
-        border-color: rgba(242, 106, 10, 0.45);
-        color: #ff9d54;
-        box-shadow: 0 0 10px rgba(242, 106, 10, 0.2);
-        animation: demoPulse 1.8s ease-in-out infinite;
-        margin-right: 40px;
-    }
+.sim-demo-badge.is-demo {
+  background: rgba(242, 106, 10, 0.15);
+  border-color: rgba(242, 106, 10, 0.45);
+  color: #ff9d54;
+  box-shadow: 0 0 10px rgba(242, 106, 10, 0.2);
+  animation: demoPulse 1.8s ease-in-out infinite;
+  margin-right: 40px;
+}
 
-    .sim-demo-badge.is-manual {
-        background: rgba(56, 239, 125, 0.1);
-        border-color: rgba(56, 239, 125, 0.35);
-        color: #38ef7d;
-    }
+.sim-demo-badge.is-manual {
+  background: rgba(56, 239, 125, 0.1);
+  border-color: rgba(56, 239, 125, 0.35);
+  color: #38ef7d;
+}
 
 @keyframes demoPulse {
-    0%, 100% {
-        opacity: 1;
-    }
+  0%,
+  100% {
+    opacity: 1;
+  }
 
-    50% {
-        opacity: 0.6;
-    }
+  50% {
+    opacity: 0.6;
+  }
 }
 
 .sim-controls {
@@ -231,6 +232,8 @@
 .sim-slider-label {
   font-size: 10.5px;
   color: var(--text-secondary);
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .sim-slider-label strong {
@@ -353,6 +356,37 @@
 
 .telem-item strong {
   color: var(--text-head);
+}
+
+/* ==========================================================
+   INTERACTIVE STAGE OVERLAYS & TELEMETRY GLOW
+========================================================== */
+
+.svg-stage-overlay {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.svg-stage-overlay.active {
+  opacity: 1;
+}
+
+/* Telemetry Step Focus Glow */
+.sim-telemetry .telem-item {
+  transition: all var(--transition-fast);
+  padding: 4px 8px;
+  border-radius: var(--radius-sm);
+}
+
+.sim-telemetry .telem-item.highlight {
+  background: rgba(242, 106, 10, 0.18);
+  border: 1px solid rgba(242, 106, 10, 0.5);
+  box-shadow: 0 0 12px rgba(242, 106, 10, 0.25);
+}
+
+.sim-telemetry .telem-item.highlight strong {
+  color: #ffffff;
 }
 
 /* ==========================================================

@@ -346,6 +346,33 @@ dialog#pd[open] {
   padding: 7px 16px;
 }
 
+.pd-copy-btn {
+  font-size: 11px;
+  padding: 7px 14px;
+  border-radius: var(--radius-pill);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: var(--text-secondary);
+  font-family: var(--font-family-mono);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.pd-copy-btn:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.25);
+  color: #ffffff;
+}
+
+.pd-copy-btn.copied {
+  border-color: #38ef7d;
+  color: #38ef7d;
+  background: rgba(56, 239, 125, 0.12);
+}
+
 .pd-pdf-link {
   font-size: 10.5px;
   color: var(--text-muted);

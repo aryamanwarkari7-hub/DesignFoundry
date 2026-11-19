@@ -157,6 +157,39 @@
             var elPdf = document.getElementById("pdPdf");
             if (elPdf) elPdf.setAttribute("href", p.pdf);
 
+            // Tailored Contact Link (Guarantees navigation to homepage contact)
+            var elTalk = document.getElementById("pdTalk");
+            if (elTalk) {
+                var inquirySubject = encodeURIComponent("Discuss " + p.title + " Copilot Automation");
+                var targetHref = (window.location.pathname.toLowerCase().indexOf("/about") !== -1)
+                    ? "/#contact?subject=" + inquirySubject
+                    : "#contact";
+                elTalk.setAttribute("href", targetHref);
+            }
+
+            // 1-Click Copy Technical Specs
+            var elCopySpecs = document.getElementById("pdCopySpecs");
+            if (elCopySpecs) {
+                elCopySpecs.onclick = function () {
+                    var specsText =
+                        "=== DesignFoundry Industrial Engine Dossier ===\n" +
+                        "Equipment: " + p.title + " (" + p.cat + ")\n" +
+                        "Summary: " + (p.brief || p.intro) + "\n" +
+                        "Applications: " + (p.apps || "Heavy Engineering, Custom Machinery") + "\n" +
+                        "Governing Codes: " + (p.standards || "ASME, ISO, DIN") + "\n" +
+                        "Speed Benchmark: < 2 Mins Automated Assembly vs 3-5 Days Legacy CAD\n" +
+                        "Engineered by: Aryaman Technologies, Pune, India";
+
+                    DesignFoundryApp.copyToClipboard(specsText, elCopySpecs);
+                    elCopySpecs.classList.add("copied");
+                    elCopySpecs.innerHTML = '<i class="bi bi-check-lg"></i> Copied Specs!';
+                    setTimeout(function () {
+                        elCopySpecs.classList.remove("copied");
+                        elCopySpecs.innerHTML = '<i class="bi bi-clipboard"></i> Copy Specs';
+                    }, 2500);
+                };
+            }
+
             if (dlg.showModal) {
                 dlg.showModal();
             } else {
@@ -235,11 +268,36 @@
     // Expose application object globally
     window.DesignFoundryApp = DesignFoundryApp;
 
+
     // ==========================================
     // 3. EVENT LISTENERS INITIALIZATION
     // ==========================================
     document.addEventListener("DOMContentLoaded", function () {
         DesignFoundryApp.initReducedMotion();
+
+        // Lenis Smooth Scrolling Engine Initialization
+        if (typeof window.Lenis === "function") {
+            try {
+                var lenis = new window.Lenis({
+                    duration: 1.1,
+                    easing: function (t) { return Math.min(1, 1.001 - Math.pow(2, -10 * t)); },
+                    smoothWheel: true,
+                    wheelMultiplier: 0.95,
+                    touchMultiplier: 1.5
+                });
+                window.lenis = lenis;
+
+                function lenisRaf(time) {
+                    lenis.raf(time);
+                    requestAnimationFrame(lenisRaf);
+                }
+                requestAnimationFrame(lenisRaf);
+            } catch (e) {
+                console.warn("Lenis init skipped", e);
+            }
+        }
+
+        // Product modal triggers...
 
         // Product modal triggers
         document.querySelectorAll("button.prod").forEach(function (b) {
@@ -432,7 +490,7 @@
         }
 
         // ==========================================================
-        // 21st.dev FAQ REEL + SEARCH & TOGGLE CONTROLLER
+        // PERMANENT BENTO FAQ CONTROLLER (SEARCH & DISCIPLINE FILTERS)
         // ==========================================================
         var FAQ_ITEMS = [
             {
@@ -491,147 +549,83 @@
             }
         ];
 
-        var reelStack = document.getElementById("reelItemsStack");
-        var asideCategory = document.getElementById("asideCategory");
-        var asideCounter = document.getElementById("asideCounter");
-        var asideQuestion = document.getElementById("asideQuestion");
-        var asideAnswer = document.getElementById("asideAnswer");
-        var asideChips = document.getElementById("asideChips");
-        var prevBtn = document.getElementById("reelPrev");
-        var nextBtn = document.getElementById("reelNext");
-
-        var searchInput = document.getElementById("faqSearchInput");
-        var btnViewReel = document.getElementById("btnViewReel");
-        var btnViewGrid = document.getElementById("btnViewGrid");
-        var reelView = document.getElementById("faqReelView");
-        var gridView = document.getElementById("faqGridView");
         var cardsMatrix = document.getElementById("faqCardsMatrix");
+        var searchInput = document.getElementById("faqSearchInput");
+        var filterPills = document.querySelectorAll(".faq-filter-pill");
 
-        if (reelStack && asideQuestion) {
-            var currentIndex = 0;
+        if (cardsMatrix) {
+            var activeFilter = "all";
 
-            function renderReelItems() {
-                reelStack.innerHTML = "";
-                FAQ_ITEMS.forEach(function (item, idx) {
-                    var div = document.createElement("div");
-                    div.className = "reel-item" + (idx === currentIndex ? " active" : "");
-                    div.innerHTML =
-                        '<div class="tile-top">' +
-                        '<i class="bi ' + item.icon + '"></i>' +
-                        '<span class="tile-num mono">0' + item.id + '</span>' +
-                        '</div>' +
-                        '<span class="tile-label">' + item.cat + '</span>';
-
-                    div.addEventListener("click", function () {
-                        currentIndex = idx;
-                        updateReelView();
-                    });
-                    reelStack.appendChild(div);
-                });
-            }
-
-            function updateReelView() {
-                var item = FAQ_ITEMS[currentIndex];
-                if (!item) return;
-
-                // Update text aside
-                asideCategory.textContent = item.tag;
-                asideCounter.textContent = "0" + item.id + " / 0" + FAQ_ITEMS.length;
-                asideQuestion.textContent = item.q;
-                asideAnswer.textContent = item.a;
-
-                // Update chips
-                asideChips.innerHTML = "";
-                item.chips.forEach(function (chip) {
-                    var s = document.createElement("span");
-                    s.textContent = chip;
-                    asideChips.appendChild(s);
-                });
-
-                // Update active tile highlight
-                var items = reelStack.querySelectorAll(".reel-item");
-                items.forEach(function (el, idx) {
-                    el.classList.toggle("active", idx === currentIndex);
-                });
-            }
-
-            // Arrow Controls
-            if (prevBtn) {
-                prevBtn.addEventListener("click", function () {
-                    currentIndex = (currentIndex - 1 + FAQ_ITEMS.length) % FAQ_ITEMS.length;
-                    updateReelView();
-                });
-            }
-            if (nextBtn) {
-                nextBtn.addEventListener("click", function () {
-                    currentIndex = (currentIndex + 1) % FAQ_ITEMS.length;
-                    updateReelView();
-                });
-            }
-
-            // Populate Grid View Matrix
-            function renderGridView(filtered) {
-                if (!cardsMatrix) return;
+            function renderCards(list) {
                 cardsMatrix.innerHTML = "";
-                var list = filtered || FAQ_ITEMS;
 
-                if (list.length === 0) {
-                    cardsMatrix.innerHTML = '<p style="grid-column: span 2; text-align: center; color: var(--text-secondary); padding: 40px;">No questions matched your search query.</p>';
+                if (!list || list.length === 0) {
+                    cardsMatrix.innerHTML =
+                        '<div class="faq-empty-state">' +
+                        '<i class="bi bi-search"></i>' +
+                        '<p class="mono">NO MATCHING QUESTIONS FOUND</p>' +
+                        '<p style="margin-top: 6px; font-size: 12px;">Try adjusting your keyword or selecting "All Questions" above.</p>' +
+                        '</div>';
                     return;
                 }
 
                 list.forEach(function (item) {
                     var card = document.createElement("div");
                     card.className = "matrix-card";
-                    card.innerHTML = '<span class="mono" style="color: var(--primary-accent); font-size: 11px;">0' + item.id + ' &bull; ' + item.cat + '</span>' +
+
+                    var chipsHtml = item.chips.map(function (c) {
+                        return '<span>' + c + '</span>';
+                    }).join("");
+
+                    card.innerHTML =
+                        '<div class="matrix-card-header">' +
+                        '<span class="matrix-card-tag mono">0' + item.id + ' &bull; ' + item.tag + '</span>' +
+                        '<i class="bi ' + item.icon + ' matrix-card-icon"></i>' +
+                        '</div>' +
                         '<h3>' + item.q + '</h3>' +
-                        '<p>' + item.a + '</p>';
+                        '<p>' + item.a + '</p>' +
+                        '<div class="matrix-card-chips">' + chipsHtml + '</div>';
+
                     cardsMatrix.appendChild(card);
                 });
             }
 
-            // View Mode Switching
-            function setViewMode(mode) {
-                if (mode === "grid") {
-                    reelView.style.display = "none";
-                    gridView.style.display = "block";
-                    btnViewGrid.classList.add("active");
-                    btnViewReel.classList.remove("active");
-                    renderGridView();
-                } else {
-                    gridView.style.display = "none";
-                    reelView.style.display = "grid";
-                    btnViewReel.classList.add("active");
-                    btnViewGrid.classList.remove("active");
-                    updateReelView();
-                }
+            function applyFilters() {
+                var query = searchInput ? searchInput.value.toLowerCase().trim() : "";
+
+                var filtered = FAQ_ITEMS.filter(function (item) {
+                    var matchesCat = (activeFilter === "all" || item.cat === activeFilter);
+                    if (!matchesCat) return false;
+                    if (query.length === 0) return true;
+
+                    return item.q.toLowerCase().includes(query) ||
+                        item.a.toLowerCase().includes(query) ||
+                        item.tag.toLowerCase().includes(query) ||
+                        item.chips.some(function (c) { return c.toLowerCase().includes(query); });
+                });
+
+                renderCards(filtered);
             }
 
-            if (btnViewReel) btnViewReel.addEventListener("click", function () { setViewMode("reel"); });
-            if (btnViewGrid) btnViewGrid.addEventListener("click", function () { setViewMode("grid"); });
+            // Category Filter Pills Click Handling
+            filterPills.forEach(function (pill) {
+                pill.addEventListener("click", function () {
+                    filterPills.forEach(function (p) { p.classList.remove("active"); });
+                    pill.classList.add("active");
+                    activeFilter = pill.getAttribute("data-cat") || "all";
+                    applyFilters();
+                });
+            });
 
             // Live Search
             if (searchInput) {
                 searchInput.addEventListener("input", function () {
-                    var q = searchInput.value.toLowerCase().trim();
-                    if (q.length > 0) {
-                        setViewMode("grid");
-                        var matches = FAQ_ITEMS.filter(function (item) {
-                            return item.q.toLowerCase().includes(q) ||
-                                item.a.toLowerCase().includes(q) ||
-                                item.tag.toLowerCase().includes(q) ||
-                                item.chips.some(function (c) { return c.toLowerCase().includes(q); });
-                        });
-                        renderGridView(matches);
-                    } else {
-                        setViewMode("reel");
-                    }
+                    applyFilters();
                 });
             }
 
-            // Initial render
-            renderReelItems();
-            updateReelView();
+            // Initial Render of All 6 Cards
+            applyFilters();
         }
 
         // ==========================================================
@@ -1031,6 +1025,14 @@
             if (svgBaseBed) svgBaseBed.setAttribute("width", bedWidth);
             if (svgRightPost) svgRightPost.setAttribute("x", postX);
             if (svgGuideRail) svgGuideRail.setAttribute("width", railWidth);
+
+            // DYNAMIC FIX: Keep FEA Stress bar matching the guide rail length exactly
+            var feaBar = document.getElementById("svgFeaStressBar");
+            if (feaBar) feaBar.setAttribute("width", railWidth);
+            // DYNAMIC FIX: Keep right post mate dot locked to the right post
+            var rightPostMate = document.getElementById("svgRightPostMate");
+            if (rightPostMate) rightPostMate.setAttribute("cx", postX + 7);
+
             if (svgDimLine) svgDimLine.setAttribute("x2", postX + 7);
             if (svgDimTickR) {
                 svgDimTickR.setAttribute("x1", postX + 7);
@@ -1147,70 +1149,231 @@
         });
 
         // ==========================================
-        // WORKFLOW STEPPER CONTROLLER
+        // WORKFLOW STEPPER CONTROLLER WITH LIVE STAGE OVERLAYS
         // ==========================================
         var workflowData = [
             {
                 tag: "STEP 01",
                 desc: "Scanning SolidWorks assembly tree (84 components, 112 mates detected)",
-                stroke: 350
+                stroke: 350,
+                overlayId: "svgStage1Mates",
+                telemIdx: 0 // MATES
             },
             {
                 tag: "STEP 02",
                 desc: "Capturing kinematics: slider stroke constrained to guide rails & actuator bed",
-                stroke: 400
+                stroke: 400,
+                overlayId: "svgStage2Logic",
+                telemIdx: 2 // TORQUE
             },
             {
                 tag: "STEP 03",
                 desc: 'Prompt received: "Extend stroke to 500mm and recalculate rail bearings"',
-                stroke: 500
+                stroke: 500,
+                overlayId: "svgStage3Prompt",
+                telemIdx: -1
             },
             {
                 tag: "STEP 04",
                 desc: "Verifying FEA & ASME logic: Deflection δ = 0.038 mm (< allowable 0.08 mm) ✓",
-                stroke: 550
+                stroke: 550,
+                overlayId: "svgStage4Fea",
+                telemIdx: 1 // FEA
             },
             {
                 tag: "STEP 05",
                 desc: "Regeneration complete: 2D fabrication drawings updated, BOM synced to ERP ✓",
-                stroke: 600
+                stroke: 600,
+                overlayId: "svgStage5Fab",
+                telemIdx: 3 // BOM
             }
         ];
 
         var stepBtns = document.querySelectorAll(".cp-pipe-step");
         var hudStepTag = document.getElementById("hudStepTag");
         var hudStepDesc = document.getElementById("hudStepDesc");
+        var telemItems = document.querySelectorAll(".sim-telemetry .telem-item");
+        var stageOverlays = document.querySelectorAll(".svg-stage-overlay");
+
+        function activateWorkflowStep(stepNum) {
+            var data = workflowData[stepNum - 1];
+            if (!data) return;
+
+            // 1. Update rail buttons
+            stepBtns.forEach(function (b) { b.classList.remove("active"); });
+            if (stepBtns[stepNum - 1]) stepBtns[stepNum - 1].classList.add("active");
+            // Toggle carriage mate node along with Step 1
+            var carriageMateNode = document.getElementById("svgCarriageMateNode");
+            if (carriageMateNode) {
+                carriageMateNode.classList.toggle("active", stepNum === 1);
+            }
+
+            // 2. Update HUD text
+            if (hudStepTag) hudStepTag.textContent = data.tag;
+            if (hudStepDesc) hudStepDesc.textContent = data.desc;
+
+            // 3. Actuate Carriage Machine
+            updatePnpMachine(data.stroke);
+
+            // 4. Update Preset Buttons
+            presetBtns.forEach(function (b) {
+                if (parseInt(b.getAttribute("data-stroke"), 10) === data.stroke) {
+                    b.classList.add("active");
+                } else {
+                    b.classList.remove("active");
+                }
+            });
+
+            // 5. Toggle SVG Visualizer Stage Overlays
+            stageOverlays.forEach(function (el) {
+                el.classList.toggle("active", el.id === data.overlayId);
+            });
+
+            // 6. Highlight Telemetry Focus
+            telemItems.forEach(function (t, idx) {
+                t.classList.toggle("highlight", idx === data.telemIdx);
+            });
+        }
 
         stepBtns.forEach(function (btn) {
             btn.addEventListener("click", function () {
                 var stepNum = parseInt(btn.getAttribute("data-step"), 10);
-                var data = workflowData[stepNum - 1];
-                if (!data) return;
-
-                stepBtns.forEach(function (b) { b.classList.remove("active"); });
-                btn.classList.add("active");
-
-                if (hudStepTag) hudStepTag.textContent = data.tag;
-                if (hudStepDesc) hudStepDesc.textContent = data.desc;
-
-                updatePnpMachine(data.stroke);
-                presetBtns.forEach(function (b) {
-                    if (parseInt(b.getAttribute("data-stroke"), 10) === data.stroke) {
-                        b.classList.add("active");
-                    } else {
-                        b.classList.remove("active");
-                    }
-                });
+                activateWorkflowStep(stepNum);
             });
         });
 
-        // Copy buttons
-        document.querySelectorAll(".copy").forEach(function (b) {
+        // Initialize at Step 1
+        activateWorkflowStep(1);
+
+        // ==========================================
+        // UPGRADED CONTACT & INQUIRY CONTROLLER
+        // ==========================================
+
+        // 1. Detect incoming URL subject from Product Modal (?subject=...)
+        (function checkInquiryUrlParams() {
+            var params = new URLSearchParams(window.location.search);
+            var subject = params.get("subject");
+            if (subject) {
+                var cleanName = decodeURIComponent(subject).replace("Discuss ", "").replace(" Copilot Automation", "");
+                var badge = document.getElementById("contactInquiryBadge");
+                var badgeText = document.getElementById("contactInquiryText");
+                var eqInput = document.getElementById("inquiryEquipment");
+
+                if (badge && badgeText) {
+                    badgeText.textContent = "INQUIRY SPECIFIED: " + cleanName.toUpperCase() + " COPILOT";
+                    badge.style.display = "inline-flex";
+                }
+                if (eqInput) {
+                    eqInput.value = cleanName;
+                }
+            }
+        })();
+
+        // 2. Enhanced Card Copy Buttons with Visual Green Feedback
+        document.querySelectorAll(".contact-subcard .copy").forEach(function (b) {
             b.addEventListener("click", function () {
                 var targetText = b.getAttribute("data-copy");
+                if (!targetText) return;
+
                 DesignFoundryApp.copyToClipboard(targetText, b);
+                b.classList.add("copied");
+                b.innerHTML = '<i class="bi bi-check-lg"></i> Copied!';
+
+                setTimeout(function () {
+                    b.classList.remove("copied");
+                    b.innerHTML = b.getAttribute("data-copy").indexOf("@") !== -1 ? "Copy Email"
+                        : (b.getAttribute("data-copy").indexOf("+") !== -1 ? "Copy Phone" : "Copy Address");
+                }, 2000);
             });
         });
+
+        // 3. Quick Inquiry Modal Handling
+        var inqDialog = document.getElementById("inquiryDialog");
+        var btnOpenInq = document.getElementById("btnOpenInquiryModal");
+        var btnCloseInq = document.getElementById("inquiryClose");
+        var cadChips = document.querySelectorAll(".cad-chip");
+        var activeCad = "SolidWorks";
+
+        cadChips.forEach(function (chip) {
+            chip.addEventListener("click", function () {
+                cadChips.forEach(function (c) { c.classList.remove("active"); });
+                chip.classList.add("active");
+                activeCad = chip.getAttribute("data-cad");
+                updateInquiryLinks();
+            });
+        });
+
+        function getInquiryDraft() {
+            var eq = (document.getElementById("inquiryEquipment") ? document.getElementById("inquiryEquipment").value.trim() : "") || "Equipment Automation";
+            var email = (document.getElementById("inquiryEmail") ? document.getElementById("inquiryEmail").value.trim() : "") || "Not specified";
+
+            return {
+                subject: "Discuss " + eq + " Copilot - " + activeCad,
+                body: "Hello Aryaman Technologies Team,\n\n" +
+                    "We are exploring DesignFoundry CAD Copilot automation for our engineering designs.\n\n" +
+                    "Details:\n" +
+                    "- CAD Platform: " + activeCad + "\n" +
+                    "- Target Equipment / Assembly: " + eq + "\n" +
+                    "- Contact Email: " + email + "\n\n" +
+                    "Please share feasibility and how historical CAD archives can be automated.\n\n" +
+                    "Best regards,"
+            };
+        }
+
+        function updateInquiryLinks() {
+            var draft = getInquiryDraft();
+            var sendBtn = document.getElementById("btnSendInquiryEmail");
+            if (sendBtn) {
+                sendBtn.setAttribute("href", "mailto:mail@aryamantechnologies.com?subject=" + encodeURIComponent(draft.subject) + "&body=" + encodeURIComponent(draft.body));
+            }
+        }
+
+        var eqField = document.getElementById("inquiryEquipment");
+        var mailField = document.getElementById("inquiryEmail");
+        if (eqField) eqField.addEventListener("input", updateInquiryLinks);
+        if (mailField) mailField.addEventListener("input", updateInquiryLinks);
+
+        if (btnOpenInq && inqDialog) {
+            btnOpenInq.addEventListener("click", function () {
+                updateInquiryLinks();
+                if (inqDialog.showModal) inqDialog.showModal();
+                else inqDialog.setAttribute("open", "");
+            });
+        }
+
+        // Close on Cross button click
+        var btnCloseInq = document.getElementById("inquiryClose");
+        if (btnCloseInq && inqDialog) {
+            btnCloseInq.addEventListener("click", function (e) {
+                e.stopPropagation();
+                if (inqDialog.close) inqDialog.close();
+                else inqDialog.removeAttribute("open");
+            });
+        }
+
+        // Close when clicking outside on the backdrop
+        if (inqDialog) {
+            inqDialog.addEventListener("click", function (e) {
+                if (e.target === inqDialog) {
+                    if (inqDialog.close) inqDialog.close();
+                    else inqDialog.removeAttribute("open");
+                }
+            });
+        }
+
+        // 4. 1-Click Copy Draft for Webmail users (Gmail / Outlook Web)
+        var btnCopyDraft = document.getElementById("btnCopyInquiryDraft");
+        if (btnCopyDraft) {
+            btnCopyDraft.addEventListener("click", function () {
+                var draft = getInquiryDraft();
+                var fullText = "Subject: " + draft.subject + "\n\n" + draft.body;
+                DesignFoundryApp.copyToClipboard(fullText, btnCopyDraft);
+                btnCopyDraft.innerHTML = '<i class="bi bi-check-lg"></i> Copied to Clipboard!';
+                setTimeout(function () {
+                    btnCopyDraft.innerHTML = '<i class="bi bi-clipboard"></i> Copy Draft for Webmail';
+                }, 2200);
+            });
+        }
 
         // ==========================================
         // MODERN SCROLL EXPERIENCE (Progress Bar, Reveal Physics, & ScrollSpy)
@@ -1676,7 +1839,4 @@
             requestAnimationFrame(updateAndDraw);
         })();
     });
-
 })(window, document);
-
-

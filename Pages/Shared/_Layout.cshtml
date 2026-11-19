@@ -7,6 +7,9 @@
     <title>@ViewData["Title"] - DesignFoundry</title>
     <meta name="description"
           content="DesignFoundry by Aryaman Technologies. Turn your legacy CAD data into reusable engineering intelligence: find, understand and adapt existing designs using natural language and automation.">
+    <!-- BROWSER FAVICON -->
+    <link rel="icon" type="image/x-icon" class"ico-icon" href="~/images/designfoundry_logo_light.ico" asp-append-version="true" />
+    <link rel="shortcut icon" type="image/x-icon" href="~/images/designfoundry_logo_light.ico" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -95,6 +98,7 @@
             <!-- Navigation Links (Center Capsule) -->
             <nav class="nav-links" aria-label="Primary Navigation">
                 <ul>
+                    <li><a href="/#top">Home</a></li>
                     <li><a href="/#answers">Overview</a></li>
                     <li><a href="/#why">Why Us</a></li>
                     <li><a href="/#copilot">Workflow</a></li>
@@ -261,21 +265,24 @@
                         </div>
                     </div>
 
-                    <!-- Footer -->
-                    <div class="pd-foot">
-                        <div class="pd-foot-left">
-                            <a class="btn btn-primary" href="#contact" id="pdTalk">
-                                <i class="bi bi-envelope-arrow-up"></i> Discuss this Copilot
-                            </a>
-                            <a class="pd-pdf-link mono" id="pdPdf" href="#" target="_blank" rel="noopener">
-                                <i class="bi bi-file-earmark-pdf"></i> Technical Leaflet (PDF)
-                            </a>
-                        </div>
-                        <div class="pd-foot-right mono">
-                            <span class="pulse-dot"></span> PROVEN ARYAMAN ENGINE &bull; 19+ YRS
-                        </div>
-                    </div>
-                </dialog>
+        <!-- Footer -->
+        <div class="pd-foot">
+            <div class="pd-foot-left">
+                <a class="btn btn-primary" href="/#contact" id="pdTalk">
+                    <i class="bi bi-envelope-arrow-up"></i> Discuss this Copilot
+                </a>
+                <button type="button" class="pd-copy-btn" id="pdCopySpecs">
+                    <i class="bi bi-clipboard"></i> Copy Specs
+                </button>
+                <a class="pd-pdf-link mono" id="pdPdf" href="#" target="_blank" rel="noopener">
+                    <i class="bi bi-file-earmark-pdf"></i> Technical Leaflet (PDF)
+                </a>
+            </div>
+            <div class="pd-foot-right mono">
+                <span class="pulse-dot"></span> PROVEN ARYAMAN ENGINE &bull; 19+ YRS
+            </div>
+        </div>
+    </dialog>
 
                 <!-- SIMPLISTIC BLUEPRINT FOOTER (Contained Section Capsule) -->
                 <footer class="site-footer">
@@ -295,7 +302,7 @@
 
                         <!-- Sleek Glass CAD Title Block -->
                         <div class="foot-titleblock mono" aria-label="Engineering Drawing Title Block">
-                            <div class="tb-cell"><span class="tb-lbl">DRAWN BY</span> <strong class="tb-val">ARYAMAN</strong></a>
+                            <div class="tb-cell"><span class="tb-lbl">DRAWN BY</span> <strong class="tb-val">ARYAMAN</strong>
                             </div>
                             <div class="tb-cell"><span class="tb-lbl">STANDARDS</span> <strong class="tb-val">ISO / ASME</strong>
                             </div>
@@ -305,33 +312,12 @@
                             </div>
                         </div>
                     </footer>
-                    <!-- GLOBAL SCRIPTS -->
-                    <!-- Lenis Smooth Scrolling Engine (3.5KB) -->
-                    <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
-                    <script>
-                            (function () {
-                                try {
-                                    window.lenis = new Lenis({
-                                        duration: 1.1,
-                                        easing: function (t) { return Math.min(1, 1.001 - Math.pow(2, -10 * t)); },
-                                        smoothWheel: true,
-                                        wheelMultiplier: 0.95,
-                                        touchMultiplier: 1.5,
-                                    });
+<!-- GLOBAL SCRIPTS -->
+<!-- Lenis Smooth Scrolling Engine (3.5KB) -->
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
+<script src="~/js/site.js" asp-append-version="true"></script>
+<script src="~/js/cad-viewer.js" asp-append-version="true"></script>
+@await RenderSectionAsync("Scripts", required: false)
+</body>
 
-                                    function raf(time) {
-                                        window.lenis.raf(time);
-                                        requestAnimationFrame(raf);
-                                    }
-                                    requestAnimationFrame(raf);
-                                } catch (e) {
-                                    console.warn("Lenis init skipped", e);
-                                }
-                            })();
-                    </script>
-                    <script src="~/js/site.js" asp-append-version="true"></script>
-                    <script src="~/js/cad-viewer.js" asp-append-version="true"></script>
-                    @await RenderSectionAsync("Scripts", required: false)
-                </body>
-
-            </html>
+</html>

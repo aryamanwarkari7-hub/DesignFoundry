@@ -65,10 +65,20 @@
                     mapped)</span>
                 </div>
 
-                <!-- Dynamic Pick & Place SVG Canvas -->
+                                <!-- Dynamic Pick & Place SVG Canvas -->
                 <div class="sim-canvas-viewport">
                     <svg id="cpSvgInteractive" viewBox="0 0 540 180" role="img"
                          aria-label="Interactive pick and place CAD machine">
+                        
+                        <!-- FEA & Stage Gradients -->
+                        <defs>
+                            <linearGradient id="feaStressGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                                <stop offset="0%" stop-color="#38ef7d" stop-opacity="0.9" />
+                                <stop offset="60%" stop-color="#f26a0a" stop-opacity="0.95" />
+                                <stop offset="100%" stop-color="#ff4757" stop-opacity="1" />
+                            </linearGradient>
+                        </defs>
+
                         <!-- Machine Base Bed -->
                         <rect id="svgBaseBed" class="svg-bed" x="40" y="160" width="370" height="10" rx="3" fill="#0d1f42"
                               stroke="rgba(140,180,240,0.3)" stroke-width="1.5" />
@@ -94,15 +104,11 @@
                         <rect id="svgTargetZone" x="298" y="138" width="20" height="22" rx="2" fill="none" stroke="#f26a0a"
                               stroke-width="1.5" stroke-dasharray="3 3" />
 
-                        <!-- Traveling Carriage & Pneumatic Z-Slide -->
-                        <g id="svgCarriageGroup">
-                            <rect id="svgCarriageBody" class="svg-bed" x="84" y="67" width="36" height="22" rx="3"
-                                  fill="#1e3b75" stroke="rgba(255,255,255,0.4)" stroke-width="1" />
-                            <rect id="svgZSlide" x="99" y="89" width="6" height="26" fill="rgba(255,255,255,0.8)" />
-                            <rect id="svgGripper" x="92" y="115" width="20" height="7" rx="2" fill="#f26a0a" />
-                        </g>
+                    white-space: nowrap;
+
                     </svg>
                 </div>
+                
 
                 <!-- Real-time Verification Telemetry Strip -->
                 <div class="sim-telemetry mono">

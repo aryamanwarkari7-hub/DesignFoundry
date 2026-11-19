@@ -1,10 +1,17 @@
 <!-- CONTACT (2-COLUMN 100VH CONSOLE: HEADING ON LEFT, EXPANDED CONSOLE ON RIGHT) -->
 <section class="contact" id="contact" aria-label="Contact Engineering Team">
     <div class="wrap contact-grid-2col">
-        <!-- LEFT COLUMN: ONLY HEADLINE, LEAD COPY & DIRECT CTAS -->
+        <!-- LEFT COLUMN: HEADLINE, DYNAMIC INQUIRY BADGE & ACTIONS -->
         <div class="contact-left-copy">
             <div class="contact-title-group">
                 <p class="eyebrow mono"><i class="bi bi-envelope-fill"></i> GET IN TOUCH</p>
+                
+                <!-- DYNAMIC INQUIRY CONTEXT BADGE (Appears when arriving from Product Modal) -->
+                <div class="contact-inquiry-badge mono" id="contactInquiryBadge" style="display: none;">
+                    <span class="pulse-dot"></span>
+                    <span id="contactInquiryText">INQUIRY: CUSTOM COPILOT</span>
+                </div>
+
                 <h2>Discuss your<br><em>Copilot.</em></h2>
                 <p class="contact-lead">
                     Tell us which CAD platform you use and what your team designs again and again.
@@ -14,12 +21,11 @@
 
             <!-- Primary Action CTAs -->
             <div class="contact-left-actions">
-                <a class="btn btn-primary"
-                   href="mailto:mail@aryamantechnologies.com?subject=Discuss%20Generative%20CAD">
+                <button type="button" class="btn btn-primary" id="btnOpenInquiryModal">
                     <i class="bi bi-envelope-arrow-up"></i> Discuss your Copilot
-                </a>
+                </button>
                 <a class="btn btn-ghost" href="https://www.aryamantechnologies.com" target="_blank" rel="noopener">
-                    Visit Website <i class="bi bi-box-arrow-up-right"></i>
+                    Visit Aryaman <i class="bi bi-box-arrow-up-right"></i>
                 </a>
             </div>
 
@@ -46,7 +52,7 @@
 
                 <div class="globe-telemetry-footer mono">
                     <span class="globe-drag-hint">
-                        <i class="bi bi-cursor-fill"></i> Drag
+                        <i class="bi bi-cursor-fill"></i> Drag globe
                     </span>
                     <button type="button" class="globe-spin-btn" id="globeSpinBtn" aria-label="Toggle globe spin">
                         <i class="bi bi-pause-fill" id="globeSpinIcon"></i>
@@ -68,7 +74,7 @@
                         <div class="card-meta mono">
                             <i class="bi bi-envelope"></i> General Enquiries
                         </div>
-                        <div class="card-val">mail@aryamantechnologies.com</div>
+                        <a href="mailto:mail@aryamantechnologies.com" class="card-val card-link">mail@aryamantechnologies.com</a>
                         <div class="card-action">
                             <button class="copy" type="button" data-copy="mail@aryamantechnologies.com">
                                 Copy Email
@@ -81,7 +87,7 @@
                         <div class="card-meta mono">
                             <i class="bi bi-person-badge"></i> Direct Leadership
                         </div>
-                        <div class="card-val">dhananjay@aryamantechnologies.com</div>
+                        <a href="mailto:dhananjay@aryamantechnologies.com" class="card-val card-link">dhananjay@aryamantechnologies.com</a>
                         <div class="card-action">
                             <button class="copy" type="button" data-copy="dhananjay@aryamantechnologies.com">
                                 Copy Email
@@ -94,7 +100,7 @@
                         <div class="card-meta mono">
                             <i class="bi bi-telephone"></i> Office Direct (IST)
                         </div>
-                        <div class="card-val">+91 20 2546 2557</div>
+                        <a href="tel:+912025462557" class="card-val card-link">+91 20 2546 2557</a>
                         <div class="card-action">
                             <button class="copy" type="button" data-copy="+91 20 2546 2557">
                                 Copy Phone
@@ -121,4 +127,49 @@
             </div>
         </div>
     </div>
+
+    <!-- QUICK INQUIRY GLASS MODAL -->
+    <dialog id="inquiryDialog" class="inquiry-dialog" aria-labelledby="inquiryTitle">
+        <div class="inquiry-box">
+            <div class="inquiry-head">
+                <div class="mono eyebrow"><span class="pulse-dot"></span> DIRECT ENGINEERING INQUIRY</div>
+                <h3 id="inquiryTitle">Discuss your Copilot</h3>
+                <button type="button" class="pd-x" id="inquiryClose" aria-label="Close dialog">&times;</button>
+            </div>
+            
+            <div class="inquiry-body">
+                <div class="inquiry-field">
+                    <label class="mono">01 : YOUR CAD PLATFORM</label>
+                    <div class="inquiry-cad-chips">
+                        <button type="button" class="cad-chip active" data-cad="SolidWorks">SolidWorks</button>
+                        <button type="button" class="cad-chip" data-cad="Autodesk Inventor">Inventor</button>
+                        <button type="button" class="cad-chip" data-cad="PTC Creo">PTC Creo</button>
+                        <button type="button" class="cad-chip" data-cad="Siemens NX">Siemens NX</button>
+                    </div>
+                </div>
+
+                <div class="inquiry-field">
+                    <label class="mono" for="inquiryEquipment">02 : EQUIPMENT / PRODUCT TO AUTOMATE</label>
+                    <input type="text" id="inquiryEquipment" class="inquiry-input"
+                           placeholder="e.g. Centrifugal Fan, Conveyor, Heat Exchanger..." />
+                </div>
+
+                <div class="inquiry-field">
+                    <label class="mono" for="inquiryEmail">03 : YOUR WORK EMAIL</label>
+                    <input type="email" id="inquiryEmail" class="inquiry-input"
+                           placeholder="engineer@company.com" />
+                </div>
+            </div>
+
+            <div class="inquiry-foot">
+                <a href="#" id="btnSendInquiryEmail" class="btn btn-primary">
+                    <i class="bi bi-send"></i> Send Inquiry via Email
+                </a>
+                <button type="button" class="pd-copy-btn" id="btnCopyInquiryDraft">
+                    <i class="bi bi-clipboard"></i> Copy Draft for Webmail
+                </button>
+            </div>
+            </div
+        </div>
+    </dialog>
 </section>

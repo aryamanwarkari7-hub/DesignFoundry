@@ -367,6 +367,196 @@
 }
 
 /* ==========================================================
+   DYNAMIC INQUIRY CONTEXT BADGE
+========================================================== */
+
+.contact-inquiry-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 10px;
+  color: #ff9d54;
+  letter-spacing: 0.06em;
+  padding: 4px 10px;
+  border-radius: var(--radius-pill);
+  background: rgba(242, 106, 10, 0.14);
+  border: 1px solid rgba(242, 106, 10, 0.45);
+  box-shadow: 0 0 12px rgba(242, 106, 10, 0.2);
+  margin-bottom: 8px;
+  width: fit-content;
+}
+
+/* Clickable card values */
+.card-val.card-link {
+  color: #ffffff;
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.card-val.card-link:hover {
+  color: var(--primary-accent);
+}
+
+/* Green copied button highlight */
+.contact-subcard .copy.copied {
+  border-color: #38ef7d !important;
+  color: #38ef7d !important;
+  background: rgba(56, 239, 125, 0.12) !important;
+}
+
+/* ==========================================================
+   INQUIRY GLASS MODAL
+========================================================== */
+
+/* ==========================================================
+   INQUIRY GLASS MODAL (DEAD-CENTER VIEWPORT LOCK)
+========================================================== */
+
+.inquiry-dialog {
+  position: fixed;
+  inset: 0;
+  margin: auto;
+  border: none;
+  background: transparent;
+  padding: 0;
+  max-width: 520px;
+  width: min(520px, calc(100% - 32px));
+  height: fit-content;
+  max-height: calc(100vh - 48px);
+  border-radius: var(--radius-2xl);
+  outline: none;
+  z-index: 9999;
+}
+
+.inquiry-dialog[open] {
+  display: flex;
+  flex-direction: column;
+}
+
+.inquiry-dialog::backdrop {
+  background: rgba(3, 8, 22, 0.85);
+  backdrop-filter: blur(14px) saturate(160%);
+  -webkit-backdrop-filter: blur(14px) saturate(160%);
+}
+
+.inquiry-box {
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.08) 0%,
+      rgba(255, 255, 255, 0.02) 100%
+    ),
+    rgba(8, 18, 42, 0.96);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: var(--radius-2xl);
+  box-shadow:
+    inset 0 1px 1px rgba(255, 255, 255, 0.35),
+    0 24px 64px rgba(0, 0, 0, 0.85);
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.inquiry-head {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  gap: 4px;
+}
+
+.inquiry-head h3 {
+  font-size: 1.35rem;
+  color: #ffffff;
+  margin: 0;
+}
+
+.inquiry-head .pd-x {
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 10;
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+.inquiry-body {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.inquiry-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.inquiry-field label {
+  font-size: 10px;
+  color: var(--primary-accent);
+  letter-spacing: 0.05em;
+}
+
+.inquiry-cad-chips {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.cad-chip {
+  padding: 6px 12px;
+  border-radius: var(--radius-pill);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: var(--text-secondary);
+  font-size: 11px;
+  font-family: var(--font-family-mono);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.cad-chip:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+}
+
+.cad-chip.active {
+  background: rgba(242, 106, 10, 0.2);
+  border-color: var(--primary-accent);
+  color: #ffffff;
+  box-shadow: 0 0 10px rgba(242, 106, 10, 0.3);
+}
+
+.inquiry-input {
+  width: 100%;
+  padding: 10px 14px;
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  color: #ffffff;
+  font-size: var(--font-sm);
+  outline: none;
+  transition: all var(--transition-fast);
+}
+
+.inquiry-input:focus {
+  border-color: var(--primary-accent);
+  background: rgba(255, 255, 255, 0.07);
+  box-shadow: 0 0 12px rgba(242, 106, 10, 0.25);
+}
+
+.inquiry-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  flex-wrap: wrap;
+}
+
+/* ==========================================================
    MOBILE & TABLET RESPONSIVE
 ========================================================== */
 
