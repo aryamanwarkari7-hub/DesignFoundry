@@ -413,3 +413,143 @@ dialog#pd[open] {
     gap: 12px;
   }
 }
+
+/* ==========================================================
+   LIGHT THEME: PRODUCT DOSSIER MODAL DIALOG
+========================================================== */
+:root[data-theme="light"] dialog#pd {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.98) 0%,
+    rgba(245, 248, 255, 0.96) 100%
+  );
+  border: 1px solid rgba(11, 31, 77, 0.14);
+  box-shadow:
+    inset 0 1px 1.5px 0 #ffffff,
+    0 24px 64px -12px rgba(11, 31, 77, 0.2);
+  color: var(--text-primary);
+}
+
+:root[data-theme="light"] dialog#pd::backdrop {
+  background: rgba(11, 31, 77, 0.35);
+}
+
+:root[data-theme="light"] .pd-head {
+  border-bottom: 1px solid rgba(11, 31, 77, 0.08);
+  background: rgba(11, 31, 77, 0.02);
+}
+
+:root[data-theme="light"] .pd-head-left h3 {
+  color: var(--text-head);
+}
+
+:root[data-theme="light"] .pd-platform-pill {
+  background: rgba(11, 31, 77, 0.05);
+  border: 1px solid rgba(11, 31, 77, 0.12);
+  color: #4a5568;
+}
+
+:root[data-theme="light"] .pd-x {
+  background: rgba(11, 31, 77, 0.05);
+  border: 1px solid rgba(11, 31, 77, 0.14);
+  color: #0b1f4d;
+}
+
+:root[data-theme="light"] .pd-x:hover {
+  background: rgba(239, 68, 68, 0.1);
+  border-color: rgba(239, 68, 68, 0.4);
+  color: #ef4444;
+}
+
+:root[data-theme="light"] .pd-stat-strip {
+  border-bottom: 1px solid rgba(11, 31, 77, 0.08);
+}
+
+:root[data-theme="light"] .pd-stat-pill {
+  background: rgba(11, 31, 77, 0.03);
+  border: 1px solid rgba(11, 31, 77, 0.08);
+}
+
+:root[data-theme="light"] .pd-stat-pill .val {
+  color: var(--text-head);
+}
+
+:root[data-theme="light"] .pd-stat-pill .lbl {
+  color: #718096;
+}
+
+:root[data-theme="light"] .pd-card-block {
+  background: rgba(11, 31, 77, 0.02);
+  border: 1px solid rgba(11, 31, 77, 0.08);
+}
+
+:root[data-theme="light"] .pd-brief-lead {
+  color: var(--text-head);
+}
+
+:root[data-theme="light"] .pd-chip {
+  background: #ffffff;
+  border: 1px solid rgba(11, 31, 77, 0.12);
+  color: #4a5568;
+}
+
+:root[data-theme="light"] .pd-solution-card {
+  background: rgba(11, 31, 77, 0.02);
+  border: 1px solid rgba(11, 31, 77, 0.08);
+}
+
+:root[data-theme="light"] .pd-auto-item strong {
+  color: var(--text-head);
+}
+
+:root[data-theme="light"] .pd-auto-item span {
+  color: #4a5568;
+}
+
+:root[data-theme="light"] .pd-foot {
+  border-top: 1px solid rgba(11, 31, 77, 0.08);
+  background: rgba(11, 31, 77, 0.02);
+}
+
+:root[data-theme="light"] .pd-copy-btn {
+  background: #ffffff;
+  border: 1px solid rgba(11, 31, 77, 0.16);
+  color: var(--text-head);
+}
+
+:root[data-theme="light"] .pd-foot-right {
+  color: #718096;
+}
+
+/* Speed Comparison Badges in Light Mode */
+:root[data-theme="light"] .pd-speed-pill.legacy {
+  background: rgba(239, 68, 68, 0.08);
+  border: 1px solid rgba(239, 68, 68, 0.28);
+  color: #7f1d1d;
+  font-weight: var(--fw-semibold);
+}
+
+:root[data-theme="light"] .pd-speed-pill.legacy .badge {
+  color: #dc2626;
+  font-weight: var(--fw-bold);
+}
+
+:root[data-theme="light"] .pd-speed-pill.ai {
+  background: rgba(16, 185, 129, 0.09);
+  border: 1px solid rgba(16, 185, 129, 0.32);
+  color: #14532d;
+  font-weight: var(--fw-semibold);
+}
+
+:root[data-theme="light"] .pd-speed-pill.ai .badge {
+  color: #16a34a;
+  font-weight: var(--fw-bold);
+}
+
+:root[data-theme="light"] .pd-pdf-link {
+  color: #4a5568;
+}
+
+:root[data-theme="light"] .pd-pdf-link:hover {
+  color: var(--primary-accent);
+}
