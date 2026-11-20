@@ -103,7 +103,7 @@
 
 /* 4. Flagship Hero Headline */
 .hero-title {
-  font-size: clamp(2.5rem, 4.8vw, 3.85rem) !important;
+  font-size: clamp(2.5rem, 4.8vw, 4.5rem) !important;
   line-height: 1.14 !important;
   font-weight: var(--fw-bold) !important;
   letter-spacing: -0.025em !important;
