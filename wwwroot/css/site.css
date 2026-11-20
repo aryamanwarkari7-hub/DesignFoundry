@@ -416,7 +416,7 @@ p {
 :root[data-theme="light"] .ans-copy p,
 :root[data-theme="light"] .ans-desc,
 :root[data-theme="light"] .ans-intro-text,
-:root[data-theme="light"] .nav-links a {
+:root[data-theme="light"] .nav-links a:not(.nav-btn-contact) {
   color: var(--text-secondary) !important;
 }
 

@@ -109,6 +109,7 @@
   letter-spacing: -0.025em !important;
   color: var(--text-head);
   margin-bottom: 18px !important;
+  text-wrap:auto;
 }
 
 .hero-gradient-text {
