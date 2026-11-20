@@ -135,37 +135,33 @@
         <div class="glass-card cp-video-chamber">
             <div class="cp-video-topbar">
                 <div class="sim-title mono">
-                    <span class="pulse-dot"></span> LIVE CAD WORKFLOW DEMO
+                    <span class="pulse-dot"></span> BELT CONVEYOR 
                     <span class="sim-demo-badge mono">HD VIDEO</span>
                 </div>
-                <div class="video-meta-badge mono">
-                    <i class="bi bi-play-circle-fill"></i> SEE IT IN ACTION
-                </div>
+                <button type="button" class="cp-fullscreen-btn mono" id="cpBtnFullscreen" aria-label="Expand video to fullscreen" title="Expand to fullscreen">
+                    <i class="bi bi-arrows-fullscreen"></i>
+                    <span>EXPAND FULLSCREEN</span>
+                </button>
             </div>
 
-            <!-- Video Player Frame -->
+            <!-- Native HTML5 CAD Workflow Video Player (Zero 3rd-party scripts, zero BotGuard errors) -->
             <div class="cp-video-frame">
-                <!-- Cloud Video Embed (YouTube Embed for buNO0FkOcCc) -->
-                <iframe class="cp-video-iframe" 
-                        src="https://www.youtube-nocookie.com/embed/buNO0FkOcCc?rel=0&modestbranding=1" 
-                        title="DesignFoundry CAD Automation Workflow" 
-                        frameborder="0" 
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                        referrerpolicy="strict-origin-when-cross-origin" 
-                        loading="lazy"
-                        allowfullscreen>
-                </iframe>
-
-                @* Alternative: Native HTML5 Video File (Un-comment if you place an mp4 in wwwroot/videos/)
-                <video id="cpWorkflowVideo" class="cp-video-player" controls preload="metadata" playsinline poster="/images/why_cad_assembly.png">
-                    <source src="/videos/designfoundry_workflow.mp4" type="video/mp4" />
-                    Your browser does not support the video tag.
+                <video id="cpWorkflowVideo"
+                       class="cp-video-player"
+                       controls
+                       playsinline
+                       preload="metadata"
+                       poster="/images/why_cad_assembly.png">
+                    @* <source src="/videos/Belt%20Conveyor%20Design.mp4" type="video/mp4" /> *@
+                    <source src="/videos/Earth-rotates.mp4" type="video/mp4" />
+                    <p class="mono text-muted" style="padding:20px;text-align:center;">
+                        Your browser does not support HTML5 video.
+                    </p>
                 </video>
-                *@
             </div>
 
             <!-- Real-time Verification Telemetry Strip (Preserves CAD Console Status) -->
-            <div class="sim-telemetry mono">
+            @* <div class="sim-telemetry mono">
                 <div class="telem-item">
                     <i class="bi bi-check-circle-fill ok"></i>
                     <span>INPUT:</span> <strong>PLAIN SPECS</strong>
@@ -182,7 +178,7 @@
                     <i class="bi bi-box-seam ok"></i>
                     <span>OUTPUT:</span> <strong>MANUFACTURING-READY</strong>
                 </div>
-            </div>
+            </div> *@
         </div>
         </div>
     </section>

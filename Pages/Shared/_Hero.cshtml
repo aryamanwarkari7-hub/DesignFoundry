@@ -1,141 +1,48 @@
-<!-- HERO COMPONENT (21st.dev Designali Inspired) -->
+<!-- HERO COMPONENT (CENTRAL TRANSFORMATION STAGE - TRANSPARENT OUTER, INNER CARDS) -->
 <div class="hero hero-designali">
-    <!-- Radial grid mask background -->
-    <div class="hero-grid-bg" aria-hidden="true"></div>
-
-    @* <!-- LEFT FLANK: ORTHOGRAPHIC BLUEPRINT DIMENSIONS -->
-    <aside class="hero-cad-flank flank-left mono" aria-hidden="true">
-        <div class="flank-header">
-            <span class="flank-crosshair">&target;</span>
-            <span class="flank-badge">DATUM [A]</span>
-            <span class="flank-coord">X: +142.50</span>
-        </div>
-        <div class="flank-dimension">
-            <span class="dim-tick">&vdash;</span>
-            <span class="dim-line"></span>
-            <span class="dim-val">650.00 mm &plusmn;0.02</span>
-            <span class="dim-line"></span>
-            <span class="dim-tick">&dashv;</span>
-        </div>
-        <div class="flank-data-block">
-            <div class="data-row"><span>GD&T:</span> &target; &empty;0.03 | A | B</div>
-            <div class="data-row"><span>SURFACE:</span> Ra 0.8 &mu;m</div>
-            <div class="data-row"><span>TOL:</span> ISO 2768-mK</div>
-        </div>
-    </aside>
-    <!-- RIGHT FLANK: PARAMETRIC CAD FEATURE TREE -->
-    <aside class="hero-cad-flank flank-right mono" aria-hidden="true">
-        <div class="flank-header">
-            <span class="flank-badge-green">&check; KERNEL ACTIVE</span>
-            <span class="flank-crosshair">&target;</span>
-        </div>
-        <div class="flank-tree-block">
-            <div class="tree-title"><i class="bi bi-diagram-3"></i> Actuator_Assy.sldasm</div>
-            <div class="tree-branch">&boxur; Mates: 112/112 Solved</div>
-            <div class="tree-branch">&boxur; FEA: &delta; = 0.041 mm</div>
-            <div class="tree-branch">&boxur; Sizing: NEMA 34 (7.2 Nm)</div>
-        </div>
-        <div class="flank-data-block">
-            <div class="data-row status-ok"><span>SYNC:</span> ERP-BOM LINKED</div>
-            <div class="data-row"><span>MAT:</span> AL 6061-T6</div>
-        </div>
-    </aside> *@
-
     <div class="wrap hero-center-container">
-        <!-- Top Announcement Pill -->
-        <!-- Top Announcement Pill -->
-        <div class="hero-badge-wrap">
-            <div class="hero-announcement-pill">
-                <span class="badge-dot"></span>
-                <span class="badge-text">19+ Years Engineering Logic</span>
-            </div>
-            <div class="hero-announcement-pill">
-                <span class="badge-dot"></span>
-                <span class="badge-text">Zero Manual CAD</span>
-            </div>
-        </div>
-
-        <!-- Main Title (From Storyboard Deck) -->
+        <!-- Main Headline -->
         <h1 class="hero-title">
-            Manufacturing-ready designs. <br>
-            <span class="hero-gradient-text">In minutes!</span>
+            Manufacturing-ready designs. <span class="hero-gradient-text">In minutes!</span>
         </h1>
 
-        <!-- Typewriter Sub-Hook -->
-        <div class="hero-typewriter-row mono">
-            <span class="type-prefix">AUTOMATING:</span>
-            <span id="heroTypewriter" class="type-dynamic">SolidWorks Mating Constraints</span>
-            <span class="type-cursor">|</span>
-        </div>
-
-        <!-- Supporting Lead Copy (From Storyboard Deck) -->
+        <!-- Clean 1-Line Value Proposition Subtitle -->
         <p class="hero-lead">
-            Stop spending days on repetitive CAD. Generate full drawings and BOMs in minutes.
+            Turn your design requirements into manufacturing-ready drawings and BOMs, automatically.
         </p>
 
-        <!-- CTA Buttons -->
+        <!-- Central Before-and-After Transformation Stage (Transparent Outer, Clean Floating Inner Cards) -->
+        <div class="hero-transform-stage">
+            <!-- Left Card: Input Requirements Sketch -->
+            <div class="transform-card card-sketch">
+                <img src="~/images/hero_card_sketch_round.png" 
+                     alt="CAD Input Requirements sketch with dimensions" 
+                     class="transform-card-img" />
+            </div>
+
+            <!-- Transformation Flow Arrow (Crisp Vector SVG Badge) -->
+            <div class="transform-arrow" aria-hidden="true">
+                <div class="transform-arrow-badge">
+                    <svg class="transform-arrow-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="4" y1="12" x2="20" y2="12"></line>
+                        <polyline points="13 5 20 12 13 19"></polyline>
+                    </svg>
+                </div>
+            </div>
+
+            <!-- Right Card: 3D Solid Model, 2D Drawing, and BOM Deliverables -->
+            <div class="transform-card card-deliverables">
+                <img src="~/images/hero_card_deliverables_round.png" 
+                     alt="3D CAD solid model, 2D manufacturing drawings, and BOM sheet" 
+                     class="transform-card-img" />
+            </div>
+        </div>
+
+        <!-- Single Clean Primary Action Button -->
         <div class="hero-cta-row">
-            <a href="#contact" class="btn btn-primary">
-                Discuss your Copilot <i class="bi bi-arrow-right-short"></i>
-            </a>
-            <a href="#copilot" class="btn btn-ghost">
-                <i class="bi bi-play-circle"></i> See how it works
+            <a href="#copilot" class="btn btn-primary hero-btn-action">
+                See in action <i class="bi bi-arrow-down-short"></i>
             </a>
         </div>
-
-        
-        <!-- 3-CARD HERO ENTERPRISE GRID (Matches Global Glass System) -->
-        <!-- 3-CARD HERO ENTERPRISE GRID -->
-        @* <div class="hero-cards-grid">
-    <!-- CARD 01 -->
-    <div class="glass-card hero-feature-card">
-        <div class="h-card-head">
-            <span class="h-card-tag mono"><i class="bi bi-cpu"></i> INTEGRATION</span>
-            <span class="h-card-pill mono">01</span>
-        </div>
-        <div class="h-card-body">
-            <h3 class="h-card-title">Zero Switching Barrier</h3>
-            <p class="h-card-desc">Operates natively inside your existing CAD platform. No new software for your engineering team to learn.</p>
-        </div>
-        <div class="h-card-pills mono">
-            <span class="glass-pill">SOLIDWORKS</span>
-            <span class="glass-pill">CREO</span>
-            <span class="glass-pill">INVENTOR</span>
-        </div>
-    </div>
-
-    <!-- CARD 02 -->
-    <div class="glass-card hero-feature-card">
-        <div class="h-card-head">
-            <span class="h-card-tag mono"><i class="bi bi-layers"></i> CAD ARCHITECTURE</span>
-            <span class="h-card-pill mono">02</span>
-        </div>
-        <div class="h-card-body">
-            <h3 class="h-card-title">Native B-Rep Solids</h3>
-            <p class="h-card-desc">Generates true parametric assemblies with intact feature trees, mating constraints, and editable sketches.</p>
-        </div>
-        <div class="h-card-pills mono">
-            <span class="glass-pill">FEATURE TREE</span>
-            <span class="glass-pill">MATES</span>
-            <span class="glass-pill">STEP AP242</span>
-        </div>
-    </div>
-
-    <!-- CARD 03 -->
-    <div class="glass-card hero-feature-card">
-        <div class="h-card-head">
-            <span class="h-card-tag mono"><i class="bi bi-shield-check"></i> SECURITY</span>
-            <span class="h-card-pill mono">03</span>
-        </div>
-        <div class="h-card-body">
-            <h3 class="h-card-title">100% On-Premise IP</h3>
-            <p class="h-card-desc">Air-gapped deployment in your private cloud or intranet. Proprietary CAD models never leave your facility.</p>
-        </div>
-        <div class="h-card-pills mono">
-            <span class="glass-pill">AIR-GAPPED</span>
-            <span class="glass-pill">PRIVATE VPC</span>
-            <span class="glass-pill">ZERO LEAK</span>
-        </div>
-    </div> *@
     </div>
 </div>

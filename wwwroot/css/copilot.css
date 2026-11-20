@@ -356,6 +356,7 @@
 
 .telem-item strong {
   color: var(--text-head);
+  font-size: var(--font-sm);
 }
 
 /* ==========================================================
@@ -582,6 +583,54 @@
   border-bottom: 1px solid rgba(255, 255, 255, 0.09);
 }
 
+/* CAD Fullscreen Expansion Button */
+.cp-fullscreen-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-family-mono);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  font-weight: var(--fw-semibold);
+  color: var(--text-head);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  padding: 6px 14px;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cp-fullscreen-btn i {
+  color: var(--primary-accent);
+  font-size: 12px;
+  transition: transform 0.2s ease;
+}
+
+.cp-fullscreen-btn:hover {
+  background: rgba(242, 106, 10, 0.12);
+  border-color: var(--primary-accent);
+  color: var(--primary-accent);
+  box-shadow: 0 0 16px rgba(242, 106, 10, 0.3);
+}
+
+.cp-fullscreen-btn:hover i {
+  transform: scale(1.18);
+}
+
+/* Light Theme Support */
+:root[data-theme="light"] .cp-fullscreen-btn {
+  background: rgba(11, 31, 77, 0.05);
+  border-color: rgba(11, 31, 77, 0.18);
+  color: #0b1f4d;
+}
+
+:root[data-theme="light"] .cp-fullscreen-btn:hover {
+  background: rgba(242, 106, 10, 0.1);
+  border-color: var(--primary-accent);
+  color: var(--primary-accent);
+}
+
 .video-meta-badge {
   font-size: 11px;
   letter-spacing: 0.06em;
@@ -639,4 +688,132 @@
   background: #0b1f4d;
   border-color: rgba(11, 31, 77, 0.15);
   box-shadow: 0 10px 30px rgba(11, 31, 77, 0.08);
+}
+
+/* ==========================================
+   VIDEO PLAYER FACADE & DUAL-ENGINE MOUNT
+========================================== */
+.cp-video-facade {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  z-index: 2;
+  overflow: hidden;
+  transition:
+    opacity 0.35s ease,
+    visibility 0.35s ease;
+}
+
+.cp-video-facade.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.cp-facade-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.cp-video-facade:hover .cp-facade-img {
+  transform: scale(1.03);
+}
+
+.cp-facade-overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at center,
+    rgba(4, 9, 26, 0.4) 0%,
+    rgba(4, 9, 26, 0.75) 100%
+  );
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+.cp-play-btn {
+  position: relative;
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  background: var(--primary-accent);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition:
+    transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.25s ease;
+  box-shadow:
+    0 0 24px rgba(242, 106, 10, 0.55),
+    0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+.cp-play-btn:hover {
+  transform: scale(1.1);
+  box-shadow:
+    0 0 34px rgba(242, 106, 10, 0.8),
+    0 10px 24px rgba(0, 0, 0, 0.5);
+}
+
+.cp-play-icon {
+  color: #ffffff;
+  font-size: 32px;
+  margin-left: 4px; /* Optical center compensation for play triangle */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cp-play-glow {
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  border: 2px solid rgba(242, 106, 10, 0.5);
+  animation: cpPlayPulse 2.2s infinite ease-out;
+  pointer-events: none;
+}
+
+@keyframes cpPlayPulse {
+  0% {
+    transform: scale(0.95);
+    opacity: 0.8;
+  }
+  70% {
+    transform: scale(1.35);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1.35);
+    opacity: 0;
+  }
+}
+
+.cp-facade-badge {
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  padding: 6px 14px;
+  border-radius: var(--radius-pill);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.cp-video-mount {
+  width: 100%;
+  height: 100%;
+  display: block;
 }
