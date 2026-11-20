@@ -445,18 +445,23 @@
   padding: var(--space-lg) var(--space-lg);
 }
 
-@keyframes arrowGlowPulse {
-  0%,
-  100% {
-    transform: scale(1);
-    box-shadow: 0 0 18px rgba(242, 106, 10, 0.3);
-  }
+    .hero-btn-action i{
+        font-size:var(--font-lg);
+        font-weight:var(--fw-bold);
+    }
 
-  50% {
-    transform: scale(1.06);
-    box-shadow: 0 0 28px rgba(242, 106, 10, 0.55);
-  }
-}
+    @keyframes arrowGlowPulse {
+        0%,
+        100% {
+            transform: scale(1);
+            box-shadow: 0 0 18px rgba(242, 106, 10, 0.3);
+        }
+
+        50% {
+            transform: scale(1.06);
+            box-shadow: 0 0 28px rgba(242, 106, 10, 0.55);
+        }
+    }
 
 /* Light Theme Overrides */
 :root[data-theme="light"] .transform-card {

@@ -297,6 +297,7 @@ p {
   box-shadow: 0 0 20px rgba(242, 106, 10, 0.12) !important;
   width: fit-content !important;
   max-width: 400px !important;
+  margin-top:var(--space-2xl);
 }
 
 .why-impact-stat .impact-val {
@@ -325,6 +326,10 @@ p {
   height: 36px !important;
   object-fit: contain !important;
   flex-shrink: 0 !important;
+}
+
+.logo-text b {
+  font-size: var(--font-xl);
 }
 
 :root .light-logo,
