@@ -13,11 +13,56 @@
 
         <!-- Central Before-and-After Transformation Stage (Transparent Outer, Clean Floating Inner Cards) -->
         <div class="hero-transform-stage">
-            <!-- Left Card: Input Requirements Sketch -->
+            <!-- Left Card: Complete Engineering Requirements Package -->
             <div class="transform-card card-sketch">
-                <img src="~/images/hero_card_sketch_round.png" 
-                     alt="CAD Input Requirements sketch with dimensions" 
-                     class="transform-card-img" />
+                <!-- 1. Top Requirements Header -->
+                <div class="card-req-topbar">
+                    <span class="card-req-tag mono">
+                        <i class="bi bi-sliders"></i> 01 / DESIGN INPUTS
+                    </span>
+                    <span class="card-req-badge mono">REQUIREMENTS</span>
+                </div>
+
+                <!-- 2. Customer Design Intent (Plain English Brief) -->
+                <div class="card-req-intent">
+                    <span class="intent-lbl mono"><i class="bi bi-chat-square-text"></i> DESIGN INTENT</span>
+                    <p class="intent-txt">
+                        Heavy-duty foot-mounted bearing housing for continuous conveyor shaft support.
+                    </p>
+                </div>
+
+                <!-- 3. Key Engineering Parameter Specs (6 Items) -->
+                <div class="card-req-specs mono">
+                    <div class="req-spec-pill">
+                        <span class="spec-k">BORE</span>
+                        <span class="spec-v">Ø80 mm</span>
+                    </div>
+                    <div class="req-spec-pill">
+                        <span class="spec-k">CENTERS</span>
+                        <span class="spec-v">160 mm</span>
+                    </div>
+                    <div class="req-spec-pill">
+                        <span class="spec-k">HEIGHT</span>
+                        <span class="spec-v">100 mm</span>
+                    </div>
+                    <div class="req-spec-pill">
+                        <span class="spec-k">LOAD</span>
+                        <span class="spec-v">12.5 kN</span>
+                    </div>
+                    <div class="req-spec-pill">
+                        <span class="spec-k">MATERIAL</span>
+                        <span class="spec-v">CAST IRON</span>
+                    </div>
+                    <div class="req-spec-pill">
+                        <span class="spec-k">STANDARD</span>
+                        <span class="spec-v">ISO 2768</span>
+                    </div>
+                </div>
+
+                <!-- 4. Automated Verification Status Footer -->
+                @* <div class="card-req-footer mono">
+                    <span class="pulse-dot"></span> SIZING RULES VALIDATED
+                </div> *@
             </div>
 
             <!-- Transformation Flow Arrow (Crisp Vector SVG Badge) -->
@@ -32,6 +77,14 @@
 
             <!-- Right Card: 3D Solid Model, 2D Drawing, and BOM Deliverables -->
             <div class="transform-card card-deliverables">
+                <!-- Top Deliverables Header with matching Pill Badge -->
+                <div class="card-req-topbar">
+                    <span class="card-req-tag mono">
+                        <i class="bi bi-box-seam"></i> 02 / PRODUCTION DELIVERABLES
+                    </span>
+                    <span class="card-req-badge mono">OUTPUTS</span>
+                </div>
+
                 <img src="~/images/hero_card_deliverables_round.png" 
                      alt="3D CAD solid model, 2D manufacturing drawings, and BOM sheet" 
                      class="transform-card-img" />
