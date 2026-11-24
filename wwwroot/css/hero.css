@@ -109,14 +109,15 @@
   letter-spacing: -0.025em !important;
   color: var(--text-head);
   margin-bottom: 18px !important;
-  text-wrap:auto;
+  text-wrap: auto;
 }
 
 .hero-gradient-text {
-  background: linear-gradient(135deg, #ffffff 20%, var(--primary-accent) 85%);
-  background-clip: text;
+  /* background: linear-gradient(135deg, #ffffff 20%, var(--primary-accent) 85%); */
+  color: var(--primary-accent);
+  /* background-clip: text;
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  -webkit-text-fill-color: transparent; */
 }
 
 /* 5. Precision Typewriter Row */
@@ -446,23 +447,23 @@
   padding: var(--space-lg) var(--space-lg);
 }
 
-    .hero-btn-action i{
-        font-size:var(--font-lg);
-        font-weight:var(--fw-bold);
-    }
+.hero-btn-action i {
+  font-size: var(--font-lg);
+  font-weight: var(--fw-bold);
+}
 
-    @keyframes arrowGlowPulse {
-        0%,
-        100% {
-            transform: scale(1);
-            box-shadow: 0 0 18px rgba(242, 106, 10, 0.3);
-        }
+@keyframes arrowGlowPulse {
+  0%,
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 18px rgba(242, 106, 10, 0.3);
+  }
 
-        50% {
-            transform: scale(1.06);
-            box-shadow: 0 0 28px rgba(242, 106, 10, 0.55);
-        }
-    }
+  50% {
+    transform: scale(1.06);
+    box-shadow: 0 0 28px rgba(242, 106, 10, 0.55);
+  }
+}
 
 /* Light Theme Overrides */
 :root[data-theme="light"] .transform-card {
@@ -672,10 +673,11 @@
 }
 
 :root[data-theme="light"] .hero-gradient-text {
-  background: linear-gradient(135deg, #0b1f4d 20%, var(--primary-accent) 85%);
+  /* background: linear-gradient(135deg, #0b1f4d 20%, var(--primary-accent) 85%);
   background-clip: text;
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  -webkit-text-fill-color: transparent; */
+  color: var(--primary-accent);
 }
 
 :root[data-theme="light"] .hero-typewriter-row .type-prefix {

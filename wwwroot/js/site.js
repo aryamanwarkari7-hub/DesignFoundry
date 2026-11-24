@@ -157,14 +157,12 @@
             var elPdf = document.getElementById("pdPdf");
             if (elPdf) elPdf.setAttribute("href", p.pdf);
 
-            // Tailored Contact Link (Guarantees navigation to homepage contact)
+            // Direct Meeting Booking Link
             var elTalk = document.getElementById("pdTalk");
             if (elTalk) {
-                var inquirySubject = encodeURIComponent("Discuss " + p.title + " Copilot Automation");
-                var targetHref = (window.location.pathname.toLowerCase().indexOf("/about") !== -1)
-                    ? "/#contact?subject=" + inquirySubject
-                    : "#contact";
-                elTalk.setAttribute("href", targetHref);
+                elTalk.setAttribute("href", "https://calendar.google.com/calendar/u/0/r?pli=1");
+                elTalk.setAttribute("target", "_blank");
+                elTalk.setAttribute("rel", "noopener noreferrer");
             }
 
             // 1-Click Copy Technical Specs
@@ -1436,6 +1434,111 @@
         }
 
         // ==========================================
+        // ASYNCHRONOUS CONTACT & BACKEND CONTROLLER
+        // ==========================================
+        var inqDialog = document.getElementById("inquiryDialog");
+        var navBookCallBtn = document.getElementById("navBookCallBtn");
+        var btnOpenInq = document.getElementById("btnOpenInquiryModal");
+        var btnCloseInq = document.getElementById("inquiryClose");
+        var cadChips = document.querySelectorAll(".cad-chip");
+        var activeCad = "SolidWorks";
+
+        // Asynchronous Open on "Book a Call"
+        function openInquiryModalAsync(e) {
+            if (e) e.preventDefault();
+            if (inqDialog) {
+                if (inqDialog.showModal) inqDialog.showModal();
+                else inqDialog.setAttribute("open", "");
+            }
+        }
+
+        if (navBookCallBtn) navBookCallBtn.addEventListener("click", openInquiryModalAsync);
+        if (btnOpenInq) btnOpenInq.addEventListener("click", openInquiryModalAsync);
+
+        if (btnCloseInq && inqDialog) {
+            btnCloseInq.addEventListener("click", function () {
+                if (inqDialog.close) inqDialog.close();
+                else inqDialog.removeAttribute("open");
+            });
+        }
+
+        if (inqDialog) {
+            inqDialog.addEventListener("click", function (e) {
+                if (e.target === inqDialog) {
+                    if (inqDialog.close) inqDialog.close();
+                    else inqDialog.removeAttribute("open");
+                }
+            });
+        }
+
+        cadChips.forEach(function (chip) {
+            chip.addEventListener("click", function () {
+                cadChips.forEach(function (c) { c.classList.remove("active"); });
+                chip.classList.add("active");
+                activeCad = chip.getAttribute("data-cad");
+            });
+        });
+
+        // Asynchronous Form Submission to Controller
+        var btnSend = document.getElementById("btnSendInquiryEmail");
+        if (btnSend) {
+            btnSend.addEventListener("click", async function (e) {
+                e.preventDefault();
+
+                var eqVal = (document.getElementById("inquiryEquipment")?.value || "").trim();
+                var emailVal = (document.getElementById("inquiryEmail")?.value || "").trim();
+
+                if (!emailVal || emailVal.indexOf("@") === -1) {
+                    alert("Please enter a valid work email address.");
+                    document.getElementById("inquiryEmail")?.focus();
+                    return;
+                }
+
+                var originalContent = btnSend.innerHTML;
+                btnSend.disabled = true;
+                btnSend.innerHTML = '<i class="bi bi-arrow-repeat spin"></i> Sending...';
+
+                try {
+                    var response = await fetch("/api/contact/inquiry", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify({
+                            cadPlatform: activeCad,
+                            equipment: eqVal || "Custom CAD Copilot",
+                            email: emailVal
+                        })
+                    });
+
+                    var result = await response.json();
+
+                    if (response.ok && result.success) {
+                        btnSend.innerHTML = '<i class="bi bi-check-circle-fill"></i> Sent Successfully!';
+                        btnSend.style.background = "#10b981";
+                        btnSend.style.borderColor = "#10b981";
+
+                        setTimeout(function () {
+                            if (inqDialog && inqDialog.close) inqDialog.close();
+                            btnSend.disabled = false;
+                            btnSend.innerHTML = originalContent;
+                            btnSend.style.background = "";
+                            btnSend.style.borderColor = "";
+                        }, 2000);
+                    } else {
+                        throw new Error(result.message || "Failed to submit inquiry");
+                    }
+                } catch (err) {
+                    alert("Error submitting inquiry. Opening webmail backup...");
+                    window.location.href = "mailto:mail@aryamantechnologies.com?subject=Discuss%20" +
+                        encodeURIComponent(eqVal || "Copilot") + "%20Automation&body=CAD%20Platform:%20" + activeCad;
+                    btnSend.disabled = false;
+                    btnSend.innerHTML = originalContent;
+                }
+            });
+        }
+
+        // ==========================================
         // MODERN SCROLL EXPERIENCE (Progress Bar, Reveal Physics, & ScrollSpy)
         // ==========================================
         (function initScrollExperience() {
@@ -1635,7 +1738,56 @@
             }
         })();
 
+        // ==========================================
+        // ABOUT SECTION LIVE SCROLL COUNTER
+        // ==========================================
+        (function initAboutCounters() {
+            var statsRow = document.querySelector(".about-stats-row");
+            if (!statsRow) return;
 
+            var counters = statsRow.querySelectorAll(".about-count");
+            if (!counters.length) return;
+
+            var hasAnimated = false;
+
+            function animateCount(el) {
+                var target = parseInt(el.getAttribute("data-target"), 10) || 0;
+                var duration = 1500; // 1.5s smooth roll
+                var startTime = null;
+
+                function step(timestamp) {
+                    if (!startTime) startTime = timestamp;
+                    var progress = Math.min((timestamp - startTime) / duration, 1);
+                    // Smooth ease-out cubic deceleration
+                    var eased = 1 - Math.pow(1 - progress, 3);
+                    el.textContent = Math.floor(eased * target);
+
+                    if (progress < 1) {
+                        requestAnimationFrame(step);
+                    } else {
+                        el.textContent = target;
+                    }
+                }
+                requestAnimationFrame(step);
+            }
+
+            if ("IntersectionObserver" in window) {
+                var observer = new IntersectionObserver(function (entries) {
+                    entries.forEach(function (entry) {
+                        if (entry.isIntersecting && !hasAnimated) {
+                            hasAnimated = true;
+                            counters.forEach(animateCount);
+                            observer.unobserve(statsRow);
+                        }
+                    });
+                }, { threshold: 0.25 });
+                observer.observe(statsRow);
+            } else {
+                counters.forEach(function (el) {
+                    el.textContent = el.getAttribute("data-target");
+                });
+            }
+        })();
 
         // ==========================================
         // INTERACTIVE CAD CLOTH MESH CANVAS (Elastic Fabric Physics)

@@ -38,3 +38,8 @@ index (*).html
 .DS_Store
 Thumbs.db
 desktop.ini
+
+## Secrets & Local Configuration
+appsettings.json
+appsettings.*.json
+!appsettings.example.json

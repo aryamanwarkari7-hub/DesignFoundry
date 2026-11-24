@@ -2,6 +2,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
+builder.Services.AddControllers(); // 1. ACTIVATE CONTROLLERS
 
 var app = builder.Build();
 
@@ -19,6 +20,7 @@ app.UseRouting();
 
 app.UseAuthorization();
 
+app.MapControllers(); // 2. MAP API CONTROLLERS (/api/contact/...)
 app.MapRazorPages();
 
 app.Run();

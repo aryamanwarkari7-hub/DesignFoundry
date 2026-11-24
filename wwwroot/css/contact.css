@@ -2,18 +2,26 @@
    CONTACT SECTION: 2-COLUMN 100VH INTERACTIVE CONSOLE
 ========================================================== */
 
+/* ==========================================================
+   CONTACT SECTION: 2-COLUMN CONSOLE (STANDALONE & EMBEDDED)
+========================================================== */
+
 .contact {
   position: relative;
   background: transparent;
-  height: 100vh !important;
-  min-height: 100vh !important;
-  display: flex !important;
-  flex-direction: column !important;
-  justify-content: center !important;
-  align-items: center !important;
-  box-sizing: border-box !important;
-  padding-block: clamp(16px, 2.5vh, 32px) !important;
-  overflow: hidden !important;
+  min-height: calc(100vh - 160px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  padding-top: calc(var(--section-scroll-margin, 92px) + 24px);
+  padding-bottom: clamp(32px, 5vh, 64px);
+  overflow: visible;
+}
+
+.contact-standalone-page .contact {
+  min-height: calc(100vh - 180px);
 }
 
 .contact-grid-2col {
@@ -39,13 +47,19 @@
 .contact-title-group .eyebrow {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  font-size: var(--font-xs);
-  letter-spacing: 0.08em;
-  color: var(--primary-accent);
+  gap: 6px;
+  font-family: var(--font-mono, "IBM Plex Mono", monospace);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent-orange, #f26a0a);
+  background: rgba(242, 106, 10, 0.08);
+  border: 1px solid rgba(242, 106, 10, 0.22);
+  padding: 4px 12px;
+  border-radius: 999px;
   margin-bottom: 12px;
 }
-
 .contact-title-group h2 {
   font-family: var(--font-family);
   font-size: clamp(2rem, 3.2vw, 2.8rem);
@@ -707,4 +721,19 @@
 
 :root[data-theme="light"] .card-val.address {
   color: var(--text-secondary);
+}
+
+/* Asynchronous Button Loading State */
+.spin {
+  display: inline-block;
+  animation: spinLoader 0.8s linear infinite;
+}
+
+@keyframes spinLoader {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }

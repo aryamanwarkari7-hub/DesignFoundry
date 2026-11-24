@@ -1,239 +1,249 @@
 /* ==========================================================
-   SECTION 02: THE CHALLENGE / PROBLEM (FROM PDF SLIDE 3)
-   2-Column Master Grid: Left Text + Right 3-Card Glass Stack
-   Matches DesignFoundry White + Orange Typography
+   SECTION 02: THE CHALLENGE / PROBLEM (MATCHING PHOTO 1)
+   Single-Column Centered Presentation:
+   - Two-Tone Heading (Navy Base + Industrial Orange Accent)
+   - 4-Card Visual Engineering Flow
+   - Hero-Style Connecting Vector Glass Arrows
+   - Bottom Takeaway: "The entire process can take several days!"
 ========================================================== */
 
 .problem-section {
   position: relative;
   width: 100%;
-  padding-block: clamp(48px, 6vh, 80px);
+  padding-block: clamp(60px, 8vh, 100px);
   scroll-margin-top: 96px;
 }
 
-/* 2-Column Responsive Grid */
-.prob-2col-grid {
-  display: grid;
-  grid-template-columns: 1fr 1.25fr;
-  gap: var(--space-3xl, 48px);
-  align-items: center;
-}
-
-/* ==========================================
-   LEFT COLUMN: HEADLINE & PLAIN STATEMENT
-========================================== */
-.prob-copy {
+/* Master Centered Container */
+.prob-center-container {
+  max-width: 1060px;
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-}
-
-.prob-copy .eyebrow {
-  display: inline-flex;
   align-items: center;
-  gap: 8px;
-  font-size: var(--font-xs);
-  letter-spacing: 0.08em;
-  color: var(--primary-accent);
-  margin-bottom: 14px;
 }
 
-.prob-copy h2 {
-  font-family: var(--font-family);
-  font-size: clamp(2.2rem, 3.8vw, 3.1rem);
-  line-height: 1.15;
-  color: var(--text-head);
-  letter-spacing: -0.02em;
-  margin-bottom: 16px;
-  text-wrap: balance;
-}
-
-.prob-copy h2 em {
-  font-style: normal;
-  color: var(--primary-accent);
-}
-
-.prob-lead-text {
-  font-size: var(--font-base);
-  color: var(--text-secondary);
-  line-height: 1.6;
-  margin-bottom: 24px;
-  max-width: 32em;
-}
-
-/* ==========================================
-   DATUM 03 MATCHING IMPACT STAT PILL
-========================================== */
-.prob-stat-box {
-  display: inline-flex;
-  align-items: center;
-  gap: 18px;
-  padding: 16px 20px;
-  border-radius: var(--radius-xl);
-  background: rgba(242, 106, 10, 0.06);
-  border: 1px solid rgba(242, 106, 10, 0.28);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
-  max-width: 36em;
-}
-
-.prob-stat-num {
-  font-family: var(--font-family-mono);
-  font-size: 2.2rem;
-  font-weight: var(--fw-bold);
-  color: var(--primary-accent);
-  line-height: 1;
-  letter-spacing: -0.02em;
-}
-
-.prob-stat-desc {
-  font-family: var(--font-family-mono);
-  font-size: 11.5px;
-  color: var(--text-secondary);
-  line-height: 1.45;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-}
-
-/* ==========================================
-   RIGHT COLUMN: 3 ENHANCED GLASS CARDS
-========================================== */
-.prob-cards-stack {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.prob-item-card {
-  padding: 20px 24px;
-  border-radius: var(--radius-xl);
-  background: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, 0.04) 0%,
-    rgba(255, 255, 255, 0.015) 100%
-  );
-  border: 1px solid rgba(255, 255, 255, 0.09);
-  border-left: 3.5px solid rgba(242, 106, 10, 0.5);
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.06),
-    0 8px 24px -4px rgba(0, 0, 0, 0.25);
-  transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1),
-              border-color 0.22s ease,
-              box-shadow 0.22s ease;
-}
-
-.prob-item-card:hover {
-  transform: translateX(4px);
-  border-color: rgba(242, 106, 10, 0.35);
-  border-left: 3.5px solid var(--primary-accent);
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.1),
-    0 12px 32px -6px rgba(0, 0, 0, 0.35);
-}
-
-.prob-item-head {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 10px;
-}
-
-.prob-item-tag {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  font-size: 11px;
-  letter-spacing: 0.06em;
-  color: var(--text-muted);
-}
-
-.prob-item-tag i {
-  color: var(--primary-accent);
-  font-size: 12px;
-}
-
-.prob-pill-badge {
+.eyebrow {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  font-size: 9.5px;
-  letter-spacing: 0.06em;
-  padding: 3.5px 9px;
-  border-radius: var(--radius-pill);
-  background: rgba(242, 106, 10, 0.12);
-  color: var(--primary-accent);
-  border: 1px solid rgba(242, 106, 10, 0.25);
-  font-weight: var(--fw-bold);
+  font-family: var(--font-mono, "IBM Plex Mono", monospace);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent-orange, #f26a0a);
+  background: rgba(242, 106, 10, 0.08);
+  border: 1px solid rgba(242, 106, 10, 0.22);
+  padding: 4px 12px;
+  border-radius: 999px;
+  margin-bottom: 12px;
 }
 
-.prob-badge-dot {
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background: var(--primary-accent);
-  box-shadow: 0 0 5px var(--primary-accent);
-}
-
-.prob-item-title {
-  font-size: 1.15rem;
-  font-weight: var(--fw-semibold);
+/* 1. Main Headline with Two-Tone Styling */
+.prob-flow-title {
+  font-family: var(--font-family);
+  font-size: clamp(2.3rem, 4.2vw, 3.4rem);
+  font-weight: 700;
   color: var(--text-head);
-  margin-bottom: 6px;
-  line-height: 1.3;
+  letter-spacing: -0.025em;
+  line-height: 1.16;
+  margin: 0 0 14px 0;
+  text-wrap: balance;
 }
 
-.prob-item-desc {
-  font-size: 0.88rem;
+:root[data-theme="light"] .prob-flow-title {
+  color: #0b1f4d; /* Deep Navy */
+}
+
+/* The Brand Orange Accent */
+.prob-accent-text {
+  color: var(--primary-accent) !important;
+  font-style: normal;
+}
+
+/* 2. Subtitle Value Statement */
+.prob-flow-subtitle {
+  font-family: var(--font-family);
+  font-size: clamp(1.05rem, 1.4vw, 1.2rem);
+  font-weight: 400;
   color: var(--text-secondary);
   line-height: 1.55;
-  margin: 0;
+  max-width: 680px;
+  margin: 0 auto 48px auto;
+  text-wrap: balance;
 }
 
-/* ==========================================================
-   LIGHT MODE OVERRIDES
-========================================================== */
-:root[data-theme="light"] .prob-stat-box {
-  background: rgba(242, 106, 10, 0.08);
-  border-color: rgba(242, 106, 10, 0.3);
-  box-shadow: 0 2px 8px rgba(11, 31, 77, 0.04);
+:root[data-theme="light"] .prob-flow-subtitle {
+  color: #334155;
 }
 
-:root[data-theme="light"] .prob-stat-desc {
-  color: #475569;
+/* 3. Horizontal 4-Card Process Flow */
+.prob-flow-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
 }
 
-:root[data-theme="light"] .prob-item-card {
-  background: linear-gradient(135deg, #ffffff 0%, #f7f9fd 100%);
-  border: 1px solid rgba(11, 31, 77, 0.12);
-  border-left: 3.5px solid rgba(242, 106, 10, 0.7);
+/* Process Card Styling */
+.prob-flow-card {
+  flex: 1 1 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+  border-radius: 14px;
   box-shadow:
-    inset 0 1px 0 #ffffff,
-    0 8px 24px -6px rgba(11, 31, 77, 0.06);
+    0 10px 28px -6px rgba(0, 0, 0, 0.12),
+    0 0 0 1px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  transition:
+    transform 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.28s ease;
 }
 
-:root[data-theme="light"] .prob-item-card:hover {
-  border-color: rgba(11, 31, 77, 0.2);
-  border-left: 3.5px solid var(--primary-accent);
-  box-shadow: 0 12px 28px -6px rgba(11, 31, 77, 0.12);
+.prob-flow-card:hover {
+  transform: translateY(-5px);
+  box-shadow:
+    0 18px 40px -8px rgba(0, 0, 0, 0.18),
+    0 0 0 1.5px rgba(242, 106, 10, 0.35);
+  z-index: 3;
 }
 
-:root[data-theme="light"] .prob-item-desc {
-  color: #475569;
+/* Card 4 (BOM) is proportionally wider to accommodate the table */
+.prob-flow-card.prob-flow-card-bom {
+  flex: 1.35 1 0;
 }
 
-:root[data-theme="light"] .prob-item-tag {
-  color: #64748b;
+/* Card Image (Fills Card Seamlessly) */
+.prob-flow-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
 /* ==========================================================
-   RESPONSIVENESS
+   HERO-STYLE VECTOR GLASS CONNECTING ARROWS
 ========================================================== */
-@media (max-width: 960px) {
-  .prob-2col-grid {
-    grid-template-columns: 1fr;
-    gap: var(--space-xl);
+.prob-flow-arrow {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
+.prob-flow-arrow-badge {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: linear-gradient(
+    135deg,
+    rgba(242, 106, 10, 0.18) 0%,
+    rgba(242, 106, 10, 0.06) 100%
+  );
+  border: 1.5px solid rgba(242, 106, 10, 0.4);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary-accent);
+  box-shadow:
+    0 2px 12px rgba(242, 106, 10, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.prob-flow-arrow-svg {
+  width: 17px;
+  height: 17px;
+  color: var(--primary-accent);
+  transition: transform 0.25s ease;
+}
+
+.prob-flow-row:hover .prob-flow-arrow-svg {
+  transform: translateX(2px);
+}
+
+.prob-flow-row:hover .prob-flow-arrow-badge {
+  border-color: var(--primary-accent);
+  box-shadow: 0 4px 18px rgba(242, 106, 10, 0.45);
+}
+
+/* 4. Bottom Prominent Callout */
+.prob-flow-callout {
+  font-family: var(--font-family);
+  font-size: clamp(1.4rem, 2.3vw, 1.95rem);
+  font-weight: 700;
+  color: var(--text-head);
+  letter-spacing: -0.015em;
+  margin: 48px auto 0 auto;
+  text-align: center;
+}
+
+:root[data-theme="light"] .prob-flow-callout {
+  color: #0b1f4d;
+}
+
+/* ==========================================================
+   DARK THEME REFINEMENT
+========================================================== */
+:root[data-theme="dark"] .prob-flow-card {
+  background: #ffffff;
+  box-shadow:
+    0 14px 32px -4px rgba(0, 0, 0, 0.6),
+    0 0 0 1px rgba(255, 255, 255, 0.12);
+}
+
+:root[data-theme="dark"] .prob-flow-card:hover {
+  box-shadow:
+    0 22px 48px -6px rgba(0, 0, 0, 0.75),
+    0 0 0 2px rgba(242, 106, 10, 0.6);
+}
+
+/* ==========================================================
+   RESPONSIVENESS (MOBILE & TABLET ADAPTATION)
+========================================================== */
+@media (max-width: 860px) {
+  .prob-flow-row {
+    flex-wrap: wrap;
+    gap: 16px;
   }
 
-  .prob-stat-box {
+  /* Hide inter-card arrows when wrapped into 2x2 grid */
+  .prob-flow-arrow {
+    display: none;
+  }
+
+  .prob-flow-card,
+  .prob-flow-card.prob-flow-card-bom {
+    flex: 1 1 calc(50% - 16px);
     max-width: 100%;
+  }
+
+  .prob-flow-subtitle {
+    margin-bottom: 36px;
+  }
+
+  .prob-flow-callout {
+    margin-top: 36px;
+  }
+}
+
+@media (max-width: 520px) {
+  .prob-flow-card,
+  .prob-flow-card.prob-flow-card-bom {
+    flex: 1 1 100%;
   }
 }

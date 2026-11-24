@@ -8,10 +8,12 @@
     <meta name="description"
           content="DesignFoundry by Aryaman Technologies. Turn your legacy CAD data into reusable engineering intelligence: find, understand and adapt existing designs using natural language and automation.">
     <!-- BROWSER FAVICON -->
-    <link rel="icon" type="image/x-icon" class"ico-icon" href="~/images/designfoundry_df_monogram.ico" asp-append-version="true" />
+    <link rel="icon" type="image/x-icon" class"ico-icon" href="~/images/designfoundry_df_monogram.ico"
+          asp-append-version="true" />
     <link rel="shortcut icon" type="image/x-icon" href="~/images/designfoundry_df_monogram.ico" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+
     <link
     href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Poppins:wght@300;400;500;600;700&display=swap"
     rel="stylesheet">
@@ -64,8 +66,9 @@
                     <li><a href="/#foundation">Applications</a></li>
                     @* <li><a href="/#faq">FAQ</a></li> *@
                     <li><a href="/#customers">Customers</a></li>
+                    <li><a href="/#about">About</a></li>
                     <li>
-                        <a href="/#contact" class="btn btn-primary nav-btn-contact">Contact Us</a>
+                        <a href="/contact" class="btn btn-primary nav-btn-contact" id="navBookCallBtn">Book a Call</a>
                     </li>
                 </ul>
             </nav>
@@ -219,24 +222,68 @@
                         </div>
                     </div>
 
-        <!-- Footer -->
-        <div class="pd-foot">
-            <div class="pd-foot-left">
-                <a class="btn btn-primary" href="/#contact" id="pdTalk">
-                    <i class="bi bi-envelope-arrow-up"></i> Discuss this Copilot
-                </a>
-                <button type="button" class="pd-copy-btn" id="pdCopySpecs">
-                    <i class="bi bi-clipboard"></i> Copy Specs
-                </button>
-                <a class="pd-pdf-link mono" id="pdPdf" href="#" target="_blank" rel="noopener">
-                    <i class="bi bi-file-earmark-pdf"></i> Technical Leaflet (PDF)
-                </a>
-            </div>
-            <div class="pd-foot-right mono">
-                <span class="pulse-dot"></span> PROVEN ARYAMAN ENGINE &bull; 19+ YRS
-            </div>
-        </div>
-    </dialog>
+                    <!-- Footer -->
+                    <div class="pd-foot">
+                        <div class="pd-foot-left">
+                            <a class="btn btn-primary" href="https://calendar.google.com/calendar/u/0/r?pli=1" target="_blank"
+                               rel="noopener noreferrer" id="pdTalk">
+                                <i class="bi bi-calendar3"></i> Discuss this Copilot
+                            </a>
+                            <button type="button" class="pd-copy-btn" id="pdCopySpecs">
+                                <i class="bi bi-clipboard"></i> Copy Specs
+                            </button>
+                            <a class="pd-pdf-link mono" id="pdPdf" href="#" target="_blank" rel="noopener">
+                                <i class="bi bi-file-earmark-pdf"></i> Technical Leaflet (PDF)
+                            </a>
+                        </div>
+                        <div class="pd-foot-right mono">
+                            <span class="pulse-dot"></span> PROVEN ARYAMAN ENGINE &bull; 19+ YRS
+                        </div>
+                    </div>
+                </dialog>
+
+                <!-- ASYNCHRONOUS INQUIRY GLASS MODAL (GLOBAL) -->
+                <dialog id="inquiryDialog" class="inquiry-dialog" aria-labelledby="inquiryTitle">
+                    <div class="inquiry-box">
+                        <div class="inquiry-head">
+                            <div class="mono eyebrow"><span class="pulse-dot"></span> DIRECT ENGINEERING INQUIRY</div>
+                            <h3 id="inquiryTitle">Discuss your Copilot</h3>
+                            <button type="button" class="pd-x" id="inquiryClose" aria-label="Close dialog">&times;</button>
+                        </div>
+            
+                        <div class="inquiry-body">
+                            <div class="inquiry-field">
+                                <label class="mono">01 : YOUR CAD PLATFORM</label>
+                                <div class="inquiry-cad-chips">
+                                    <button type="button" class="cad-chip active" data-cad="SolidWorks">SolidWorks</button>
+                                    <button type="button" class="cad-chip" data-cad="Autodesk Inventor">Inventor</button>
+                                    <button type="button" class="cad-chip" data-cad="PTC Creo">PTC Creo</button>
+                                    <button type="button" class="cad-chip" data-cad="Siemens NX">Siemens NX</button>
+                                </div>
+                            </div>
+
+                            <div class="inquiry-field">
+                                <label class="mono" for="inquiryEquipment">02 : EQUIPMENT / PRODUCT TO AUTOMATE</label>
+                                <input type="text" id="inquiryEquipment" class="inquiry-input"
+                                       placeholder="e.g. Centrifugal Fan, Conveyor, Heat Exchanger..." />
+                            </div>
+
+                            <div class="inquiry-field">
+                                <label class="mono" for="inquiryEmail">03 : YOUR WORK EMAIL</label>
+                                <input type="email" id="inquiryEmail" class="inquiry-input" placeholder="engineer@company.com" />
+                            </div>
+                        </div>
+
+                        <div class="inquiry-foot">
+                            <button type="button" id="btnSendInquiryEmail" class="btn btn-primary">
+                                <i class="bi bi-send"></i> Send Inquiry
+                            </button>
+                            <a href="/contact" class="btn btn-ghost" style="font-size: 0.85rem;">
+                                <i class="bi bi-geo-alt"></i> Full Contact Page &rarr;
+                            </a>
+                        </div>
+                    </div>
+                </dialog>
 
                 <!-- SIMPLISTIC BLUEPRINT FOOTER (Contained Section Capsule) -->
                 <footer class="site-footer">
@@ -266,12 +313,13 @@
                             </div>
                         </div>
                     </footer>
-<!-- GLOBAL SCRIPTS -->
-<!-- Lenis Smooth Scrolling Engine (3.5KB) -->
-<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
-<script src="~/js/site.js" asp-append-version="true"></script>
-<script src="~/js/cad-viewer.js" asp-append-version="true"></script>
-@await RenderSectionAsync("Scripts", required: false)
-</body>
+                    <!-- GLOBAL SCRIPTS -->
+                    <!-- Lenis Smooth Scrolling Engine (3.5KB) -->
+                    <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
+                    <script src="~/js/site.js" asp-append-version="true"></script>
+                    <script src="~/js/cad-viewer.js" asp-append-version="true"></script>
+                    <script src="~/js/customers.js" asp-append-version="true"></script>
+                    @await RenderSectionAsync("Scripts", required: false)
+                </body>
 
-</html>
+            </html>

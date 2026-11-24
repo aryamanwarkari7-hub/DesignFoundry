@@ -1,406 +1,663 @@
 /* ==========================================================
-   SECTION 2: EXECUTIVE ANSWERS MATRIX (AT A GLANCE)
-   Clean 2-Column Responsive Layout & 2x2 Glass Q&A Grid
+   SECTION 03: THE SOLUTION (CENTERED HEADLINE + 3 PILLAR CARDS)
 ========================================================== */
 
-/* 1. Section Spacing */
 .answers-section {
   position: relative;
   width: 100%;
-  padding-block: var(--space-3xl);
-  scroll-margin-top: 96px;
+  padding-top: 0;
+  padding-bottom: clamp(
+    60px,
+    8vh,
+    90px
+  ); /* Keeps balanced breathing room below cards */
+  scroll-margin-top: 75px; /* Perfectly aligns below the floating navbar */
 }
 
-/* 2. 2-Column Master Grid */
-.ans-2col-grid {
-  display: grid;
-  grid-template-columns: 1fr 1.35fr;
-  gap: var(--space-3xl);
-  align-items: stretch;
-}
-
-/* 3. Left Column Copy */
-.ans-copy {
+/* Master Centered Container */
+.ans-center-container {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  height: 100%;
-}
-
-.ans-copy .eyebrow {
-  display: inline-flex;
   align-items: center;
-  gap: 8px;
-  font-size: var(--font-xs);
-  letter-spacing: 0.08em;
-  color: var(--primary-accent);
-  margin-bottom: 14px;
 }
 
-.ans-copy h2 {
-  font-size: clamp(2rem, 3.6vw, 2.85rem);
-  line-height: 1.15;
-  color: var(--text-head);
-  font-weight: var(--fw-bold);
-  letter-spacing: -0.02em;
-  margin-bottom: 16px;
-}
-
-.ans-copy h2 em {
-  font-style: normal;
-  color: var(--primary-accent);
-}
-
-.ans-intro-text {
-  font-size: var(--font-base);
-  color: var(--text-secondary);
-  line-height: 1.6;
-  max-width: 32em;
-}
-
-/* 4. Right Column: 2x2 Clean Question & Answer Cards */
-.ans-matrix {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: var(--space-md);
-  height: 100%;
-}
-
-/* 5. Clean Minimalist Q&A Card */
-.ans-card {
+/* ==========================================
+   TOP CENTERED HEADER BLOCK
+========================================== */
+.ans-head-block {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  padding: 24px 22px;
-  min-height: 155px;
-  border-radius: var(--radius-xl);
-
-  /* Deep Crystalline Glass Base (Dark Theme) */
-  background:
-    linear-gradient(
-      135deg,
-      rgba(255, 255, 255, 0.07) 0%,
-      rgba(255, 255, 255, 0.02) 100%
-    ),
-    rgba(11, 28, 64, 0.72);
-
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  backdrop-filter: blur(12px) saturate(180%);
-  -webkit-backdrop-filter: blur(12px) saturate(180%);
-
-  box-shadow:
-    inset 0 1px 1.5px 0 rgba(255, 255, 255, 0.35),
-    0 12px 28px -8px rgba(0, 0, 0, 0.45);
-
-  transition:
-    transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
-    border-color 0.25s cubic-bezier(0.16, 1, 0.3, 1),
-    background 0.25s cubic-bezier(0.16, 1, 0.3, 1),
-    box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  align-items: center;
+  max-width: 840px;
+  margin-bottom: 34px; /* Reduced from 52px to balance vertical center */
 }
 
-.ans-card:hover {
-  transform: translateY(-4px);
-  background:
-    linear-gradient(
-      135deg,
-      rgba(255, 255, 255, 0.11) 0%,
-      rgba(255, 255, 255, 0.03) 100%
-    ),
-    rgba(14, 34, 76, 0.88);
-  border-color: rgba(242, 106, 10, 0.65);
-  box-shadow:
-    inset 0 1px 2px 0 rgba(255, 255, 255, 0.6),
-    0 20px 48px -10px rgba(0, 0, 0, 0.65),
-    0 0 24px 0 rgba(242, 106, 10, 0.3);
-}
-
-/* Card Header Tag (Question Pill) */
-.ans-tag {
-  font-family: var(--font-family-mono);
-  font-size: 11px;
-  font-weight: var(--fw-semibold);
-  letter-spacing: 0.06em;
-  color: var(--primary-accent);
+.ans-head-block .eyebrow {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  margin-bottom: 8px;
+  font-family: var(--font-mono, "IBM Plex Mono", monospace);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent-orange, #f26a0a);
+  background: rgba(242, 106, 10, 0.08);
+  border: 1px solid rgba(242, 106, 10, 0.22);
+  padding: 4px 12px;
+  border-radius: 999px;
+  margin-bottom: 14px;
 }
 
-/* Card Bold Title */
-.ans-title {
+.ans-title-headline {
   font-family: var(--font-family);
-  font-size: 1.15rem;
-  font-weight: var(--fw-bold);
+  font-size: clamp(2.3rem, 4.2vw, 3.4rem);
+  line-height: 1.16;
   color: var(--text-head);
-  line-height: 1.25;
-  margin: 0 0 8px 0;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  margin-bottom: 18px;
+  text-wrap: balance;
 }
 
-/* Card Supporting Description */
-.ans-desc {
-  font-size: var(--font-sm);
+:root[data-theme="light"] .ans-title-headline {
+  color: #0b1f4d; /* Deep Navy */
+}
+
+.ans-accent-text {
+  color: var(--primary-accent) !important;
+  font-style: normal;
+}
+
+.ans-intro-text {
+  font-size: clamp(1.05rem, 1.35vw, 1.2rem);
   color: var(--text-secondary);
-  line-height: 1.5;
-  margin: 0;
-}
-
-/* ==========================================================
-   LIGHT THEME: ANSWERS SECTION
-========================================================== */
-
-:root[data-theme="light"] .ans-copy h2 {
-  color: var(--text-head);
+  line-height: 1.55;
+  max-width: 700px;
+  margin: 0 auto 24px auto;
+  text-wrap: balance;
 }
 
 :root[data-theme="light"] .ans-intro-text {
+  color: #334155;
+}
+
+/* Value Stat Pill */
+.ans-stat-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  padding: 12px 22px;
+  border-radius: var(--radius-pill);
+  background: rgba(242, 106, 10, 0.06);
+  border: 1px solid rgba(242, 106, 10, 0.28);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.ans-stat-pill .stat-highlight {
+  font-family: var(--font-family-mono);
+  font-size: 1.95rem;
+  font-weight: 700;
+  color: var(--primary-accent);
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.ans-stat-pill .stat-desc {
+  font-family: var(--font-family-mono);
+
   color: var(--text-secondary);
+  line-height: 1.45;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
 }
 
-:root[data-theme="light"] .ans-card {
-  background: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, 0.96) 0%,
-    rgba(242, 246, 255, 0.92) 100%
-  );
-  border: 1px solid rgba(11, 31, 77, 0.14);
-  box-shadow:
-    inset 0 1px 1.5px rgba(255, 255, 255, 0.9),
-    0 10px 24px -6px rgba(11, 31, 77, 0.08);
-}
-
-:root[data-theme="light"] .ans-card:hover {
-  background: #ffffff;
-  border-color: rgba(242, 106, 10, 0.65);
-  box-shadow:
-    inset 0 1px 2px #ffffff,
-    0 16px 36px -8px rgba(11, 31, 77, 0.12),
-    0 0 16px rgba(242, 106, 10, 0.18);
-}
-
-:root[data-theme="light"] .ans-title {
-  color: var(--text-head);
-}
-
-:root[data-theme="light"] .ans-desc {
-  color: var(--text-secondary);
-}
-
+/* ==========================================
+   3 SPACIOUS PILLAR CARDS (3-COLUMN GRID)
+========================================== */
 /* ==========================================================
-   RESPONSIVENESS
-========================================================== */
-@media (max-width: 960px) {
-  .ans-2col-grid {
-    grid-template-columns: 1fr;
-    gap: var(--space-xl);
-  }
+   3 PILLAR CARDS (THEME ADAPTIVE: LIGHT & DARK)
+   ========================================================== */
+.ans-cards-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  width: 100%;
 }
 
-@media (max-width: 600px) {
-  .ans-matrix {
-    grid-template-columns: 1fr;
-  }
-}
-
-/* ==========================================================
-   2x2 VISUAL CARDS (REAL IMAGES & CLEAN WIDGETS)
-========================================================== */
-
+/* Master Card Chassis */
 .ans-card-visual {
-  min-height: 250px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 20px 22px;
+  padding: 26px 24px 22px;
+  border-radius: 20px;
+  text-align: left;
+  transition:
+    transform 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.28s ease,
+    box-shadow 0.28s ease;
+
+  /* LIGHT MODE (Default) */
+  background: #ffffff;
+  border: 1px solid rgba(11, 31, 77, 0.12);
+  box-shadow:
+    0 12px 30px -8px rgba(11, 31, 77, 0.08),
+    0 0 0 1px rgba(11, 31, 77, 0.04);
 }
 
+.ans-card-visual:hover {
+  transform: translateY(-5px);
+  border-color: rgba(242, 106, 10, 0.45);
+  box-shadow:
+    0 20px 42px -10px rgba(11, 31, 77, 0.14),
+    0 0 0 1.5px rgba(242, 106, 10, 0.35);
+}
+
+/* DARK MODE CHASSIS */
+:root[data-theme="dark"] .ans-card-visual {
+  background: rgba(16, 28, 54, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow:
+    0 20px 50px rgba(0, 0, 0, 0.4),
+    inset 0 1px 1px rgba(255, 255, 255, 0.15);
+}
+
+:root[data-theme="dark"] .ans-card-visual:hover {
+  border-color: rgba(242, 106, 10, 0.55);
+  box-shadow:
+    0 24px 60px rgba(0, 0, 0, 0.65),
+    0 0 20px rgba(242, 106, 10, 0.2);
+}
+
+/* Card Top Bar */
 .ans-card-top {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 2px;
+  margin-bottom: 16px;
 }
 
-.ans-corner-icon {
-  font-size: 15px;
-  color: var(--primary-accent);
+.ans-tag {
+  font-family: var(--font-family-mono, monospace);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--primary-accent, #f26a0a);
 }
 
-.ans-card-visual .ans-title {
-  font-size: 1.15rem;
-  font-weight: var(--fw-bold);
-  color: var(--text-head);
-  margin-bottom: 12px;
-}
-
-/* Image & Widget Containers */
-.ans-vis-box {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  min-height: 110px;
-  max-height: 120px;
-  margin-bottom: 12px;
-  border-radius: var(--radius-md);
-  background: rgba(6, 15, 38, 0.75);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  overflow: hidden;
-  position: relative;
-}
-
-.ans-vis-img-wrap {
-  padding: 0;
-}
-
-.ans-vis-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  border-radius: inherit;
-}
-
-.ans-vis-img-wrap.ans-vis-oem {
-  background: #ffffff;
-  padding: 8px 12px;
-  display: flex;
+.ans-badge-pill {
+  display: inline-flex;
   align-items: center;
-  justify-content: center;
-}
-
-.ans-vis-img.oem {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  display: block;
-}
-
-/* Card 2: Speed Timeline Widget */
-.ans-vis-speed {
-  padding: 14px 16px;
-  justify-content: center;
-  gap: 12px;
-}
-
-.speed-bar-row {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-}
-
-.speed-bar-labels {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  gap: 6px;
   font-size: 9.5px;
-  color: #718096;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.06em;
+  padding: 3.5px 9px;
+  border-radius: var(--radius-pill, 999px);
+  background: rgba(242, 106, 10, 0.1);
+  color: var(--primary-accent, #f26a0a);
+  border: 1px solid rgba(242, 106, 10, 0.28);
+  font-weight: 700;
 }
 
-.speed-bar-labels .speed-val.muted {
-  color: #f24d4d;
+.badge-pulse-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--primary-accent, #f26a0a);
+  box-shadow: 0 0 6px var(--primary-accent, #f26a0a);
 }
 
-.speed-bar-labels .speed-active-lbl {
-  color: var(--text-primary);
-  font-weight: var(--fw-semibold);
-}
-
-.speed-bar-labels .speed-val.accent {
-  color: #91d23c99;
-  font-weight: var(--fw-bold);
-}
-
-.speed-track {
-  width: 100%;
-  height: 6px;
-  border-radius: var(--radius-pill);
-  background: rgba(255, 255, 255, 0.08);
+/* 1-Line Card Title */
+.ans-title {
+  font-family: var(--font-family, sans-serif);
+  font-size: clamp(1.08rem, 1.3vw, 1.22rem);
+  font-weight: 700;
+  line-height: 1.25;
+  margin: 0 0 18px 0;
+  white-space: nowrap;
   overflow: hidden;
+  text-overflow: ellipsis;
+  color: #0b1f4d; /* Light Mode Navy */
 }
 
-.speed-fill.manual {
-  width: 95%;
-  height: 100%;
-  background: #f24d4d;
-  border-radius: var(--radius-pill);
+:root[data-theme="dark"] .ans-title {
+  color: #f8fafc; /* Dark Mode White */
 }
 
-.speed-fill.automated {
-  width: 16%;
-  height: 100%;
-  background: #91d23c99;
-  box-shadow: 0 0 10px rgba(242, 106, 10, 0.6);
-  border-radius: var(--radius-pill);
-}
-
-/* Card 3: Rules Checklist */
-.ans-vis-rules {
-  padding: 14px 16px;
+/* Micro-Diagram Canvas Box */
+.ans-vis-box {
+  display: flex;
+  align-items: center;
   justify-content: center;
+  min-height: 96px;
+  padding: 14px 16px;
+  border-radius: 14px;
+  margin-bottom: 18px;
+
+  /* Light Mode Background */
+  background: #f8fafc;
+  border: 1px solid rgba(11, 31, 77, 0.08);
+}
+
+:root[data-theme="dark"] .ans-vis-box {
+  background: rgba(6, 14, 32, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* ==========================================
+   1. PIPELINE DIAGRAM (CARD 1)
+   ========================================== */
+.ans-vis-pipeline {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+}
+
+.pipe-node {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 9.5px;
+  font-weight: 700;
+  padding: 6px 9px;
+  border-radius: 6px;
+  white-space: nowrap;
+
+  /* Light Mode */
+  background: #ffffff;
+  border: 1px solid rgba(11, 31, 77, 0.12);
+  color: #0b1f4d;
+}
+
+:root[data-theme="dark"] .pipe-node {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #e2e8f0;
+}
+
+.pipe-node i {
+  font-size: 11px;
+}
+
+.pipe-node.engine {
+  background: rgba(242, 106, 10, 0.1);
+  color: var(--primary-accent, #f26a0a);
+  border-color: rgba(242, 106, 10, 0.35);
+}
+
+:root[data-theme="dark"] .pipe-node.engine {
+  background: rgba(242, 106, 10, 0.18);
+  color: #ff8c38;
+  border-color: rgba(242, 106, 10, 0.45);
+}
+
+.pipe-node.deliverables {
+  background: rgba(5, 150, 105, 0.08);
+  color: #059669;
+  border-color: rgba(5, 150, 105, 0.25);
+}
+
+:root[data-theme="dark"] .pipe-node.deliverables {
+  background: rgba(5, 150, 105, 0.16);
+  color: #34d399;
+  border-color: rgba(5, 150, 105, 0.4);
+}
+
+.pipe-arrow {
+  color: #94a3b8;
+  font-weight: 700;
+  font-size: 18px;
+}
+
+:root[data-theme="dark"] .pipe-arrow {
+  color: rgba(255, 255, 255, 0.35);
+}
+
+/* ==========================================
+   2. SPEED PILLS COMPARISON (CARD 2)
+   ========================================== */
+.ans-vis-speed-pills {
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+}
+
+.speed-compare-row {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.compare-lead {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.compare-icon.manual {
+  font-size: 14px;
+  color: #e11d48;
+}
+
+.compare-icon.automated {
+  font-size: 15px;
+  color: var(--primary-accent, #f26a0a);
+}
+
+.compare-lbl {
+  font-size: 10px;
+  font-weight: 700;
+  color: #64748b;
+  letter-spacing: 0.05em;
+}
+
+:root[data-theme="dark"] .compare-lbl {
+  color: #94a3b8;
+}
+
+.time-pill {
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  padding: 4px 10px;
+  border-radius: var(--radius-pill, 999px);
+}
+
+.time-pill.manual {
+  background: rgba(225, 29, 72, 0.08);
+  color: #e11d48;
+  border: 1px solid rgba(225, 29, 72, 0.25);
+}
+
+:root[data-theme="dark"] .time-pill.manual {
+  background: rgba(225, 29, 72, 0.15);
+  color: #fb7185;
+  border-color: rgba(225, 29, 72, 0.35);
+}
+
+.time-pill.automated {
+  background: rgba(242, 106, 10, 0.12);
+  color: var(--primary-accent, #f26a0a);
+  border: 1px solid rgba(242, 106, 10, 0.35);
+  box-shadow: 0 0 10px rgba(242, 106, 10, 0.18);
+}
+
+:root[data-theme="dark"] .time-pill.automated {
+  background: rgba(242, 106, 10, 0.2);
+  color: #ff8c38;
+  border-color: rgba(242, 106, 10, 0.5);
+  box-shadow: 0 0 14px rgba(242, 106, 10, 0.3);
+}
+
+/* ==========================================
+   3. RULES CHECKLIST (CARD 3)
+   ========================================== */
+.ans-vis-rules {
+  padding: 8px 12px;
 }
 
 .rules-checklist {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 7px;
+  width: 100%;
 }
 
 .rule-item {
   display: flex;
   align-items: center;
   gap: 8px;
-  font-size: 11.5px;
-  color: var(--text-primary);
-  font-weight: var(--fw-medium);
+  font-size: 11px;
+  font-weight: 600;
+  color: #1e293b;
+}
+
+:root[data-theme="dark"] .rule-item {
+  color: #e2e8f0;
 }
 
 .rule-item i {
-  color: var(--primary-accent);
+  color: #059669;
   font-size: 13px;
 }
 
-/* Card Bottom Sentence Caption */
+:root[data-theme="dark"] .rule-item i {
+  color: #10b981;
+}
+
+/* Card Bottom Footer */
 .ans-card-foot {
+  font-size: 11.5px;
+  color: #64748b;
+  border-top: 1px solid rgba(11, 31, 77, 0.07);
+  padding-top: 12px;
+  line-height: 1.45;
+}
+
+:root[data-theme="dark"] .ans-card-foot {
+  color: #94a3b8;
+  border-top-color: rgba(255, 255, 255, 0.08);
+}
+
+.ans-tag {
+  font-family: var(--font-family-mono);
   font-size: 11px;
-  color: var(--text-secondary);
-  border-top: 1px solid rgba(255, 255, 255, 0.07);
-  padding-top: 8px;
-  text-transform: none;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--primary-accent);
+}
+
+.ans-badge-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 9.5px;
+  letter-spacing: 0.06em;
+  padding: 3.5px 9px;
+  border-radius: var(--radius-pill);
+  background: rgba(242, 106, 10, 0.1);
+  color: var(--primary-accent);
+  border: 1px solid rgba(242, 106, 10, 0.28);
+  font-weight: 700;
+}
+
+.badge-pulse-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--primary-accent);
+  box-shadow: 0 0 6px var(--primary-accent);
+}
+
+/* 1-Line Card Title */
+.ans-title {
+  display: flex;
+  justify-content: center;
+  font-family: var(--font-family);
+  font-size: clamp(1.08rem, 1.3vw, 1.22rem);
+  font-weight: 700;
+  color: #0b1f4d;
+  line-height: 1.2;
+  margin: 0 0 18px 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Micro-Diagram Canvas Box */
+.ans-vis-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 96px;
+  padding: 14px 16px;
+  border-radius: 12px;
+  background: #f8fafc;
+  border: 1px solid rgba(11, 31, 77, 0.08);
+  margin-bottom: 18px;
+}
+
+/* ==========================================
+   1. PIPELINE DIAGRAM (CARD 1)
+========================================== */
+.ans-vis-pipeline {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+}
+
+.pipe-node {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 9.5px;
+  font-weight: 700;
+  padding: 6px 9px;
+  border-radius: 6px;
+  background: #ffffff;
+  border: 1px solid rgba(11, 31, 77, 0.12);
+  color: #0b1f4d;
+  white-space: nowrap;
+}
+
+.pipe-node i {
+  font-size: 11px;
+}
+
+.pipe-node.engine {
+  background: rgba(242, 106, 10, 0.1);
+  color: var(--primary-accent);
+  border-color: rgba(242, 106, 10, 0.35);
+}
+
+.pipe-node.deliverables {
+  background: rgba(5, 150, 105, 0.08);
+  color: #059669;
+  border-color: rgba(5, 150, 105, 0.25);
+}
+
+.pipe-arrow {
+  color: #94a3b8;
+  font-weight: var(--fw-bold);
+  font-size: 20px;
+}
+
+/* ==========================================
+   2. SPEED PILLS COMPARISON (CARD 2)
+========================================== */
+.ans-vis-speed-pills {
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+}
+
+.speed-compare-row {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.compare-lead {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.compare-icon.manual {
+  font-size: 14px;
+  color: #e11d48;
+}
+
+.compare-icon.automated {
+  font-size: 15px;
+  color: var(--primary-accent);
+}
+
+.compare-lbl {
+  font-size: 10px;
+  font-weight: 700;
+  color: #64748b;
+  letter-spacing: 0.05em;
+}
+
+/* Distinctive Time Badges */
+.time-pill {
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  padding: 4px 10px;
+  border-radius: var(--radius-pill);
+}
+
+.time-pill.manual {
+  background: rgba(225, 29, 72, 0.08);
+  color: #e11d48;
+  border: 1px solid rgba(225, 29, 72, 0.25);
+}
+
+.time-pill.automated {
+  background: rgba(242, 106, 10, 0.12);
+  color: var(--primary-accent);
+  border: 1px solid rgba(242, 106, 10, 0.35);
+  box-shadow: 0 0 10px rgba(242, 106, 10, 0.18);
+}
+
+/* ==========================================
+   3. RULES CHECKLIST (CARD 3)
+========================================== */
+.ans-vis-rules {
+  padding: 8px 12px;
+}
+
+.rules-checklist {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  width: 100%;
+}
+
+.rule-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  color: #1e293b;
+  font-weight: 600;
+}
+
+.rule-item i {
+  color: #059669;
+  font-size: 13px;
+}
+
+/* Card Bottom Footer */
+.ans-card-foot {
+  font-size: 11.5px;
+  color: #64748b;
+  border-top: 1px solid rgba(11, 31, 77, 0.07);
+  padding-top: 12px;
+  line-height: 1.45;
 }
 
 /* ==========================================================
-   LIGHT MODE HARMONY (2x2 Visual Cards)
+   RESPONSIVENESS (TABLET & MOBILE)
 ========================================================== */
+@media (max-width: 960px) {
+  .ans-cards-row {
+    grid-template-columns: 1fr;
+    max-width: 480px;
+  }
 
-:root[data-theme="light"] .ans-vis-box {
-  background: rgba(11, 31, 77, 0.035);
-  border: 1px solid rgba(11, 31, 77, 0.1);
-}
-
-:root[data-theme="light"] .speed-track {
-  background: rgba(11, 31, 77, 0.1);
-}
-
-:root[data-theme="light"] .speed-fill.manual {
-  background: #f24d4d;
-}
-
-:root[data-theme="light"] .speed-val.accent {
-  color: #c24e00;
-}
-
-:root[data-theme="light"] .speed-bar-labels .speed-active-lbl {
-  color: var(--text-head);
-}
-
-:root[data-theme="light"] .rule-item {
-  color: var(--text-head);
-}
-
-:root[data-theme="light"] .ans-card-foot {
-  border-top-color: rgba(11, 31, 77, 0.08);
-  color: var(--text-secondary);
+  .ans-title {
+    white-space: normal;
+  }
 }
