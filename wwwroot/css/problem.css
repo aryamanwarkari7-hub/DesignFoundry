@@ -10,8 +10,6 @@
 .problem-section {
   position: relative;
   width: 100%;
-  padding-block: clamp(60px, 8vh, 100px);
-  scroll-margin-top: 96px;
 }
 
 /* Master Centered Container */

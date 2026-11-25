@@ -1646,7 +1646,7 @@
                                 var targetEl = document.getElementById(hash);
                                 if (targetEl && (currentPath === "" || currentPath === "/")) {
                                     e.preventDefault();
-                                    var navOffset = -95; // Perfectly clears the floating capsule navbar
+                                    var navOffset = -92; // Matches --section-scroll-margin in site.css
                                     if (window.lenis) {
                                         window.lenis.scrollTo(targetEl, { offset: navOffset });
                                     } else {
@@ -2028,18 +2028,31 @@
             requestAnimationFrame(updateAndDraw);
         })();
 
-        // Solution Section: Center Card Clickable Speed Comparison
+        // Solution Section: Center Card Clickable Speed Comparison (Auto-Resets After 5s)
         (function initSolutionSpeedToggle() {
             var morph = document.getElementById("ansTimeMorph");
             var coreCard = document.getElementById("ansCoreCard");
             if (!morph || !coreCard) return;
 
+            var resetTimer = null;
+
+            function setMode(mode) {
+                var isDf = mode === "designfoundry";
+                morph.setAttribute("data-mode", mode);
+                coreCard.classList.toggle("is-active", isDf);
+                coreCard.setAttribute("aria-pressed", String(isDf));
+
+                if (resetTimer) clearTimeout(resetTimer);
+                if (isDf) {
+                    resetTimer = setTimeout(function () {
+                        setMode("conventional");
+                    }, 5000);
+                }
+            }
+
             coreCard.addEventListener("click", function () {
                 var isDf = morph.getAttribute("data-mode") === "designfoundry";
-                var nextMode = isDf ? "conventional" : "designfoundry";
-                morph.setAttribute("data-mode", nextMode);
-                coreCard.classList.toggle("is-active", !isDf);
-                coreCard.setAttribute("aria-pressed", String(!isDf));
+                setMode(isDf ? "conventional" : "designfoundry");
             });
         })();
     });

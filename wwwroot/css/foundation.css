@@ -25,13 +25,10 @@
   overflow: hidden;
 }
 
-/* 2. Main Assembly Line Wrapper (100vh Framing + Safe Navbar Clearance) */
+/* 2. Main Assembly Line Wrapper */
 .foundation-section {
   position: relative;
   width: 100%;
-  padding-top: clamp(84px, 10vh, 104px);
-  padding-bottom: clamp(60px, 8vh, 84px);
-  scroll-margin-top: 84px;
 }
 
 .foundation-section .sec-head {

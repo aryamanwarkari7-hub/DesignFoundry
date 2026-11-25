@@ -1,0 +1,200 @@
+/* ==========================================================
+   SECTION 03: ENGINEERING IMPACT (MORE ENGINEERING. LESS ADMIN.)
+   ========================================================== */
+
+.impact-section {
+  position: relative;
+  width: 100%;
+  min-height: calc(100vh - var(--section-scroll-margin, 92px));
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.impact-center-container {
+  max-width: 1080px;
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Header Block */
+.impact-head-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 780px;
+  margin-bottom: 42px;
+}
+
+.impact-head-block .eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono, "IBM Plex Mono", monospace);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent-orange, #f26a0a);
+  background: rgba(242, 106, 10, 0.08);
+  border: 1px solid rgba(242, 106, 10, 0.22);
+  padding: 4px 12px;
+  border-radius: 999px;
+  margin-bottom: 16px;
+}
+
+.impact-title {
+  font-family: var(--font-family, "Poppins", sans-serif);
+  font-size: clamp(2.2rem, 4vw, 3.25rem);
+  font-weight: 700;
+  line-height: 1.18;
+  letter-spacing: -0.025em;
+  color: #0b1f4d;
+  margin: 0;
+}
+
+:root[data-theme="dark"] .impact-title {
+  color: #f8fafc;
+}
+
+.impact-accent {
+  color: var(--accent-orange, #f26a0a);
+}
+
+.impact-subtitle {
+  font-size: clamp(0.98rem, 1.25vw, 1.1rem);
+  line-height: 1.55;
+  color: #475569;
+  max-width: 640px;
+  margin: 14px auto 0;
+  text-wrap: balance;
+}
+
+:root[data-theme="dark"] .impact-subtitle {
+  color: #94a3b8;
+}
+
+/* Clean 3-Column Hairline-Divided Strip (Zero Card Fatigue) */
+.impact-strip {
+  --impact-svg-bg: #f8fafc;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  width: 100%;
+  border-radius: 22px;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  overflow: hidden;
+
+  /* Light Mode */
+  background: rgba(255, 255, 255, 0.88);
+  border: 1px solid rgba(11, 31, 77, 0.1);
+  box-shadow: 0 18px 46px -12px rgba(11, 31, 77, 0.07);
+}
+
+:root[data-theme="dark"] .impact-strip {
+  --impact-svg-bg: #0f1b36;
+  background: rgba(13, 24, 48, 0.84);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 22px 54px rgba(0, 0, 0, 0.42);
+}
+
+.impact-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 36px 28px;
+  transition: background 0.25s ease;
+}
+
+.impact-col:not(:last-child) {
+  border-right: 1px solid rgba(11, 31, 77, 0.08);
+}
+
+:root[data-theme="dark"] .impact-col:not(:last-child) {
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.impact-col:hover {
+  background: rgba(242, 106, 10, 0.03);
+}
+
+:root[data-theme="dark"] .impact-col:hover {
+  background: rgba(242, 106, 10, 0.05);
+}
+
+/* Crisp Orange Icon Badge */
+.impact-icon-box {
+  width: 64px;
+  height: 64px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  background: rgba(242, 106, 10, 0.07);
+  border: 1px solid rgba(242, 106, 10, 0.2);
+  transition: transform 0.25s ease, border-color 0.25s ease;
+}
+
+:root[data-theme="dark"] .impact-icon-box {
+  background: rgba(242, 106, 10, 0.1);
+  border-color: rgba(242, 106, 10, 0.28);
+}
+
+.impact-col:hover .impact-icon-box {
+  transform: translateY(-3px);
+  border-color: rgba(242, 106, 10, 0.45);
+}
+
+.impact-icon-box svg {
+  width: 36px;
+  height: 36px;
+}
+
+.impact-col-title {
+  font-family: var(--font-family, "Poppins", sans-serif);
+  font-size: 1.18rem;
+  font-weight: 700;
+  line-height: 1.3;
+  color: #0b1f4d;
+  margin: 0 0 10px 0;
+}
+
+:root[data-theme="dark"] .impact-col-title {
+  color: #f8fafc;
+}
+
+.impact-col-desc {
+  font-size: 0.92rem;
+  line-height: 1.55;
+  color: #475569;
+  margin: 0;
+  max-width: 280px;
+}
+
+:root[data-theme="dark"] .impact-col-desc {
+  color: #94a3b8;
+}
+
+/* Responsive */
+@media (max-width: 860px) {
+  .impact-strip {
+    grid-template-columns: 1fr;
+    max-width: 460px;
+  }
+  .impact-col:not(:last-child) {
+    border-right: none;
+    border-bottom: 1px solid rgba(11, 31, 77, 0.08);
+  }
+  :root[data-theme="dark"] .impact-col:not(:last-child) {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+  .impact-col {
+    padding: 28px 24px;
+  }
+}
