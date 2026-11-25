@@ -661,3 +661,411 @@
     white-space: normal;
   }
 }
+
+/* ==========================================================
+   UNIFIED STAGE: PART 1 PIPELINE + TIME-GAP REDUCTION ROW
+   ========================================================== */
+
+.ans-unified-stage {
+  width: 100%;
+  max-width: 1040px;
+  border-radius: 24px;
+  overflow: hidden;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+
+  /* Light Mode */
+  background: rgba(255, 255, 255, 0.94);
+  border: 1px solid rgba(11, 31, 77, 0.12);
+  box-shadow: 0 20px 50px -12px rgba(11, 31, 77, 0.08);
+}
+
+:root[data-theme="dark"] .ans-unified-stage {
+  background: rgba(13, 24, 48, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.48);
+}
+
+.ans-band {
+  padding: 26px 32px;
+}
+
+.ans-band-pipeline {
+  border-bottom: 1px solid rgba(11, 31, 77, 0.08);
+}
+
+:root[data-theme="dark"] .ans-band-pipeline {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.ans-band-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+/* Part 1: 3-Pill Pipeline */
+.ans-flow-track {
+  display: grid;
+  grid-template-columns: 1fr 56px 1fr 56px 1fr;
+  align-items: center;
+  gap: 4px;
+}
+
+.flow-pill-box {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px 18px;
+  border-radius: 16px;
+  text-align: left;
+  background: rgba(11, 31, 77, 0.03);
+  border: 1px solid rgba(11, 31, 77, 0.1);
+}
+
+:root[data-theme="dark"] .flow-pill-box {
+  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.flow-pill-box.core {
+  background: radial-gradient(
+    circle at top right,
+    rgba(242, 106, 10, 0.12),
+    rgba(11, 31, 77, 0.03) 70%
+  );
+  border-color: rgba(242, 106, 10, 0.35);
+}
+
+:root[data-theme="dark"] .flow-pill-box.core {
+  background: radial-gradient(
+    circle at top right,
+    rgba(242, 106, 10, 0.16),
+    rgba(255, 255, 255, 0.03) 70%
+  );
+  border-color: rgba(242, 106, 10, 0.42);
+}
+
+.flow-pill-box.out {
+  border-color: rgba(16, 185, 129, 0.28);
+}
+
+.flow-pill-top {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.flow-icon-ring {
+  width: 42px;
+  height: 42px;
+  flex-shrink: 0;
+  border-radius: 11px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.15rem;
+  background: rgba(11, 31, 77, 0.06);
+  border: 1px solid rgba(11, 31, 77, 0.12);
+  color: #0b1f4d;
+}
+
+:root[data-theme="dark"] .flow-icon-ring {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  color: #e2e8f0;
+}
+
+.flow-icon-ring.core {
+  background: rgba(242, 106, 10, 0.14);
+  border-color: rgba(242, 106, 10, 0.45);
+  color: #f26a0a;
+}
+
+.flow-icon-ring.core i {
+  animation: ansGearSpin 12s linear infinite;
+}
+
+.flow-icon-ring.out {
+  background: rgba(16, 185, 129, 0.12);
+  border-color: rgba(16, 185, 129, 0.35);
+  color: #10b981;
+}
+
+.flow-pill-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.flow-node-title {
+  font-size: 0.84rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: #0b1f4d;
+}
+
+:root[data-theme="dark"] .flow-node-title {
+  color: #f8fafc;
+}
+
+.flow-node-sub {
+  font-size: 0.76rem;
+  color: #475569;
+  line-height: 1.3;
+}
+
+:root[data-theme="dark"] .flow-node-sub {
+  color: #94a3b8;
+}
+
+.flow-mini-tags {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px;
+}
+
+.mini-tag {
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  padding: 3px 8px;
+  border-radius: 6px;
+  background: rgba(11, 31, 77, 0.06);
+  color: #334155;
+  border: 1px solid rgba(11, 31, 77, 0.08);
+}
+
+:root[data-theme="dark"] .mini-tag {
+  background: rgba(255, 255, 255, 0.06);
+  color: #cbd5e1;
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+.mini-tag.accent {
+  background: rgba(242, 106, 10, 0.1);
+  color: #d95800;
+  border-color: rgba(242, 106, 10, 0.25);
+}
+
+:root[data-theme="dark"] .mini-tag.accent {
+  color: #ffb074;
+}
+
+.mini-tag.ok {
+  background: rgba(16, 185, 129, 0.1);
+  color: #059669;
+  border-color: rgba(16, 185, 129, 0.25);
+}
+
+:root[data-theme="dark"] .mini-tag.ok {
+  color: #6ee7b7;
+}
+
+/* SVG Animated Signal Connectors */
+.flow-connector {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flow-svg {
+  width: 100%;
+  height: 24px;
+  overflow: visible;
+}
+
+.flow-line-bg {
+  stroke: rgba(11, 31, 77, 0.15);
+  stroke-width: 2;
+  stroke-dasharray: 4 4;
+}
+
+:root[data-theme="dark"] .flow-line-bg {
+  stroke: rgba(255, 255, 255, 0.18);
+}
+
+.flow-line-pulse {
+  stroke: #f26a0a;
+  stroke-width: 2.5;
+  stroke-dasharray: 18 82;
+  stroke-linecap: round;
+  animation: ansSignalFlow 1.8s linear infinite;
+}
+
+.flow-arrow-head {
+  fill: none;
+  stroke: #f26a0a;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* "+ MORE" subtle tag in Card 3 */
+.mini-tag.more {
+  background: transparent;
+  border: 1px dashed rgba(11, 31, 77, 0.25);
+  color: #64748b;
+}
+:root[data-theme="dark"] .mini-tag.more {
+  border-color: rgba(255, 255, 255, 0.24);
+  color: #94a3b8;
+}
+
+@keyframes ansSignalFlow {
+  from {
+    stroke-dashoffset: 100;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes ansGearSpin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ==========================================================
+   HORIZONTAL TIME-REDUCTION FLOW (PILLS + FULL-SPAN ARROW)
+   ========================================================== */
+.ans-time-split {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  padding: 20px 32px;
+  gap: 24px;
+  background: rgba(11, 31, 77, 0.025);
+}
+
+:root[data-theme="dark"] .ans-time-split {
+  background: rgba(0, 0, 0, 0.24);
+}
+
+.time-split-cell {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 12px;
+  white-space: nowrap;
+}
+
+.ts-kicker {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  color: #64748b;
+}
+
+:root[data-theme="dark"] .ts-kicker {
+  color: #94a3b8;
+}
+
+.ts-kicker.accent {
+  color: #f26a0a;
+}
+
+/* Pills around Several Days & Few Minutes */
+.ts-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: 999px;
+  font-family: var(--font-family);
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.ts-pill i {
+  font-size: 1.1rem;
+}
+
+/* Muted Red/Slate Multi-Day Pill */
+.ts-pill.old {
+  background: rgba(239, 68, 68, 0.08);
+  border: 1px solid rgba(239, 68, 68, 0.25);
+  color: #dc2626;
+}
+
+:root[data-theme="dark"] .ts-pill.old {
+  background: rgba(239, 68, 68, 0.12);
+  border-color: rgba(248, 113, 113, 0.28);
+  color: #fca5a5;
+}
+
+/* Glowing Orange Clock Pill */
+.ts-pill.new {
+  background: rgba(242, 106, 10, 0.14);
+  border: 1px solid rgba(242, 106, 10, 0.45);
+  color: #c2410c;
+  box-shadow: 0 6px 20px rgba(242, 106, 10, 0.12);
+}
+
+:root[data-theme="dark"] .ts-pill.new {
+  background: rgba(242, 106, 10, 0.2);
+  border-color: rgba(242, 106, 10, 0.5);
+  color: #ffffff;
+  box-shadow: 0 0 24px rgba(242, 106, 10, 0.18);
+}
+
+.ts-pill.new i {
+  color: #f26a0a;
+}
+
+/* Center Full-Span Animated Arrow */
+.time-split-arrow {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  width: 100%;
+  min-width: 120px;
+}
+
+.time-split-arrow .flow-svg {
+  display: block;
+  width: 100%;
+  height: 18px;
+}
+
+.ts-speed-tag {
+  font-size: var(--font-lg);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: #f26a0a;
+  line-height: 1;
+}
+
+@media (max-width: 900px) {
+  .ans-time-split {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    padding: 20px;
+    gap: 12px;
+  }
+  .time-split-cell {
+    flex-direction: column;
+    gap: 6px;
+    justify-content: center;
+  }
+  .time-split-arrow {
+    min-width: auto;
+  }
+  .time-split-arrow .flow-svg {
+    transform: rotate(90deg);
+    width: 36px;
+    height: 36px;
+  }
+}
