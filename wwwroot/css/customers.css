@@ -26,7 +26,7 @@
   font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--accent-orange, #f26a0a);
+  color: var(--primary-accent);
   background: rgba(242, 106, 10, 0.08);
   border: 1px solid rgba(242, 106, 10, 0.22);
   padding: 4px 12px;
@@ -49,7 +49,7 @@
 }
 
 .cust-accent-text {
-  color: var(--accent-orange, #f26a0a);
+  color: var(--primary-accent);
 }
 
 .cust-desc {
@@ -424,7 +424,7 @@
   left: 0;
   height: 100%;
   width: 0%;
-  background: var(--accent-orange, #f26a0a);
+  background: var(--primary-accent);
   border-radius: 3px;
   transition: width 0.1s linear;
 }

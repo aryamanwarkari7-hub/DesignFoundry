@@ -1,6 +1,6 @@
 /* ==========================================================
    ABOUT SECTION (#about)
-   Dual-Theme Support (Light & Dark)
+   Uses Global Design Tokens from variables.css & site.css
    ========================================================== */
 
 .about-section {
@@ -22,49 +22,41 @@
 /* Header Typography */
 .about-head-block {
   max-width: 760px;
-  margin: 0 auto 36px;
+  margin: 0 auto var(--space-2xl);
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
 .about-title {
-  font-family: var(--font-family, "Poppins", sans-serif);
+  font-family: var(--font-family);
   font-size: clamp(2.1rem, 3.8vw, 3rem);
-  font-weight: 700;
+  font-weight: var(--fw-bold);
   line-height: 1.2;
   letter-spacing: -0.02em;
-  color: var(--text-primary, #0b1f4d);
-  margin-bottom: 16px;
-}
-
-:root[data-theme="dark"] .about-title {
-  color: #f8fafc;
+  color: var(--text-head);
+  margin-bottom: var(--space-lg);
 }
 
 .about-accent-text {
-  color: var(--accent-orange, #f26a0a);
+  color: var(--primary-accent);
 }
 
 .about-desc {
-  font-size: 1.05rem;
+  font-size: var(--font-lg);
   line-height: 1.65;
-  color: var(--text-secondary, #475569);
+  color: var(--text-secondary);
   max-width: 660px;
   margin: 0 auto;
-}
-
-:root[data-theme="dark"] .about-desc {
-  color: #94a3b8;
 }
 
 /* 3 Stat Cards Row */
 .about-stats-row {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
+  gap: var(--space-xl);
   width: 100%;
-  margin-bottom: 38px;
+  margin-bottom: var(--space-2xl);
 }
 
 .about-stat-card {
@@ -72,60 +64,49 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  padding: 34px 20px;
-  border-radius: 20px;
+  gap: var(--space-sm);
+  padding: var(--space-2xl) var(--space-lg);
+  border-radius: var(--radius-2xl);
   text-align: center;
   transition:
-    transform 0.28s ease,
-    border-color 0.28s ease,
-    box-shadow 0.28s ease;
-
-  /* Light Mode */
-  background: #ffffff;
-  border: 1px solid rgba(11, 31, 77, 0.1);
-  box-shadow: 0 12px 30px -8px rgba(11, 31, 77, 0.08);
+    transform var(--transition-normal),
+    border-color var(--transition-normal),
+    box-shadow var(--transition-normal);
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-md);
 }
 
 .about-stat-card:hover {
   transform: translateY(-5px);
-  border-color: rgba(242, 106, 10, 0.45);
-  box-shadow: 0 20px 40px -10px rgba(11, 31, 77, 0.14);
+  border-color: var(--primary-accent);
+  box-shadow: var(--shadow-lg);
 }
 
-/* Dark Mode */
 :root[data-theme="dark"] .about-stat-card {
   background: rgba(16, 28, 54, 0.95);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow:
-    0 20px 50px rgba(0, 0, 0, 0.4),
-    inset 0 1px 1px rgba(255, 255, 255, 0.15);
+  border: var(--glass-border);
+  box-shadow: var(--shadow-glass);
 }
 
 :root[data-theme="dark"] .about-stat-card:hover {
-  border-color: rgba(242, 106, 10, 0.55);
-  box-shadow:
-    0 24px 60px rgba(0, 0, 0, 0.65),
-    0 0 20px rgba(242, 106, 10, 0.2);
+  border-color: var(--primary-accent);
+  box-shadow: var(--shadow-glass-hover);
 }
 
 .about-stat-num {
   font-size: clamp(2.4rem, 4vw, 3.2rem);
-  font-weight: 800;
-  color: var(--accent-orange, #f26a0a);
+  font-weight: var(--fw-bold);
+  color: var(--primary-accent);
   line-height: 1;
   letter-spacing: -0.02em;
 }
 
 .about-stat-label {
-  font-size: 0.88rem;
-  font-weight: 500;
-  color: var(--text-secondary, #475569);
+  font-size: var(--font-md);
+  font-weight: var(--fw-medium);
+  color: var(--text-secondary);
   letter-spacing: 0.02em;
-}
-
-:root[data-theme="dark"] .about-stat-label {
-  color: #cbd5e1;
 }
 
 /* CTA Button */
@@ -137,11 +118,11 @@
 .about-btn-cta {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  padding: 13px 28px;
-  font-size: 0.95rem;
-  font-weight: 600;
-  border-radius: var(--radius-pill, 999px);
+  gap: var(--space-sm);
+  padding: var(--space-md) var(--space-xl);
+  font-size: var(--font-base);
+  font-weight: var(--fw-semibold);
+  border-radius: var(--radius-pill);
 }
 
 @media (max-width: 768px) {

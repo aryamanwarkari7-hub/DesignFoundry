@@ -41,6 +41,7 @@
 
 html {
   scroll-padding-top: var(--section-scroll-margin);
+  font-size: clamp(13px, 0.7vw + 0.35vh, 16px);
 }
 
 body {
@@ -135,8 +136,8 @@ p {
    Single source of truth for all sections
    ========================================================== */
 :root {
-  --section-pad-top: 48px;
-  --section-pad-bottom: 70px;
+  --section-pad-top: clamp(20px, 3.5vh, 48px);
+  --section-pad-bottom: clamp(24px, 4.5vh, 64px);
   --section-scroll-margin: 92px; /* 64px navbar height + 28px breathing room */
 }
 
@@ -148,6 +149,37 @@ section {
   padding-bottom: var(--section-pad-bottom);
   scroll-margin-top: var(--section-scroll-margin);
   box-sizing: border-box;
+}
+
+.problem-section {
+  position: relative;
+  width: 100%;
+  padding-top: calc(var(--section-pad-top) + 20px);
+}
+
+/* Height-Aware Guard: Compresses vertical spacing on 768p laptops & zoomed-in viewports */
+@media (max-height: 760px) {
+  :root {
+    --section-pad-top: clamp(16px, 2.5vh, 32px);
+    --section-pad-bottom: clamp(20px, 3vh, 40px);
+  }
+  .ans-head-block,
+  .impact-head-block,
+  .about-head-block,
+  .cust-head-block {
+    margin-bottom: 20px !important;
+  }
+  .prob-flow-subtitle,
+  .prob-flow-callout {
+    margin-bottom: 24px !important;
+    margin-top: 24px !important;
+  }
+  .ans-cta-block,
+  .impact-cta-block,
+  .cp-cta-block,
+  .cust-cta-block {
+    margin-top: 20px !important;
+  }
 }
 
 /* Blueprint Dividers: Consistent slim rhythm */
@@ -186,7 +218,7 @@ section {
   font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--accent-orange, #f26a0a);
+  color: var(--primary-accent);
   background: rgba(242, 106, 10, 0.08);
   border: 1px solid rgba(242, 106, 10, 0.22);
   padding: 4px 12px;

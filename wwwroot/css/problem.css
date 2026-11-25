@@ -32,7 +32,7 @@
   font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--accent-orange, #f26a0a);
+  color: var(--primary-accent);
   background: rgba(242, 106, 10, 0.08);
   border: 1px solid rgba(242, 106, 10, 0.22);
   padding: 4px 12px;

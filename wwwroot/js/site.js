@@ -1646,7 +1646,8 @@
                                 var targetEl = document.getElementById(hash);
                                 if (targetEl && (currentPath === "" || currentPath === "/")) {
                                     e.preventDefault();
-                                    var navOffset = -92; // Matches --section-scroll-margin in site.css
+                                    var header = document.querySelector("header.header-floating");
+                                    var navOffset = header ? -(Math.round(header.getBoundingClientRect().bottom) + 12) : -92;
                                     if (window.lenis) {
                                         window.lenis.scrollTo(targetEl, { offset: navOffset });
                                     } else {
