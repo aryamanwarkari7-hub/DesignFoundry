@@ -2028,33 +2028,19 @@
             requestAnimationFrame(updateAndDraw);
         })();
 
-        // Solution Section: Clickable Conventional vs DesignFoundry Bar
+        // Solution Section: Center Card Clickable Speed Comparison
         (function initSolutionSpeedToggle() {
             var morph = document.getElementById("ansTimeMorph");
             var coreCard = document.getElementById("ansCoreCard");
-            if (!morph) return;
+            if (!morph || !coreCard) return;
 
-            var btns = morph.querySelectorAll(".tm-toggle-btn");
-
-            function setMode(mode) {
-                morph.setAttribute("data-mode", mode);
-                btns.forEach(function (b) {
-                    b.classList.toggle("active", b.getAttribute("data-target") === mode);
-                });
-            }
-
-            btns.forEach(function (btn) {
-                btn.addEventListener("click", function () {
-                    setMode(btn.getAttribute("data-target"));
-                });
+            coreCard.addEventListener("click", function () {
+                var isDf = morph.getAttribute("data-mode") === "designfoundry";
+                var nextMode = isDf ? "conventional" : "designfoundry";
+                morph.setAttribute("data-mode", nextMode);
+                coreCard.classList.toggle("is-active", !isDf);
+                coreCard.setAttribute("aria-pressed", String(!isDf));
             });
-
-            if (coreCard) {
-                coreCard.addEventListener("click", function () {
-                    var next = morph.getAttribute("data-mode") === "designfoundry" ? "conventional" : "designfoundry";
-                    setMode(next);
-                });
-            }
         })();
     });
 })(window, document);

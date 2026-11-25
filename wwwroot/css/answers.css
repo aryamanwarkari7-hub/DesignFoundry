@@ -975,14 +975,14 @@
 }
 
 /* ==========================================================
-   INTERACTIVE TIME-REDUCTION BAR (CLICKABLE RED -> GREEN)
+   INTERACTIVE TIME-REDUCTION BAR (DRIVEN BY CENTER CARD)
    ========================================================== */
 .ans-time-morph {
   display: grid;
-  grid-template-columns: auto 1fr 145px;
+  grid-template-columns: 1fr 145px;
   align-items: center;
   gap: 20px;
-  padding: 18px 32px;
+  padding: 20px 32px;
   background: rgba(11, 31, 77, 0.025);
 }
 
@@ -990,216 +990,258 @@
   background: rgba(0, 0, 0, 0.24);
 }
 
-/* Clickable Toggle Buttons + Visible Prompt */
-.tm-toggle-wrap {
+/* Center Card Animated Title Swap (CONVENTIONAL <-> DESIGNFOUNDRY) */
+.core-title-swap {
+  position: relative;
+  height: 22px;
+  flex: 1;
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 6px;
-}
-
-.tm-toggle-group {
-  display: inline-flex;
-  gap: 4px;
-  padding: 4px;
-  border-radius: 11px;
-  background: rgba(11, 31, 77, 0.06);
-  border: 1px solid rgba(11, 31, 77, 0.12);
-}
-
-:root[data-theme="dark"] .tm-toggle-group {
-  background: rgba(255, 255, 255, 0.06);
-  border-color: rgba(255, 255, 255, 0.14);
-}
-
-.tm-toggle-btn {
-  position: relative;
-  display: inline-flex;
   align-items: center;
-  gap: 6px;
-  border: 1px solid transparent;
-  background: transparent;
-  padding: 7px 12px;
-  border-radius: 8px;
-  font-family: inherit;
-  font-size: 0.7rem;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  color: #64748b;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  white-space: nowrap;
 }
 
-.tm-toggle-btn:active {
-  transform: translateY(1px);
-}
-
-/* Make the unclicked DesignFoundry button look subtly raised & inviting */
-.ans-time-morph[data-mode="conventional"] .tm-toggle-btn[data-target="designfoundry"] {
-  background: rgba(16, 185, 129, 0.08);
-  border-color: rgba(16, 185, 129, 0.35);
-  color: #059669;
-  box-shadow: 0 2px 8px rgba(16, 185, 129, 0.12);
-}
-
-:root[data-theme="dark"] .ans-time-morph[data-mode="conventional"] .tm-toggle-btn[data-target="designfoundry"] {
-  background: rgba(16, 185, 129, 0.12);
-  border-color: rgba(52, 211, 153, 0.38);
-  color: #6ee7b7;
-}
-
-.ans-time-morph[data-mode="conventional"] .tm-toggle-btn[data-target="designfoundry"]:hover {
-  background: rgba(16, 185, 129, 0.18);
-  transform: translateY(-1px);
-}
-
-/* Pulsing Beacon Dot on DesignFoundry before click */
-.tm-beacon {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: #10b981;
-  box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
-  animation: tmBeaconPulse 1.6s infinite;
-}
-
-.ans-time-morph[data-mode="designfoundry"] .tm-beacon {
-  display: none;
-}
-
-@keyframes tmBeaconPulse {
-  0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
-  70% { box-shadow: 0 0 0 7px rgba(16, 185, 129, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
-}
-
-/* Visible Micro-Prompt below Toggle */
-.tm-visible-hint {
-  font-size: 0.65rem;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  padding-left: 2px;
-}
-
-.tm-visible-hint.hint-old {
-  color: #059669;
-}
-
-:root[data-theme="dark"] .tm-visible-hint.hint-old {
-  color: #34d399;
-}
-
-.tm-visible-hint.hint-new {
-  color: #64748b;
-  display: none;
-}
-
-:root[data-theme="dark"] .tm-visible-hint.hint-new {
-  color: #94a3b8;
-}
-
-.ans-time-morph[data-mode="designfoundry"] .tm-visible-hint.hint-old {
-  display: none;
-}
-
-.ans-time-morph[data-mode="designfoundry"] .tm-visible-hint.hint-new {
-  display: inline-flex;
-}
-
-.tm-toggle-btn:not(.active)::after {
-  content: "Click here";
+.core-title-old,
+.core-title-new {
   position: absolute;
-  bottom: calc(100% + 8px);
-  left: 50%;
-  transform: translateX(-50%) translateY(4px);
-  background: #0b1f4d;
-  color: #ffffff;
-  font-size: 0.62rem;
-  font-weight: 600;
+  left: 0;
+  font-size: 0.86rem;
+  font-weight: 700;
   letter-spacing: 0.05em;
-  padding: 3px 8px;
-  border-radius: 6px;
-  border: 1px solid rgba(242, 106, 10, 0.4);
   white-space: nowrap;
-  opacity: 0;
-  pointer-events: none;
   transition:
-    opacity 0.2s ease,
-    transform 0.2s ease;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    opacity 0.3s ease,
+    transform 0.3s ease;
 }
 
-:root[data-theme="dark"] .tm-toggle-btn:not(.active)::after {
-  background: #f26a0a;
-  color: #ffffff;
-  border-color: transparent;
-}
-
-.tm-toggle-btn:not(.active):hover::after {
-  opacity: 1;
-  transform: translateX(-50%) translateY(0);
-}
-
-/* Center Card Hover Hint */
-.flow-pill-box.core {
-  position: relative;
-}
-
-.flow-pill-box.core::after {
-  content: "Click to compare speed";
-  position: absolute;
-  top: -11px;
-  right: 16px;
-  background: #f26a0a;
-  color: #ffffff;
-  font-family: var(--font-mono, "IBM Plex Mono", monospace);
-  font-size: 0.62rem;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  padding: 2px 9px;
-  border-radius: 999px;
-  opacity: 0;
-  transform: translateY(4px);
-  pointer-events: none;
-  transition:
-    opacity 0.2s ease,
-    transform 0.2s ease;
-  box-shadow: 0 4px 12px rgba(242, 106, 10, 0.3);
-}
-
-.flow-pill-box.core:hover::after {
+.core-title-old {
+  color: #dc2626;
   opacity: 1;
   transform: translateY(0);
 }
 
-.tm-toggle-btn:hover {
-  color: #0b1f4d;
-}
-
-:root[data-theme="dark"] .tm-toggle-btn:hover {
-  color: #f8fafc;
-}
-
-.tm-toggle-btn.active[data-target="conventional"] {
-  background: rgba(239, 68, 68, 0.14);
-  color: #dc2626;
-}
-
-.tm-toggle-btn.active[data-target="designfoundry"] {
-  background: rgba(16, 185, 129, 0.18);
-  color: #059669;
-}
-
-:root[data-theme="dark"] .tm-toggle-btn.active[data-target="conventional"] {
+:root[data-theme="dark"] .core-title-old {
   color: #fca5a5;
 }
 
-:root[data-theme="dark"] .tm-toggle-btn.active[data-target="designfoundry"] {
+.core-title-new {
+  color: #059669;
+  opacity: 0;
+  transform: translateY(5px);
+  pointer-events: none;
+}
+
+:root[data-theme="dark"] .core-title-new {
   color: #6ee7b7;
+}
+
+button.flow-pill-box.core.is-active .core-title-old {
+  opacity: 0;
+  transform: translateY(-5px);
+  pointer-events: none;
+}
+
+button.flow-pill-box.core.is-active .core-title-new {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Center Card as Primary Clickable Button */
+button.flow-pill-box.core {
+  cursor: pointer;
+  width: 100%;
+  font-family: inherit;
+  text-align: left;
+  transform: scale(1.04);
+  transition:
+    transform 0.22s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease,
+    background 0.3s ease;
+}
+
+button.flow-pill-box.core .flow-pill-top {
+  width: 100%;
+}
+
+button.flow-pill-box.core:hover {
+  transform: scale(1.06) translateY(-2px);
+  box-shadow: 0 16px 36px rgba(242, 106, 10, 0.24);
+}
+
+button.flow-pill-box.core:active {
+  transform: scale(1.02) translateY(1px);
+}
+
+button.flow-pill-box.core.is-active {
+  background: radial-gradient(
+    circle at top right,
+    rgba(16, 185, 129, 0.16),
+    rgba(255, 255, 255, 0.96) 75%
+  );
+  border-color: rgba(16, 185, 129, 0.55);
+  box-shadow: 0 12px 32px rgba(16, 185, 129, 0.18);
+}
+
+:root[data-theme="dark"] button.flow-pill-box.core.is-active {
+  background: radial-gradient(
+    circle at top right,
+    rgba(16, 185, 129, 0.2),
+    rgba(13, 24, 48, 0.95) 75%
+  );
+  border-color: rgba(52, 211, 153, 0.6);
+  box-shadow: 0 0 36px rgba(16, 185, 129, 0.22);
+}
+
+button.flow-pill-box.core.is-active .flow-icon-ring.core {
+  background: rgba(16, 185, 129, 0.16);
+  border-color: rgba(16, 185, 129, 0.5);
+  color: #10b981;
+}
+
+/* Visible Prompt Pill Floating Above Top Edge of Center Card */
+.ans-flow-track {
+  margin-top: 10px;
+}
+
+button.flow-pill-box.core {
+  position: relative;
+  overflow: visible;
+}
+
+.core-click-prompt {
+  position: absolute;
+  top: -13px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 12px;
+  border-radius: 999px;
+  font-size: 0.64rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+  background: #fff7ed;
+  border: 1px solid rgba(242, 106, 10, 0.45);
+  color: #c2410c;
+  box-shadow: 0 4px 12px rgba(242, 106, 10, 0.14);
+  transition: all 0.25s ease;
+}
+
+:root[data-theme="dark"] .core-click-prompt {
+  background: #1a243d;
+  border-color: rgba(242, 106, 10, 0.55);
+  color: #ffb074;
+}
+
+.core-click-prompt .prompt-idle {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.core-click-prompt .prompt-active {
+  display: none;
+  align-items: center;
+  gap: 6px;
+}
+
+button.flow-pill-box.core.is-active .core-click-prompt {
+  background: #ecfdf5;
+  border-color: rgba(16, 185, 129, 0.5);
+  color: #047857;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.16);
+}
+
+:root[data-theme="dark"] button.flow-pill-box.core.is-active .core-click-prompt {
+  background: #0d2a2a;
+  border-color: rgba(52, 211, 153, 0.55);
+  color: #6ee7b7;
+}
+
+button.flow-pill-box.core.is-active .core-click-prompt .prompt-idle {
+  display: none;
+}
+
+button.flow-pill-box.core.is-active .core-click-prompt .prompt-active {
+  display: inline-flex;
+}
+
+/* Pulsing Beacon Dot */
+.tm-beacon {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #f26a0a;
+  box-shadow: 0 0 0 0 rgba(242, 106, 10, 0.7);
+  animation: tmBeaconPulse 1.6s infinite;
+}
+
+@keyframes tmBeaconPulse {
+  0% { box-shadow: 0 0 0 0 rgba(242, 106, 10, 0.75); }
+  70% { box-shadow: 0 0 0 7px rgba(242, 106, 10, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(242, 106, 10, 0); }
+}
+
+/* Left Switching Label */
+.tm-label-slot {
+  position: relative;
+  height: 22px;
+  display: flex;
+  align-items: center;
+}
+
+.tm-label {
+  position: absolute;
+  left: 0;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  white-space: nowrap;
+  transition:
+    opacity 0.35s ease,
+    transform 0.35s ease;
+}
+
+.tm-label.tm-old {
+  color: #dc2626;
+}
+
+:root[data-theme="dark"] .tm-label.tm-old {
+  color: #f87171;
+}
+
+.tm-label.tm-new {
+  color: #059669;
+}
+
+:root[data-theme="dark"] .tm-label.tm-new {
+  color: #34d399;
+}
+
+.ans-time-morph[data-mode="conventional"] .tm-label.tm-old {
+  opacity: 1;
+  transform: translateY(0);
+}
+.ans-time-morph[data-mode="conventional"] .tm-label.tm-new {
+  opacity: 0;
+  transform: translateY(4px);
+  pointer-events: none;
+}
+
+.ans-time-morph[data-mode="designfoundry"] .tm-label.tm-old {
+  opacity: 0;
+  transform: translateY(-4px);
+  pointer-events: none;
+}
+.ans-time-morph[data-mode="designfoundry"] .tm-label.tm-new {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Remove old ::after hover tooltip on core card */
+.flow-pill-box.core::after {
+  display: none;
 }
 
 /* Center Bar Track */
@@ -1311,8 +1353,23 @@
     gap: 14px;
     padding: 20px;
   }
-  .tm-toggle-wrap {
-    align-items: center;
+  .tm-label-slot {
+    justify-content: center;
+    width: 100%;
+  }
+  .tm-label {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .ans-time-morph[data-mode="conventional"] .tm-label.tm-old,
+  .ans-time-morph[data-mode="designfoundry"] .tm-label.tm-new {
+    transform: translateX(-50%) translateY(0);
+  }
+  .ans-time-morph[data-mode="conventional"] .tm-label.tm-new {
+    transform: translateX(-50%) translateY(4px);
+  }
+  .ans-time-morph[data-mode="designfoundry"] .tm-label.tm-old {
+    transform: translateX(-50%) translateY(-4px);
   }
   .tm-time-slot {
     justify-content: center;

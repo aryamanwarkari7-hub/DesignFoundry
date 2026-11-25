@@ -4,7 +4,7 @@
 
         <!-- 1. UPDATED HEADING & SUBTITLE -->
         <div class="ans-head-block">
-            <span class="eyebrow mono">02 / THE SOLUTION</span>
+            <span class="eyebrow mono">THE SOLUTION</span>
 
             <h2 class="ans-title-headline">
                 Move from proposal to manufacturing
@@ -50,20 +50,27 @@
                         </svg>
                     </div>
 
-                    <!-- Pill 2: DesignFoundry Engine (Attention-Grabbing Center Card) -->
-                    <div class="flow-pill-box core" id="ansCoreCard" style="cursor: pointer;"
-                         title="Click to toggle DesignFoundry speed">
+                    <!-- Pill 2: Center Interactive Trigger Card (Switches Title: Conventional Process <-> DesignFoundry) -->
+                    <button type="button" class="flow-pill-box core" id="ansCoreCard" aria-pressed="false">
                         <div class="flow-pill-top">
                             <div class="flow-icon-ring core">
                                 <i class="bi bi-gear-wide-connected"></i>
                             </div>
-                            <span class="flow-node-title mono">DESIGNFOUNDRY</span>
+                            <div class="core-title-swap mono">
+                                <span class="core-title-old">CONVENTIONAL</span>
+                                <span class="core-title-new">DESIGNFOUNDRY</span>
+                            </div>
                         </div>
-                        @* <div class="flow-mini-tags mono">
-                            <span class="mini-tag accent">RULES ENGINE</span>
-                            <span class="mini-tag accent">FIXED RULES</span>
-                        </div> *@
-                    </div>
+                        <div class="core-click-prompt mono">
+                            <span class="prompt-idle">
+                                <span class="tm-beacon" aria-hidden="true"></span>
+                                <i class="bi bi-hand-index-thumb"></i> Click to switch to DesignFoundry
+                            </span>
+                            <span class="prompt-active">
+                                <i class="bi bi-check-circle-fill"></i> Active &bull; Click to reset
+                            </span>
+                        </div>
+                    </button>
 
                     <!-- Animated SVG Connector 2 -->
                     <div class="flow-connector" aria-hidden="true">
@@ -97,28 +104,9 @@
             </div>
 
             <!-- 3. SYNCHRONIZED SWITCHING TIME-REDUCTION BAR -->
-            <!-- 3. INTERACTIVE TIME-REDUCTION BAR (CLICKABLE) -->
+            <!-- 3. INTERACTIVE TIME-REDUCTION BAR (DRIVEN BY CENTER CARD) -->
             <div class="ans-time-morph" id="ansTimeMorph" data-mode="conventional">
-                <!-- Left: Clickable Toggle + Visible Prompt -->
-                <div class="tm-toggle-wrap">
-                    <div class="tm-toggle-group mono" role="group" aria-label="Compare Process Speed">
-                        <button type="button" class="tm-toggle-btn active" data-target="conventional">
-                            <i class="bi bi-hourglass-split"></i> CONVENTIONAL
-                        </button>
-                        <button type="button" class="tm-toggle-btn" data-target="designfoundry">
-                            <span class="tm-beacon" aria-hidden="true"></span>
-                            <i class="bi bi-lightning-charge-fill"></i> DESIGNFOUNDRY
-                        </button>
-                    </div>
-                    <span class="tm-visible-hint mono hint-old">
-                        <i class="bi bi-hand-index-thumb"></i> Click DesignFoundry to compare
-                    </span>
-                    <span class="tm-visible-hint mono hint-new">
-                        <i class="bi bi-check-circle-fill"></i> 98% time saved (click Conventional to reset)
-                    </span>
-                </div>
-
-                <!-- Center: Smooth Shrinking Red -> Green Bar -->
+                <!-- Left/Center: Full-Width Shrinking Red -> Green Bar -->
                 <div class="tm-track" aria-hidden="true">
                     <div class="tm-bar"></div>
                 </div>
