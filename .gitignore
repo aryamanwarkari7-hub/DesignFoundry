@@ -20,6 +20,8 @@ publish/
 
 ## Logs & Temp files
 *.log
+Logs/
+logs/
 *.tmp
 *.temp
 

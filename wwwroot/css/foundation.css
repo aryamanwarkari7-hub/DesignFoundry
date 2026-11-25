@@ -922,9 +922,27 @@
 }
 
 @media (max-width: 768px) {
-  .about-stats-grid {
+  .foundation-toolbar {
+    justify-content: center;
+    gap: 12px;
+  }
+
+  .foundation-view-switch {
+    max-width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 640px) {
+  .foundation-catalog-grid {
     grid-template-columns: 1fr;
     gap: 12px;
-    padding: 0 16px;
+  }
+
+  .conv-card {
+    width: 210px;
+    height: 165px;
+    padding: 14px 16px;
   }
 }

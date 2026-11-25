@@ -1,0 +1,31 @@
+@page
+@model Designsfactory.Pages.ErrorModel
+@{
+    ViewData["Title"] = Model.IsNotFound ? "Page Not Found" : "Error";
+}
+
+<section class="standalone-page-wrap" style="display: flex; align-items: center; justify-content: center; text-align: center;">
+    <div class="wrap" style="max-width: 620px;">
+        <span class="eyebrow mono" style="margin-bottom: 16px;">
+            @(Model.IsNotFound ? "404 / NOT FOUND" : $"HTTP {Model.ErrorStatusCode} / SYSTEM NOTICE")
+        </span>
+        <h1 style="font-size: clamp(2rem, 4vw, 2.8rem); margin-bottom: 14px;">
+            @(Model.IsNotFound ? "Page not found." : "Something went wrong.")
+        </h1>
+        <p style="color: var(--text-secondary); margin-bottom: 20px; line-height: 1.6;">
+            @(Model.IsNotFound
+                ? "The page you requested could not be found. It may have been moved or the URL may be incorrect."
+                : "An unexpected error occurred while processing your request. Our engineering team has logged the issue.")
+        </p>
+        @if (!string.IsNullOrEmpty(Model.RequestId))
+        {
+            <p class="mono" style="font-size: 0.72rem; color: var(--text-muted); margin-bottom: 26px;">
+                TRACE ID: @Model.RequestId
+            </p>
+        }
+        <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+            <a href="/" class="btn btn-primary">Return Home</a>
+            <a href="/contact" class="btn btn-ghost">Contact Engineering</a>
+        </div>
+    </div>
+</section>

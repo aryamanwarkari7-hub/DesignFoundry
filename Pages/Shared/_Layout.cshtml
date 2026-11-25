@@ -73,8 +73,10 @@
                 </ul>
             </nav>
 
-            <!-- CTA Action (Sun-Moon Theme Toggle) -->
+            <!-- CTA Action (Mobile Book a Call + Sun-Moon Theme Toggle + Mobile Menu Toggle) -->
             <div class="nav-actions">
+                <a href="/contact" class="btn btn-primary nav-btn-contact nav-mobile-cta" id="mobileBookCallBtn">Book a Call</a>
+
                 <!-- 21st.dev dhxwhy Sun-Moon Animated Theme Toggle -->
                 <button type="button" class="theme-toggle-btn" id="themeToggleBtn" aria-label="Toggle dark/light theme"
                         title="Toggle dark/light theme">
@@ -100,9 +102,29 @@
                     </span>
                 </button>
 
-                @* <a href="#contact" class="btn btn-primary">Book Technical Demo</a> *@
+                <button type="button" id="mobileMenuBtn" class="mobile-menu-btn" aria-label="Toggle navigation menu"
+                        aria-expanded="false" aria-controls="mobileNavDrawer">
+                    <i class="bi bi-list menu-icon-open" aria-hidden="true"></i>
+                    <i class="bi bi-x-lg menu-icon-close" aria-hidden="true"></i>
+                </button>
             </div>
         </div>
+
+        <!-- Mobile Collapsible Navigation Drawer -->
+        <nav id="mobileNavDrawer" class="mobile-nav-drawer" aria-label="Mobile Navigation" hidden>
+            <ul class="mobile-nav-list">
+                <li><a href="/#problem">Problem</a></li>
+                <li><a href="/#answers">Solution</a></li>
+                <li><a href="/#benefits">Benefits</a></li>
+                <li><a href="/#copilot">How it Works</a></li>
+                <li><a href="/#foundation">Applications</a></li>
+                <li><a href="/#customers">Customers</a></li>
+                <li><a href="/#about">About</a></li>
+            </ul>
+            <a href="/contact" class="btn btn-primary mobile-drawer-cta" id="mobileDrawerBookBtn">
+                <i class="bi bi-calendar3"></i> Book a Call
+            </a>
+        </nav>
     </header>
 
     <!-- MAIN BODY CONTENT -->
@@ -225,7 +247,7 @@
                     <!-- Footer -->
                     <div class="pd-foot">
                         <div class="pd-foot-left">
-                            <a class="btn btn-primary" href="https://calendar.google.com/calendar/u/0/r?pli=1" target="_blank"
+                            <a class="btn btn-primary" href="@(Configuration["BookingSettings:MicrosoftBookingsUrl"] ?? "/contact")" data-booking-url="@(Configuration["BookingSettings:MicrosoftBookingsUrl"] ?? "/contact")" target="_blank"
                                rel="noopener noreferrer" id="pdTalk">
                                 <i class="bi bi-calendar3"></i> Discuss this Copilot
                             </a>
@@ -253,24 +275,29 @@
             
                         <div class="inquiry-body">
                             <div class="inquiry-field">
-                                <label class="mono">01 : YOUR CAD PLATFORM</label>
+                                <label class="mono">01 : YOUR CAD PLATFORM *</label>
                                 <div class="inquiry-cad-chips">
                                     <button type="button" class="cad-chip active" data-cad="SolidWorks">SolidWorks</button>
                                     <button type="button" class="cad-chip" data-cad="Autodesk Inventor">Inventor</button>
                                     <button type="button" class="cad-chip" data-cad="PTC Creo">PTC Creo</button>
                                     <button type="button" class="cad-chip" data-cad="Siemens NX">Siemens NX</button>
+                                    <button type="button" class="cad-chip" data-cad="Other">Other</button>
                                 </div>
+                                <input type="text" id="inquiryOtherCad" class="inquiry-input"
+                                       style="display: none; margin-top: 6px;"
+                                       placeholder="Specify your CAD platform (e.g. CATIA, AutoCAD, Solid Edge...)" />
                             </div>
 
                             <div class="inquiry-field">
-                                <label class="mono" for="inquiryEquipment">02 : EQUIPMENT / PRODUCT TO AUTOMATE</label>
-                                <input type="text" id="inquiryEquipment" class="inquiry-input"
+                                <label class="mono" for="inquiryEquipment">02 : EQUIPMENT / PRODUCT TO AUTOMATE *</label>
+                                <input type="text" id="inquiryEquipment" class="inquiry-input" required
                                        placeholder="e.g. Centrifugal Fan, Conveyor, Heat Exchanger..." />
                             </div>
 
                             <div class="inquiry-field">
-                                <label class="mono" for="inquiryEmail">03 : YOUR WORK EMAIL</label>
-                                <input type="email" id="inquiryEmail" class="inquiry-input" placeholder="engineer@company.com" />
+                                <label class="mono" for="inquiryEmail">03 : YOUR EMAIL ADDRESS *</label>
+                                <input type="email" id="inquiryEmail" class="inquiry-input" required
+                                       placeholder="you@company.com" />
                             </div>
                         </div>
 
@@ -317,8 +344,13 @@
                     <!-- Lenis Smooth Scrolling Engine (3.5KB) -->
                     <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
                     <script src="~/js/site.js" asp-append-version="true"></script>
-                    <script src="~/js/cad-viewer.js" asp-append-version="true"></script>
+                    <script src="~/js/answers.js" asp-append-version="true"></script>
+                    <script src="~/js/copilot.js" asp-append-version="true"></script>
+                    <script src="~/js/foundation.js" asp-append-version="true"></script>
                     <script src="~/js/customers.js" asp-append-version="true"></script>
+                    <script src="~/js/about.js" asp-append-version="true"></script>
+                    <script src="~/js/contact.js" asp-append-version="true"></script>
+                    <script src="~/js/cad-viewer.js" asp-append-version="true"></script>
                     @await RenderSectionAsync("Scripts", required: false)
                 </body>
 

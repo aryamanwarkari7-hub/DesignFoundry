@@ -124,7 +124,7 @@
                             <p>Efficient nesting of sheet-metal parts for cutting and fabrication.</p>
                             <span class="more">View details &rarr;</span>
                         </button>
-                        <a class="prod conv-card prod-more" href="https://calendar.google.com/calendar/u/0/r?pli=1"
+                        <a class="prod conv-card prod-more" href="@(Configuration["BookingSettings:MicrosoftBookingsUrl"] ?? "/contact")"
                            target="_blank" rel="noopener noreferrer">
                             <span class="mono">Custom Copilot</span>
                             <h3>Need another tool?</h3>
@@ -417,7 +417,7 @@
                     </button>
 
                     <!-- Custom Copilot Card -->
-                    <a class="prod grid-card custom-copilot" href="https://calendar.google.com/calendar/u/0/r?pli=1"
+                    <a class="prod grid-card custom-copilot" href="@(Configuration["BookingSettings:MicrosoftBookingsUrl"] ?? "/contact")"
                        target="_blank" rel="noopener noreferrer">
                         <div class="grid-card-head">
                             <span class="mono" style="color: var(--primary-accent);"><i
@@ -437,7 +437,7 @@
 
             <!-- CTA: Discuss your design flow -->
             <div class="foundation-cta-block" style="display: flex; justify-content: center; margin-top: 40px;">
-                <a href="https://calendar.google.com/calendar/u/0/r?pli=1" target="_blank" rel="noopener noreferrer"
+                <a href="@(Configuration["BookingSettings:MicrosoftBookingsUrl"] ?? "/contact")" target="_blank" rel="noopener noreferrer"
                    class="btn btn-primary">
                     <i class="bi bi-calendar3"></i> Discuss your design flow
                 </a>

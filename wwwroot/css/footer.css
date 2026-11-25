@@ -164,9 +164,32 @@
 }
 
 @media (max-width: 768px) {
+  .site-footer {
+    padding: 20px 16px;
+  }
+
   .foot {
     flex-direction: column;
     align-items: flex-start;
+    gap: 16px;
+  }
+
+  .foot-titleblock {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .tb-cell:nth-child(odd) {
+    border-right: none;
+  }
+
+  .tb-cell:nth-last-child(-n + 2) {
+    border-bottom: var(--tb-cell-border);
+  }
+
+  .tb-cell:last-child {
+    border-bottom: none;
   }
 }
 

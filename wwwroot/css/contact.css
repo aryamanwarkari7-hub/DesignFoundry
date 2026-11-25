@@ -507,24 +507,16 @@
 }
 
 .inquiry-dialog::backdrop {
-  background: rgba(3, 8, 22, 0.85);
+  background: var(--dialog-backdrop);
   backdrop-filter: blur(14px) saturate(160%);
   -webkit-backdrop-filter: blur(14px) saturate(160%);
 }
 
 .inquiry-box {
-  background:
-    linear-gradient(
-      135deg,
-      rgba(255, 255, 255, 0.08) 0%,
-      rgba(255, 255, 255, 0.02) 100%
-    ),
-    rgba(8, 18, 42, 0.96);
-  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: var(--card-bg);
+  border: 1px solid var(--border-subtle);
   border-radius: var(--radius-2xl);
-  box-shadow:
-    inset 0 1px 1px rgba(255, 255, 255, 0.35),
-    0 24px 64px rgba(0, 0, 0, 0.85);
+  box-shadow: var(--shadow-dialog);
   padding: 28px;
   display: flex;
   flex-direction: column;
@@ -534,13 +526,20 @@
 .inquiry-head {
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
   position: relative;
-  gap: 4px;
+  gap: 6px;
+  padding-right: 44px;
+}
+
+.inquiry-head .eyebrow {
+  align-self: flex-start;
+  width: fit-content;
 }
 
 .inquiry-head h3 {
   font-size: 1.35rem;
-  color: #ffffff;
+  color: var(--text-head);
   margin: 0;
 }
 
@@ -580,8 +579,8 @@
 .cad-chip {
   padding: 6px 12px;
   border-radius: var(--radius-pill);
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: var(--surface-subtle);
+  border: 1px solid var(--border-subtle);
   color: var(--text-secondary);
   font-size: 11px;
   font-family: var(--font-family-mono);
@@ -590,33 +589,37 @@
 }
 
 .cad-chip:hover {
-  background: rgba(255, 255, 255, 0.08);
-  color: #ffffff;
+  background: var(--surface-icon);
+  color: var(--text-head);
 }
 
 .cad-chip.active {
-  background: rgba(242, 106, 10, 0.2);
+  background: var(--accent-soft-bg);
   border-color: var(--primary-accent);
-  color: #ffffff;
-  box-shadow: 0 0 10px rgba(242, 106, 10, 0.3);
+  color: var(--accent-soft-text);
+  box-shadow: 0 0 10px rgba(242, 106, 10, 0.2);
 }
 
 .inquiry-input {
   width: 100%;
   padding: 10px 14px;
   border-radius: var(--radius-md);
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  color: #ffffff;
+  background: var(--surface-subtle);
+  border: 1px solid var(--border-strong);
+  color: var(--text-primary);
   font-size: var(--font-sm);
   outline: none;
   transition: all var(--transition-fast);
 }
 
+.inquiry-input::placeholder {
+  color: var(--text-muted);
+}
+
 .inquiry-input:focus {
   border-color: var(--primary-accent);
-  background: rgba(255, 255, 255, 0.07);
-  box-shadow: 0 0 12px rgba(242, 106, 10, 0.25);
+  background: var(--card-bg);
+  box-shadow: var(--shadow-focus);
 }
 
 .inquiry-foot {
@@ -625,7 +628,7 @@
   justify-content: space-between;
   gap: 12px;
   padding-top: 14px;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-top: 1px solid var(--border-subtle);
   flex-wrap: wrap;
 }
 
@@ -653,6 +656,45 @@
 
   .contact-cards-grid {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .contact-console {
+    padding: 14px;
+    gap: 18px;
+    border-radius: 20px;
+  }
+
+  .globe-chamber {
+    padding: 14px;
+  }
+
+  .globe-canvas-wrap,
+  #heroGlobeCanvas {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .inquiry-dialog {
+    width: calc(100vw - 24px);
+    max-height: 90dvh;
+    overflow-y: auto;
+  }
+
+  .inquiry-box {
+    padding: 20px 18px;
+  }
+
+  .inquiry-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .inquiry-actions .btn,
+  .inquiry-actions a {
+    width: 100%;
+    justify-content: center;
   }
 }
 

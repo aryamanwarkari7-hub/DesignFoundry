@@ -146,6 +146,31 @@
   --gutter-r: max(16px, env(safe-area-inset-right, 0px));
   --transition-fast: 0.2s ease;
   --transition-normal: 0.3s ease;
+
+  /* Semantic Surfaces, Borders & Status Tints (Default / Light) */
+  --surface-stage: rgba(255, 255, 255, 0.94);
+  --surface-subtle: rgba(11, 31, 77, 0.035);
+  --surface-band: rgba(11, 31, 77, 0.025);
+  --surface-icon: rgba(11, 31, 77, 0.06);
+  --surface-track: rgba(11, 31, 77, 0.08);
+  --border-subtle: rgba(11, 31, 77, 0.1);
+  --border-strong: rgba(11, 31, 77, 0.14);
+  --border-dashed: rgba(11, 31, 77, 0.25);
+  --accent-soft-bg: rgba(242, 106, 10, 0.1);
+  --accent-soft-border: rgba(242, 106, 10, 0.32);
+  --accent-soft-text: #c2410c;
+  --accent-card-bg: radial-gradient(circle at top right, rgba(242, 106, 10, 0.14), rgba(255, 255, 255, 0.96) 75%);
+  --accent-card-border: rgba(242, 106, 10, 0.52);
+  --success-soft-bg: rgba(16, 185, 129, 0.12);
+  --success-soft-border: rgba(16, 185, 129, 0.35);
+  --success-soft-text: #047857;
+  --success-card-bg: radial-gradient(circle at top right, rgba(16, 185, 129, 0.16), rgba(255, 255, 255, 0.96) 75%);
+  --success-card-border: rgba(16, 185, 129, 0.55);
+  --danger-soft-bg: rgba(239, 68, 68, 0.08);
+  --danger-soft-border: rgba(239, 68, 68, 0.26);
+  --danger-soft-text: #dc2626;
+  --tap-hand-stroke: #0b1f4d;
+  --dialog-backdrop: rgba(11, 31, 77, 0.42);
 }
 
 /* ==========================================
@@ -274,6 +299,31 @@
   --tb-val-color: #ffffff;
   --tb-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 8px 24px rgba(0, 0, 0, 0.4);
+
+  /* Semantic Surfaces, Borders & Status Tints (Dark) */
+  --surface-stage: rgba(13, 24, 48, 0.9);
+  --surface-subtle: rgba(255, 255, 255, 0.04);
+  --surface-band: rgba(0, 0, 0, 0.24);
+  --surface-icon: rgba(255, 255, 255, 0.06);
+  --surface-track: rgba(255, 255, 255, 0.08);
+  --border-subtle: rgba(255, 255, 255, 0.1);
+  --border-strong: rgba(255, 255, 255, 0.16);
+  --border-dashed: rgba(255, 255, 255, 0.24);
+  --accent-soft-bg: rgba(242, 106, 10, 0.16);
+  --accent-soft-border: rgba(242, 106, 10, 0.42);
+  --accent-soft-text: #ffb074;
+  --accent-card-bg: radial-gradient(circle at top right, rgba(242, 106, 10, 0.22), rgba(13, 24, 48, 0.95) 75%);
+  --accent-card-border: rgba(242, 106, 10, 0.6);
+  --success-soft-bg: rgba(16, 185, 129, 0.14);
+  --success-soft-border: rgba(16, 185, 129, 0.4);
+  --success-soft-text: #6ee7b7;
+  --success-card-bg: radial-gradient(circle at top right, rgba(16, 185, 129, 0.2), rgba(13, 24, 48, 0.95) 75%);
+  --success-card-border: rgba(52, 211, 153, 0.6);
+  --danger-soft-bg: rgba(239, 68, 68, 0.12);
+  --danger-soft-border: rgba(248, 113, 113, 0.3);
+  --danger-soft-text: #fca5a5;
+  --tap-hand-stroke: #f26a0a;
+  --dialog-backdrop: rgba(3, 8, 22, 0.85);
 }
 
 :root[data-theme="light"] {
@@ -353,4 +403,29 @@
   --tb-val-color: #0b1f4d;
   --tb-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.9), 0 4px 12px rgba(11, 31, 77, 0.06);
+
+  /* Semantic Surfaces, Borders & Status Tints (Light) */
+  --surface-stage: rgba(255, 255, 255, 0.94);
+  --surface-subtle: rgba(11, 31, 77, 0.035);
+  --surface-band: rgba(11, 31, 77, 0.025);
+  --surface-icon: rgba(11, 31, 77, 0.06);
+  --surface-track: rgba(11, 31, 77, 0.08);
+  --border-subtle: rgba(11, 31, 77, 0.1);
+  --border-strong: rgba(11, 31, 77, 0.14);
+  --border-dashed: rgba(11, 31, 77, 0.25);
+  --accent-soft-bg: rgba(242, 106, 10, 0.1);
+  --accent-soft-border: rgba(242, 106, 10, 0.32);
+  --accent-soft-text: #c2410c;
+  --accent-card-bg: radial-gradient(circle at top right, rgba(242, 106, 10, 0.14), rgba(255, 255, 255, 0.96) 75%);
+  --accent-card-border: rgba(242, 106, 10, 0.52);
+  --success-soft-bg: rgba(16, 185, 129, 0.12);
+  --success-soft-border: rgba(16, 185, 129, 0.35);
+  --success-soft-text: #047857;
+  --success-card-bg: radial-gradient(circle at top right, rgba(16, 185, 129, 0.16), rgba(255, 255, 255, 0.96) 75%);
+  --success-card-border: rgba(16, 185, 129, 0.55);
+  --danger-soft-bg: rgba(239, 68, 68, 0.08);
+  --danger-soft-border: rgba(239, 68, 68, 0.26);
+  --danger-soft-text: #dc2626;
+  --tap-hand-stroke: #0b1f4d;
+  --dialog-backdrop: rgba(11, 31, 77, 0.42);
 }

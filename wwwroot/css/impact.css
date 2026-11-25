@@ -82,14 +82,8 @@
   backdrop-filter: var(--glass-blur);
   -webkit-backdrop-filter: var(--glass-blur);
   overflow: hidden;
-  background: var(--card-bg);
-  border: 1px solid var(--border-color);
-  box-shadow: var(--shadow-lg);
-}
-
-:root[data-theme="dark"] .impact-strip {
-  background: rgba(13, 24, 48, 0.84);
-  border: var(--glass-border);
+  background: var(--surface-stage);
+  border: 1px solid var(--border-subtle);
   box-shadow: var(--shadow-glass);
 }
 
