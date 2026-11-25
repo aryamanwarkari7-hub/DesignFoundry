@@ -732,12 +732,24 @@
 }
 
 .flow-pill-box.core {
+  transform: scale(1.04);
   background: radial-gradient(
     circle at top right,
-    rgba(242, 106, 10, 0.12),
-    rgba(11, 31, 77, 0.03) 70%
+    rgba(242, 106, 10, 0.16),
+    rgba(255, 255, 255, 0.96) 75%
   );
-  border-color: rgba(242, 106, 10, 0.35);
+  border: 1.5px solid rgba(242, 106, 10, 0.55);
+  box-shadow: 0 12px 32px rgba(242, 106, 10, 0.16);
+}
+
+:root[data-theme="dark"] .flow-pill-box.core {
+  background: radial-gradient(
+    circle at top right,
+    rgba(242, 106, 10, 0.22),
+    rgba(13, 24, 48, 0.95) 75%
+  );
+  border-color: rgba(242, 106, 10, 0.65);
+  box-shadow: 0 0 36px rgba(242, 106, 10, 0.22);
 }
 
 :root[data-theme="dark"] .flow-pill-box.core {
@@ -881,21 +893,18 @@
 }
 
 .flow-line-bg {
-  stroke: rgba(11, 31, 77, 0.15);
+  stroke: #f26a0a;
   stroke-width: 2;
-  stroke-dasharray: 4 4;
+  stroke-dasharray: none;
+  stroke-linecap: round;
 }
 
 :root[data-theme="dark"] .flow-line-bg {
-  stroke: rgba(255, 255, 255, 0.18);
+  stroke: #f26a0a;
 }
 
 .flow-line-pulse {
-  stroke: #f26a0a;
-  stroke-width: 2.5;
-  stroke-dasharray: 18 82;
-  stroke-linecap: round;
-  animation: ansSignalFlow 1.8s linear infinite;
+  display: none;
 }
 
 .flow-arrow-head {
@@ -917,6 +926,36 @@
   color: #94a3b8;
 }
 
+/* 3rd Card: 3D / 2D / BOM Mini Square Cards */
+.out-square-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.out-square-card {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 40px;
+  height: 36px;
+  padding: 0 8px;
+  border-radius: 9px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  background: rgba(16, 185, 129, 0.08);
+  border: 1px solid rgba(16, 185, 129, 0.32);
+  color: #047857;
+  box-shadow: 0 2px 8px rgba(16, 185, 129, 0.08);
+}
+
+:root[data-theme="dark"] .out-square-card {
+  background: rgba(16, 185, 129, 0.14);
+  border-color: rgba(16, 185, 129, 0.38);
+  color: #ecfdf5;
+}
+
 @keyframes ansSignalFlow {
   from {
     stroke-dashoffset: 100;
@@ -936,136 +975,268 @@
 }
 
 /* ==========================================================
-   HORIZONTAL TIME-REDUCTION FLOW (PILLS + FULL-SPAN ARROW)
+   INTERACTIVE TIME-REDUCTION BAR (CLICKABLE RED -> GREEN)
    ========================================================== */
-.ans-time-split {
+.ans-time-morph {
   display: grid;
-  grid-template-columns: auto 1fr auto;
+  grid-template-columns: auto 1fr 145px;
   align-items: center;
-  padding: 20px 32px;
-  gap: 24px;
+  gap: 20px;
+  padding: 18px 32px;
   background: rgba(11, 31, 77, 0.025);
 }
 
-:root[data-theme="dark"] .ans-time-split {
+:root[data-theme="dark"] .ans-time-morph {
   background: rgba(0, 0, 0, 0.24);
 }
 
-.time-split-cell {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 12px;
+/* Clickable Toggle Buttons */
+.tm-toggle-group {
+  display: inline-flex;
+  padding: 4px;
+  border-radius: 10px;
+  background: rgba(11, 31, 77, 0.06);
+  border: 1px solid rgba(11, 31, 77, 0.1);
+}
+
+:root[data-theme="dark"] .tm-toggle-group {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+.tm-toggle-btn {
+  position: relative;
+  border: none;
+  background: transparent;
+  padding: 6px 12px;
+  border-radius: 7px;
+  font-family: inherit;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: #64748b;
+  cursor: pointer;
+  transition: all 0.25s ease;
   white-space: nowrap;
 }
 
-.ts-kicker {
-  font-size: 0.72rem;
+.tm-toggle-btn:not(.active)::after {
+  content: "Click here";
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%) translateY(4px);
+  background: #0b1f4d;
+  color: #ffffff;
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  padding: 3px 8px;
+  border-radius: 6px;
+  border: 1px solid rgba(242, 106, 10, 0.4);
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+:root[data-theme="dark"] .tm-toggle-btn:not(.active)::after {
+  background: #f26a0a;
+  color: #ffffff;
+  border-color: transparent;
+}
+
+.tm-toggle-btn:not(.active):hover::after {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* Center Card Hover Hint */
+.flow-pill-box.core {
+  position: relative;
+}
+
+.flow-pill-box.core::after {
+  content: "Click to compare speed";
+  position: absolute;
+  top: -11px;
+  right: 16px;
+  background: #f26a0a;
+  color: #ffffff;
+  font-family: var(--font-mono, "IBM Plex Mono", monospace);
+  font-size: 0.62rem;
   font-weight: 700;
-  letter-spacing: 0.09em;
-  color: #64748b;
-}
-
-:root[data-theme="dark"] .ts-kicker {
-  color: #94a3b8;
-}
-
-.ts-kicker.accent {
-  color: #f26a0a;
-}
-
-/* Pills around Several Days & Few Minutes */
-.ts-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 8px 16px;
+  letter-spacing: 0.06em;
+  padding: 2px 9px;
   border-radius: 999px;
-  font-family: var(--font-family);
-  font-size: 1.05rem;
-  font-weight: 700;
-  letter-spacing: -0.01em;
+  opacity: 0;
+  transform: translateY(4px);
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  box-shadow: 0 4px 12px rgba(242, 106, 10, 0.3);
 }
 
-.ts-pill i {
-  font-size: 1.1rem;
+.flow-pill-box.core:hover::after {
+  opacity: 1;
+  transform: translateY(0);
 }
 
-/* Muted Red/Slate Multi-Day Pill */
-.ts-pill.old {
-  background: rgba(239, 68, 68, 0.08);
-  border: 1px solid rgba(239, 68, 68, 0.25);
+.tm-toggle-btn:hover {
+  color: #0b1f4d;
+}
+
+:root[data-theme="dark"] .tm-toggle-btn:hover {
+  color: #f8fafc;
+}
+
+.tm-toggle-btn.active[data-target="conventional"] {
+  background: rgba(239, 68, 68, 0.14);
   color: #dc2626;
 }
 
-:root[data-theme="dark"] .ts-pill.old {
-  background: rgba(239, 68, 68, 0.12);
-  border-color: rgba(248, 113, 113, 0.28);
+.tm-toggle-btn.active[data-target="designfoundry"] {
+  background: rgba(16, 185, 129, 0.18);
+  color: #059669;
+}
+
+:root[data-theme="dark"] .tm-toggle-btn.active[data-target="conventional"] {
   color: #fca5a5;
 }
 
-/* Glowing Orange Clock Pill */
-.ts-pill.new {
-  background: rgba(242, 106, 10, 0.14);
-  border: 1px solid rgba(242, 106, 10, 0.45);
-  color: #c2410c;
-  box-shadow: 0 6px 20px rgba(242, 106, 10, 0.12);
+:root[data-theme="dark"] .tm-toggle-btn.active[data-target="designfoundry"] {
+  color: #6ee7b7;
 }
 
-:root[data-theme="dark"] .ts-pill.new {
-  background: rgba(242, 106, 10, 0.2);
-  border-color: rgba(242, 106, 10, 0.5);
-  color: #ffffff;
-  box-shadow: 0 0 24px rgba(242, 106, 10, 0.18);
-}
-
-.ts-pill.new i {
-  color: #f26a0a;
-}
-
-/* Center Full-Span Animated Arrow */
-.time-split-arrow {
+/* Center Bar Track */
+.tm-track {
+  width: 100%;
+  height: 14px;
+  border-radius: 999px;
+  background: rgba(11, 31, 77, 0.08);
+  padding: 2px;
+  overflow: hidden;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
+}
+
+:root[data-theme="dark"] .tm-track {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* Smooth Bar Transition (Default = Red / Conventional) */
+.tm-bar {
+  height: 100%;
+  width: 96%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #ef4444, #dc2626);
+  box-shadow: 0 0 12px rgba(239, 68, 68, 0.35);
+  transition:
+    width 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    background 0.5s ease,
+    box-shadow 0.5s ease;
+}
+
+/* Active State = Green / DesignFoundry */
+.ans-time-morph[data-mode="designfoundry"] .tm-bar {
+  width: 7%;
+  background: linear-gradient(90deg, #10b981, #34d399);
+  box-shadow: 0 0 14px rgba(16, 185, 129, 0.5);
+}
+
+/* Right Switching Time Value */
+.tm-time-slot {
+  position: relative;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.tm-time {
+  position: absolute;
+  right: 0;
+  display: inline-flex;
+  align-items: center;
   gap: 6px;
-  width: 100%;
-  min-width: 120px;
-}
-
-.time-split-arrow .flow-svg {
-  display: block;
-  width: 100%;
-  height: 18px;
-}
-
-.ts-speed-tag {
-  font-size: var(--font-lg);
+  padding: 5px 12px;
+  border-radius: 999px;
+  font-size: 0.78rem;
   font-weight: 700;
-  letter-spacing: 0.1em;
-  color: #f26a0a;
-  line-height: 1;
+  white-space: nowrap;
+  transition:
+    opacity 0.35s ease,
+    transform 0.35s ease;
+}
+
+.tm-time.tm-old {
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  color: #dc2626;
+}
+
+:root[data-theme="dark"] .tm-time.tm-old {
+  color: #fca5a5;
+}
+
+.tm-time.tm-new {
+  background: rgba(16, 185, 129, 0.14);
+  border: 1px solid rgba(16, 185, 129, 0.4);
+  color: #059669;
+}
+
+:root[data-theme="dark"] .tm-time.tm-new {
+  color: #6ee7b7;
+}
+
+/* Mode-Driven Pill Visibility */
+.ans-time-morph[data-mode="conventional"] .tm-time.tm-old {
+  opacity: 1;
+  transform: translateY(0);
+}
+.ans-time-morph[data-mode="conventional"] .tm-time.tm-new {
+  opacity: 0;
+  transform: translateY(4px);
+  pointer-events: none;
+}
+
+.ans-time-morph[data-mode="designfoundry"] .tm-time.tm-old {
+  opacity: 0;
+  transform: translateY(-4px);
+  pointer-events: none;
+}
+.ans-time-morph[data-mode="designfoundry"] .tm-time.tm-new {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 @media (max-width: 900px) {
-  .ans-time-split {
+  .ans-time-morph {
     grid-template-columns: 1fr;
     justify-items: center;
+    gap: 14px;
     padding: 20px;
-    gap: 12px;
   }
-  .time-split-cell {
-    flex-direction: column;
-    gap: 6px;
+  .tm-time-slot {
     justify-content: center;
+    width: 100%;
   }
-  .time-split-arrow {
-    min-width: auto;
+  .tm-time {
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
   }
-  .time-split-arrow .flow-svg {
-    transform: rotate(90deg);
-    width: 36px;
-    height: 36px;
+  .ans-time-morph[data-mode="conventional"] .tm-time.tm-old,
+  .ans-time-morph[data-mode="designfoundry"] .tm-time.tm-new {
+    transform: translateX(-50%) translateY(0);
+  }
+  .ans-time-morph[data-mode="conventional"] .tm-time.tm-new {
+    transform: translateX(-50%) translateY(4px);
+  }
+  .ans-time-morph[data-mode="designfoundry"] .tm-time.tm-old {
+    transform: translateX(-50%) translateY(-4px);
+  }
+  .flow-pill-box.core {
+    transform: none;
   }
 }

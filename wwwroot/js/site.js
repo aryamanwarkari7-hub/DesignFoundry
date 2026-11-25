@@ -2027,5 +2027,34 @@
 
             requestAnimationFrame(updateAndDraw);
         })();
+
+        // Solution Section: Clickable Conventional vs DesignFoundry Bar
+        (function initSolutionSpeedToggle() {
+            var morph = document.getElementById("ansTimeMorph");
+            var coreCard = document.getElementById("ansCoreCard");
+            if (!morph) return;
+
+            var btns = morph.querySelectorAll(".tm-toggle-btn");
+
+            function setMode(mode) {
+                morph.setAttribute("data-mode", mode);
+                btns.forEach(function (b) {
+                    b.classList.toggle("active", b.getAttribute("data-target") === mode);
+                });
+            }
+
+            btns.forEach(function (btn) {
+                btn.addEventListener("click", function () {
+                    setMode(btn.getAttribute("data-target"));
+                });
+            });
+
+            if (coreCard) {
+                coreCard.addEventListener("click", function () {
+                    var next = morph.getAttribute("data-mode") === "designfoundry" ? "conventional" : "designfoundry";
+                    setMode(next);
+                });
+            }
+        })();
     });
 })(window, document);

@@ -27,22 +27,18 @@
                 </div>
 
                 <div class="ans-flow-track">
-                    <!-- Pill 1: Requirements (Generic Pills) -->
+                    <!-- Pill 1: Requirements (Heading Only + Pills) -->
                     <div class="flow-pill-box">
                         <div class="flow-pill-top">
                             <div class="flow-icon-ring">
                                 <i class="bi bi-sliders"></i>
                             </div>
-                            <div class="flow-pill-meta">
-                                <span class="flow-node-title mono">REQUIREMENTS</span>
-                                <span class="flow-node-sub">Engineering Specifications</span>
-                            </div>
+                            <span class="flow-node-title mono">REQUIREMENTS</span>
                         </div>
-                        <div class="flow-mini-tags mono">
+                        @* <div class="flow-mini-tags mono">
                             <span class="mini-tag">PARAMETERS</span>
-                            @* <span class="mini-tag">STANDARDS</span> *@
                             <span class="mini-tag">CONSTRAINTS</span>
-                        </div>
+                        </div> *@
                     </div>
 
                     <!-- Animated SVG Connector 1 -->
@@ -54,21 +50,18 @@
                         </svg>
                     </div>
 
-                    <!-- Pill 2: DesignFoundry Engine (Only Rules Engine Pill) -->
-                    <div class="flow-pill-box core">
+                    <!-- Pill 2: DesignFoundry Engine (Attention-Grabbing Center Card) -->
+                    <div class="flow-pill-box core" id="ansCoreCard" style="cursor: pointer;" title="Click to toggle DesignFoundry speed">
                         <div class="flow-pill-top">
                             <div class="flow-icon-ring core">
                                 <i class="bi bi-gear-wide-connected"></i>
                             </div>
-                            <div class="flow-pill-meta">
-                                <span class="flow-node-title mono">DESIGNFOUNDRY</span>
-                                <span class="flow-node-sub">Design Calculations &amp; Automation</span>
-                            </div>
+                            <span class="flow-node-title mono">DESIGNFOUNDRY</span>
                         </div>
-                        <div class="flow-mini-tags mono">
+                        @* <div class="flow-mini-tags mono">
                             <span class="mini-tag accent">RULES ENGINE</span>
                             <span class="mini-tag accent">FIXED RULES</span>
-                        </div>
+                        </div> *@
                     </div>
 
                     <!-- Animated SVG Connector 2 -->
@@ -80,56 +73,50 @@
                         </svg>
                     </div>
 
-                    <!-- Pill 3: Deliverables (+ More Pill at End) -->
+                    <!-- Pill 3: Deliverables (3D / 2D / BOM Mini Square Cards + File Pills) -->
                     <div class="flow-pill-box out">
                         <div class="flow-pill-top">
                             <div class="flow-icon-ring out">
                                 <i class="bi bi-box-seam"></i>
                             </div>
-                            <div class="flow-pill-meta">
-                                <span class="flow-node-title mono">3D &bull; 2D &bull; BOM</span>
-                                <span class="flow-node-sub">Manufacturing-Ready Documentation</span>
+                            <div class="out-square-row mono">
+                                <span class="out-square-card">3D</span>
+                                <span class="out-square-card">2D</span>
+                                <span class="out-square-card">BOM</span>
                             </div>
                         </div>
-                        <div class="flow-mini-tags mono">
+                        @* <div class="flow-mini-tags mono">
                             <span class="mini-tag ok">.SLDASM</span>
                             <span class="mini-tag ok">.DWG</span>
                             <span class="mini-tag ok">.CSV</span>
                             <span class="mini-tag more">+ MORE</span>
-                        </div>
+                        </div> *@
                     </div>
                 </div>
             </div>
 
-            <!-- 3. HORIZONTAL TIME-REDUCTION FLOW -->
-            <!-- 3. HORIZONTAL TIME-REDUCTION FLOW -->
-            <div class="ans-time-split">
-                <!-- Left: Conventional Process (Calendar Marking Multiple Days Pill) -->
-                <div class="time-split-cell old">
-                    <span class="ts-kicker mono">CONVENTIONAL PROCESS</span>
-                    <span class="ts-pill old">
-                        <i class="bi bi-calendar-range"></i>
-                        <span>Several Days</span>
-                    </span>
+            <!-- 3. SYNCHRONIZED SWITCHING TIME-REDUCTION BAR -->
+            <!-- 3. INTERACTIVE TIME-REDUCTION BAR (CLICKABLE) -->
+            <div class="ans-time-morph" id="ansTimeMorph" data-mode="conventional">
+                <!-- Left: Clickable Toggle -->
+                <div class="tm-toggle-group mono" role="group" aria-label="Compare Process Speed">
+                    <button type="button" class="tm-toggle-btn active" data-target="conventional">
+                        CONVENTIONAL
+                    </button>
+                    <button type="button" class="tm-toggle-btn" data-target="designfoundry">
+                        DESIGNFOUNDRY
+                    </button>
                 </div>
 
-                <!-- Center: Full-Span Animated Left-to-Right SVG Arrow -->
-                <div class="time-split-arrow" aria-hidden="true">
-                    <span class="ts-speed-tag ">10X FASTER</span>
-                    <svg class="flow-svg" viewBox="0 0 240 24" preserveAspectRatio="none">
-                        <line x1="0" y1="12" x2="232" y2="12" class="flow-line-bg" />
-                        <line x1="0" y1="12" x2="232" y2="12" class="flow-line-pulse" />
-                        <polyline points="224,6 234,12 224,18" class="flow-arrow-head" />
-                    </svg>
+                <!-- Center: Smooth Shrinking Red -> Green Bar -->
+                <div class="tm-track" aria-hidden="true">
+                    <div class="tm-bar"></div>
                 </div>
 
-                <!-- Right: DesignFoundry (Clock / Stopwatch Pill) -->
-                <div class="time-split-cell new">
-                    <span class="ts-kicker mono accent">DESIGNFOUNDRY</span>
-                    <span class="ts-pill new">
-                        <i class="bi bi-stopwatch"></i>
-                        <span>Few Minutes</span>
-                    </span>
+                <!-- Right: Active Time Pill -->
+                <div class="tm-time-slot mono">
+                    <span class="tm-time tm-old"><i class="bi bi-calendar-range"></i> Several Days</span>
+                    <span class="tm-time tm-new"><i class="bi bi-stopwatch"></i> Few Minutes</span>
                 </div>
             </div>
 
