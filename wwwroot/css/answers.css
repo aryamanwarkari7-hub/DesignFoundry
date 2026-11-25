@@ -1097,9 +1097,9 @@ button.flow-pill-box.core.is-active .flow-icon-ring.core {
   color: #10b981;
 }
 
-/* Visible Prompt Pill Floating Above Top Edge of Center Card */
+/* Animated Ad-Style Tapping Finger Cue on Center Card */
 .ans-flow-track {
-  margin-top: 10px;
+  margin-top: 4px;
 }
 
 button.flow-pill-box.core {
@@ -1107,80 +1107,75 @@ button.flow-pill-box.core {
   overflow: visible;
 }
 
-.core-click-prompt {
+.core-tap-cue {
   position: absolute;
-  top: -13px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 3;
+  bottom: -10px;
+  right: 12px;
+  z-index: 4;
   display: inline-flex;
   align-items: center;
-  padding: 3px 12px;
-  border-radius: 999px;
-  font-size: 0.64rem;
-  font-weight: 700;
-  letter-spacing: 0.05em;
-  white-space: nowrap;
-  background: #fff7ed;
-  border: 1px solid rgba(242, 106, 10, 0.45);
-  color: #c2410c;
-  box-shadow: 0 4px 12px rgba(242, 106, 10, 0.14);
-  transition: all 0.25s ease;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  pointer-events: none;
+  transition:
+    opacity 0.25s ease,
+    transform 0.25s ease;
 }
 
-:root[data-theme="dark"] .core-click-prompt {
-  background: #1a243d;
-  border-color: rgba(242, 106, 10, 0.55);
-  color: #ffb074;
+.core-tap-cue i {
+  position: relative;
+  z-index: 2;
+  font-size: 1.45rem;
+  color: #f26a0a;
+  filter: drop-shadow(0 2px 6px rgba(242, 106, 10, 0.45));
+  transform-origin: bottom right;
+  animation: tapFinger 1.6s ease-in-out infinite;
 }
 
-.core-click-prompt .prompt-idle {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.core-click-prompt .prompt-active {
-  display: none;
-  align-items: center;
-  gap: 6px;
-}
-
-button.flow-pill-box.core.is-active .core-click-prompt {
-  background: #ecfdf5;
-  border-color: rgba(16, 185, 129, 0.5);
-  color: #047857;
-  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.16);
-}
-
-:root[data-theme="dark"] button.flow-pill-box.core.is-active .core-click-prompt {
-  background: #0d2a2a;
-  border-color: rgba(52, 211, 153, 0.55);
-  color: #6ee7b7;
-}
-
-button.flow-pill-box.core.is-active .core-click-prompt .prompt-idle {
-  display: none;
-}
-
-button.flow-pill-box.core.is-active .core-click-prompt .prompt-active {
-  display: inline-flex;
-}
-
-/* Pulsing Beacon Dot */
-.tm-beacon {
-  width: 7px;
-  height: 7px;
+.tap-ripple {
+  position: absolute;
+  top: 2px;
+  left: 4px;
+  width: 22px;
+  height: 22px;
   border-radius: 50%;
-  background: #f26a0a;
-  box-shadow: 0 0 0 0 rgba(242, 106, 10, 0.7);
-  animation: tmBeaconPulse 1.6s infinite;
+  border: 2px solid #f26a0a;
+  opacity: 0;
+  animation: tapRipple 1.6s ease-out infinite;
 }
 
-@keyframes tmBeaconPulse {
-  0% { box-shadow: 0 0 0 0 rgba(242, 106, 10, 0.75); }
-  70% { box-shadow: 0 0 0 7px rgba(242, 106, 10, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(242, 106, 10, 0); }
+button.flow-pill-box.core.is-active .core-tap-cue {
+  opacity: 0;
+  transform: scale(0.75);
+}
+
+@keyframes tapFinger {
+  0%,
+  100% {
+    transform: translate(0, 0) rotate(-12deg) scale(1);
+  }
+  40% {
+    transform: translate(-3px, -4px) rotate(-18deg) scale(1.06);
+  }
+  60% {
+    transform: translate(0, 1px) rotate(-8deg) scale(0.92);
+  }
+}
+
+@keyframes tapRipple {
+  0%,
+  55% {
+    transform: scale(0.4);
+    opacity: 0;
+  }
+  65% {
+    opacity: 0.85;
+  }
+  100% {
+    transform: scale(2.1);
+    opacity: 0;
+  }
 }
 
 /* Left Switching Label */
