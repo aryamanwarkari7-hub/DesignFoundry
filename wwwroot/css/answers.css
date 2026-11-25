@@ -6,11 +6,11 @@
   position: relative;
   width: 100%;
   padding-top: 0;
-  padding-bottom: clamp(
+  /* padding-bottom: clamp(
     60px,
     8vh,
     90px
-  ); /* Keeps balanced breathing room below cards */
+  );  */
   scroll-margin-top: 75px; /* Perfectly aligns below the floating navbar */
 }
 
@@ -990,34 +990,124 @@
   background: rgba(0, 0, 0, 0.24);
 }
 
-/* Clickable Toggle Buttons */
+/* Clickable Toggle Buttons + Visible Prompt */
+.tm-toggle-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+}
+
 .tm-toggle-group {
   display: inline-flex;
+  gap: 4px;
   padding: 4px;
-  border-radius: 10px;
+  border-radius: 11px;
   background: rgba(11, 31, 77, 0.06);
-  border: 1px solid rgba(11, 31, 77, 0.1);
+  border: 1px solid rgba(11, 31, 77, 0.12);
 }
 
 :root[data-theme="dark"] .tm-toggle-group {
   background: rgba(255, 255, 255, 0.06);
-  border-color: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.14);
 }
 
 .tm-toggle-btn {
   position: relative;
-  border: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid transparent;
   background: transparent;
-  padding: 6px 12px;
-  border-radius: 7px;
+  padding: 7px 12px;
+  border-radius: 8px;
   font-family: inherit;
   font-size: 0.7rem;
   font-weight: 700;
   letter-spacing: 0.06em;
   color: #64748b;
   cursor: pointer;
-  transition: all 0.25s ease;
+  transition: all 0.2s ease;
   white-space: nowrap;
+}
+
+.tm-toggle-btn:active {
+  transform: translateY(1px);
+}
+
+/* Make the unclicked DesignFoundry button look subtly raised & inviting */
+.ans-time-morph[data-mode="conventional"] .tm-toggle-btn[data-target="designfoundry"] {
+  background: rgba(16, 185, 129, 0.08);
+  border-color: rgba(16, 185, 129, 0.35);
+  color: #059669;
+  box-shadow: 0 2px 8px rgba(16, 185, 129, 0.12);
+}
+
+:root[data-theme="dark"] .ans-time-morph[data-mode="conventional"] .tm-toggle-btn[data-target="designfoundry"] {
+  background: rgba(16, 185, 129, 0.12);
+  border-color: rgba(52, 211, 153, 0.38);
+  color: #6ee7b7;
+}
+
+.ans-time-morph[data-mode="conventional"] .tm-toggle-btn[data-target="designfoundry"]:hover {
+  background: rgba(16, 185, 129, 0.18);
+  transform: translateY(-1px);
+}
+
+/* Pulsing Beacon Dot on DesignFoundry before click */
+.tm-beacon {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #10b981;
+  box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+  animation: tmBeaconPulse 1.6s infinite;
+}
+
+.ans-time-morph[data-mode="designfoundry"] .tm-beacon {
+  display: none;
+}
+
+@keyframes tmBeaconPulse {
+  0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+  70% { box-shadow: 0 0 0 7px rgba(16, 185, 129, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+}
+
+/* Visible Micro-Prompt below Toggle */
+.tm-visible-hint {
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding-left: 2px;
+}
+
+.tm-visible-hint.hint-old {
+  color: #059669;
+}
+
+:root[data-theme="dark"] .tm-visible-hint.hint-old {
+  color: #34d399;
+}
+
+.tm-visible-hint.hint-new {
+  color: #64748b;
+  display: none;
+}
+
+:root[data-theme="dark"] .tm-visible-hint.hint-new {
+  color: #94a3b8;
+}
+
+.ans-time-morph[data-mode="designfoundry"] .tm-visible-hint.hint-old {
+  display: none;
+}
+
+.ans-time-morph[data-mode="designfoundry"] .tm-visible-hint.hint-new {
+  display: inline-flex;
 }
 
 .tm-toggle-btn:not(.active)::after {
@@ -1037,7 +1127,9 @@
   white-space: nowrap;
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.2s ease, transform 0.2s ease;
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
@@ -1073,7 +1165,9 @@
   opacity: 0;
   transform: translateY(4px);
   pointer-events: none;
-  transition: opacity 0.2s ease, transform 0.2s ease;
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease;
   box-shadow: 0 4px 12px rgba(242, 106, 10, 0.3);
 }
 
@@ -1216,6 +1310,9 @@
     justify-items: center;
     gap: 14px;
     padding: 20px;
+  }
+  .tm-toggle-wrap {
+    align-items: center;
   }
   .tm-time-slot {
     justify-content: center;

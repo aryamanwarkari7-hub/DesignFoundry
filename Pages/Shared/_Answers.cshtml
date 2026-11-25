@@ -21,10 +21,10 @@
 
             <!-- 2. OLD PART 1: PILL-ENCLOSED PIPELINE FLOW -->
             <div class="ans-band ans-band-pipeline">
-                <div class="ans-band-header mono">
+                @* <div class="ans-band-header mono">
                     <span class="ans-tag">01 / ZERO CAD</span>
                     <span class="ans-badge-pill"><span class="badge-pulse-dot"></span> 0 CAD SEATS REQUIRED</span>
-                </div>
+                </div> *@
 
                 <div class="ans-flow-track">
                     <!-- Pill 1: Requirements (Heading Only + Pills) -->
@@ -51,7 +51,8 @@
                     </div>
 
                     <!-- Pill 2: DesignFoundry Engine (Attention-Grabbing Center Card) -->
-                    <div class="flow-pill-box core" id="ansCoreCard" style="cursor: pointer;" title="Click to toggle DesignFoundry speed">
+                    <div class="flow-pill-box core" id="ansCoreCard" style="cursor: pointer;"
+                         title="Click to toggle DesignFoundry speed">
                         <div class="flow-pill-top">
                             <div class="flow-icon-ring core">
                                 <i class="bi bi-gear-wide-connected"></i>
@@ -98,14 +99,23 @@
             <!-- 3. SYNCHRONIZED SWITCHING TIME-REDUCTION BAR -->
             <!-- 3. INTERACTIVE TIME-REDUCTION BAR (CLICKABLE) -->
             <div class="ans-time-morph" id="ansTimeMorph" data-mode="conventional">
-                <!-- Left: Clickable Toggle -->
-                <div class="tm-toggle-group mono" role="group" aria-label="Compare Process Speed">
-                    <button type="button" class="tm-toggle-btn active" data-target="conventional">
-                        CONVENTIONAL
-                    </button>
-                    <button type="button" class="tm-toggle-btn" data-target="designfoundry">
-                        DESIGNFOUNDRY
-                    </button>
+                <!-- Left: Clickable Toggle + Visible Prompt -->
+                <div class="tm-toggle-wrap">
+                    <div class="tm-toggle-group mono" role="group" aria-label="Compare Process Speed">
+                        <button type="button" class="tm-toggle-btn active" data-target="conventional">
+                            <i class="bi bi-hourglass-split"></i> CONVENTIONAL
+                        </button>
+                        <button type="button" class="tm-toggle-btn" data-target="designfoundry">
+                            <span class="tm-beacon" aria-hidden="true"></span>
+                            <i class="bi bi-lightning-charge-fill"></i> DESIGNFOUNDRY
+                        </button>
+                    </div>
+                    <span class="tm-visible-hint mono hint-old">
+                        <i class="bi bi-hand-index-thumb"></i> Click DesignFoundry to compare
+                    </span>
+                    <span class="tm-visible-hint mono hint-new">
+                        <i class="bi bi-check-circle-fill"></i> 98% time saved (click Conventional to reset)
+                    </span>
                 </div>
 
                 <!-- Center: Smooth Shrinking Red -> Green Bar -->
