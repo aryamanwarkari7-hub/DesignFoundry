@@ -28,17 +28,43 @@
   align-items: center;
   gap: 8px;
   font-size: var(--font-sm);
-  color: var(--text-secondary);
-  padding: 6px 14px;
+  color: var(--text-muted);
+  padding: 6px 12px 6px 8px;
   border-radius: var(--radius-pill);
+  background: transparent;
+  border: 1px solid transparent;
+  transition:
+    color var(--transition-fast),
+    background var(--transition-fast),
+    border-color var(--transition-fast);
+}
+
+.app-back-link i {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
   background: var(--surface-stage);
   border: 1px solid var(--border-subtle);
-  transition: all var(--transition-fast);
+  font-size: 0.78rem;
+  transition:
+    transform var(--transition-fast),
+    border-color var(--transition-fast),
+    color var(--transition-fast);
 }
 
 .app-back-link:hover {
+  color: var(--text-head);
+  background: var(--surface-stage);
+  border-color: var(--border-subtle);
+}
+
+.app-back-link:hover i {
+  transform: translateX(-3px);
   color: var(--primary-accent);
-  border-color: var(--primary-accent);
+  border-color: var(--accent-soft-border);
 }
 
 .app-badges {
