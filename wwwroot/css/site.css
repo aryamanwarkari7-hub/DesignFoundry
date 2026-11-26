@@ -92,6 +92,27 @@ a {
   text-decoration: none;
 }
 
+a[href],
+button:not(:disabled),
+[role="button"],
+[role="tab"],
+summary,
+input[type="submit"]:not(:disabled),
+input[type="button"]:not(:disabled),
+label[for],
+.btn,
+.prod,
+.cc-dot,
+.cad-chip,
+.faq-filter-pill {
+  cursor: pointer;
+}
+
+button:disabled,
+[aria-disabled="true"] {
+  cursor: not-allowed;
+}
+
 h1,
 h2,
 h3,

@@ -87,6 +87,7 @@ header.header-floating {
   gap: var(--space-sm);
   text-decoration: none;
   flex-shrink: 0;
+  cursor: pointer;
 }
 
 .logo-text b {
@@ -350,6 +351,12 @@ header.header-floating {
   transition: all var(--transition-fast);
 }
 
+.mobile-menu-btn:hover {
+  border-color: var(--primary-accent);
+  color: var(--primary-accent);
+  transform: translateY(-1px) scale(1.05);
+}
+
 .mobile-menu-btn .menu-icon-close {
   display: none;
 }
@@ -404,11 +411,14 @@ header.header-floating {
   font-weight: var(--fw-medium);
   color: var(--text-secondary);
   text-decoration: none;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
   border: 1px solid transparent;
   transition:
     color var(--transition-fast),
     background var(--transition-fast),
-    border-color var(--transition-fast);
+    border-color var(--transition-fast),
+    transform var(--transition-fast);
 }
 
 .mobile-nav-list a::after {
@@ -427,8 +437,12 @@ header.header-floating {
 }
 
 .mobile-nav-list a:hover,
+.mobile-nav-list a:active,
+.mobile-nav-list a:focus-visible,
 .mobile-nav-list a.active,
 :root[data-theme="light"] .mobile-nav-list a:hover,
+:root[data-theme="light"] .mobile-nav-list a:active,
+:root[data-theme="light"] .mobile-nav-list a:focus-visible,
 :root[data-theme="light"] .mobile-nav-list a.active {
   color: var(--nav-link-hover-color);
   background: var(--nav-link-hover-bg);
@@ -436,6 +450,8 @@ header.header-floating {
 }
 
 .mobile-nav-list a:hover::after,
+.mobile-nav-list a:active::after,
+.mobile-nav-list a:focus-visible::after,
 .mobile-nav-list a.active::after {
   width: calc(100% - 28px);
   left: 14px;

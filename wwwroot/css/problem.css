@@ -214,34 +214,54 @@
    RESPONSIVENESS (MOBILE & TABLET ADAPTATION)
 ========================================================== */
 @media (max-width: 860px) {
-  .prob-flow-row {
-    flex-wrap: wrap;
-    gap: 16px;
+  .prob-flow-title {
+    font-size: clamp(1.65rem, 6.2vw, 2.3rem);
   }
 
-  /* Hide inter-card arrows when wrapped into 2x2 grid */
+  .prob-flow-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+
+  /* Hide inter-card arrows when wrapped into grid */
   .prob-flow-arrow {
     display: none;
   }
 
   .prob-flow-card,
   .prob-flow-card.prob-flow-card-bom {
-    flex: 1 1 calc(50% - 16px);
-    max-width: 100%;
+    width: 100%;
+    max-width: 240px;
+    margin-inline: auto;
+    border-radius: 12px;
   }
 
   .prob-flow-subtitle {
-    margin-bottom: 36px;
+    font-size: 0.94rem;
+    margin-bottom: 28px;
   }
 
   .prob-flow-callout {
-    margin-top: 36px;
+    font-size: clamp(1.2rem, 4.5vw, 1.55rem);
+    margin-top: 28px;
   }
 }
 
-@media (max-width: 520px) {
+@media (max-width: 560px) {
+  .prob-flow-row {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
   .prob-flow-card,
   .prob-flow-card.prob-flow-card-bom {
-    flex: 1 1 100%;
+    max-width: 100%;
+  }
+
+  /* Center the 5th card cleanly on the last row */
+  .prob-flow-card:last-child {
+    grid-column: 1 / -1;
+    max-width: calc(50% - 5px);
   }
 }

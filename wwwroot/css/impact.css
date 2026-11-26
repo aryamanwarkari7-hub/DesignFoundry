@@ -158,6 +158,17 @@
     border-bottom: 1px solid var(--border-color);
   }
   .impact-col {
-    padding: var(--space-xl);
+    padding: 22px 18px;
+  }
+  .impact-icon-box {
+    width: 54px;
+    height: 54px;
+    margin-bottom: 12px;
+  }
+  .impact-col-title {
+    font-size: 1.1rem;
+  }
+  .impact-col-desc {
+    font-size: 0.9rem;
   }
 }

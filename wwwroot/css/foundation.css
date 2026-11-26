@@ -1073,6 +1073,25 @@
     gap: 12px;
   }
 
+  .prod.grid-card {
+    padding: 14px 16px;
+    min-height: 0;
+  }
+
+  .grid-card-thumb {
+    max-height: 155px;
+    margin-bottom: 10px;
+  }
+
+  .prod.grid-card h3 {
+    font-size: 0.98rem;
+  }
+
+  .prod.grid-card p {
+    font-size: 0.82rem;
+    margin-bottom: 0;
+  }
+
   /* .conv-card {
     width: 210px;
     height: 165px;

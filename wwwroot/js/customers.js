@@ -8,6 +8,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const cards = Array.from(track.querySelectorAll(".cc-card"));
     const dots = Array.from(document.querySelectorAll("#ccIndicators .cc-dot"));
+    const prevBtn = document.getElementById("ccPrevBtn");
+    const nextBtn = document.getElementById("ccNextBtn");
+    const counterEl = document.getElementById("ccCounter");
     const total = cards.length;
     let activeIndex = 0;
     let timer = null;
@@ -69,6 +72,10 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         });
 
+        if (counterEl) {
+            counterEl.textContent = "0" + (activeIndex + 1) + " / 0" + total;
+        }
+
         resetTimer();
     }
 
@@ -79,6 +86,18 @@ document.addEventListener("DOMContentLoaded", function () {
                 updateCarousel(activeIndex + 1);
             }, intervalMs);
         }
+    }
+
+    if (prevBtn) {
+        prevBtn.addEventListener("click", () => {
+            updateCarousel(activeIndex - 1);
+        });
+    }
+
+    if (nextBtn) {
+        nextBtn.addEventListener("click", () => {
+            updateCarousel(activeIndex + 1);
+        });
     }
 
     // Click on preview cards to rotate to them

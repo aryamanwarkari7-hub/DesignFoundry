@@ -630,16 +630,31 @@
    RESPONSIVE DESIGN
    ========================================================== */
 @media (max-width: 768px) {
+  .ans-head-block {
+    margin-bottom: var(--space-lg);
+  }
+
+  .ans-title-headline {
+    font-size: clamp(1.65rem, 6.2vw, 2.3rem);
+    margin-bottom: var(--space-sm);
+  }
+
+  .ans-intro-text {
+    font-size: 0.94rem;
+    margin-bottom: var(--space-md);
+  }
+
   .ans-unified-stage {
-    padding: 22px 18px 20px;
-    gap: 20px;
+    padding: 18px 14px 16px;
+    gap: 16px;
+    border-radius: var(--radius-xl);
   }
 
   .ans-view-conv {
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 14px 10px;
-    padding: 4px 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    padding: 2px 0;
   }
 
   .conv-arrow {
@@ -647,33 +662,83 @@
   }
 
   .conv-step {
-    min-width: 74px;
+    min-width: 0;
+    padding: 12px 8px;
+    gap: 6px;
+    border-radius: var(--radius-lg);
+  }
+
+  .conv-step i {
+    font-size: 1.25rem;
+  }
+
+  .conv-step span {
+    font-size: 0.76rem;
   }
 
   .ans-view-df {
     grid-template-columns: 1fr;
-    gap: 14px;
+    gap: 10px;
+  }
+
+  .df-cluster {
+    justify-content: center;
+    padding: 10px 12px;
+    gap: 10px;
+  }
+
+  .df-badge {
+    width: 44px;
+    height: 44px;
+    font-size: 1rem;
+  }
+
+  .df-mini-steps {
+    padding: 8px 10px;
+    gap: 10px;
+  }
+
+  .df-mini-item i {
+    font-size: 1.15rem;
   }
 
   .df-connector {
     transform: rotate(90deg);
-    width: 36px;
-    margin: 4px auto;
+    width: 28px;
+    height: 28px;
+    margin: 2px auto;
   }
 
-  .df-cluster {
-    flex-wrap: wrap;
-    justify-content: center;
+  .df-ready-box {
+    min-height: 64px;
+    padding: 12px 16px;
+  }
+
+  .ans-stage-footer {
+    padding-top: 14px;
+  }
+
+  .ans-stage-action {
+    padding: 11px 16px;
+    font-size: 0.88rem;
   }
 }
 
 @media (max-width: 480px) {
   .ans-mode-tab {
-    padding: 7px 14px;
+    padding: 6px 14px;
     font-size: var(--font-sm);
   }
 
-  .df-mini-steps {
-    gap: 10px;
+  .ans-view-conv {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .conv-step:last-child {
+    grid-column: 1 / -1;
+  }
+
+  .df-cluster {
+    flex-wrap: wrap;
   }
 }

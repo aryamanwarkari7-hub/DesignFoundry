@@ -434,6 +434,11 @@
   transition: width 6s linear;
 }
 
+/* Mobile Nav Controls Above Cards (Hidden on Desktop) */
+.cc-mobile-nav {
+  display: none;
+}
+
 /* ==========================================================
    RESPONSIVE DESIGN (Tablets & Mobile)
    ========================================================== */
@@ -462,6 +467,48 @@
 }
 
 @media (max-width: 860px) {
+  .cc-mobile-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 560px;
+    margin: 0 auto 14px;
+    padding: 0 4px;
+  }
+
+  .cc-nav-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--surface-stage);
+    border: 1px solid var(--border-subtle);
+    color: var(--text-head);
+    font-size: 1rem;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transition:
+      border-color var(--transition-fast),
+      color var(--transition-fast),
+      transform var(--transition-fast);
+  }
+
+  .cc-nav-btn:hover,
+  .cc-nav-btn:active {
+    border-color: var(--primary-accent);
+    color: var(--primary-accent);
+    transform: scale(1.05);
+  }
+
+  .cc-mobile-counter {
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+  }
+
   .cc-track {
     height: auto;
     min-height: 460px;
