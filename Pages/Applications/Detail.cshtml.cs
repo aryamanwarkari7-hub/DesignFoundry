@@ -18,6 +18,7 @@ public class DetailModel : PageModel
         Item = found;
         RelatedItems = Catalog.Values
             .Where(x => x.Slug != found.Slug)
+            .OrderBy(_ => Random.Shared.Next())
             .Take(3)
             .ToList();
 
