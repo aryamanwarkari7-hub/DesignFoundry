@@ -519,11 +519,11 @@
   -webkit-mask-image: linear-gradient(to bottom, black 78%, transparent 100%);
 } */
 
-.foundation-catalog-grid.is-collapsed > .grid-card:nth-child(n + 9) {
+.foundation-catalog-grid.is-collapsed > .grid-card:nth-child(n + 5) {
   display: none;
 }
 
-.foundation-catalog-grid:not(.is-collapsed) > .grid-card:nth-child(n + 9) {
+.foundation-catalog-grid:not(.is-collapsed) > .grid-card:nth-child(n + 5) {
   animation: dfCardReveal 0.35s ease both;
 }
 
