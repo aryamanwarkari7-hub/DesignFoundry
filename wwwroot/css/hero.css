@@ -103,13 +103,18 @@
 
 /* 4. Flagship Hero Headline */
 .hero-title {
-  font-size: clamp(2.5rem, 4.8vw, 4.5rem) !important;
+  font-size: clamp(1.9rem, 4.1vw, 3.75rem) !important;
   line-height: 1.14 !important;
   font-weight: var(--fw-bold) !important;
   letter-spacing: -0.025em !important;
   color: var(--text-head);
   margin-bottom: 18px !important;
-  text-wrap: inherit;
+  white-space: nowrap;
+}
+@media (min-width: 769px) {
+  .hero-title-line1 {
+    white-space: nowrap;
+  }
 }
 
 .hero-gradient-text {

@@ -16,112 +16,120 @@
             </p>
         </div>
 
-        <!-- UNIFIED STAGE -->
-        <div class="ans-unified-stage">
+        <!-- UNIFIED INTERACTIVE TRANSFORMATION STAGE -->
+        <div class="ans-unified-stage" id="ansStage" data-mode="conventional">
 
-            <!-- 2. OLD PART 1: PILL-ENCLOSED PIPELINE FLOW -->
-            <div class="ans-band ans-band-pipeline">
-                @* <div class="ans-band-header mono">
-                    <span class="ans-tag">01 / ZERO CAD</span>
-                    <span class="ans-badge-pill"><span class="badge-pulse-dot"></span> 0 CAD SEATS REQUIRED</span>
-                </div> *@
+            <!-- 1. Upper Mode Switcher Pills (with Tapping Hand Cue on DesignFoundry) -->
+            <div class="ans-mode-tabs" role="tablist" aria-label="Design Workflow Comparison">
+                <button type="button" class="ans-mode-tab is-active" id="ansTabConventional" role="tab" aria-selected="true">
+                    Conventional
+                </button>
+                <button type="button" class="ans-mode-tab ans-tab-df" id="ansTabDesignFoundry" role="tab" aria-selected="false">
+                    <span>DesignFoundry</span>
+                    <span class="core-tap-cue" aria-hidden="true">
+                        <span class="tap-ripple r1"></span>
+                        <span class="tap-ripple r2"></span>
+                        <svg class="tap-hand-svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M9.5 3.5a1.5 1.5 0 0 1 3 0v6.75a1.5 1.5 0 0 1 3 .25v.5a1.5 1.5 0 0 1 3 .25v.75a1.5 1.5 0 0 1 2.75 1v3.75a5.5 5.5 0 0 1-5.5 5.5h-2.5a5.5 5.5 0 0 1-4.35-2.15l-3.2-4.15a1.5 1.5 0 0 1 2.22-1.98L9.5 15.25V3.5Z" class="tap-hand-path" />
+                            <path d="M12.5 10.25v3m3-2.25v2.25m3-1.25v1.75" class="tap-hand-creases" />
+                        </svg>
+                    </span>
+                </button>
+            </div>
 
-                <div class="ans-flow-track">
-                    <!-- Pill 1: Requirements (Heading Only + Pills) -->
-                    <div class="flow-pill-box">
-                        <div class="flow-pill-top">
-                            <div class="flow-icon-ring">
-                                <i class="bi bi-sliders"></i>
+            <!-- 2. Workflow Process Visual (Crossfades between Conventional 5-step & DesignFoundry DF) -->
+            <div class="ans-stage-visual">
+                <!-- State A: Conventional 5-Step Process -->
+                <div class="ans-view ans-view-conv" aria-hidden="false">
+                    <div class="conv-step">
+                        <i class="bi bi-pencil-square"></i>
+                        <span>Sketch</span>
+                    </div>
+                    <i class="bi bi-arrow-right conv-arrow" aria-hidden="true"></i>
+                    <div class="conv-step">
+                        <i class="bi bi-calculator"></i>
+                        <span>Calculations</span>
+                    </div>
+                    <i class="bi bi-arrow-right conv-arrow" aria-hidden="true"></i>
+                    <div class="conv-step">
+                        <i class="bi bi-box"></i>
+                        <span>3D model</span>
+                    </div>
+                    <i class="bi bi-arrow-right conv-arrow" aria-hidden="true"></i>
+                    <div class="conv-step">
+                        <i class="bi bi-compass"></i>
+                        <span>2D drawings</span>
+                    </div>
+                    <i class="bi bi-arrow-right conv-arrow" aria-hidden="true"></i>
+                    <div class="conv-step">
+                        <i class="bi bi-table"></i>
+                        <span>BOM</span>
+                    </div>
+                </div>
+
+                <!-- State B: DesignFoundry Automated Flow -->
+                <div class="ans-view ans-view-df" aria-hidden="true">
+                    <div class="df-cluster">
+                        <div class="df-badge">DF</div>
+                        <i class="bi bi-arrow-right df-arrow" aria-hidden="true"></i>
+                        <div class="df-mini-steps">
+                            <div class="df-mini-item">
+                                <i class="bi bi-calculator"></i>
+                                <span>Calc.</span>
                             </div>
-                            <span class="flow-node-title">Requirements</span>
+                            <div class="df-mini-item">
+                                <i class="bi bi-box"></i>
+                                <span>3D</span>
+                            </div>
+                            <div class="df-mini-item">
+                                <i class="bi bi-compass"></i>
+                                <span>2D</span>
+                            </div>
+                            <div class="df-mini-item">
+                                <i class="bi bi-table"></i>
+                                <span>BOM</span>
+                            </div>
                         </div>
-                        @* <div class="flow-mini-tags mono">
-                            <span class="mini-tag">PARAMETERS</span>
-                            <span class="mini-tag">CONSTRAINTS</span>
-                        </div> *@
                     </div>
 
-                    <!-- Animated SVG Connector 1 -->
-                    <div class="flow-connector" aria-hidden="true">
-                        <svg class="flow-svg" viewBox="0 0 80 24" preserveAspectRatio="none">
-                            <line x1="0" y1="12" x2="72" y2="12" class="flow-line-bg" />
-                            <line x1="0" y1="12" x2="72" y2="12" class="flow-line-pulse" />
-                            <polyline points="64,6 74,12 64,18" class="flow-arrow-head" />
+                    <!-- Full Connected Arrow Between Left Card & Right Card -->
+                    <div class="df-connector" aria-hidden="true">
+                        <svg class="df-connector-svg" viewBox="0 0 120 24" preserveAspectRatio="none">
+                            <line x1="0" y1="12" x2="110" y2="12" class="df-line-bg" />
+                            <line x1="0" y1="12" x2="110" y2="12" class="df-line-pulse" />
+                            <polyline points="102,6 112,12 102,18" class="df-arrow-head" />
                         </svg>
                     </div>
 
-                    <!-- Pill 2: Center Interactive Trigger Card (Switches Title: Conventional Process <-> DesignFoundry) -->
-                    <button type="button" class="flow-pill-box core" id="ansCoreCard" aria-pressed="false">
-                        <div class="flow-pill-top">
-                            <div class="flow-icon-ring core">
-                                <i class="bi bi-gear-wide-connected"></i>
-                            </div>
-                            <div class="core-title-swap">
-                                <span class="core-title-old">Conventional</span>
-                                <span class="core-title-new">DesignFoundry</span>
-                            </div>
-                        </div>
-                        <span class="core-tap-cue" aria-hidden="true">
-                            <span class="tap-ripple r1"></span>
-                            <span class="tap-ripple r2"></span>
-                            <svg class="tap-hand-svg" viewBox="0 0 24 24" fill="none"
-                                 xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                d="M9.5 3.5a1.5 1.5 0 0 1 3 0v6.75a1.5 1.5 0 0 1 3 .25v.5a1.5 1.5 0 0 1 3 .25v.75a1.5 1.5 0 0 1 2.75 1v3.75a5.5 5.5 0 0 1-5.5 5.5h-2.5a5.5 5.5 0 0 1-4.35-2.15l-3.2-4.15a1.5 1.5 0 0 1 2.22-1.98L9.5 15.25V3.5Z"
-                                class="tap-hand-path" />
-                                <path d="M12.5 10.25v3m3-2.25v2.25m3-1.25v1.75" class="tap-hand-creases" />
-                            </svg>
-                        </span>
-                        @* <span class="core-tap-cue" aria-hidden="true">
-                            <span class="tap-ripple"></span>
-                            <i class="bi bi-hand-index-thumb-fill"></i>
-                        </span> *@
-                    </button>
-
-                    <!-- Animated SVG Connector 2 -->
-                    <div class="flow-connector" aria-hidden="true">
-                        <svg class="flow-svg" viewBox="0 0 80 24" preserveAspectRatio="none">
-                            <line x1="0" y1="12" x2="72" y2="12" class="flow-line-bg" />
-                            <line x1="0" y1="12" x2="72" y2="12" class="flow-line-pulse" />
-                            <polyline points="64,6 74,12 64,18" class="flow-arrow-head" />
-                        </svg>
-                    </div>
-
-                    <!-- Pill 3: Deliverables (3D / 2D / BOM Mini Square Cards + File Pills) -->
-                    <div class="flow-pill-box out">
-                        <div class="flow-pill-top">
-                            <div class="flow-icon-ring out">
-                                <i class="bi bi-box-seam-fill"></i>
-                            </div>
-                            <div class="out-square-row">
-                                <span class="out-square-card">3D</span>
-                                <span class="out-square-card">2D</span>
-                                <span class="out-square-card">BOM</span>
-                            </div>
-                        </div>
-                        @* <div class="flow-mini-tags mono">
-                            <span class="mini-tag ok">.SLDASM</span>
-                            <span class="mini-tag ok">.DWG</span>
-                            <span class="mini-tag ok">.CSV</span>
-                            <span class="mini-tag more">+ MORE</span>
-                        </div> *@
+                    <div class="df-ready-box">
+                        <i class="bi bi-check-circle"></i>
+                        <span>Ready for manufacturing</span>
                     </div>
                 </div>
             </div>
 
-            <!-- 3. SYNCHRONIZED SWITCHING TIME-REDUCTION BAR -->
-            <!-- 3. INTERACTIVE TIME-REDUCTION BAR (DRIVEN BY CENTER CARD) -->
-            <div class="ans-time-morph" id="ansTimeMorph" data-mode="conventional">
-                <!-- Left/Center: Full-Width Shrinking Red -> Green Bar -->
-                <div class="tm-track" aria-hidden="true">
-                    <div class="tm-bar"></div>
+            <!-- 3. Animated Time Progress Bar & Labels -->
+            <div class="ans-progress-block">
+                <div class="ans-progress-track" aria-hidden="true">
+                    <div class="ans-progress-fill"></div>
                 </div>
+                <div class="ans-progress-labels">
+                    <div class="ans-time-left">
+                        <span class="time-conv">Several days</span>
+                        <span class="time-df">A few minutes</span>
+                    </div>
+                    <div class="ans-time-right">
+                        <span class="speed-df">10X speed</span>
+                    </div>
+                </div>
+            </div>
 
-                <!-- Right: Active Time Pill -->
-                <div class="tm-time-slot mono">
-                    <span class="tm-time tm-old"><i class="bi bi-calendar-range"></i> Several Days</span>
-                    <span class="tm-time tm-new"><i class="bi bi-stopwatch"></i> Few Minutes</span>
-                </div>
+            <!-- 4. Bottom Full-Width Toggle Action -->
+            <div class="ans-stage-footer">
+                <button type="button" class="ans-stage-action" id="ansStageActionBtn">
+                    <span class="action-conv">Experience the transformation <i class="bi bi-arrow-right"></i></span>
+                    <span class="action-df">See conventional process <i class="bi bi-arrow-counterclockwise"></i></span>
+                </button>
             </div>
 
         </div>

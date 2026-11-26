@@ -4,33 +4,41 @@
 document.addEventListener("DOMContentLoaded", function () {
     "use strict";
 
+    (function initSolutionStage() {
+        var stage = document.getElementById("ansStage");
+        var tabConv = document.getElementById("ansTabConventional");
+        var tabDf = document.getElementById("ansTabDesignFoundry");
+        var actionBtn = document.getElementById("ansStageActionBtn");
+        if (!stage || !tabConv || !tabDf || !actionBtn) return;
 
-        // Solution Section: Center Card Clickable Speed Comparison (Auto-Resets After 5s)
-        (function initSolutionSpeedToggle() {
-            var morph = document.getElementById("ansTimeMorph");
-            var coreCard = document.getElementById("ansCoreCard");
-            if (!morph || !coreCard) return;
+        var viewConv = stage.querySelector(".ans-view-conv");
+        var viewDf = stage.querySelector(".ans-view-df");
 
-            var resetTimer = null;
+        function setMode(mode) {
+            var isDf = mode === "designfoundry";
+            stage.setAttribute("data-mode", mode);
 
-            function setMode(mode) {
-                var isDf = mode === "designfoundry";
-                morph.setAttribute("data-mode", mode);
-                coreCard.classList.toggle("is-active", isDf);
-                coreCard.setAttribute("aria-pressed", String(isDf));
+            tabConv.classList.toggle("is-active", !isDf);
+            tabConv.setAttribute("aria-selected", String(!isDf));
 
-                if (resetTimer) clearTimeout(resetTimer);
-                if (isDf) {
-                    resetTimer = setTimeout(function () {
-                        setMode("conventional");
-                    }, 5000);
-                }
-            }
+            tabDf.classList.toggle("is-active", isDf);
+            tabDf.setAttribute("aria-selected", String(isDf));
 
-            coreCard.addEventListener("click", function () {
-                var isDf = morph.getAttribute("data-mode") === "designfoundry";
-                setMode(isDf ? "conventional" : "designfoundry");
-            });
-        })();
+            if (viewConv) viewConv.setAttribute("aria-hidden", String(isDf));
+            if (viewDf) viewDf.setAttribute("aria-hidden", String(!isDf));
+        }
 
+        tabConv.addEventListener("click", function () {
+            setMode("conventional");
+        });
+
+        tabDf.addEventListener("click", function () {
+            setMode("designfoundry");
+        });
+
+        actionBtn.addEventListener("click", function () {
+            var isDf = stage.getAttribute("data-mode") === "designfoundry";
+            setMode(isDf ? "conventional" : "designfoundry");
+        });
+    })();
 });
