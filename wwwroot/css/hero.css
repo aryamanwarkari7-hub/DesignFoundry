@@ -12,8 +12,8 @@
   justify-content: center !important;
   align-items: center !important;
   box-sizing: border-box !important;
-  /* padding-top: clamp(80px, 8vh, 125px) !important; */
-  padding-bottom: clamp(40px, 6vh, 65px) !important;
+  /* padding-top: clamp(80px, 8vh, 125px) !important;
+  padding-bottom: clamp(40px, 6vh, 65px) !important; */
   position: relative !important;
   text-align: center;
 }
@@ -293,7 +293,7 @@
 
 .req-spec-pill .spec-k {
   color: #64748b;
-  font-size: 10px;
+  font-size: 12px;
   letter-spacing: 0.06em;
   font-weight: var(--fw-semibold);
   text-transform: uppercase;
@@ -301,7 +301,7 @@
 
 .req-spec-pill .spec-v {
   color: #0b1f4d;
-  font-size: 13px;
+  font-size: 16px;
   font-weight: var(--fw-bold);
   letter-spacing: -0.01em;
 }
@@ -328,7 +328,7 @@
 .transform-card.card-deliverables {
   flex: 0 1 540px;
   align-self: stretch;
-  min-height: 270px;
+  min-height: 310px;
   transform: rotate(2deg) translateY(-2px);
   transform-origin: center center;
   display: flex;
@@ -343,14 +343,14 @@
 .transform-card.card-deliverables .transform-card-img {
   width: 100%;
   height: auto;
-  /* max-height: 145px; */
+  max-height: 215px;
   object-fit: contain;
   display: block;
 }
 
 /* Right Card Bottom Footer (Matching Left Card) */
 .transform-card.card-deliverables::after {
-  content: "3D SOLID  •  2D DRAWING  •  ERP BOM • DESIGN CALCULATIONS";
+  content: "DESIGN CALCULATIONS | 3D SOLID | 2D DRAWING | ERP BOM";
   display: inline-flex;
   align-items: center;
   font-family: var(--font-family-mono);

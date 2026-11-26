@@ -199,7 +199,7 @@ section {
 
 /* Hero Exception: Only the hero needs extra top padding for the initial navbar */
 .hero {
-  padding-top: calc(var(--section-scroll-margin) + 20px);
+  /* padding-top: calc(var(--section-scroll-margin)); */
   padding-bottom: var(--section-pad-bottom);
 }
 
