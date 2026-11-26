@@ -1,0 +1,163 @@
+@page "/applications/{slug}"
+@model Designsfactory.Pages.Applications.DetailModel
+@{
+    ViewData["Title"] = Model.Item.Title;
+}
+
+<link rel="stylesheet" href="~/css/application-detail.css" asp-append-version="true" />
+
+<section class="app-detail-section" aria-label="@Model.Item.Title">
+    <div class="wrap app-detail-wrap">
+
+        <!-- Breadcrumb & Meta -->
+        <div class="app-detail-top">
+            <a href="/#foundation" class="app-back-link mono">
+                <i class="bi bi-arrow-left"></i> Back to Applications
+            </a>
+            <div class="app-badges mono">
+                <span class="app-cat-pill">@Model.Item.Category</span>
+                <span class="app-std-pill">@Model.Item.Number &bull; @Model.Item.Standard</span>
+            </div>
+        </div>
+
+        <!-- Template 1: Engineering Workbench (Left Info + Right 3D/Video Viewport) -->
+        <div class="app-hero-grid">
+            <div class="app-hero-info">
+                <h1 class="app-detail-title">@Model.Item.Title</h1>
+                <p class="app-detail-summary">@Model.Item.Summary</p>
+                <p class="app-detail-desc">@Model.Item.AutomationDetail</p>
+
+                <div class="app-detail-actions">
+                    <a href="@(Configuration["BookingSettings:MicrosoftBookingsUrl"] ?? "/contact")" target="_blank"
+                       rel="noopener noreferrer" class="btn btn-primary">
+                        <i class="bi bi-calendar3"></i> Discuss this Copilot
+                    </a>
+                    <button type="button" id="btnShareApp" class="btn btn-ghost">
+                        <i class="bi bi-share"></i> <span>Share Link</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Right Interactive Video / 3D Viewport -->
+            <div class="app-viewport-card">
+                <div class="app-viewport-bar">
+                    <div class="app-viewport-tabs" role="tablist" aria-label="Product Media Switcher">
+                        <button type="button" class="app-vp-tab is-active" data-vp-target="video" role="tab"
+                                aria-selected="true">
+                            <i class="bi bi-play-circle"></i> Demo Video
+                        </button>
+                        <button type="button" class="app-vp-tab" data-vp-target="render" role="tab"
+                                aria-selected="false">
+                            <i class="bi bi-box"></i> 3D Render
+                        </button>
+                    </div>
+                </div>
+
+                <div class="app-viewport-stage">
+                    <div class="app-vp-pane app-vp-video-placeholder is-active" data-vp-pane="video">
+                        <i class="bi bi-film"></i>
+                        <strong class="mono">DEMO VIDEO PLACEHOLDER</strong>
+                        <span>Add product walkthrough video for @Model.Item.Title</span>
+                    </div>
+                    <div class="app-vp-pane" data-vp-pane="render" hidden>
+                        <img src="@Model.Item.ImagePath" alt="@Model.Item.Title 3D CAD Render" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Inputs -> Automated Outputs Strip -->
+        @* <div class="app-specs-grid">
+            <div class="app-spec-card">
+                <h2 class="mono"><i class="bi bi-sliders"></i> KEY DESIGN INPUTS</h2>
+                <ul>
+                    @foreach (var input in Model.Item.SampleInputs)
+                    {
+                        <li><i class="bi bi-dot"></i> @input</li>
+                    }
+                </ul>
+            </div>
+
+            <div class="app-spec-card">
+                <h2 class="mono"><i class="bi bi-check2-circle"></i> AUTOMATED DELIVERABLES</h2>
+                <ul>
+                    @foreach (var deliv in Model.Item.Deliverables)
+                    {
+                        <li><i class="bi bi-check-lg ok"></i> @deliv</li>
+                    }
+                </ul>
+            </div>
+        </div> *@
+
+        <!-- Related Applications -->
+        <div class="app-related-block">
+            <h3 class="mono">EXPLORE OTHER ENGINES</h3>
+            <div class="app-related-grid">
+                @foreach (var rel in Model.RelatedItems)
+                {
+                    <a href="/applications/@rel.Slug" class="app-related-card">
+                        <div class="rel-card-thumb">
+                            <img src="@rel.ImagePath" alt="@rel.Title 3D CAD" loading="lazy" />
+                        </div>
+                        <div class="rel-card-body">
+                            <div class="rel-card-head mono">
+                                <span class="rel-cat">@rel.Category</span>
+                                <span class="rel-idx">@rel.Number</span>
+                            </div>
+                            <h4 class="rel-title">@rel.Title</h4>
+                            <p class="rel-desc">@rel.Summary</p>
+                        </div>
+                    </a>
+                }
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<script>
+    (function () {
+        var tabs = document.querySelectorAll(".app-vp-tab");
+        var panes = document.querySelectorAll(".app-vp-pane");
+        tabs.forEach(function (tab) {
+            tab.addEventListener("click", function () {
+                var target = tab.getAttribute("data-vp-target");
+                tabs.forEach(function (t) {
+                    var active = t === tab;
+                    t.classList.toggle("is-active", active);
+                    t.setAttribute("aria-selected", String(active));
+                });
+                panes.forEach(function (p) {
+                    var match = p.getAttribute("data-vp-pane") === target;
+                    p.classList.toggle("is-active", match);
+                    if (match) p.removeAttribute("hidden");
+                    else p.setAttribute("hidden", "");
+                });
+            });
+        });
+
+        var shareBtn = document.getElementById("btnShareApp");
+        if (shareBtn) {
+            shareBtn.addEventListener("click", function () {
+                var url = window.location.href;
+                var isMobile = window.matchMedia && window.matchMedia("(pointer: coarse)").matches;
+                if (isMobile && navigator.share) {
+                    navigator.share({ title: document.title, url: url }).catch(function () { });
+                    return;
+                }
+                if (navigator.clipboard && navigator.clipboard.writeText) {
+                    navigator.clipboard.writeText(url).then(function () {
+                        var lbl = shareBtn.querySelector("span");
+                        var icon = shareBtn.querySelector("i");
+                        if (lbl) lbl.textContent = "Link Copied!";
+                        if (icon) icon.className = "bi bi-check2";
+                        setTimeout(function () {
+                            if (lbl) lbl.textContent = "Share Link";
+                            if (icon) icon.className = "bi bi-share";
+                        }, 2200);
+                    });
+                }
+            });
+        }
+    })();
+</script>
