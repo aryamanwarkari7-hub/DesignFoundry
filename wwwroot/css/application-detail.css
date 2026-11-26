@@ -417,4 +417,42 @@
   .app-related-grid {
     grid-template-columns: 1fr;
   }
+
+  .app-detail-top {
+    justify-content: center;
+    text-align: center;
+  }
+
+  .app-badges {
+    justify-content: center;
+  }
+
+  .app-hero-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .app-highlight-pills,
+  .app-detail-actions,
+  .app-viewport-bar {
+    justify-content: center;
+  }
+
+  .app-spec-card h2,
+  .app-related-block h3 {
+    justify-content: center;
+    text-align: center;
+  }
+
+  .app-vp-video-placeholder {
+    padding: 14px;
+  }
+}
+
+@media (max-width: 520px) {
+  .app-related-card {
+    grid-template-columns: 100px 1fr;
+  }
 }
