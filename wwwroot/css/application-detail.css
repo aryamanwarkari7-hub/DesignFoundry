@@ -119,6 +119,32 @@
   margin-bottom: 24px;
 }
 
+.app-highlight-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 24px;
+}
+
+.app-highlight-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 14px;
+  border-radius: var(--radius-pill);
+  background: var(--surface-stage);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-head);
+  font-size: var(--font-sm);
+  font-weight: var(--fw-medium);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.app-highlight-pill i {
+  color: var(--primary-accent);
+  font-size: 0.9em;
+}
+
 .app-detail-actions {
   display: flex;
   flex-wrap: wrap;

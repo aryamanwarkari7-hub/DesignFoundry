@@ -1,3 +1,4 @@
+using System.Text.Json;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
@@ -5,7 +6,15 @@ namespace Designsfactory.Pages.Applications;
 
 public class DetailModel : PageModel
 {
+    private readonly IWebHostEnvironment _env;
+
+    public DetailModel(IWebHostEnvironment env)
+    {
+        _env = env;
+    }
+
     public ApplicationItem Item { get; private set; } = default!;
+    public IReadOnlyList<string> HighlightPills { get; private set; } = Array.Empty<string>();
     public IReadOnlyList<ApplicationItem> RelatedItems { get; private set; } = Array.Empty<ApplicationItem>();
 
     public IActionResult OnGet(string slug)
@@ -16,6 +25,7 @@ public class DetailModel : PageModel
         }
 
         Item = found;
+        HighlightPills = LoadPillsForSlug(found.Slug, found.Deliverables);
         RelatedItems = Catalog.Values
             .Where(x => x.Slug != found.Slug)
             .OrderBy(_ => Random.Shared.Next())
@@ -23,6 +33,29 @@ public class DetailModel : PageModel
             .ToList();
 
         return Page();
+    }
+
+    private IReadOnlyList<string> LoadPillsForSlug(string slug, string[] fallback)
+    {
+        try
+        {
+            var filePath = Path.Combine(_env.ContentRootPath, "Data", "application-pills.json");
+            if (System.IO.File.Exists(filePath))
+            {
+                var json = System.IO.File.ReadAllText(filePath);
+                var map = JsonSerializer.Deserialize<Dictionary<string, string[]>>(json);
+                if (map != null && map.TryGetValue(slug, out var pills) && pills.Length > 0)
+                {
+                    return pills.Take(4).ToList();
+                }
+            }
+        }
+        catch
+        {
+            // Fall back to item deliverables if JSON is unavailable or malformed
+        }
+
+        return fallback.Take(4).ToList();
     }
 
     public sealed record ApplicationItem(

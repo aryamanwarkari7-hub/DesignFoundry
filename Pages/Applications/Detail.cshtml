@@ -25,7 +25,15 @@
             <div class="app-hero-info">
                 <h1 class="app-detail-title">@Model.Item.Title</h1>
                 <p class="app-detail-summary">@Model.Item.Summary</p>
-                <p class="app-detail-desc">@Model.Item.AutomationDetail</p>
+                <div class="app-highlight-pills" aria-label="Key Software Capabilities">
+                    @foreach (var pill in Model.HighlightPills)
+                    {
+                        <span class="app-highlight-pill">
+                            <i class="bi bi-check-circle-fill" aria-hidden="true"></i>
+                            <span>@pill</span>
+                        </span>
+                    }
+                </div>
 
                 <div class="app-detail-actions">
                     <a href="@(Configuration["BookingSettings:MicrosoftBookingsUrl"] ?? "/contact")" target="_blank"

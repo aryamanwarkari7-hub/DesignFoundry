@@ -1,0 +1,80 @@
+{
+  "axial-fan": [
+    "Aerodynamic Velocity Triangles",
+    "Mated 3D Impeller & Casing CAD",
+    "2D DWG + ERP BOM in < 2 Mins",
+    "AMCA 210 Performance Curves"
+  ],
+  "cyclone-separator": [
+    "Stairmand Efficiency Curves",
+    "Auto-Sized Cone & Inlet Duct",
+    "One-Click Sheet-Metal Unrolls",
+    "Zero Manual Redrawing"
+  ],
+  "storage-tank": [
+    "API 650 / IS 803 Shell Sizing",
+    "Roof Truss & Wind Girder CAD",
+    "Nozzle Cutouts & Plate BOM",
+    "Automated Stairway & Handrails"
+  ],
+  "belt-conveyor": [
+    "CEMA Power & Tension Sizing",
+    "Dynamic 3D Truss & Idler CAD",
+    "Pulley Specs & Fabrication BOM",
+    "Direct SolidWorks & Inventor Export"
+  ],
+  "bucket-elevator": [
+    "Head & Boot Pulley Sizing",
+    "Chain Pull & Motor Torque",
+    "Mated Buckets & Casing Cut-Lists",
+    "DIN 15201 Compliant Geometry"
+  ],
+  "wet-scrubber": [
+    "Throat Velocity & L/G Sizing",
+    "Spray Nozzle & Demister Layout",
+    "Verified 3D Vessel & Piping CAD",
+    "EPA Method 5 Ready Outputs"
+  ],
+  "screw-conveyor": [
+    "RPM & Volumetric Load Sizing",
+    "Shaft Deflection Verification",
+    "Helical Flight Blank Templates",
+    "CEMA 350 Trough Assemblies"
+  ],
+  "fin-tube-exchanger": [
+    "Heat Duty & Pressure Drop",
+    "Auto-Selected Fin Geometry",
+    "3D Tube Bundles & Cut-Lists",
+    "ASME / API 661 Header Passes"
+  ],
+  "shell-and-tube-exchanger": [
+    "TEMA Tube Layout & Baffle Pitch",
+    "Dynamic 3D Bundle & Shell CAD",
+    "Inspection-Ready DWG & BOM",
+    "ASME Section VIII Compliance"
+  ],
+  "web-dryer": [
+    "Moisture & Energy Balance",
+    "Zone Length & Nozzle Sizing",
+    "3D Chamber & Plenum CAD",
+    "Multi-Zone Roller Synchronization"
+  ],
+  "industrial-damper": [
+    "Blade Linkage & Shaft Sizing",
+    "Actuator Torque Calculation",
+    "Kinematic 3D Motion Assembly",
+    "AMCA 500-D Leakage Control"
+  ],
+  "ducting-systems": [
+    "SMACNA Stiffener & Flange Rules",
+    "Transitions & Expansion Joints",
+    "CNC Flat Unrolls & Bend Tables",
+    "Automated Flue Gas Line Routing"
+  ],
+  "sheet-metal-nesting": [
+    "Scrap-Minimized Plate Packing",
+    "Kerf & Grain Lock Rules",
+    "Ready-to-Cut DXF & NC Output",
+    "Multi-Sheet Utilization Reports"
+  ]
+}
