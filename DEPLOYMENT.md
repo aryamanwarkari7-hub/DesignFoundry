@@ -8,6 +8,7 @@
 ## 1. What Has Been Completed
 
 ### A. Backend, Error Handling & Logging
+
 - **Global Exception Handling & Custom Error Page:** Configured `Program.cs` with `UseExceptionHandler("/Error")`, `UseStatusCodePagesWithReExecute("/Error")`, and HSTS in non-development environments, backed by `Pages/Error.cshtml` and `Pages/Error.cshtml.cs`.
 - **Daily Rolling File Logging:** Added `Services/FileLoggerProvider.cs` and registered it in `Program.cs` so application warnings, errors, and contact/SMTP diagnostics are written to daily log files (excluded from Git via `.gitignore`).
 - **Microsoft 365 SMTP Integration (`Controllers/ContactController.cs`):**
@@ -18,6 +19,7 @@
   - Centralized `BookingSettings:MicrosoftBookingsUrl` in `appsettings.json` / `appsettings.example.json` and wired it into `Pages/Shared/_Layout.cshtml`, `Pages/Shared/_Customers.cshtml`, `Pages/Shared/_About.cshtml`, and `Pages/Shared/_Contact.cshtml` (via `Pages/_ViewImports.cshtml` injecting `IConfiguration`).
 
 ### B. Frontend Architecture, Theme & Sections
+
 - **Global Theme Tokens (`wwwroot/css/variables.css`, `wwwroot/css/site.css`):**
   - Standardized Light and Dark mode semantic tokens (`--surface-stage`, `--border-subtle`, `--text-head`, `--text-secondary`, `--primary-accent`, `--nav-bg`, etc.).
   - Fixed the **Book a Call** `#inquiryDialog` modal to obey Light/Dark theme tokens and resolved the `.inquiry-head` close (`×`) button overlap.
@@ -29,6 +31,7 @@
   - Split section logic out of `wwwroot/js/site.js` into `wwwroot/js/answers.js`, `wwwroot/js/copilot.js`, `wwwroot/js/foundation.js`, `wwwroot/js/customers.js`, `wwwroot/js/about.js`, and `wwwroot/js/contact.js`.
 
 ### C. Mobile & Tablet Responsiveness
+
 - **Navbar & Floating Dropdown (`Pages/Shared/_Layout.cshtml`, `wwwroot/css/navbar.css`, `wwwroot/js/site.js`, `wwwroot/js/contact.js`):**
   - Compacted tablet links (`<= 1120px`), added `#mobileBookCallBtn` and `#mobileMenuBtn` (`<= 900px`), and converted `#mobileNavDrawer` into an interactive floating dropdown below `.nav-capsule`.
   - Synced ScrollSpy and click `.active` states + glowing orange `::after` underline and pill hover highlights across both desktop and mobile links.
@@ -51,5 +54,5 @@
    - **Mobile Browser QA:** Test on real mobile/tablet viewports (`375px`, `480px`, `768px`, `900px`) in both Light and Dark themes to verify dropdown navigation, scroll-spy highlights, modals, and section spacing.
 
 3. **Publish & Push:**
-   - Commit `DEPLYMENT.md` (if desired) and push `main` to `origin/main` (`git push origin main`).
+   - Commit `DEPLOYMENT.md` (if desired) and push `main` to `origin/main` (`git push origin main`).
    - Run `dotnet publish -c Release` and deploy to your target server/host with `ASPNETCORE_ENVIRONMENT=Production`.
