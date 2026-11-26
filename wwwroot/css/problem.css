@@ -14,8 +14,8 @@
 
 /* Master Centered Container */
 .prob-center-container {
-  max-width: 1060px;
-  width: 100%;
+  width: min(1340px, 100%); /* Overrides .wrap's 1200px cap */
+  max-width: 1340px;
   margin: 0 auto;
   text-align: center;
   display: flex;
@@ -78,14 +78,14 @@
   color: #334155;
 }
 
-/* 3. Horizontal 4-Card Process Flow */
+/* 3. Horizontal 5-Card Process Flow */
 .prob-flow-row {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 12px;
+  gap: 8px;
   width: 100%;
-  max-width: 1000px;
+  max-width: 1300px;
   margin: 0 auto;
 }
 
@@ -114,9 +114,9 @@
   z-index: 3;
 }
 
-/* Card 4 (BOM) is proportionally wider to accommodate the table */
+/* All 5 cards share uniform proportions */
 .prob-flow-card.prob-flow-card-bom {
-  flex: 1.35 1 0;
+  flex: 1 1 0;
 }
 
 /* Card Image (Fills Card Seamlessly) */
@@ -139,8 +139,8 @@
 }
 
 .prob-flow-arrow-badge {
-  width: 36px;
-  height: 36px;
+  width: 24px;
+  height: 24px;
   border-radius: 50%;
   background: linear-gradient(
     135deg,
