@@ -510,6 +510,97 @@
   grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
   gap: 16px;
   width: 100%;
+  /* overflow: hidden;
+  transition: max-height 0.45s cubic-bezier(0.22, 1, 0.36, 1); */
+}
+
+/* .foundation-catalog-grid.is-collapsed {
+  mask-image: linear-gradient(to bottom, black 78%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, black 78%, transparent 100%);
+} */
+
+.foundation-catalog-grid.is-collapsed > .grid-card:nth-child(n + 9) {
+  display: none;
+}
+
+.foundation-catalog-grid:not(.is-collapsed) > .grid-card:nth-child(n + 9) {
+  animation: dfCardReveal 0.35s ease both;
+}
+
+.foundation-see-more-wrap {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.foundation-see-more {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 22px;
+  border-radius: var(--radius-pill);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  color: var(--primary-accent);
+  font-family: var(--font-family-mono);
+  font-weight: var(--fw-bold);
+  /* letter-spacing: 0.08em; */
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+.foundation-see-more:hover {
+  border-color: var(--primary-accent);
+  color: var(--primary-accent);
+  box-shadow: 0 0 16px rgba(242, 106, 10, 0.22);
+}
+:root[data-theme="light"] .foundation-see-more {
+  background: rgba(11, 31, 77, 0.05);
+  border-color: rgba(11, 31, 77, 0.16);
+}
+/* Stacked 2-Arrow Floating Animation */
+.see-more-arrows {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 0.55;
+  font-size: 11px;
+
+  color: var(--primary-accent);
+  transition: transform 0.3s ease;
+}
+.see-more-arrows i:first-child {
+  font-weight: var(--fw-bold);
+  animation: dfArrowFloat 1.5s ease-in-out infinite;
+}
+.see-more-arrows i:last-child {
+  font-weight: var(--fw-bold);
+  animation: dfArrowFloat 1.5s ease-in-out 0.22s infinite;
+}
+.foundation-see-more[aria-expanded="true"] .see-more-arrows {
+  transform: rotate(180deg);
+}
+
+@keyframes dfCardReveal {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes dfArrowFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.45;
+  }
+  50% {
+    transform: translateY(3px);
+    opacity: 1;
+  }
 }
 
 .prod.grid-card {

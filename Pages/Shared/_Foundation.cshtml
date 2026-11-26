@@ -4,7 +4,7 @@
         <!-- Section Header -->
         <div class="sec-head center">
             <span class="eyebrow mono">APPLICATIONS</span>
-            <h2>Built on Aryaman. <br> <em>Active design automation engines.</em></h2>
+            <h2>Built by Aryaman. <br> <em>Active design automation engines.</em></h2>
             <p>Every copilot is powered by 19+ years of proven algorithmic design logic across custom machinery, bulk
                 material handling, and thermal process equipment.</p>
             </div>
@@ -473,7 +473,7 @@
                         </div> *@
                     </button>
 
-                    <!-- Custom Copilot Card -->
+                    @* <!-- Custom Copilot Card -->
                     <a class="prod grid-card custom-copilot"
                        href="@(Configuration["BookingSettings:MicrosoftBookingsUrl"] ?? "/contact")" target="_blank"
                        rel="noopener noreferrer">
@@ -495,8 +495,19 @@
                                 <span class="more">Discuss &rarr;</span>
                             </div>
                         </a>
-                    </div>
+                    </div> *@
                 </div>
+
+                <div class="foundation-see-more-wrap">
+                    <button type="button" class="foundation-see-more " id="btnFoundationSeeMore" aria-expanded="false">
+                        <span class="see-more-label">See more</span>
+                        <span class="see-more-arrows" aria-hidden="true">
+                            <i class="bi bi-chevron-down"></i>
+                            <i class="bi bi-chevron-down"></i>
+                        </span>
+                    </button>
+                </div>
+
             </div>
 
             <!-- CTA: Discuss your design flow -->

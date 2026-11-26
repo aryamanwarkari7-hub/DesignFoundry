@@ -166,6 +166,39 @@ document.addEventListener("DOMContentLoaded", function () {
     //     requestAnimationFrame(stepConveyor);
     // }
 
+    // Show first 8 cards by default & toggle remaining cards
+    (function initFoundationSeeMore() {
+        var grid = document.querySelector("#foundationGridView .foundation-catalog-grid");
+        var btn = document.getElementById("btnFoundationSeeMore");
+        if (!grid || !btn) return;
+
+        var label = btn.querySelector(".see-more-label");
+        var isExpanded = false;
+
+        function applyState() {
+            grid.classList.toggle("is-collapsed", !isExpanded);
+            btn.setAttribute("aria-expanded", isExpanded ? "true" : "false");
+            if (label) label.textContent = isExpanded ? "Show less" : "See more";
+        }
+
+        btn.addEventListener("click", function () {
+            isExpanded = !isExpanded;
+            applyState();
+
+            if (!isExpanded) {
+                var section = document.getElementById("foundation");
+                if (section) {
+                    var header = document.querySelector("header.header-floating");
+                    var offset = header ? Math.round(header.getBoundingClientRect().bottom) + 12 : 92;
+                    var y = section.getBoundingClientRect().top + window.pageYOffset - offset;
+                    window.scrollTo({ top: Math.max(0, y), behavior: "smooth" });
+                }
+            }
+        });
+
+        applyState();
+    })();
+
     // ==========================================================
     // PERMANENT BENTO FAQ CONTROLLER (SEARCH & DISCIPLINE FILTERS)
     // ==========================================================
