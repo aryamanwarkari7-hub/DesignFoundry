@@ -312,43 +312,78 @@
                     </div>
                 </dialog>
 
-                <!-- SIMPLISTIC BLUEPRINT FOOTER (Contained Section Capsule) -->
+                <!-- CLEAN UNIFIED FOOTER -->
                 <footer class="site-footer">
                     <div class="foot">
+                        <!-- Left: Brand, Legal & Direct Contact -->
                         <div class="foot-brand">
                             <div class="foot-logo mono">
-                                <span class="foot-dot"></span> DesignFoundry &middot; <span class="foot-sub">PARAMETRIC CAD
-                                COPILOT</span>
+                                <span class="foot-dot"></span> DesignFoundry &middot; <span class="foot-sub">PARAMETRIC CAD COPILOT</span>
                             </div>
                             <p class="foot-legal">
                                 &copy; 2026 <a href="https://www.aryamantechnologies.com" target="_blank" rel="noopener noreferrer"
-                                               class="foot-link">Aryaman Technologies Private Limited</a> &middot; Karvenagar, Pune &ndash;
-                                411052, India<br>
+                                               class="foot-link">Aryaman Technologies Private Limited</a> &middot; Karvenagar, Pune &ndash; 411052, India &middot;
+                                <br />
                                 <span class="mono">CIN: U74999PN2018PTC175883</span>
                             </p>
                             <div class="foot-contact">
                                 <a href="tel:+912025462557" class="foot-contact-item">
-                                    <i class="bi bi-telephone-fill"></i> +91 20 2546 2557
+                                    <i class="bi bi-telephone" aria-hidden="true"></i> +91 20 2546 2557
                                 </a>
-                                <span class="foot-contact-sep" aria-hidden="true">&middot;</span>
                                 <a href="mailto:mail@aryamantechnologies.com" class="foot-contact-item">
-                                    <i class="bi bi-envelope-fill"></i> mail@aryamantechnologies.com
+                                    <i class="bi bi-envelope" aria-hidden="true"></i> mail@aryamantechnologies.com
                                 </a>
+                                <a href="https://designfoundry.com" target="_blank" rel="noopener noreferrer" class="foot-contact-item">
+                                    <i class="bi bi-globe2" aria-hidden="true"></i> DOMAIN : DesignFoundry.com
+                                </a>
+                                <a href="https://www.linkedin.com/in/atharv-warkari/" target="_blank" rel="noopener noreferrer" class="foot-contact-item">
+                                    <i class="bi bi-globe2" aria-hidden="true"></i> Made by: Atharv Warkari
+                                </a>
+                                @* <span class="foot-contact-item foot-meta-pill">
+                                    <i class="bi bi-code-slash" aria-hidden="true"></i> Made by: Atharv Warkari
+                                </span> *@
                             </div>
                         </div>
 
-                        <!-- Sleek Glass CAD Title Block -->
-                        <div class="foot-titleblock mono" aria-label="Engineering Drawing Title Block">
-                            <div class="tb-cell"><span class="tb-lbl">DRAWN BY</span> <strong class="tb-val">ARYAMAN</strong>
-                            </div>
-                            <div class="tb-cell"><span class="tb-lbl">STANDARDS</span> <strong class="tb-val">ISO / ASME</strong>
-                            </div>
-                            <div class="tb-cell"><span class="tb-lbl">LOCATION</span> <strong class="tb-val">PUNE, IN</strong></div>
-                            <div class="tb-cell"><span class="tb-lbl">DOMAIN</span> <strong
-                                class="tb-val">DesignFoundry.COM</strong></div>
+                        <!-- Right: Clean Links & Connect Columns -->
+                        <div class="foot-columns">
+                            <nav class="foot-col" aria-label="Footer Sections">
+                                <span class="foot-col-title mono">SECTIONS</span>
+                                <ul class="foot-links-list">
+                                    <li><a href="/#problem"><i class="bi bi-exclamation-circle" aria-hidden="true"></i> Problem</a></li>
+                                    <li><a href="/#answers"><i class="bi bi-lightning-charge" aria-hidden="true"></i> Solution</a></li>
+                                    <li><a href="/#benefits"><i class="bi bi-check2-circle" aria-hidden="true"></i> Benefits</a></li>
+                                    <li><a href="/#copilot"><i class="bi bi-play-circle" aria-hidden="true"></i> How it Works</a></li>
+                                    <li><a href="/#foundation"><i class="bi bi-grid" aria-hidden="true"></i> Applications</a></li>
+                                    <li><a href="/#customers"><i class="bi bi-people" aria-hidden="true"></i> Customers</a></li>
+                                    <li><a href="/#about"><i class="bi bi-building" aria-hidden="true"></i> About</a></li>
+                                </ul>
+                            </nav>
+
+                            <div class="foot-col">
+                                <span class="foot-col-title mono">CONNECT</span>
+                                <ul class="foot-links-list foot-links-connect">
+                                    <li>
+                                        <a href="@(Configuration["BookingSettings:MicrosoftBookingsUrl"] ?? "/contact")"
+                                           target="_blank" rel="noopener noreferrer">
+                                            <i class="bi bi-calendar3" aria-hidden="true"></i> Book a Call
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/contact">
+                                            <i class="bi bi-geo-alt" aria-hidden="true"></i> Contact Page
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="https://www.aryamantechnologies.com" target="_blank" rel="noopener noreferrer">
+                                            <i class="bi bi-globe2" aria-hidden="true"></i> Aryaman Technologies
+                                        </a>
+                                    </li>
+                                </ul>
                             </div>
                         </div>
-                    </footer>
+                    </div>
+                </footer>
                     <!-- GLOBAL SCRIPTS -->
                     <!-- Lenis Smooth Scrolling Engine (3.5KB) -->
                     <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>

@@ -458,6 +458,7 @@ document.addEventListener("DOMContentLoaded", function () {
         var navBookCallBtn = document.getElementById("navBookCallBtn");
         var mobileBookCallBtn = document.getElementById("mobileBookCallBtn");
         var mobileDrawerBookBtn = document.getElementById("mobileDrawerBookBtn");
+        var footerInquiryBtn = document.getElementById("footerInquiryBtn");
         var btnOpenInq = document.getElementById("btnOpenInquiryModal");
         var btnCloseInq = document.getElementById("inquiryClose");
         var cadChips = document.querySelectorAll(".cad-chip");
@@ -479,6 +480,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (navBookCallBtn) navBookCallBtn.addEventListener("click", openInquiryModalAsync);
         if (mobileBookCallBtn) mobileBookCallBtn.addEventListener("click", openInquiryModalAsync);
         if (mobileDrawerBookBtn) mobileDrawerBookBtn.addEventListener("click", openInquiryModalAsync);
+        if (footerInquiryBtn) footerInquiryBtn.addEventListener("click", openInquiryModalAsync);
         if (btnOpenInq) btnOpenInq.addEventListener("click", openInquiryModalAsync);
 
         if (btnCloseInq && inqDialog) {
