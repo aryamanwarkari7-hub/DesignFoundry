@@ -378,7 +378,7 @@
   font-weight: var(--fw-medium);
 }
 
-/* Full Connected Arrow Between Left Card & Right Card */
+/* Hero-Style Circular Glass Arrow Badge */
 .df-connector {
   width: 100%;
   display: flex;
@@ -386,28 +386,30 @@
   justify-content: center;
 }
 
-.df-connector-svg {
-  width: auto;
-  height: 24px;
-  overflow: visible;
+.df-arrow-badge {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: linear-gradient(
+    135deg,
+    rgba(242, 106, 10, 0.16) 0%,
+    rgba(242, 106, 10, 0.05) 100%
+  );
+  border: 1.5px solid rgba(242, 106, 10, 0.38);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary-accent);
+  box-shadow: 0 4px 16px rgba(242, 106, 10, 0.25);
+  transition: transform var(--transition-fast);
 }
 
-.df-line-bg {
-  stroke: var(--text-muted);
-  stroke-width: 2.5;
-  stroke-linecap: round;
-}
-
-.df-line-pulse {
-  display: none;
-}
-
-.df-arrow-head {
-  fill: none;
-  stroke: var(--text-muted);
-  stroke-width: 2.5;
-  stroke-linecap: round;
-  stroke-linejoin: round;
+.df-arrow-svg {
+  width: 18px;
+  height: 18px;
+  color: var(--primary-accent);
 }
 
 .df-ready-box {
@@ -732,10 +734,20 @@
   }
 
   .df-connector {
-    transform: rotate(90deg);
-    width: 28px;
-    height: 28px;
+    width: auto;
+    height: auto;
     margin: 2px auto;
+  }
+
+  .df-arrow-badge {
+    width: 36px;
+    height: 36px;
+  }
+
+  .df-arrow-svg {
+    width: 15px;
+    height: 15px;
+    transform: rotate(90deg);
   }
 
   .df-ready-box {
