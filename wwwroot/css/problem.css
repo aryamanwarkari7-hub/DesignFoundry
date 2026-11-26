@@ -69,7 +69,7 @@
   font-weight: 400;
   color: var(--text-secondary);
   line-height: 1.55;
-  max-width: 680px;
+  /* max-width: 680px; */
   margin: 0 auto 48px auto;
   text-wrap: balance;
 }

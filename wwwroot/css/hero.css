@@ -109,7 +109,7 @@
   letter-spacing: -0.025em !important;
   color: var(--text-head);
   margin-bottom: 18px !important;
-  text-wrap: auto;
+  text-wrap: inherit;
 }
 
 .hero-gradient-text {
@@ -164,7 +164,7 @@
 .hero-lead {
   font-size: clamp(1.05rem, 1.25vw, 1.22rem) !important;
   color: var(--text-secondary);
-  max-width: 44em;
+  /* max-width: 44em; */
   line-height: 1.6 !important;
   margin: 0 auto 18px !important;
 }
@@ -301,7 +301,7 @@
 
 .req-spec-pill .spec-v {
   color: #0b1f4d;
-  font-size: 17px;
+  font-size: 16px;
   font-weight: var(--fw-bold);
   letter-spacing: -0.01em;
 }
