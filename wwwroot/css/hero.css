@@ -350,7 +350,7 @@
 
 /* Right Card Bottom Footer (Matching Left Card) */
 .transform-card.card-deliverables::after {
-  content: "✓  3D SOLID  •  2D DRAWING  •  ERP BOM READY";
+  content: "3D SOLID  •  2D DRAWING  •  ERP BOM • ENGINEERING CALCULATIONS";
   display: inline-flex;
   align-items: center;
   font-family: var(--font-family-mono);
