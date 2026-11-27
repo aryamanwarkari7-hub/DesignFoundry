@@ -248,7 +248,7 @@
   color: #94a3b8;
 }
 
-/* Card Visual (Right Column) */
+/* Card Visual (Right Column / Logo Panel) */
 .cc-card-visual {
   width: 100%;
   height: 100%;
@@ -256,6 +256,75 @@
   overflow: hidden;
   position: relative;
   background: #e2e8f0;
+}
+
+.cc-logo-panel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 28px 22px;
+  gap: 12px;
+  background: #132135;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #f8fafc;
+}
+
+.cc-logo-mark {
+  width: 78px;
+  height: 78px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(242, 106, 10, 0.12);
+  border: 1px solid rgba(242, 106, 10, 0.35);
+  color: #e2e8f0;
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.28);
+}
+
+.cc-logo-mark svg {
+  width: 48px;
+  height: 48px;
+}
+
+.cc-company-name {
+  font-family: var(--font-family);
+  font-size: 1.2rem;
+  font-weight: var(--fw-bold);
+  color: #ffffff;
+  letter-spacing: -0.01em;
+}
+
+.cc-company-tag {
+  font-size: 0.66rem;
+  letter-spacing: 0.08em;
+  color: #94a3b8;
+}
+
+.cc-card:not(.is-active) .cc-logo-panel {
+  padding: 12px;
+  gap: 6px;
+}
+
+.cc-card:not(.is-active) .cc-logo-mark {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+}
+
+.cc-card:not(.is-active) .cc-logo-mark svg {
+  width: 30px;
+  height: 30px;
+}
+
+.cc-card:not(.is-active) .cc-company-name {
+  font-size: 0.78rem;
+}
+
+.cc-card:not(.is-active) .cc-company-tag {
+  display: none;
 }
 
 .cc-photo {

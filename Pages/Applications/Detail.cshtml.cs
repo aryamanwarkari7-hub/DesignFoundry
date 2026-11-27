@@ -69,7 +69,8 @@ public class DetailModel : PageModel
         string ImagePath,
         string PdfPath,
         string[] SampleInputs,
-        string[] Deliverables);
+        string[] Deliverables,
+        string VideoPath = "/videos/Earth-rotates.mp4");
 
     private static readonly Dictionary<string, ApplicationItem> Catalog = new(StringComparer.OrdinalIgnoreCase)
     {

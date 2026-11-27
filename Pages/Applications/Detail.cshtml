@@ -48,7 +48,7 @@
 
             <!-- Right Interactive Video / 3D Viewport -->
             <div class="app-viewport-card">
-                <div class="app-viewport-bar">
+                @* <div class="app-viewport-bar">
                     <div class="app-viewport-tabs" role="tablist" aria-label="Product Media Switcher">
                         <button type="button" class="app-vp-tab is-active" data-vp-target="video" role="tab"
                                 aria-selected="true">
@@ -59,15 +59,17 @@
                             <i class="bi bi-box"></i> 3D Render
                         </button>
                     </div>
-                </div>
+                </div> *@
 
                 <div class="app-viewport-stage">
-                    <div class="app-vp-pane app-vp-video-placeholder is-active" data-vp-pane="video">
-                        <i class="bi bi-film"></i>
-                        <strong class="mono">DEMO VIDEO PLACEHOLDER</strong>
-                        <span>Add product walkthrough video for @Model.Item.Title</span>
-                    </div>
-                    <div class="app-vp-pane" data-vp-pane="render" hidden>
+                    @* <div class="app-vp-pane is-active" data-vp-pane="video">
+                        <video id="appDemoVideo" class="app-vp-video" controls playsinline preload="metadata"
+                               poster="@Model.Item.ImagePath">
+                            <source src="@Model.Item.VideoPath" type="video/mp4" />
+                            Your browser does not support HTML5 video.
+                        </video>
+                    </div> *@
+                    <div class="app-vp-pane is-active" data-vp-pane="render">
                         <img src="@Model.Item.ImagePath" alt="@Model.Item.Title 3D CAD Render" />
                     </div>
                 </div>
@@ -141,6 +143,10 @@
                     if (match) p.removeAttribute("hidden");
                     else p.setAttribute("hidden", "");
                 });
+                var demoVideo = document.getElementById("appDemoVideo");
+                if (demoVideo && target !== "video" && !demoVideo.paused) {
+                    demoVideo.pause();
+                }
             });
         });
 
